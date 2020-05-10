@@ -7,6 +7,10 @@ namespace InsightHub.Models
 {
     public class Report : IApprovable, IAudible, IDeletable, IFeaturable
     {
+        public Report()
+        {
+            this.Tags = new List<ReportTag>();
+        }
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

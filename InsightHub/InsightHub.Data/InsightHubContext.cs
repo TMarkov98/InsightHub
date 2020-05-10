@@ -42,6 +42,8 @@ namespace InsightHub.Data
             modelBuilder.Entity<IndustrySubscription>().HasKey(ui => new { ui.UserId, ui.IndustryId });
             //modelBuilder.Entity<IndustrySubscription>().HasOne(ui => ui.User).WithMany(u => u.IndustrySubscriptions).HasForeignKey(ui => ui.UserId);
 
+            modelBuilder.Entity<IndustryReport>().HasKey(ut => new { ut.IndustryId, ut.ReportId });
+
             modelBuilder.Entity<ReportTag>().HasKey(rt => new { rt.ReportId, rt.TagId });
             //modelBuilder.Entity<ReportTag>().HasOne(rt => rt.Report).WithMany(r => r.Tags).HasForeignKey(rt => rt.ReportId);
 

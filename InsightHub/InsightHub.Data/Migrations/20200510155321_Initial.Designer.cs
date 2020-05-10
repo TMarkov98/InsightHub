@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InsightHub.Data.Migrations
 {
     [DbContext(typeof(InsightHubContext))]
-    [Migration("20200510104751_Initial")]
+    [Migration("20200510155321_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,6 +58,21 @@ namespace InsightHub.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Industries");
+                });
+
+            modelBuilder.Entity("InsightHub.Models.IndustryReport", b =>
+                {
+                    b.Property<int>("IndustryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReportId")
+                        .HasColumnType("int");
+
+                    b.HasKey("IndustryId", "ReportId");
+
+                    b.HasIndex("ReportId");
+
+                    b.ToTable("IndustryReport");
                 });
 
             modelBuilder.Entity("InsightHub.Models.IndustrySubscription", b =>
@@ -111,9 +126,6 @@ namespace InsightHub.Data.Migrations
                     b.Property<bool>("IsPending")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("TagId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
@@ -124,8 +136,6 @@ namespace InsightHub.Data.Migrations
                     b.HasIndex("AuthorId");
 
                     b.HasIndex("IndustryId");
-
-                    b.HasIndex("TagId");
 
                     b.ToTable("Reports");
                 });
@@ -352,10 +362,12 @@ namespace InsightHub.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -391,10 +403,12 @@ namespace InsightHub.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -416,6 +430,21 @@ namespace InsightHub.Data.Migrations
                         .WithMany("Reports")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("InsightHub.Models.IndustryReport", b =>
+                {
+                    b.HasOne("InsightHub.Models.Industry", "Industry")
+                        .WithMany("Reports")
+                        .HasForeignKey("IndustryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InsightHub.Models.Report", "Report")
+                        .WithMany()
+                        .HasForeignKey("ReportId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -443,14 +472,10 @@ namespace InsightHub.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("InsightHub.Models.Industry", "Industry")
-                        .WithMany("Reports")
+                        .WithMany()
                         .HasForeignKey("IndustryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("InsightHub.Models.Tag", null)
-                        .WithMany("Reports")
-                        .HasForeignKey("TagId");
                 });
 
             modelBuilder.Entity("InsightHub.Models.ReportTag", b =>
@@ -462,7 +487,7 @@ namespace InsightHub.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("InsightHub.Models.Tag", "Tag")
-                        .WithMany()
+                        .WithMany("Reports")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

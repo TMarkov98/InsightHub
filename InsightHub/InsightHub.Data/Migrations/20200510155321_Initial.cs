@@ -138,8 +138,8 @@ namespace InsightHub.Data.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(nullable: false),
-                    ProviderKey = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
@@ -183,8 +183,8 @@ namespace InsightHub.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<int>(nullable: false),
-                    LoginProvider = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
+                    Name = table.Column<string>(maxLength: 128, nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -237,8 +237,7 @@ namespace InsightHub.Data.Migrations
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: false),
-                    IsFeatured = table.Column<bool>(nullable: false),
-                    TagId = table.Column<int>(nullable: true)
+                    IsFeatured = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -255,12 +254,6 @@ namespace InsightHub.Data.Migrations
                         principalTable: "Industries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reports_Tags_TagId",
-                        column: x => x.TagId,
-                        principalTable: "Tags",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -309,6 +302,30 @@ namespace InsightHub.Data.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IndustryReport",
+                columns: table => new
+                {
+                    IndustryId = table.Column<int>(nullable: false),
+                    ReportId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IndustryReport", x => new { x.IndustryId, x.ReportId });
+                    table.ForeignKey(
+                        name: "FK_IndustryReport_Industries_IndustryId",
+                        column: x => x.IndustryId,
+                        principalTable: "Industries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_IndustryReport_Reports_ReportId",
+                        column: x => x.ReportId,
+                        principalTable: "Reports",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -385,6 +402,11 @@ namespace InsightHub.Data.Migrations
                 column: "ReportId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_IndustryReport_ReportId",
+                table: "IndustryReport",
+                column: "ReportId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_IndustrySubscriptions_IndustryId",
                 table: "IndustrySubscriptions",
                 column: "IndustryId");
@@ -398,11 +420,6 @@ namespace InsightHub.Data.Migrations
                 name: "IX_Reports_IndustryId",
                 table: "Reports",
                 column: "IndustryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reports_TagId",
-                table: "Reports",
-                column: "TagId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ReportTags_TagId",
@@ -436,6 +453,9 @@ namespace InsightHub.Data.Migrations
                 name: "DownloadedReports");
 
             migrationBuilder.DropTable(
+                name: "IndustryReport");
+
+            migrationBuilder.DropTable(
                 name: "IndustrySubscriptions");
 
             migrationBuilder.DropTable(
@@ -448,13 +468,13 @@ namespace InsightHub.Data.Migrations
                 name: "Reports");
 
             migrationBuilder.DropTable(
+                name: "Tags");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Industries");
-
-            migrationBuilder.DropTable(
-                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

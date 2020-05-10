@@ -8,6 +8,12 @@ namespace InsightHub.Models
 {
     public class User : IdentityUser<int>, IApprovable, IAudible
     {
+        public User()
+        {
+            this.Reports = new List<DownloadedReport>();
+            this.IndustrySubscriptions = new List<IndustrySubscription>();
+            this.TagSubscriptions = new List<TagSubscription>();
+        }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Role Role { get; set; }
