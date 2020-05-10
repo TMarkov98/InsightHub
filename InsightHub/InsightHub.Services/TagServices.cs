@@ -84,7 +84,7 @@ namespace InsightHub.Services
         public void ValidateTagExists(Tag tag)
         {
             if (tag == null)
-                throw new ArgumentNullException("No tag found.");
+                throw new ArgumentNullException("No Tag found.");
         }
     }
 }
