@@ -6,3 +6,7 @@ D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Services\obj\Debug\netco
 D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Services\bin\Debug\netcoreapp3.1\InsightHub.Services.runtimeconfig.json
 D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Services\bin\Debug\netcoreapp3.1\InsightHub.Services.runtimeconfig.dev.json
 D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Services\obj\Debug\netcoreapp3.1\InsightHub.Services.genruntimeconfig.cache
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Services\bin\Debug\netcoreapp3.1\InsightHub.Services.pdb
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Services\obj\Debug\netcoreapp3.1\InsightHub.Services.csproj.CoreCompileInputs.cache
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Services\obj\Debug\netcoreapp3.1\InsightHub.Services.dll
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Services\obj\Debug\netcoreapp3.1\InsightHub.Services.pdb

@@ -1354,6 +1354,21 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "InsightHub.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.3",
+          "Microsoft.EntityFrameworkCore.InMemory": "3.1.3",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.3"
+        },
+        "compile": {
+          "bin/placeholder/InsightHub.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InsightHub.Models.dll": {}
+        }
       }
     }
   },
@@ -5111,10 +5126,16 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "InsightHub.Models/1.0.0": {
+      "type": "project",
+      "path": "../InsightHub.Models/InsightHub.Models.csproj",
+      "msbuildProject": "../InsightHub.Models/InsightHub.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "InsightHub.Models >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.3",
       "Microsoft.EntityFrameworkCore.InMemory >= 3.1.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.3",
@@ -5150,7 +5171,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj": {
+              "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

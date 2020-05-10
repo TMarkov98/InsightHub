@@ -4,6 +4,310 @@
     "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Web\\InsightHub.Web.csproj": {}
   },
   "projects": {
+    "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj",
+        "projectName": "InsightHub.Common",
+        "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj",
+        "packagesPath": "C:\\Users\\Xhism\\.nuget\\packages\\",
+        "outputPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Xhism\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj",
+        "projectName": "InsightHub.Data",
+        "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj",
+        "packagesPath": "C:\\Users\\Xhism\\.nuget\\packages\\",
+        "outputPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Xhism\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj": {
+                "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj",
+        "projectName": "InsightHub.Models",
+        "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj",
+        "packagesPath": "C:\\Users\\Xhism\\.nuget\\packages\\",
+        "outputPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Xhism\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj",
+        "projectName": "InsightHub.Services",
+        "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj",
+        "packagesPath": "C:\\Users\\Xhism\\.nuget\\packages\\",
+        "outputPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Xhism\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Web\\InsightHub.Web.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -29,7 +333,20 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj": {
+                "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj"
+              },
+              "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj": {
+                "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj"
+              },
+              "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj": {
+                "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj"
+              },
+              "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj": {
+                "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -11,10 +11,12 @@ namespace InsightHub.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Role Role { get; set; }
-        public List<Report> Reports { get; set; }
+        public List<DownloadedReport> Reports { get; set; }
         public bool IsPending { get; set; }
         public DateTime CreatedOn { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DeletedOn { get; set; }
+        public List<IndustrySubscription> IndustrySubscriptions { get; set; }
+        public List<TagSubscription> TagSubscriptions { get; set; }
     }
 }

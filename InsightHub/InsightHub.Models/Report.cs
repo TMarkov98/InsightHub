@@ -8,11 +8,11 @@ namespace InsightHub.Models
     public class Report : IApprovable, IAudible, IDeletable, IFeaturable
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public User Author { get; set; }
         public int AuthorId { get; set; }
-        public List<Tag> Tags { get; set; }
+        public List<ReportTag> Tags { get; set; }
         public Industry Industry { get; set; }
         public int IndustryId { get; set; }
         public string FileUrl { get; set; }
