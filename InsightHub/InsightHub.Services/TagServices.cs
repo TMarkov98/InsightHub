@@ -16,6 +16,10 @@ namespace InsightHub.Services
     public class TagServices : ITagServices
     {
         private readonly InsightHubContext _context;
+        public TagServices(InsightHubContext context)
+        {
+           this._context = context ?? throw new ArgumentNullException("Context can NOT be null.");
+        }
         public async Task<TagDTO> CreateTag(string name)
         {
             var tagDTO = TagMapper.MapDTOFromString(name);

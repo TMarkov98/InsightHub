@@ -16,6 +16,11 @@ namespace InsightHub.Services
     {
         private readonly InsightHubContext _context;
 
+        public IndustryServices(InsightHubContext context)
+        {
+            this._context = context ?? throw new ArgumentNullException("Context can NOT be null.");
+        }
+
         public async Task<IndustryDTO> CreateIndustry(string name)
         {
             if (name == null)
