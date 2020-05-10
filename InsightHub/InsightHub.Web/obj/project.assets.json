@@ -1405,6 +1405,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "InsightHub.Data": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.3",
           "Microsoft.EntityFrameworkCore.InMemory": "3.1.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.3"
@@ -5207,23 +5208,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Xhism\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\DarkDante\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Web\\InsightHub.Web.csproj",
+      "projectUniqueName": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Web\\InsightHub.Web.csproj",
       "projectName": "InsightHub.Web",
-      "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Web\\InsightHub.Web.csproj",
-      "packagesPath": "C:\\Users\\Xhism\\.nuget\\packages\\",
-      "outputPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Web\\obj\\",
+      "projectPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Web\\InsightHub.Web.csproj",
+      "packagesPath": "C:\\Users\\DarkDante\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Web\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Xhism\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DarkDante\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5236,17 +5233,17 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj": {
-              "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj"
+            "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj": {
+              "projectPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj"
             },
-            "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj": {
-              "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj"
+            "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj": {
+              "projectPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj"
             },
-            "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj": {
-              "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj"
+            "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj": {
+              "projectPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj"
             },
-            "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj": {
-              "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj"
+            "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj": {
+              "projectPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj"
             }
           }
         }

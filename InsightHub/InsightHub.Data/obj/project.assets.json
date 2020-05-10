@@ -5143,23 +5143,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Xhism\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\DarkDante\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj",
+      "projectUniqueName": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj",
       "projectName": "InsightHub.Data",
-      "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj",
-      "packagesPath": "C:\\Users\\Xhism\\.nuget\\packages\\",
-      "outputPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\obj\\",
+      "projectPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj",
+      "packagesPath": "C:\\Users\\DarkDante\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Data\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Xhism\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DarkDante\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5172,8 +5168,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj": {
-              "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj"
+            "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj": {
+              "projectPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Models\\InsightHub.Models.csproj"
             }
           }
         }

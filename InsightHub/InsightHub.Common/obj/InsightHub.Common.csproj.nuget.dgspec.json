@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj": {}
+    "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj": {}
   },
   "projects": {
-    "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj": {
+    "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj",
+        "projectUniqueName": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj",
         "projectName": "InsightHub.Common",
-        "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj",
-        "packagesPath": "C:\\Users\\Xhism\\.nuget\\packages\\",
-        "outputPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Common\\obj\\",
+        "projectPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Common\\InsightHub.Common.csproj",
+        "packagesPath": "C:\\Users\\DarkDante\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Common\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Xhism\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DarkDante\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

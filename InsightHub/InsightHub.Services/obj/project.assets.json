@@ -1354,6 +1354,37 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "InsightHub.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "InsightHub.Models": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.3",
+          "Microsoft.EntityFrameworkCore.InMemory": "3.1.3",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.3"
+        },
+        "compile": {
+          "bin/placeholder/InsightHub.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InsightHub.Data.dll": {}
+        }
+      },
+      "InsightHub.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.3",
+          "Microsoft.EntityFrameworkCore.InMemory": "3.1.3",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.3"
+        },
+        "compile": {
+          "bin/placeholder/InsightHub.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InsightHub.Models.dll": {}
+        }
       }
     }
   },
@@ -5111,10 +5142,21 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "InsightHub.Data/1.0.0": {
+      "type": "project",
+      "path": "../InsightHub.Data/InsightHub.Data.csproj",
+      "msbuildProject": "../InsightHub.Data/InsightHub.Data.csproj"
+    },
+    "InsightHub.Models/1.0.0": {
+      "type": "project",
+      "path": "../InsightHub.Models/InsightHub.Models.csproj",
+      "msbuildProject": "../InsightHub.Models/InsightHub.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "InsightHub.Data >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.3",
       "Microsoft.EntityFrameworkCore.InMemory >= 3.1.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.3",
@@ -5122,23 +5164,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Xhism\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\DarkDante\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj",
+      "projectUniqueName": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj",
       "projectName": "InsightHub.Services",
-      "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj",
-      "packagesPath": "C:\\Users\\Xhism\\.nuget\\packages\\",
-      "outputPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Services\\obj\\",
+      "projectPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Services\\InsightHub.Services.csproj",
+      "packagesPath": "C:\\Users\\DarkDante\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Services\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Xhism\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DarkDante\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5150,7 +5188,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj": {
+              "projectPath": "C:\\Users\\DarkDante\\Desktop\\InsightHub\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
