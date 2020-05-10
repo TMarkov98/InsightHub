@@ -319,7 +319,7 @@ namespace InsightHub.Data.Migrations
                         column: x => x.IndustryId,
                         principalTable: "Industries",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_IndustryReport_Reports_ReportId",
                         column: x => x.ReportId,

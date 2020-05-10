@@ -436,7 +436,7 @@ namespace InsightHub.Data.Migrations
                     b.HasOne("InsightHub.Models.Industry", "Industry")
                         .WithMany("Reports")
                         .HasForeignKey("IndustryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("InsightHub.Models.Report", "Report")

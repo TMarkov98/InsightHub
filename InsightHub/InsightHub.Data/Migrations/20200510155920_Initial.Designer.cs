@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InsightHub.Data.Migrations
 {
     [DbContext(typeof(InsightHubContext))]
-    [Migration("20200510155321_Initial")]
+    [Migration("20200510155920_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -438,7 +438,7 @@ namespace InsightHub.Data.Migrations
                     b.HasOne("InsightHub.Models.Industry", "Industry")
                         .WithMany("Reports")
                         .HasForeignKey("IndustryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("InsightHub.Models.Report", "Report")
