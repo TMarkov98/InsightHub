@@ -258,7 +258,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj": {
+                "projectPath": "D:\\GitLab\\Final-TeamTK\\insighthub\\InsightHub\\InsightHub.Data\\InsightHub.Data.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
