@@ -99,7 +99,8 @@ namespace InsightHub.Data.Migrations
                     LastName = table.Column<string>(nullable: false),
                     RoleId = table.Column<int>(nullable: true),
                     IsPending = table.Column<bool>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false)
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    LockoutReason = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

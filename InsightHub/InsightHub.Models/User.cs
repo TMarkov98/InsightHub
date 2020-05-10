@@ -16,5 +16,6 @@ namespace InsightHub.Models
         public DateTime CreatedOn { get; set; }
         public List<IndustrySubscription> IndustrySubscriptions { get; set; }
         public List<TagSubscription> TagSubscriptions { get; set; }
+        public string LockoutReason { get; set; }
     }
 }
