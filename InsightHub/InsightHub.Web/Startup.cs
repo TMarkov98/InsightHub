@@ -41,6 +41,7 @@ namespace InsightHub.Web
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
             });
+
             services.AddScoped<IIndustryServices, IndustryServices>();
             services.AddScoped<ITagServices, TagServices>();
         }

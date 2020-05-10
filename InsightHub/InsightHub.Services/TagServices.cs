@@ -29,6 +29,7 @@ namespace InsightHub.Services
                 var tag = TagMapper.MapTagFromDTO(tagDTO);
                 _context.Tags.Add(tag);
                 await _context.SaveChangesAsync();
+                tagDTO = TagMapper.MapDTOFromTag(tag);
             }
 
             return tagDTO;
