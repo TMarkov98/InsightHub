@@ -1,0 +1,15 @@
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\bin\Debug\netcoreapp3.1\InsightHub.Data.deps.json
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\bin\Debug\netcoreapp3.1\InsightHub.Data.dll
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\obj\Debug\netcoreapp3.1\InsightHub.Data.AssemblyInfoInputs.cache
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\obj\Debug\netcoreapp3.1\InsightHub.Data.AssemblyInfo.cs
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\bin\Debug\netcoreapp3.1\InsightHub.Data.runtimeconfig.json
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\bin\Debug\netcoreapp3.1\InsightHub.Data.runtimeconfig.dev.json
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\obj\Debug\netcoreapp3.1\InsightHub.Data.csprojAssemblyReference.cache
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\obj\Debug\netcoreapp3.1\InsightHub.Data.genruntimeconfig.cache
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\bin\Debug\netcoreapp3.1\InsightHub.Data.pdb
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\bin\Debug\netcoreapp3.1\InsightHub.Models.dll
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\bin\Debug\netcoreapp3.1\InsightHub.Models.pdb
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\obj\Debug\netcoreapp3.1\InsightHub.Data.csproj.CoreCompileInputs.cache
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\obj\Debug\netcoreapp3.1\InsightHub.Data.csproj.CopyComplete
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\obj\Debug\netcoreapp3.1\InsightHub.Data.dll
+D:\GitLab\Final-TeamTK\insighthub\InsightHub\InsightHub.Data\obj\Debug\netcoreapp3.1\InsightHub.Data.pdb
