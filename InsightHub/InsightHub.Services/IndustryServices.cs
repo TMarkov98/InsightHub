@@ -28,8 +28,10 @@ namespace InsightHub.Services
             var dto = IndustryMapper.MapDTOFromString(name);
             if (!await _context.Industries.AnyAsync(i => i.Name == name))
             {
-                _context.Industries.Add(IndustryMapper.MapIndusryFromDTO(dto));
+                var industry = IndustryMapper.MapIndusryFromDTO(dto);
+                _context.Industries.Add(industry);
                 await _context.SaveChangesAsync();
+                dto = IndustryMapper.MapDTOFromIndustry(industry);
             }
             return dto;
         }
