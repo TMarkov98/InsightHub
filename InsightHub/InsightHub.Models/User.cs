@@ -6,7 +6,7 @@ using System.Text;
 
 namespace InsightHub.Models
 {
-    public class User : IdentityUser<int>, IApprovable, IAudible, IDeletable
+    public class User : IdentityUser<int>, IApprovable, IAudible
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -14,8 +14,6 @@ namespace InsightHub.Models
         public List<DownloadedReport> Reports { get; set; }
         public bool IsPending { get; set; }
         public DateTime CreatedOn { get; set; }
-        public bool IsDeleted { get; set; }
-        public DateTime DeletedOn { get; set; }
         public List<IndustrySubscription> IndustrySubscriptions { get; set; }
         public List<TagSubscription> TagSubscriptions { get; set; }
     }
