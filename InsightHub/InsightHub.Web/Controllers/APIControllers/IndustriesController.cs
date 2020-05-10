@@ -27,7 +27,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         }
 
         // GET: api/Industries/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var industry = await _industriesServices.GetIndustry(id);

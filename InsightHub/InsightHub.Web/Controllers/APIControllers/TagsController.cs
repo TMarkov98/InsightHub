@@ -29,7 +29,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         }
 
         // GET: api/Tags/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var model = await _tagServices.GetTag(id);
