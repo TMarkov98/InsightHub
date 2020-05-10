@@ -1,5 +1,6 @@
 ﻿using InsightHub.Data;
 using InsightHub.Models;
+using InsightHub.Services.Contracts;
 using InsightHub.Services.DTOs;
 using InsightHub.Services.Mappers;
 using Microsoft.EntityFrameworkCore;
@@ -12,14 +13,14 @@ using System.Threading.Tasks;
 
 namespace InsightHub.Services
 {
-    public class TagServices
+    public class TagServices : ITagServices
     {
         private readonly InsightHubContext _context;
         public async Task<TagDTO> CreateTag(string name)
         {
             var tagDTO = TagMapper.MapDTOFromString(name);
 
-            if(!await _context.Tags.AnyAsync(t => t.Name == name))
+            if (!await _context.Tags.AnyAsync(t => t.Name == name))
             {
                 var tag = TagMapper.MapTagFromDTO(tagDTO);
                 _context.Tags.Add(tag);
@@ -37,7 +38,7 @@ namespace InsightHub.Services
                 .ToListAsync();
             return tagDTOs;
         }
-        
+
         public async Task<TagDTO> GetTag(int id)
         {
             var tag = await _context.Tags
@@ -59,6 +60,8 @@ namespace InsightHub.Services
             tag.Name = name;
 
             var tagDTO = TagMapper.MapDTOFromTag(tag);
+            await _context.SaveChangesAsync();
+
             return tagDTO;
         }
 
@@ -66,13 +69,15 @@ namespace InsightHub.Services
         {
             var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Id == id);
 
-            if(tag == null || tag.IsDeleted)
+            if (tag == null || tag.IsDeleted)
             {
                 return false;
             }
 
             tag.IsDeleted = true;
             tag.DeletedOn = DateTime.Now;
+            await _context.SaveChangesAsync();
+
             return true;
         }
 
