@@ -12,11 +12,11 @@ namespace InsightHub.Web.Controllers.APIControllers
 {
     [Route("api/reports")]
     [ApiController]
-    public class ReportsController : ControllerBase
+    public class ReportsAPIController : ControllerBase
     {
         private readonly IReportServices _reportServices;
 
-        public ReportsController(IReportServices reportServices)
+        public ReportsAPIController(IReportServices reportServices)
         {
             this._reportServices = reportServices ?? throw new ArgumentNullException("Report Services can NOT be null.");
         }

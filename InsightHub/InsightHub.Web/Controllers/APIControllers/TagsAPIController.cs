@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InsightHub.Web.Controllers.APIControllers
 {
-    [Route("api/[controller]")]
+    [Route("api/tags")]
     [ApiController]
-    public class TagsController : ControllerBase
+    public class TagsAPIController : ControllerBase
     {
         private readonly ITagServices _tagServices;
 
-        public TagsController(ITagServices tagServices)
+        public TagsAPIController(ITagServices tagServices)
         {
             this._tagServices = tagServices ?? throw new ArgumentNullException("TagServices can NOT be null.");
         }

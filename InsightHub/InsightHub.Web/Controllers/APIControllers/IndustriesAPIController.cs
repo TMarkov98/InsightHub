@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace InsightHub.Web.Controllers.APIControllers
 {
-    [Route("api/[controller]")]
+    [Route("api/industries")]
     [ApiController]
     public class IndustriesController : ControllerBase
     {
