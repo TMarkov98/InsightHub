@@ -22,7 +22,7 @@ namespace InsightHub.Services
         }
         public async Task<TagDTO> CreateTag(string name)
         {
-            var tagDTO = TagMapper.MapDTOFromString(name);
+            var tagDTO = TagMapper.MapDTOFromInput(name);
 
             if (!await _context.Tags.AnyAsync(t => t.Name.ToLower() == name.ToLower()))
             {
@@ -39,6 +39,7 @@ namespace InsightHub.Services
         {
             var tagDTOs = await _context.Tags
                 .Include(t => t.Reports)
+                .ThenInclude(rt => rt.Report)
                 .Select(t => TagMapper.MapDTOFromTag(t))
                 .ToListAsync();
             return tagDTOs;
@@ -47,6 +48,7 @@ namespace InsightHub.Services
         public async Task<TagDTO> GetTag(int id)
         {
             var tag = await _context.Tags
+                .Where(t => !t.IsDeleted)
                 .Include(t => t.Reports)
                 .FirstOrDefaultAsync(t => t.Id == id);
 

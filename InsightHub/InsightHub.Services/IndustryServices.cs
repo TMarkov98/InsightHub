@@ -25,7 +25,7 @@ namespace InsightHub.Services
         {
             if (name == null)
                 throw new ArgumentNullException("Name can NOT be null.");
-            var dto = IndustryMapper.MapDTOFromString(name);
+            var dto = IndustryMapper.MapDTOFromInput(name);
             if (!await _context.Industries.AnyAsync(i => i.Name == name))
             {
                 var industry = IndustryMapper.MapIndustryFromDTO(dto);
@@ -51,6 +51,7 @@ namespace InsightHub.Services
         public async Task<List<IndustryDTO>> GetAllIndustries()
         {
             var industries = await _context.Industries
+                .Where(i => !i.IsDeleted)
                 .Include(i => i.Reports)
                 .Select(i => IndustryMapper.MapDTOFromIndustry(i))
                 .ToListAsync();
@@ -65,6 +66,7 @@ namespace InsightHub.Services
                 return false;
             industry.IsDeleted = true;
             industry.DeletedOn = DateTime.UtcNow;
+            await _context.SaveChangesAsync();
             return true;
         }
         public async Task<IndustryDTO> UpdateIndustry(int id, string newName)
@@ -79,6 +81,7 @@ namespace InsightHub.Services
             ValidateIndustryExists(industry);
             industry.Name = newName;
             industry.ModifiedOn = DateTime.Now;
+            await _context.SaveChangesAsync();
             var dto = IndustryMapper.MapDTOFromIndustry(industry);
             return dto;
         }

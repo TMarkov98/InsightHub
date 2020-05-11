@@ -173,28 +173,6 @@ namespace InsightHub.Data
                     CreatedOn =DateTime.UtcNow
                 }
                 );
-            //Seed IndustryReports
-            modelBuilder.Entity<IndustryReport>().HasData(
-                new IndustryReport
-                {
-                    ReportId = 1,
-                    IndustryId = 1,
-                }
-                );
-            modelBuilder.Entity<IndustryReport>().HasData(
-                new IndustryReport
-                {
-                    ReportId = 2,
-                    IndustryId = 2,
-                }
-                );
-            modelBuilder.Entity<IndustryReport>().HasData(
-                new IndustryReport
-                {
-                    ReportId = 3,
-                    IndustryId = 2,
-                }
-                );
             //Seed Tags
 
             modelBuilder.Entity<Tag>().HasData(
@@ -221,6 +199,26 @@ namespace InsightHub.Data
                     CreatedOn = DateTime.UtcNow
                 }
                 );
+            //Seed ReportTags
+
+            modelBuilder.Entity<ReportTag>().HasData(
+                new ReportTag
+                {
+                    ReportId = 1,
+                    TagId = 1,
+                });
+            modelBuilder.Entity<ReportTag>().HasData(
+                new ReportTag
+                {
+                    ReportId = 1,
+                    TagId = 2,
+                });
+            modelBuilder.Entity<ReportTag>().HasData(
+                new ReportTag
+                {
+                    ReportId = 2,
+                    TagId = 1,
+                });
         }
     }
 }

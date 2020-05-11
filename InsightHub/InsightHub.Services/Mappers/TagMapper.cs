@@ -2,13 +2,14 @@
 using InsightHub.Services.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace InsightHub.Services.Mappers
 {
     public static class TagMapper
     {
-        public static TagDTO MapDTOFromString(string name)
+        public static TagDTO MapDTOFromInput(string name)
         {
             return new TagDTO()
             {
@@ -24,7 +25,9 @@ namespace InsightHub.Services.Mappers
                 Id = tag.Id,
                 Name = tag.Name,
                 CreatedOn = tag.CreatedOn,
-                ModifiedOn = tag.ModifiedOn
+                ModifiedOn = tag.ModifiedOn,
+                IsDeleted = tag.IsDeleted,
+                Reports = tag.Reports.Select(r => new string("Id: " + r.Report.Id + " - " + r.Report.Title)).ToList(),
             };
         }
 

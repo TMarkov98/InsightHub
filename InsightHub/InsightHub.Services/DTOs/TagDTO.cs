@@ -10,6 +10,7 @@ namespace InsightHub.Services.DTOs
         public string Name { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
-        public List<ReportDTO> Reports { get; set; }
+        public List<string> Reports { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
