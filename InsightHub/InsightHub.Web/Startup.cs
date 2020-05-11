@@ -43,6 +43,7 @@ namespace InsightHub.Web
             });
 
             services.AddScoped<IIndustryServices, IndustryServices>();
+            services.AddScoped<IReportServices, ReportServices>();
             services.AddScoped<ITagServices, TagServices>();
         }
 

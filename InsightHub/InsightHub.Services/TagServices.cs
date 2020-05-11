@@ -70,7 +70,7 @@ namespace InsightHub.Services
             }
 
             tag.Name = name;
-            tag.ModifiedOn = DateTime.Now;
+            tag.ModifiedOn = DateTime.UtcNow;
 
             var tagDTO = TagMapper.MapDTOFromTag(tag);
             await _context.SaveChangesAsync();
@@ -88,7 +88,7 @@ namespace InsightHub.Services
             }
 
             tag.IsDeleted = true;
-            tag.DeletedOn = DateTime.Now;
+            tag.DeletedOn = DateTime.UtcNow;
             await _context.SaveChangesAsync();
 
             return true;

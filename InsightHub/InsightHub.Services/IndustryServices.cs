@@ -80,7 +80,7 @@ namespace InsightHub.Services
                 .FirstOrDefaultAsync(i => i.Id == id);
             ValidateIndustryExists(industry);
             industry.Name = newName;
-            industry.ModifiedOn = DateTime.Now;
+            industry.ModifiedOn = DateTime.UtcNow;
             await _context.SaveChangesAsync();
             var dto = IndustryMapper.MapDTOFromIndustry(industry);
             return dto;
@@ -88,7 +88,7 @@ namespace InsightHub.Services
         private void ValidateIndustryExists(Industry industry)
         {
             if (industry == null)
-                throw new ArgumentNullException("No industry found");
+                throw new ArgumentNullException("No Industry found.");
         }
     }
 }

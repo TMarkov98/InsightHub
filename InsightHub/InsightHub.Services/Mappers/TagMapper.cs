@@ -14,7 +14,7 @@ namespace InsightHub.Services.Mappers
             return new TagDTO()
             {
                 Name = name,
-                CreatedOn = DateTime.Now,
+                CreatedOn = DateTime.UtcNow,
             };
         }
 
