@@ -1,5 +1,6 @@
 ﻿using InsightHub.Data;
 using InsightHub.Models;
+using InsightHub.Services.Contracts;
 using InsightHub.Services.DTOs;
 using InsightHub.Services.Mappers;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +17,12 @@ namespace InsightHub.Services
     public class ReportServices
     {
         private readonly InsightHubContext _context;
-        private readonly TagServices _tagServices;
+        private readonly ITagServices _tagServices;
 
-        public ReportServices(InsightHubContext context)
+        public ReportServices(InsightHubContext context, ITagServices tagServices)
         {
             this._context = context ?? throw new ArgumentNullException("Context can NOT be null.");
+            this._tagServices = tagServices ?? throw new ArgumentNullException("Tag Services can NOT be null.");
         }
         public async Task<ReportDTO> CreateReport(string title, string description, string author, string industry, string tags)
         {
