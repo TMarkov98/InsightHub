@@ -17,8 +17,8 @@ namespace InsightHub.Data
             User admin = new User
             {
                 Id = 1,
-                FirstName = "Admin's FirstName",
-                LastName = "Admin's LastName",
+                FirstName = "Admincho",
+                LastName = "Adminev",
                 UserName = "admin@gmail.com",
                 NormalizedUserName = "ADMIN@GMAIL.COM",
                 Email = "admin@gmail.com",
@@ -31,8 +31,8 @@ namespace InsightHub.Data
             User author = new User
             {
                 Id = 2,
-                FirstName = "Author's FirstName",
-                LastName = "Author's LastName",
+                FirstName = "Authorcho",
+                LastName = "Authorchevski",
                 UserName = "author@gmail.com",
                 NormalizedUserName = "AUTHOR@GMAIL.COM",
                 Email = "author@gmail.com",
@@ -44,8 +44,8 @@ namespace InsightHub.Data
             User client = new User
             {
                 Id = 3,
-                FirstName = "Client's FirstName",
-                LastName = "Client's LastName",
+                FirstName = "Clientcho",
+                LastName = "Clientev",
                 UserName = "client@gmail.com",
                 NormalizedUserName = "CLIENT@GMAIL.COM",
                 Email = "client@gmail.com",

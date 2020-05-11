@@ -26,7 +26,7 @@ namespace InsightHub.Services.Mappers
             {
                 Id = report.Id,
                 Title = report.Title,
-                Author = new string("Id: " + report.AuthorId + " - " + report.Author),
+                Author = new string(report.Author.FirstName + " " + report.Author.LastName + " - " + report.Author.Email),
                 Description = report.Description,
                 CreatedOn = report.CreatedOn,
                 Industry = report.Industry.Name,
