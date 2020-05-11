@@ -16,8 +16,7 @@ namespace InsightHub.Services.Mappers
                 CreatedOn = DateTime.UtcNow
             };
         }
-    //TODO CreatedOn??
-        public static Industry MapIndusryFromDTO(IndustryDTO iDTO)
+        public static Industry MapIndustryFromDTO(IndustryDTO iDTO)
         {
             return new Industry
             {

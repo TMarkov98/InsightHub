@@ -25,6 +25,10 @@ namespace InsightHub.Web.Controllers.APIControllers
         public async Task<IActionResult> Get()
         {
             var model = await _tagServices.GetTags();
+            if (model.Count == 0)
+            {
+                return Ok(new { message = "No tags found." });
+            }
             return Ok(model);
         }
 
@@ -32,24 +36,49 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var model = await _tagServices.GetTag(id);
-            return Ok(model);
+            try
+            {
+                var model = await _tagServices.GetTag(id);
+                return Ok(model);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         // POST: api/Tags
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] string name)
         {
-            var model = await _tagServices.CreateTag(name);
-            return Created("Post", model);
+            try
+            {
+                var model = await _tagServices.CreateTag(name);
+                return Ok(model);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         // PUT: api/Tags/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] string name)
         {
-            var model = await _tagServices.UpdateTag(id, name);
-            return Ok(model);
+            try
+            {
+                var model = await _tagServices.UpdateTag(id, name);
+                return Ok(model);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         // DELETE: api/ApiWithActions/5
@@ -57,7 +86,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         public async Task<IActionResult> Delete(int id)
         {
             var model = await _tagServices.DeleteTag(id);
-            if(model)
+            if (model)
                 return NoContent();
             return BadRequest();
         }

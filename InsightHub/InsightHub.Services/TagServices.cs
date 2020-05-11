@@ -18,21 +18,21 @@ namespace InsightHub.Services
         private readonly InsightHubContext _context;
         public TagServices(InsightHubContext context)
         {
-           this._context = context ?? throw new ArgumentNullException("Context can NOT be null.");
+            this._context = context ?? throw new ArgumentNullException("Context can NOT be null.");
         }
         public async Task<TagDTO> CreateTag(string name)
         {
             var tagDTO = TagMapper.MapDTOFromString(name);
 
-            if (!await _context.Tags.AnyAsync(t => t.Name == name))
+            if (!await _context.Tags.AnyAsync(t => t.Name.ToLower() == name.ToLower()))
             {
                 var tag = TagMapper.MapTagFromDTO(tagDTO);
                 _context.Tags.Add(tag);
                 await _context.SaveChangesAsync();
                 tagDTO = TagMapper.MapDTOFromTag(tag);
+                return tagDTO;
             }
-
-            return tagDTO;
+            throw new ArgumentException($"Tag with name {name} already exists.");
         }
 
         public async Task<ICollection<TagDTO>> GetTags()
@@ -61,6 +61,11 @@ namespace InsightHub.Services
             var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Id == id);
 
             ValidateTagExists(tag);
+
+            if (await _context.Tags.AnyAsync(t => t.Name.ToLower() == name.ToLower()))
+            {
+                throw new ArgumentException($"Tag with name {name} already exists.");
+            }
 
             tag.Name = name;
             tag.ModifiedOn = DateTime.Now;
