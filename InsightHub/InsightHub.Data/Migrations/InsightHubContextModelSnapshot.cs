@@ -50,12 +50,44 @@ namespace InsightHub.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Industries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 137, DateTimeKind.Utc).AddTicks(6061),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Next-Wave Logistics"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 137, DateTimeKind.Utc).AddTicks(8017),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Space Technology"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 137, DateTimeKind.Utc).AddTicks(8161),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Clean Water Services"
+                        });
                 });
 
             modelBuilder.Entity("InsightHub.Models.IndustryReport", b =>
@@ -71,6 +103,23 @@ namespace InsightHub.Data.Migrations
                     b.HasIndex("ReportId");
 
                     b.ToTable("IndustryReport");
+
+                    b.HasData(
+                        new
+                        {
+                            IndustryId = 1,
+                            ReportId = 1
+                        },
+                        new
+                        {
+                            IndustryId = 2,
+                            ReportId = 2
+                        },
+                        new
+                        {
+                            IndustryId = 2,
+                            ReportId = 3
+                        });
                 });
 
             modelBuilder.Entity("InsightHub.Models.IndustrySubscription", b =>
@@ -124,6 +173,9 @@ namespace InsightHub.Data.Migrations
                     b.Property<bool>("IsPending")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
@@ -136,6 +188,53 @@ namespace InsightHub.Data.Migrations
                     b.HasIndex("IndustryId");
 
                     b.ToTable("Reports");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorId = 2,
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 136, DateTimeKind.Utc).AddTicks(7713),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "First report's description.",
+                            FileUrl = "First FileURL",
+                            IndustryId = 1,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            IsPending = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "First Report"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AuthorId = 2,
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 136, DateTimeKind.Utc).AddTicks(9847),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Second report's description.",
+                            FileUrl = "Second FileURL",
+                            IndustryId = 2,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            IsPending = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Second Report"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AuthorId = 2,
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 136, DateTimeKind.Utc).AddTicks(9975),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Third report's description.",
+                            FileUrl = "Third FileURL",
+                            IndustryId = 2,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            IsPending = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Third Report"
+                        });
                 });
 
             modelBuilder.Entity("InsightHub.Models.ReportTag", b =>
@@ -180,6 +279,29 @@ namespace InsightHub.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ConcurrencyStamp = "c8092d8e-e054-41da-8bff-61a47bc908ba",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ConcurrencyStamp = "f4654de5-8e61-4dad-a9aa-de41376bfa3e",
+                            Name = "Author",
+                            NormalizedName = "AUTHOR"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ConcurrencyStamp = "68c125d5-02f3-409f-aaae-0c3dcd0a559f",
+                            Name = "Client",
+                            NormalizedName = "CLIENT"
+                        });
                 });
 
             modelBuilder.Entity("InsightHub.Models.Tag", b =>
@@ -198,12 +320,44 @@ namespace InsightHub.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Tags");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 138, DateTimeKind.Utc).AddTicks(9319),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Space"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 139, DateTimeKind.Utc).AddTicks(1305),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Water"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 139, DateTimeKind.Utc).AddTicks(1392),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Money"
+                        });
                 });
 
             modelBuilder.Entity("InsightHub.Models.TagSubscription", b =>
@@ -266,6 +420,9 @@ namespace InsightHub.Data.Migrations
                     b.Property<string>("LockoutReason")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
@@ -309,6 +466,71 @@ namespace InsightHub.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "6fffaa5c-3a2a-4d0d-9d2e-8a4ff52b1a05",
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 60, DateTimeKind.Utc).AddTicks(5490),
+                            Email = "admin@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Admin's FirstName",
+                            IsPending = false,
+                            LastName = "Admin's LastName",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "ADMIN@GMAIL.COM",
+                            NormalizedUserName = "ADMIN@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIBi/R0yqG/dwaOeEs3Gj785NzQ0MX7D6pCZryRGylxWA/3gcgKHQvXBi6mA/jGVEg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "72b1706c-1a84-4843-90f5-0df002e37834",
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 60, DateTimeKind.Utc).AddTicks(8730),
+                            Email = "author@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Author's FirstName",
+                            IsPending = false,
+                            LastName = "Author's LastName",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "AUTHOR@GMAIL.COM",
+                            NormalizedUserName = "AUTHOR@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHf9MCnypIIFEWnEYeIwDjnmITnBk/3csZ5FYa7jbKeNukfLoGYkEKOmdaJmLLfPQQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXV",
+                            TwoFactorEnabled = false,
+                            UserName = "author@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "de89bf10-fb1f-45b5-804a-ec5fa20072d7",
+                            CreatedOn = new DateTime(2020, 5, 11, 9, 22, 56, 60, DateTimeKind.Utc).AddTicks(8769),
+                            Email = "client@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Client's FirstName",
+                            IsPending = false,
+                            LastName = "Client's LastName",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "CLIENT@GMAIL.COM",
+                            NormalizedUserName = "CLIENT@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOq8LvDSxAO8bxA6tBfHIcdF4ydxwlURNH5K5RgxTsejikGQHd0t5RtwgnMrY/MB+g==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXF",
+                            TwoFactorEnabled = false,
+                            UserName = "client@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -393,6 +615,23 @@ namespace InsightHub.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            RoleId = 3
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>

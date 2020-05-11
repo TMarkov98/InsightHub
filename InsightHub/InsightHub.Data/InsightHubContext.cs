@@ -14,15 +14,15 @@ namespace InsightHub.Data
         {
 
         }
-        public DbSet<Report> Reports { get; set; }
+        public virtual DbSet<Report> Reports { get; set; }
         public override DbSet<User> Users { get; set; }
         public override DbSet<Role> Roles { get; set; }
-        public DbSet<Industry> Industries { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<DownloadedReport> DownloadedReports { get; set; }
-        public DbSet<IndustrySubscription> IndustrySubscriptions { get; set; }
-        public DbSet<ReportTag> ReportTags { get; set; }
-        public DbSet<TagSubscription> TagSubscriptions { get; set; }
+        public virtual DbSet<Industry> Industries { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<DownloadedReport> DownloadedReports { get; set; }
+        public virtual DbSet<IndustrySubscription> IndustrySubscriptions { get; set; }
+        public virtual DbSet<ReportTag> ReportTags { get; set; }
+        public virtual DbSet<TagSubscription> TagSubscriptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

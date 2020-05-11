@@ -31,7 +31,8 @@ namespace InsightHub.Data.Migrations
                     Name = table.Column<string>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false)
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,7 +48,8 @@ namespace InsightHub.Data.Migrations
                     Name = table.Column<string>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false)
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -100,6 +102,7 @@ namespace InsightHub.Data.Migrations
                     RoleId = table.Column<int>(nullable: true),
                     IsPending = table.Column<bool>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: false),
                     LockoutReason = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -235,6 +238,7 @@ namespace InsightHub.Data.Migrations
                     FileUrl = table.Column<string>(nullable: true),
                     IsPending = table.Column<bool>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: false),
                     IsFeatured = table.Column<bool>(nullable: false)
@@ -351,6 +355,81 @@ namespace InsightHub.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { 1, "c8092d8e-e054-41da-8bff-61a47bc908ba", "Admin", "ADMIN" },
+                    { 2, "f4654de5-8e61-4dad-a9aa-de41376bfa3e", "Author", "AUTHOR" },
+                    { 3, "68c125d5-02f3-409f-aaae-0c3dcd0a559f", "Client", "CLIENT" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedOn", "Email", "EmailConfirmed", "FirstName", "IsPending", "LastName", "LockoutEnabled", "LockoutEnd", "LockoutReason", "ModifiedOn", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RoleId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { 1, 0, "6fffaa5c-3a2a-4d0d-9d2e-8a4ff52b1a05", new DateTime(2020, 5, 11, 9, 22, 56, 60, DateTimeKind.Utc).AddTicks(5490), "admin@gmail.com", false, "Admin's FirstName", false, "Admin's LastName", true, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEIBi/R0yqG/dwaOeEs3Gj785NzQ0MX7D6pCZryRGylxWA/3gcgKHQvXBi6mA/jGVEg==", null, false, null, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "admin@gmail.com" },
+                    { 2, 0, "72b1706c-1a84-4843-90f5-0df002e37834", new DateTime(2020, 5, 11, 9, 22, 56, 60, DateTimeKind.Utc).AddTicks(8730), "author@gmail.com", false, "Author's FirstName", false, "Author's LastName", true, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "AUTHOR@GMAIL.COM", "AUTHOR@GMAIL.COM", "AQAAAAEAACcQAAAAEHf9MCnypIIFEWnEYeIwDjnmITnBk/3csZ5FYa7jbKeNukfLoGYkEKOmdaJmLLfPQQ==", null, false, null, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXV", false, "author@gmail.com" },
+                    { 3, 0, "de89bf10-fb1f-45b5-804a-ec5fa20072d7", new DateTime(2020, 5, 11, 9, 22, 56, 60, DateTimeKind.Utc).AddTicks(8769), "client@gmail.com", false, "Client's FirstName", false, "Client's LastName", true, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "CLIENT@GMAIL.COM", "CLIENT@GMAIL.COM", "AQAAAAEAACcQAAAAEOq8LvDSxAO8bxA6tBfHIcdF4ydxwlURNH5K5RgxTsejikGQHd0t5RtwgnMrY/MB+g==", null, false, null, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXF", false, "client@gmail.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Industries",
+                columns: new[] { "Id", "CreatedOn", "DeletedOn", "IsDeleted", "ModifiedOn", "Name" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2020, 5, 11, 9, 22, 56, 137, DateTimeKind.Utc).AddTicks(6061), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Next-Wave Logistics" },
+                    { 2, new DateTime(2020, 5, 11, 9, 22, 56, 137, DateTimeKind.Utc).AddTicks(8017), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Space Technology" },
+                    { 3, new DateTime(2020, 5, 11, 9, 22, 56, 137, DateTimeKind.Utc).AddTicks(8161), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clean Water Services" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Tags",
+                columns: new[] { "Id", "CreatedOn", "DeletedOn", "IsDeleted", "ModifiedOn", "Name" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2020, 5, 11, 9, 22, 56, 138, DateTimeKind.Utc).AddTicks(9319), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Space" },
+                    { 2, new DateTime(2020, 5, 11, 9, 22, 56, 139, DateTimeKind.Utc).AddTicks(1305), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Water" },
+                    { 3, new DateTime(2020, 5, 11, 9, 22, 56, 139, DateTimeKind.Utc).AddTicks(1392), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Money" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 2 },
+                    { 3, 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Reports",
+                columns: new[] { "Id", "AuthorId", "CreatedOn", "DeletedOn", "Description", "FileUrl", "IndustryId", "IsDeleted", "IsFeatured", "IsPending", "ModifiedOn", "Title" },
+                values: new object[,]
+                {
+                    { 1, 2, new DateTime(2020, 5, 11, 9, 22, 56, 136, DateTimeKind.Utc).AddTicks(7713), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "First report's description.", "First FileURL", 1, false, false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "First Report" },
+                    { 2, 2, new DateTime(2020, 5, 11, 9, 22, 56, 136, DateTimeKind.Utc).AddTicks(9847), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Second report's description.", "Second FileURL", 2, false, false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Second Report" },
+                    { 3, 2, new DateTime(2020, 5, 11, 9, 22, 56, 136, DateTimeKind.Utc).AddTicks(9975), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Third report's description.", "Third FileURL", 2, false, false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Third Report" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "IndustryReport",
+                columns: new[] { "IndustryId", "ReportId" },
+                values: new object[] { 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "IndustryReport",
+                columns: new[] { "IndustryId", "ReportId" },
+                values: new object[] { 2, 2 });
+
+            migrationBuilder.InsertData(
+                table: "IndustryReport",
+                columns: new[] { "IndustryId", "ReportId" },
+                values: new object[] { 2, 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
