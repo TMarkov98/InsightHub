@@ -7,5 +7,6 @@ namespace InsightHub.Models.Contracts
     public interface IAudible
     {
         DateTime CreatedOn { get; set; }
+        DateTime ModifiedOn { get; set; }
     }
 }

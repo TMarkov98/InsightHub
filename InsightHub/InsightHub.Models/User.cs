@@ -20,6 +20,7 @@ namespace InsightHub.Models
         public List<DownloadedReport> Reports { get; set; }
         public bool IsPending { get; set; }
         public DateTime CreatedOn { get; set; }
+        public DateTime ModifiedOn { get; set; }
         public List<IndustrySubscription> IndustrySubscriptions { get; set; }
         public List<TagSubscription> TagSubscriptions { get; set; }
         public string LockoutReason { get; set; }

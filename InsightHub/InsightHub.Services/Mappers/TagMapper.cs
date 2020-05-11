@@ -24,6 +24,7 @@ namespace InsightHub.Services.Mappers
                 Id = tag.Id,
                 Name = tag.Name,
                 CreatedOn = tag.CreatedOn,
+                ModifiedOn = tag.ModifiedOn
             };
         }
 

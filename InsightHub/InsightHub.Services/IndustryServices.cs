@@ -70,6 +70,7 @@ namespace InsightHub.Services
                 .FirstOrDefaultAsync(i => i.Id == id);
             ValidateIndustryExists(industry);
             industry.Name = newName;
+            industry.ModifiedOn = DateTime.Now;
             var dto = IndustryMapper.MapDTOFromIndustry(industry);
             return dto;
         }

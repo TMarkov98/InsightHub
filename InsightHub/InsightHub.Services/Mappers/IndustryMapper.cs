@@ -32,6 +32,7 @@ namespace InsightHub.Services.Mappers
                 Id = industry.Id,
                 Name = industry.Name,
                 CreatedOn = industry.CreatedOn,
+                ModifiedOn = industry.ModifiedOn
             };
         }
     }

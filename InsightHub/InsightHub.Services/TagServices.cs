@@ -63,6 +63,7 @@ namespace InsightHub.Services
             ValidateTagExists(tag);
 
             tag.Name = name;
+            tag.ModifiedOn = DateTime.Now;
 
             var tagDTO = TagMapper.MapDTOFromTag(tag);
             await _context.SaveChangesAsync();
