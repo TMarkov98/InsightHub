@@ -62,7 +62,7 @@ namespace InsightHub.Services
 
             ValidateTagExists(tag);
 
-            if (!await _context.Tags.AnyAsync(t => t.Name.ToLower() == name.ToLower()))
+            if (await _context.Tags.AnyAsync(t => t.Name.ToLower() == name.ToLower()))
             {
                 throw new ArgumentException($"Tag with name {name} already exists.");
             }
