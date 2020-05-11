@@ -6,6 +6,7 @@ using InsightHub.Services;
 using InsightHub.Services.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace InsightHub.Web.Controllers.APIControllers
 {
@@ -23,6 +24,10 @@ namespace InsightHub.Web.Controllers.APIControllers
         public async Task<IActionResult> Get()
         {
             var industries = await _industriesServices.GetAllIndustries();
+            if (industries.Count == 0)
+            {
+                return Ok(new { message = "No industry found." });
+            }
             return Ok(industries);
         }
 
@@ -30,24 +35,51 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var industry = await _industriesServices.GetIndustry(id);
-            return Ok(industry);
+            try
+            {
+                var industry = await _industriesServices.GetIndustry(id);
+                return Ok(industry);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+
         }
 
         // POST: api/Industries
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] string name)
         {
-            var industry = await _industriesServices.CreateIndustry(name);
-            return Created("POST", industry);
+            try
+            {
+                var industry = await _industriesServices.CreateIndustry(name);
+                return Created("POST", name);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message});
+            }
+
         }
 
         // PUT: api/Industries/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] string name)
         {
-            var industry = await _industriesServices.UpdateIndustry(id, name);
-            return Ok(industry);
+            try
+            {
+                var industry = await _industriesServices.UpdateIndustry(id, name);
+                return Ok(industry);
+            }
+            catch(ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         // DELETE: api/ApiWithActions/5

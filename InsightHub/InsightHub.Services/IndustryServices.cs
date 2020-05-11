@@ -32,8 +32,12 @@ namespace InsightHub.Services
                 _context.Industries.Add(industry);
                 await _context.SaveChangesAsync();
                 dto = IndustryMapper.MapDTOFromIndustry(industry);
+                return dto;
             }
-            return dto;
+            else
+            {
+                throw new ArgumentException($"Industry with name {name} already exists.");
+            }
         }
         public async Task<IndustryDTO> GetIndustry(int id)
         {
@@ -65,6 +69,10 @@ namespace InsightHub.Services
         }
         public async Task<IndustryDTO> UpdateIndustry(int id, string newName)
         {
+            if (await _context.Industries.AnyAsync(i => i.Name == newName))
+            {
+                throw new ArgumentException($"Industry with name {newName} already exists.");
+            }
             var industry = await _context.Industries
                 .Include(i => i.Reports)
                 .FirstOrDefaultAsync(i => i.Id == id);
