@@ -27,24 +27,20 @@ namespace InsightHub.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            using (var httpClient = new HttpClient())
+            using var httpClient = new HttpClient();
+            using var response = await httpClient.GetAsync("http://localhost:5000/api/industries");
+            try
             {
-                using (var response = await httpClient.GetAsync("http://localhost:5000/api/industries"))
-                {
-                    try
-                    {
-                        response.EnsureSuccessStatusCode();
-                    }
-                    catch (HttpRequestException ex)
-                    {
-                        //TODO: Add behavior when filter returns status which is not success
-                        return View();
-                    }
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    var industries = JsonConvert.DeserializeObject<List<IndustryDTO>>(apiResponse);
-                    return View(industries);
-                }
+                response.EnsureSuccessStatusCode();
             }
+            catch (HttpRequestException)
+            {
+                //TODO: Add behavior when filter returns status which is not success
+                return View();
+            }
+            string apiResponse = await response.Content.ReadAsStringAsync();
+            var industries = JsonConvert.DeserializeObject<List<IndustryDTO>>(apiResponse);
+            return View(industries);
         }
 
         // GET: Industries/Details/5
