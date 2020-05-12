@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using InsightHub.Services;
 using InsightHub.Services.Contracts;
@@ -21,12 +22,33 @@ namespace InsightHub.Web.Controllers.APIControllers
         }
         // GET: api/Industries
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] string sort, [FromQuery] string search)
         {
             var industries = await _industriesServices.GetAllIndustries();
+            if(sort != null)
+            {
+                switch (sort.ToLower())
+                {
+                    case "name":
+                        industries = industries.OrderBy(i => i.Name).ToList();
+                        break;
+                    case "newest":
+                        industries = industries.OrderByDescending(i => i.CreatedOn).ToList();
+                        break;
+                    case "oldest":
+                        industries = industries.OrderBy(i => i.CreatedOn).ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if(search != null)
+            {
+                industries = industries.Where(i => i.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
             if (industries.Count == 0)
             {
-                return Ok(new { message = "No industry found." });
+                return NotFound(new { message = "No industry found." });
             }
             return Ok(industries);
         }
