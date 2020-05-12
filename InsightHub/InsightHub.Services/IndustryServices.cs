@@ -57,6 +57,17 @@ namespace InsightHub.Services
                 .ToListAsync();
             return industries;
         }
+
+        public async Task<List<IndustryDTO>> GetDeletedIndustries()
+        {
+            var industries = await _context.Industries
+                .Where(i => i.IsDeleted)
+                .Include(i => i.Reports)
+                .Select(i => IndustryMapper.MapDTOFromIndustry(i))
+                .ToListAsync();
+            return industries;
+        }
+
         public async Task<bool> DeleteIndustry(int id)
         {
             var industry = await _context.Industries
@@ -71,7 +82,7 @@ namespace InsightHub.Services
         }
         public async Task<IndustryDTO> UpdateIndustry(int id, string newName)
         {
-            if (await _context.Industries.AnyAsync(i => i.Name == newName))
+            if (await _context.Industries.AnyAsync(i => i.Name == newName && i.Id != id))
             {
                 throw new ArgumentException($"Industry with name {newName} already exists.");
             }

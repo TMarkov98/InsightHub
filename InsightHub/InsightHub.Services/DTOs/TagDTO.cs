@@ -12,5 +12,6 @@ namespace InsightHub.Services.DTOs
         public DateTime ModifiedOn { get; set; }
         public List<string> Reports { get; set; }
         public bool IsDeleted { get; set; }
+        public DateTime DeletedOn { get; set; }
     }
 }

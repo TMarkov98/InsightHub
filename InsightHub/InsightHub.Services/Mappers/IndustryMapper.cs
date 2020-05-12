@@ -34,6 +34,7 @@ namespace InsightHub.Services.Mappers
                 CreatedOn = industry.CreatedOn,
                 ModifiedOn = industry.ModifiedOn,
                 IsDeleted = industry.IsDeleted,
+                DeletedOn = industry.DeletedOn,
                 Reports = industry.Reports.Select(r => new string("Id: " + r.Id + " - " + r.Title)).ToList(),
             };
         }

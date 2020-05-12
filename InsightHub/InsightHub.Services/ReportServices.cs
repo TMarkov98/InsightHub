@@ -114,7 +114,7 @@ namespace InsightHub.Services
 
         public async Task<ReportDTO> UpdateReport(int id, string title, string description, string industry, string tags)
         {
-            if (await _context.Reports.AnyAsync(r => r.Title == title))
+            if (await _context.Reports.AnyAsync(r => r.Title == title && r.Id != id))
             {
                 throw new ArgumentException($"Report with title {title} already exists.");
             }
