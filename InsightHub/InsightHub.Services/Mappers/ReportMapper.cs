@@ -1,5 +1,6 @@
 ﻿using InsightHub.Models;
 using InsightHub.Services.DTOs;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace InsightHub.Services.Mappers
                 CreatedOn = report.CreatedOn,
                 Industry = report.Industry.Name,
                 IsDeleted = report.IsDeleted,
+                DeletedOn = report.DeletedOn,
                 IsFeatured = report.IsFeatured,
                 ModifiedOn = report.ModifiedOn,
                 Tags = report.Tags.Select(t => t.Tag.Name).ToList()

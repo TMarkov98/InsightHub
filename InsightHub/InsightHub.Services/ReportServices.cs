@@ -51,6 +51,45 @@ namespace InsightHub.Services
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
+                .Where(r => !r.IsPending)
+                .Include(r => r.Industry)
+                .Include(r => r.Author)
+                .Include(r => r.Tags)
+                .ThenInclude(rt => rt.Tag)
+                .Select(r => ReportMapper.MapDTOFromReport(r))
+                .ToListAsync();
+            return reports;
+        }
+        public async Task<ICollection<ReportDTO>> GetReportsFeatured()
+        {
+            var reports = await _context.Reports
+                .Where(r => !r.IsDeleted)
+                .Where(r => !r.IsPending)
+                .Where(r => !r.IsFeatured)
+                .Include(r => r.Industry)
+                .Include(r => r.Author)
+                .Include(r => r.Tags)
+                .ThenInclude(rt => rt.Tag)
+                .Select(r => ReportMapper.MapDTOFromReport(r))
+                .ToListAsync();
+            return reports;
+        }
+        public async Task<ICollection<ReportDTO>> GetReportsDeleted()
+        {
+            var reports = await _context.Reports
+                .Where(r => !r.IsDeleted)
+                .Include(r => r.Industry)
+                .Include(r => r.Author)
+                .Include(r => r.Tags)
+                .ThenInclude(rt => rt.Tag)
+                .Select(r => ReportMapper.MapDTOFromReport(r))
+                .ToListAsync();
+            return reports;
+        }
+        public async Task<ICollection<ReportDTO>> GetReportsPending()
+        {
+            var reports = await _context.Reports
+                .Where(r => r.IsPending)
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
                 .Include(r => r.Tags)
@@ -116,14 +155,12 @@ namespace InsightHub.Services
                 .Include(r => r.Tags)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
+          
             if (report.IsPending)
-            {
                 report.IsPending = false;
-            }
             else
-            {
                 report.IsPending = true;
-            }
+            
             var reportDTO = ReportMapper.MapDTOFromReport(report);
             return reportDTO;
         }
@@ -136,14 +173,12 @@ namespace InsightHub.Services
                 .Include(r => r.Tags)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
+
             if (report.IsFeatured)
-            {
                 report.IsFeatured = false;
-            }
             else
-            {
                 report.IsFeatured = true;
-            }
+
             var reportDTO = ReportMapper.MapDTOFromReport(report);
             return reportDTO;
         }
