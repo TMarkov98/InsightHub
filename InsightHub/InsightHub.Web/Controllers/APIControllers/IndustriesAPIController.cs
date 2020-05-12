@@ -13,10 +13,10 @@ namespace InsightHub.Web.Controllers.APIControllers
 {
     [Route("api/industries")]
     [ApiController]
-    public class IndustriesController : ControllerBase
+    public class IndustriesAPIController : ControllerBase
     {
         private readonly IIndustryServices _industriesServices;
-        public IndustriesController(IIndustryServices industryServices)
+        public IndustriesAPIController(IIndustryServices industryServices)
         {
             this._industriesServices = industryServices;
         }
