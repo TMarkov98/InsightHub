@@ -22,14 +22,35 @@ namespace InsightHub.Web.Controllers.APIControllers
         // GET: api/Tags
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] string sort, [FromQuery] string search)
         {
-            var model = await _tagServices.GetTags();
-            if (model.Count == 0)
+            var tags = await _tagServices.GetTags();
+            if (sort != null)
             {
-                return Ok(new { message = "No tags found." });
+                switch (sort.ToLower())
+                {
+                    case "name":
+                        tags = tags.OrderBy(t => t.Name).ToList();
+                        break;
+                    case "newest":
+                        tags = tags.OrderByDescending(t => t.CreatedOn).ToList();
+                        break;
+                    case "oldest":
+                        tags = tags.OrderBy(t => t.CreatedOn).ToList();
+                        break;
+                    default:
+                        break;
+                }
             }
-            return Ok(model);
+            if (search != null)
+            {
+                tags = tags.Where(t => t.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
+            if (tags.Count == 0)
+            {
+                return NotFound(new { message = "No tags found." });
+            }
+            return Ok(tags);
         }
 
         // GET: api/Tags/5
