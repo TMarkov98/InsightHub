@@ -27,23 +27,24 @@ namespace InsightHub.Web.Controllers.APIControllers
             var industries = await _industriesServices.GetAllIndustries();
             if(sort != null)
             {
-                switch (sort)
+                switch (sort.ToLower())
                 {
                     case "name":
                         industries = industries.OrderBy(i => i.Name).ToList();
                         break;
-                    case "date":
+                    case "newest":
+                        industries = industries.OrderByDescending(i => i.CreatedOn).ToList();
+                        break;
+                    case "oldest":
                         industries = industries.OrderBy(i => i.CreatedOn).ToList();
                         break;
                     default:
                         break;
                 }
-
             }
             if(search != null)
             {
-                industries = industries.Where(i => i.Name.ToLower().Contains(search.ToLower()) 
-                    || string.Join(' ', i.Reports).ToLower().Contains(search.ToLower())).ToList();
+                industries = industries.Where(i => i.Name.ToLower().Contains(search.ToLower())).ToList();
             }
             if (industries.Count == 0)
             {
