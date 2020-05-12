@@ -38,6 +38,18 @@ namespace InsightHub.Services
         public async Task<ICollection<TagDTO>> GetTags()
         {
             var tagDTOs = await _context.Tags
+                .Where(t => !t.IsDeleted)
+                .Include(t => t.Reports)
+                .ThenInclude(rt => rt.Report)
+                .Select(t => TagMapper.MapDTOFromTag(t))
+                .ToListAsync();
+            return tagDTOs;
+        }
+
+        public async Task<ICollection<TagDTO>> GetDeletedTags()
+        {
+            var tagDTOs = await _context.Tags
+                .Where(t => t.IsDeleted)
                 .Include(t => t.Reports)
                 .ThenInclude(rt => rt.Report)
                 .Select(t => TagMapper.MapDTOFromTag(t))
@@ -50,6 +62,7 @@ namespace InsightHub.Services
             var tag = await _context.Tags
                 .Where(t => !t.IsDeleted)
                 .Include(t => t.Reports)
+                .ThenInclude(rt => rt.Report)
                 .FirstOrDefaultAsync(t => t.Id == id);
 
             ValidateTagExists(tag);
@@ -64,7 +77,7 @@ namespace InsightHub.Services
 
             ValidateTagExists(tag);
 
-            if (await _context.Tags.AnyAsync(t => t.Name.ToLower() == name.ToLower()))
+            if (await _context.Tags.AnyAsync(t => t.Name.ToLower() == name.ToLower() && t.Id != id))
             {
                 throw new ArgumentException($"Tag with name {name} already exists.");
             }
