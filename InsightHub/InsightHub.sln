@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsightHub.Web", "InsightHub.Web\InsightHub.Web.csproj", "{87C44DEF-D6DB-4A4D-85B3-61C79C15B792}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightHub.Web", "InsightHub.Web\InsightHub.Web.csproj", "{87C44DEF-D6DB-4A4D-85B3-61C79C15B792}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsightHub.Data", "InsightHub.Data\InsightHub.Data.csproj", "{AC6FBAEE-9232-47A3-A4CB-CE0DF4CBD9C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightHub.Data", "InsightHub.Data\InsightHub.Data.csproj", "{AC6FBAEE-9232-47A3-A4CB-CE0DF4CBD9C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsightHub.Models", "InsightHub.Models\InsightHub.Models.csproj", "{2C5C10E6-08F2-48C0-9110-E14AE7696CFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightHub.Models", "InsightHub.Models\InsightHub.Models.csproj", "{2C5C10E6-08F2-48C0-9110-E14AE7696CFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsightHub.Services", "InsightHub.Services\InsightHub.Services.csproj", "{5CE37919-EE88-4FEE-AF6F-1C83DDB1A495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightHub.Services", "InsightHub.Services\InsightHub.Services.csproj", "{5CE37919-EE88-4FEE-AF6F-1C83DDB1A495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsightHub.Common", "InsightHub.Common\InsightHub.Common.csproj", "{326B64EA-856D-461F-88A0-F4D1C34B8B7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightHub.Common", "InsightHub.Common\InsightHub.Common.csproj", "{326B64EA-856D-461F-88A0-F4D1C34B8B7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsightHub.Tests", "InsightHub.Tests\InsightHub.Tests.csproj", "{CE90026A-E9F5-4A4C-9027-DD4CB362E0E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{326B64EA-856D-461F-88A0-F4D1C34B8B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{326B64EA-856D-461F-88A0-F4D1C34B8B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{326B64EA-856D-461F-88A0-F4D1C34B8B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE90026A-E9F5-4A4C-9027-DD4CB362E0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE90026A-E9F5-4A4C-9027-DD4CB362E0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE90026A-E9F5-4A4C-9027-DD4CB362E0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE90026A-E9F5-4A4C-9027-DD4CB362E0E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
