@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace InsightHub.Models
+namespace InsightHub.Data.Entities
 {
     public class Report : IApprovable, IAudible, IDeletable, IFeaturable
     {

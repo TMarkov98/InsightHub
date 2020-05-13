@@ -1,5 +1,5 @@
-﻿using InsightHub.Models;
-using InsightHub.Services.DTOs;
+﻿using InsightHub.Data.Entities;
+using InsightHub.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -10,9 +10,9 @@ namespace InsightHub.Services.Mappers
 {
     public static class ReportMapper
     {
-        public static ReportDTO MapDTOFromInput(string title, string description, string author, string industry, string tags)
+        public static ReportModel MapModelFromInput(string title, string description, string author, string industry, string tags)
         {
-            return new ReportDTO
+            return new ReportModel
             {
                 Title = title,
                 Description = description,
@@ -21,9 +21,9 @@ namespace InsightHub.Services.Mappers
                 Tags = tags.Split(';',',').Select(t => t.Trim()).ToList(),
         };
         }
-        public static ReportDTO MapDTOFromReport(Report report)
+        public static ReportModel MapModelFromEntity(Report report)
         {
-            return new ReportDTO
+            return new ReportModel
             {
                 Id = report.Id,
                 Title = report.Title,

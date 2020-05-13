@@ -1,7 +1,7 @@
 ﻿using InsightHub.Data;
+using InsightHub.Data.Entities;
 using InsightHub.Models;
 using InsightHub.Services.Contracts;
-using InsightHub.Services.DTOs;
 using InsightHub.Services.Mappers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -25,9 +25,9 @@ namespace InsightHub.Services
             this._context = context ?? throw new ArgumentNullException("Context can NOT be null.");
             this._tagServices = tagServices ?? throw new ArgumentNullException("Tag Services can NOT be null.");
         }
-        public async Task<ReportDTO> CreateReport(string title, string description, string author, string industry, string tags)
+        public async Task<ReportModel> CreateReport(string title, string description, string author, string industry, string tags)
         {
-            var reportDTO = ReportMapper.MapDTOFromInput(title, description, author, industry, tags);
+            var reportDTO = ReportMapper.MapModelFromInput(title, description, author, industry, tags);
             if (!await _context.Reports.AnyAsync(r => r.Title == title))
             {
                 var report = new Report()
@@ -41,13 +41,13 @@ namespace InsightHub.Services
                 AddTagsToReport(report, reportDTO.Tags);
 
                 await _context.SaveChangesAsync();
-                reportDTO = ReportMapper.MapDTOFromReport(report);
+                reportDTO = ReportMapper.MapModelFromEntity(report);
                 return reportDTO;
             }
             throw new ArgumentException($"Report with title {title} already exists.");
         }
 
-        public async Task<ICollection<ReportDTO>> GetReports()
+        public async Task<ICollection<ReportModel>> GetReports()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
@@ -56,11 +56,11 @@ namespace InsightHub.Services
                 .Include(r => r.Author)
                 .Include(r => r.Tags)
                 .ThenInclude(rt => rt.Tag)
-                .Select(r => ReportMapper.MapDTOFromReport(r))
+                .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
         }
-        public async Task<ICollection<ReportDTO>> GetReportsFeatured()
+        public async Task<ICollection<ReportModel>> GetReportsFeatured()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
@@ -70,11 +70,11 @@ namespace InsightHub.Services
                 .Include(r => r.Author)
                 .Include(r => r.Tags)
                 .ThenInclude(rt => rt.Tag)
-                .Select(r => ReportMapper.MapDTOFromReport(r))
+                .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
         }
-        public async Task<ICollection<ReportDTO>> GetReportsDeleted()
+        public async Task<ICollection<ReportModel>> GetReportsDeleted()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
@@ -82,11 +82,11 @@ namespace InsightHub.Services
                 .Include(r => r.Author)
                 .Include(r => r.Tags)
                 .ThenInclude(rt => rt.Tag)
-                .Select(r => ReportMapper.MapDTOFromReport(r))
+                .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
         }
-        public async Task<ICollection<ReportDTO>> GetReportsPending()
+        public async Task<ICollection<ReportModel>> GetReportsPending()
         {
             var reports = await _context.Reports
                 .Where(r => r.IsPending)
@@ -94,12 +94,12 @@ namespace InsightHub.Services
                 .Include(r => r.Author)
                 .Include(r => r.Tags)
                 .ThenInclude(rt => rt.Tag)
-                .Select(r => ReportMapper.MapDTOFromReport(r))
+                .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
         }
 
-        public async Task<ReportDTO> GetReport(int id)
+        public async Task<ReportModel> GetReport(int id)
         {
             var report = await _context.Reports
                 .Include(r => r.Industry)
@@ -108,11 +108,11 @@ namespace InsightHub.Services
                 .ThenInclude(rt => rt.Tag)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
-            var reportDTO = ReportMapper.MapDTOFromReport(report);
+            var reportDTO = ReportMapper.MapModelFromEntity(report);
             return reportDTO;
         }
 
-        public async Task<ReportDTO> UpdateReport(int id, string title, string description, string industry, string tags)
+        public async Task<ReportModel> UpdateReport(int id, string title, string description, string industry, string tags)
         {
             if (await _context.Reports.AnyAsync(r => r.Title == title && r.Id != id))
             {
@@ -125,13 +125,13 @@ namespace InsightHub.Services
                 .ThenInclude(rt => rt.Tag)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
-            var reportDTO = ReportMapper.MapDTOFromInput(title, description, null, industry, tags);
+            var reportDTO = ReportMapper.MapModelFromInput(title, description, null, industry, tags);
             report.Title = reportDTO.Title;
             report.Description = reportDTO.Description;
             report.Industry = await _context.Industries.FirstOrDefaultAsync(i => i.Name == reportDTO.Industry);
             report.Tags.Clear();
             AddTagsToReport(report, reportDTO.Tags);
-            reportDTO = ReportMapper.MapDTOFromReport(report);
+            reportDTO = ReportMapper.MapModelFromEntity(report);
             return reportDTO;
         }
 
@@ -147,7 +147,7 @@ namespace InsightHub.Services
             return true;
         }
 
-        public async Task<ReportDTO> TogglePending(int id)
+        public async Task<ReportModel> TogglePending(int id)
         {
             var report = await _context.Reports
                 .Include(r => r.Industry)
@@ -161,11 +161,11 @@ namespace InsightHub.Services
             else
                 report.IsPending = true;
             
-            var reportDTO = ReportMapper.MapDTOFromReport(report);
+            var reportDTO = ReportMapper.MapModelFromEntity(report);
             return reportDTO;
         }
 
-        public async Task<ReportDTO> ToggleFeatured(int id)
+        public async Task<ReportModel> ToggleFeatured(int id)
         {
             var report = await _context.Reports
                 .Include(r => r.Industry)
@@ -179,7 +179,7 @@ namespace InsightHub.Services
             else
                 report.IsFeatured = true;
 
-            var reportDTO = ReportMapper.MapDTOFromReport(report);
+            var reportDTO = ReportMapper.MapModelFromEntity(report);
             return reportDTO;
         }
 

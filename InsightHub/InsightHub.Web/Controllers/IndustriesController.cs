@@ -9,8 +9,8 @@ using InsightHub.Data;
 using InsightHub.Models;
 using InsightHub.Services.Contracts;
 using System.Net.Http;
-using InsightHub.Services.DTOs;
 using Newtonsoft.Json;
+using InsightHub.Data.Entities;
 
 namespace InsightHub.Web.Controllers
 {
@@ -39,7 +39,7 @@ namespace InsightHub.Web.Controllers
                 return View();
             }
             string apiResponse = await response.Content.ReadAsStringAsync();
-            var industries = JsonConvert.DeserializeObject<List<IndustryDTO>>(apiResponse);
+            var industries = JsonConvert.DeserializeObject<List<IndustryModel>>(apiResponse);
             return View(industries);
         }
 

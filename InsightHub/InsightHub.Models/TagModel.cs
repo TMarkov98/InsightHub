@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InsightHub.Services.DTOs
+namespace InsightHub.Models
 {
-    public class IndustryDTO
+    public class TagModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

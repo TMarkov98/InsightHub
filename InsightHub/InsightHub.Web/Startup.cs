@@ -1,4 +1,5 @@
 using InsightHub.Data;
+using InsightHub.Data.Entities;
 using InsightHub.Models;
 using InsightHub.Services;
 using InsightHub.Services.Contracts;

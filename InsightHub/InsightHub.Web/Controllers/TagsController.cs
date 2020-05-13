@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using InsightHub.Data;
 using InsightHub.Models;
 using InsightHub.Services.Contracts;
+using InsightHub.Data.Entities;
 
 namespace InsightHub.Web.Controllers
 {

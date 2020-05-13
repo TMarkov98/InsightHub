@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace InsightHub.Services.DTOs
+namespace InsightHub.Models
 {
-    public class ReportDTO
+    public class ReportModel
     {
         public int Id { get; set; }
         public string Title { get; set; }

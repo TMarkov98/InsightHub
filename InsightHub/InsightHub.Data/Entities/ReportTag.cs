@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InsightHub.Models
+namespace InsightHub.Data.Entities
 {
-    public class TagSubscription
+    public class ReportTag
     {
         public int TagId { get; set; }
-        public int UserId { get; set; }
+        public int ReportId { get; set; }
         public Tag Tag { get; set; }
-        public User User { get; set; }
+        public Report Report { get; set; }
     }
 }

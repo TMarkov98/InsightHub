@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using InsightHub.Models;
 using InsightHub.Services.Contracts;
-using InsightHub.Services.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -96,7 +95,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // POST: api/Reports
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ReportDTO reportDTO)
+        public async Task<IActionResult> Post([FromBody] ReportModel reportDTO)
         {
             try
             {
@@ -111,7 +110,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // PUT: api/Reports/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] ReportDTO reportDTO)
+        public async Task<IActionResult> Put(int id, [FromBody] ReportModel reportDTO)
         {
             try
             {

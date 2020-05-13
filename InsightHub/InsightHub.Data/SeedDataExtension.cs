@@ -1,4 +1,5 @@
-﻿using InsightHub.Models;
+﻿using InsightHub.Data.Entities;
+using InsightHub.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;

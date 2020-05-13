@@ -1,5 +1,5 @@
-﻿using InsightHub.Models;
-using InsightHub.Services.DTOs;
+﻿using InsightHub.Data.Entities;
+using InsightHub.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +9,25 @@ namespace InsightHub.Services.Mappers
 {
     public static class IndustryMapper
     {
-        public static IndustryDTO MapDTOFromInput(string name)
+        public static IndustryModel MapModelFromInput(string name)
         {
-            return new IndustryDTO
+            return new IndustryModel
             {
                 Name = name,
                 CreatedOn = DateTime.UtcNow
             };
         }
-        public static Industry MapIndustryFromDTO(IndustryDTO iDTO)
+        public static Industry MapEntityFromModel(IndustryModel industryModel)
         {
             return new Industry
             {
-                Name = iDTO.Name,
-                CreatedOn = iDTO.CreatedOn,
+                Name = industryModel.Name,
+                CreatedOn = industryModel.CreatedOn,
             };
         }
-        public static IndustryDTO MapDTOFromIndustry(Industry industry)
+        public static IndustryModel MapModelFromEntity(Industry industry)
         {
-            return new IndustryDTO
+            return new IndustryModel
             {
                 Id = industry.Id,
                 Name = industry.Name,

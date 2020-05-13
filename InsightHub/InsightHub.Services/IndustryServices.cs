@@ -1,7 +1,7 @@
 ﻿using InsightHub.Data;
+using InsightHub.Data.Entities;
 using InsightHub.Models;
 using InsightHub.Services.Contracts;
-using InsightHub.Services.DTOs;
 using InsightHub.Services.Mappers;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,17 +21,17 @@ namespace InsightHub.Services
             this._context = context ?? throw new ArgumentNullException("Context can NOT be null.");
         }
 
-        public async Task<IndustryDTO> CreateIndustry(string name)
+        public async Task<IndustryModel> CreateIndustry(string name)
         {
             if (name == null)
                 throw new ArgumentNullException("Name can NOT be null.");
-            var dto = IndustryMapper.MapDTOFromInput(name);
+            var dto = IndustryMapper.MapModelFromInput(name);
             if (!await _context.Industries.AnyAsync(i => i.Name == name))
             {
-                var industry = IndustryMapper.MapIndustryFromDTO(dto);
+                var industry = IndustryMapper.MapEntityFromModel(dto);
                 _context.Industries.Add(industry);
                 await _context.SaveChangesAsync();
-                dto = IndustryMapper.MapDTOFromIndustry(industry);
+                dto = IndustryMapper.MapModelFromEntity(industry);
                 return dto;
             }
             else
@@ -39,31 +39,31 @@ namespace InsightHub.Services
                 throw new ArgumentException($"Industry with name {name} already exists.");
             }
         }
-        public async Task<IndustryDTO> GetIndustry(int id)
+        public async Task<IndustryModel> GetIndustry(int id)
         {
             var industry = await _context.Industries
                 .Include(i => i.Reports)
                 .FirstOrDefaultAsync(i => i.Id == id);
             ValidateIndustryExists(industry);
-            var dto = IndustryMapper.MapDTOFromIndustry(industry);
+            var dto = IndustryMapper.MapModelFromEntity(industry);
             return dto;
         }
-        public async Task<List<IndustryDTO>> GetAllIndustries()
+        public async Task<List<IndustryModel>> GetAllIndustries()
         {
             var industries = await _context.Industries
                 .Where(i => !i.IsDeleted)
                 .Include(i => i.Reports)
-                .Select(i => IndustryMapper.MapDTOFromIndustry(i))
+                .Select(i => IndustryMapper.MapModelFromEntity(i))
                 .ToListAsync();
             return industries;
         }
 
-        public async Task<List<IndustryDTO>> GetDeletedIndustries()
+        public async Task<List<IndustryModel>> GetDeletedIndustries()
         {
             var industries = await _context.Industries
                 .Where(i => i.IsDeleted)
                 .Include(i => i.Reports)
-                .Select(i => IndustryMapper.MapDTOFromIndustry(i))
+                .Select(i => IndustryMapper.MapModelFromEntity(i))
                 .ToListAsync();
             return industries;
         }
@@ -80,7 +80,7 @@ namespace InsightHub.Services
             await _context.SaveChangesAsync();
             return true;
         }
-        public async Task<IndustryDTO> UpdateIndustry(int id, string newName)
+        public async Task<IndustryModel> UpdateIndustry(int id, string newName)
         {
             if (await _context.Industries.AnyAsync(i => i.Name == newName && i.Id != id))
             {
@@ -93,7 +93,7 @@ namespace InsightHub.Services
             industry.Name = newName;
             industry.ModifiedOn = DateTime.UtcNow;
             await _context.SaveChangesAsync();
-            var dto = IndustryMapper.MapDTOFromIndustry(industry);
+            var dto = IndustryMapper.MapModelFromEntity(industry);
             return dto;
         }
         private void ValidateIndustryExists(Industry industry)
