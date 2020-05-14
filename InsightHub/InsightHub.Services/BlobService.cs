@@ -18,14 +18,15 @@ namespace InsightHub.Services
             _blobServiceClient = blobServiceClient;
         }
 
-        
 
+        //https://www.youtube.com/watch?v=9ZpMpf9dNDA
         public async Task<BlobInfo> GetBlobAsync(string name)
         {
             var containerClient = _blobServiceClient.GetBlobContainerClient("reports");
             var blobClient = containerClient.GetBlobClient(name);
             var blobDownloadInfo = await blobClient.DownloadAsync();
-            return new BlobInfo(blobDownloadInfo.Value.Content, blobDownloadInfo.Value.ContentType);
+            //return new BlobInfo(blobDownloadInfo.Value.Content, blobDownloadInfo.Value.ContentType);
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<string>> ListBlobsAsync()
@@ -48,11 +49,12 @@ namespace InsightHub.Services
         {
             var containerClient = _blobServiceClient.GetBlobContainerClient("reports");
             var blobClient = containerClient.GetBlobClient(fileName);
-            await blobClient.UploadAsync(filePath, new BlobHttpHeaders { ContentType = filePath.GetContentType()});
+            //await blobClient.UploadAsync(filePath, new BlobHttpHeaders { ContentType = filePath.GetContentType()});
+            throw new NotImplementedException();
         }
         public Task DeleteBlobAsync(string blobName)
         {
-
+            throw new NotImplementedException();
         }
     }
 }
