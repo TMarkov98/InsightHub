@@ -95,11 +95,11 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // POST: api/Reports
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ReportModel reportDTO)
+        public async Task<IActionResult> Post([FromBody] ReportModel report)
         {
             try
             {
-                var model = await _reportServices.CreateReport(reportDTO.Title, reportDTO.Description, reportDTO.Author, reportDTO.Industry, reportDTO.Tags.ToString());
+                var model = await _reportServices.CreateReport(report.Title, report.Description, report.Author, report.Industry, report.Tags.ToString());
                 return Ok(model);
             }
             catch (ArgumentException ex)
@@ -110,11 +110,11 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // PUT: api/Reports/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] ReportModel reportDTO)
+        public async Task<IActionResult> Put(int id, [FromBody] ReportModel report)
         {
             try
             {
-                var model = await _reportServices.UpdateReport(id, reportDTO.Title, reportDTO.Description, reportDTO.Industry, reportDTO.Tags.ToString());
+                var model = await _reportServices.UpdateReport(id, report.Title, report.Description, report.Industry, report.Tags.ToString());
                 return Ok(model);
             }
             catch (ArgumentNullException ex)

@@ -15,13 +15,15 @@ namespace InsightHub.Services.Mappers
                 Id = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Role = user.Role.Name,
                 Email = user.Email,
                 CreatedOn = user.CreatedOn,
                 ModifiedOn = user.ModifiedOn,
-                ReportsCount = user.Reports.Count,
+                DownloadedReportsCount = user.Reports.Count,
                 IndustrySubscriptionsCount = user.IndustrySubscriptions.Count,
-                TagSubscriptionsCount = user.TagSubscriptions.Count
+                TagSubscriptionsCount = user.TagSubscriptions.Count,
+                IsPending = user.IsPending,
+                IsBanned = user.IsBanned,
+                BanReason = user.BanReason
             };
         }
     }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace InsightHub.Services
 {
-    public class UserServices
+    public class UserServices : IUserServices
     {
         private readonly InsightHubContext _insightHubContext;
 
@@ -24,6 +24,7 @@ namespace InsightHub.Services
         {
             var user = await _insightHubContext.Users
                 .Include(u => u.Reports)
+                .Include(u => u.Role)
                 .Include(u => u.TagSubscriptions)
                 .Include(u => u.IndustrySubscriptions)
                 .FirstOrDefaultAsync(u => u.Id == id)
@@ -35,7 +36,7 @@ namespace InsightHub.Services
         public async Task<List<UserModel>> GetUsers()
         {
             var users = await _insightHubContext.Users
-                .Where(u => !u.LockoutEnabled && !u.IsPending)
+                .Where(u => !u.IsBanned && !u.IsPending)
                 .Include(u => u.Reports)
                 .Include(u => u.TagSubscriptions)
                 .Include(u => u.IndustrySubscriptions)
@@ -47,7 +48,7 @@ namespace InsightHub.Services
         public async Task<List<UserModel>> GetBannedUsers()
         {
             var users = await _insightHubContext.Users
-                .Where(u => !u.IsPending && u.LockoutEnabled)
+                .Where(u => u.IsBanned)
                 .Include(u => u.Reports)
                 .Include(u => u.TagSubscriptions)
                 .Include(u => u.IndustrySubscriptions)
@@ -59,7 +60,7 @@ namespace InsightHub.Services
         public async Task<List<UserModel>> GetPendingUsers()
         {
             var users = await _insightHubContext.Users
-                .Where(u => !u.LockoutEnabled && u.IsPending)
+                .Where(u => u.IsPending)
                 .Include(u => u.Reports)
                 .Include(u => u.TagSubscriptions)
                 .Include(u => u.IndustrySubscriptions)
@@ -68,19 +69,19 @@ namespace InsightHub.Services
             return users;
         }
 
-        public async Task<UserModel> UpdateUser(int id, string firstName, string lastName, bool lockoutEnabled, string LockOutReason)
+        public async Task<UserModel> UpdateUser(int id, string firstName, string lastName, bool isBanned, string banReason)
         {
             var user = await _insightHubContext.Users
                 .Include(u => u.Reports)
                 .Include(u => u.TagSubscriptions)
                 .Include(u => u.IndustrySubscriptions)
-                .FirstOrDefaultAsync(u => u.Id == id && !u.LockoutEnabled)
+                .FirstOrDefaultAsync(u => u.Id == id && !u.IsBanned)
                 ?? throw new ArgumentNullException("User not found.");
 
             user.FirstName = firstName;
             user.LastName = lastName;
-            user.LockoutEnabled = lockoutEnabled;
-            user.LockoutReason = LockOutReason;
+            user.LockoutEnabled = isBanned;
+            user.BanReason = banReason;
 
             var userDTO = UserMapper.MapModelFromEntity(user);
             _insightHubContext.SaveChanges();
@@ -94,21 +95,23 @@ namespace InsightHub.Services
             if (user == null || user.LockoutEnabled)
                 return false;
 
-            user.LockoutEnabled = true;
-            user.LockoutReason = reason;
+            user.IsBanned = true;
+            user.BanReason = reason;
+            user.LockoutEnd = DateTime.Parse("2555-01-01 00:00:00.00");
             _insightHubContext.SaveChanges();
             return true;
         }
 
-        public async Task<bool> UnBanUser(int id)
+        public async Task<bool> UnbanUser(int id)
         {
             var user = await _insightHubContext.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
             if (user == null || !user.LockoutEnabled)
                 return false;
 
-            user.LockoutEnabled = false;
-            user.LockoutReason = string.Empty;
+            user.IsBanned = false;
+            user.BanReason = string.Empty;
+            user.LockoutEnd = DateTime.Parse("2000-01-01 00:00:00.00");
             _insightHubContext.SaveChanges();
             return true;
         }

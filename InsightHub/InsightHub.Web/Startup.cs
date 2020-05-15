@@ -54,6 +54,7 @@ namespace InsightHub.Web
             services.AddSingleton(x =>
                 new BlobServiceClient(Configuration.GetValue<string>("AzureBlobStorageConnectionString")));
             services.AddSingleton<IBlobServices, BlobServices>();
+            services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<IIndustryServices, IndustryServices>();
             services.AddScoped<IReportServices, ReportServices>();
             services.AddScoped<ITagServices, TagServices>();
