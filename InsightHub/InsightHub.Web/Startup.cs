@@ -1,3 +1,4 @@
+using Azure.Storage.Blobs;
 using InsightHub.Data;
 using InsightHub.Data.Entities;
 using InsightHub.Models;
@@ -50,6 +51,9 @@ namespace InsightHub.Web
                 options.Password.RequireNonAlphanumeric = false;
             });
 
+            services.AddSingleton(x =>
+                new BlobServiceClient(Configuration.GetValue<string>("AzureBlobStorageConnectionString")));
+            services.AddSingleton<IBlobServices, BlobServices>();
             services.AddScoped<IIndustryServices, IndustryServices>();
             services.AddScoped<IReportServices, ReportServices>();
             services.AddScoped<ITagServices, TagServices>();
