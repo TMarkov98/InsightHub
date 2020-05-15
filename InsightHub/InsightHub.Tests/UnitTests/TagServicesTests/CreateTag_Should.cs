@@ -4,16 +4,17 @@ using System;
 using System.Linq;
 using InsightHub.Services;
 using System.Threading.Tasks;
+using InsightHub.Tests.UnitTests;
 
-namespace InsightHub.Tests.TagServicesTests
+namespace InsightHub.Tests.UnitTests.TagServicesTests
 {
     [TestClass]
     public class CreateTag_Should
     {
         [TestMethod]
-        public async Task ReturnCurrectTag_When_ParamValid()
+        public async Task ReturnCurrectNewTag_When_ParamValid()
         {
-            var options = Utils.GetOptions(nameof(ReturnCurrectTag_When_ParamValid));
+            var options = Utils.GetOptions(nameof(ReturnCurrectNewTag_When_ParamValid));
             var tagName = "space";
 
             using var assertContext = new InsightHubContext(options);
@@ -26,12 +27,18 @@ namespace InsightHub.Tests.TagServicesTests
         [TestMethod]
         public async Task ThrowArgumentException_When_AlreadyExists()
         {
-            var options = Utils.GetOptions(nameof(ReturnCurrectTag_When_ParamValid));
-            var tagName = "space";
+            var options = Utils.GetOptions(nameof(ThrowArgumentException_When_AlreadyExists));
+            var tag = TestModelsSeeder.SeedTag();
+            var tagName = "TestTag1";
+
+            using (var arrangeContext = new InsightHubContext(options))
+            {
+                arrangeContext.Tags.Add(tag);
+                arrangeContext.SaveChanges();
+            }
 
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
-            var act = sut.CreateTag(tagName);
             await Assert.ThrowsExceptionAsync<ArgumentException>(() => sut.CreateTag(tagName));
         }
     }
