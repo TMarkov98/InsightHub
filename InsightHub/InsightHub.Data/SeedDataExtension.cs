@@ -220,6 +220,30 @@ namespace InsightHub.Data
                     ReportId = 2,
                     TagId = 1,
                 });
+            //Seed IndustrySubscriptions
+
+            modelBuilder.Entity<IndustrySubscription>().HasData(
+                new IndustrySubscription
+                {
+                    IndustryId = 1,
+                    UserId = 3,
+                });
+
+            //Seed TagSubscriptions
+
+            modelBuilder.Entity<TagSubscription>().HasData(
+                new TagSubscription
+                {
+                    TagId = 1,
+                    UserId = 3,
+                });
+
+            modelBuilder.Entity<TagSubscription>().HasData(
+                new TagSubscription
+                {
+                    TagId = 2,
+                    UserId = 3,
+                });
         }
     }
 }

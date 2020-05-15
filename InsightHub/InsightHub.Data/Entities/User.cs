@@ -23,6 +23,7 @@ namespace InsightHub.Data.Entities
         public DateTime ModifiedOn { get; set; }
         public List<IndustrySubscription> IndustrySubscriptions { get; set; }
         public List<TagSubscription> TagSubscriptions { get; set; }
-        public string LockoutReason { get; set; }
+        public bool IsBanned { get; set; }
+        public string BanReason { get; set; }
     }
 }
