@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using InsightHub.Models;
 using InsightHub.Services.Contracts;
@@ -14,10 +15,12 @@ namespace InsightHub.Web.Controllers.APIControllers
     public class ReportsAPIController : ControllerBase
     {
         private readonly IReportServices _reportServices;
+        private readonly IBlobServices _blobServices;
 
-        public ReportsAPIController(IReportServices reportServices)
+        public ReportsAPIController(IReportServices reportServices, IBlobServices blobServices)
         {
             this._reportServices = reportServices ?? throw new ArgumentNullException("Report Services can NOT be null.");
+            this._blobServices = blobServices ?? throw new ArgumentNullException("Blob Services can NOT be null.");
         }
 
         // GET: api/Reports
@@ -90,6 +93,26 @@ namespace InsightHub.Web.Controllers.APIControllers
             catch (ArgumentNullException ex)
             {
                 return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        // GET: api/Reports/5/download
+        [HttpGet("{id}/download")]
+        public async Task<IActionResult> Download(int id)
+        {
+            try
+            {
+                var model = await _reportServices.GetReport(id);
+                var data = await _blobServices.GetBlobAsync(model.Title + ".pdf");
+                return File(data.Content, data.ContentType);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Azure.RequestFailedException ex)
+            {
+                return NotFound(new { message = ex.Message });
             }
         }
 
