@@ -9,16 +9,20 @@ using InsightHub.Data;
 using InsightHub.Data.Entities;
 using InsightHub.Services.Contracts;
 using InsightHub.Models;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace InsightHub.Web.Controllers
 {
     public class ReportsController : Controller
     {
         private readonly IReportServices _reportServices;
+        private readonly IBlobServices _blobServices;
 
-        public ReportsController(IReportServices reportServices)
+        public ReportsController(IReportServices reportServices, IBlobServices blobServices)
         {
             _reportServices = reportServices;
+            _blobServices = blobServices;
         }
 
         // GET: Reports
@@ -39,6 +43,17 @@ namespace InsightHub.Web.Controllers
                 return NotFound("Report not found.");
 
             return View(report);
+        }
+
+        public async Task<IActionResult> Download(int? id)
+        {
+            if (id == null)
+                return NotFound("Report not found.");
+            var report = await _reportServices.GetReport(id.Value);
+            if (report == null)
+                return NotFound("Report not found.");
+            var data = await _blobServices.GetBlobAsync(report.Title + ".pdf");
+            return File(data.Content, data.ContentType);
         }
 
         // GET: Reports/Create
