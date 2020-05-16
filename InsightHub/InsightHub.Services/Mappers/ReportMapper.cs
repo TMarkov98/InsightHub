@@ -18,7 +18,7 @@ namespace InsightHub.Services.Mappers
                 Description = description,
                 Author = author,
                 Industry = industry,
-                Tags = tags.Split(';',',').Select(t => t.Trim()).ToList(),
+                Tags = tags,
         };
         }
         public static ReportModel MapModelFromEntity(Report report)
@@ -35,7 +35,7 @@ namespace InsightHub.Services.Mappers
                 DeletedOn = report.DeletedOn,
                 IsFeatured = report.IsFeatured,
                 ModifiedOn = report.ModifiedOn,
-                Tags = report.Tags.Select(t => t.Tag.Name).ToList()
+                Tags = string.Join(", ", report.Tags.Select(t => t.Tag.Name))
             };
         }
     }

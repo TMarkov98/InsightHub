@@ -28,17 +28,23 @@ namespace InsightHub.Services
         public async Task<ReportModel> CreateReport(string title, string description, string author, string industry, string tags)
         {
             var reportDTO = ReportMapper.MapModelFromInput(title, description, author, industry, tags);
-            if (!await _context.Reports.AnyAsync(r => r.Title == title))
+            if (!await _context.Reports
+                .Include(r => r.Author)
+                .Include(r => r.Industry)
+                .Include(r => r.Tags)
+                .AnyAsync(r => r.Title == title))
             {
                 var report = new Report()
                 {
                     Title = reportDTO.Title,
                     Description = reportDTO.Description,
-                    AuthorId = _context.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == reportDTO.Author.ToUpper()).Id,
-                    IndustryId = _context.Industries.FirstOrDefaultAsync(i => i.Name.ToUpper() == reportDTO.Industry.ToUpper()).Id
+                    CreatedOn = DateTime.UtcNow
                 };
                 await _context.Reports.AddAsync(report);
-                AddTagsToReport(report, reportDTO.Tags);
+                report.AuthorId = _context.Users.FirstOrDefault(u => u.NormalizedEmail == reportDTO.Author.ToUpper()).Id;
+                report.IndustryId = _context.Industries.FirstOrDefault(i => i.Name.ToUpper() == reportDTO.Industry.ToUpper()).Id;
+                await _context.SaveChangesAsync();
+                await AddTagsToReport(report, reportDTO.Tags);
 
                 await _context.SaveChangesAsync();
                 reportDTO = ReportMapper.MapModelFromEntity(report);
@@ -129,8 +135,11 @@ namespace InsightHub.Services
             report.Title = reportDTO.Title;
             report.Description = reportDTO.Description;
             report.Industry = await _context.Industries.FirstOrDefaultAsync(i => i.Name == reportDTO.Industry);
+            report.ModifiedOn = DateTime.UtcNow;
             report.Tags.Clear();
-            AddTagsToReport(report, reportDTO.Tags);
+            await _context.SaveChangesAsync();
+            await AddTagsToReport(report, reportDTO.Tags);
+            await _context.SaveChangesAsync();
             reportDTO = ReportMapper.MapModelFromEntity(report);
             return reportDTO;
         }
@@ -183,20 +192,22 @@ namespace InsightHub.Services
             return reportDTO;
         }
 
-        private void AddTagsToReport(Report report, List<string> tags)
+        private async Task AddTagsToReport(Report report, string tags)
         {
-            foreach (var tag in tags)
+            var tagsList = tags.Split(',',';','.');
+            foreach (var tag in tagsList)
             {
                 _context.ReportTags.Add(new ReportTag
                 {
                     ReportId = report.Id,
-                    TagId = CreateTagIfDoesntExist(tag).Id,
+                    TagId = (await CreateTagIfDoesntExist(tag)).Id,
                 });
             }
         }
 
         private async Task<Tag> CreateTagIfDoesntExist(string name)
         {
+            name = name.Trim();
             if (!await _context.Tags.AnyAsync(t => t.Name == name))
             {
                 await _tagServices.CreateTag(name);

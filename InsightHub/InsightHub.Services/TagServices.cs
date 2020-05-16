@@ -22,6 +22,7 @@ namespace InsightHub.Services
         }
         public async Task<TagModel> CreateTag(string name)
         {
+            name = name.Trim();
             var tagDTO = TagMapper.MapModelFromInput(name);
 
             if (!await _context.Tags.AnyAsync(t => t.Name.ToLower() == name.ToLower()))

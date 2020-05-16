@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace InsightHub.Services
+namespace InsightHub.Services.Contracts
 {
     public interface IUserServices
     {

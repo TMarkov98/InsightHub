@@ -1,6 +1,7 @@
 ﻿using InsightHub.Data;
 using InsightHub.Data.Entities;
 using InsightHub.Models;
+using InsightHub.Services.Contracts;
 using InsightHub.Services.Mappers;
 using Microsoft.EntityFrameworkCore;
 using System;

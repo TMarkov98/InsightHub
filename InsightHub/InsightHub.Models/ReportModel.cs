@@ -11,7 +11,7 @@ namespace InsightHub.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string Author { get; set; }
-        public List<string> Tags { get; set; }
+        public string Tags { get; set; }
         public string Industry { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
