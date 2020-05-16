@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using InsightHub.Data;
 using InsightHub.Data.Entities;
 using InsightHub.Services.Contracts;
+using InsightHub.Models;
 
 namespace InsightHub.Web.Controllers
 {
@@ -51,11 +52,11 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,AuthorId,IndustryId,Tags")] Report report)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Author,Industry,Tags")] ReportModel report)
         {
             if (ModelState.IsValid)
             {
-                await _reportServices.CreateReport(report.Title, report.Description, report.Author.UserName, report.Industry.Name, string.Join(",", report.Tags));
+                await _reportServices.CreateReport(report.Title, report.Description, report.Author, report.Industry, report.Tags);
                 return RedirectToAction(nameof(Index));
             }
             return View(report);
@@ -80,14 +81,14 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,IndustryId,Tags")] Report report)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Industry,Tags")] ReportModel report)
         {
             if (id != report.Id)
                 return NotFound("Id can NOT be null");
 
             if (ModelState.IsValid)
             {
-                await _reportServices.UpdateReport(id, report.Title, report.Description, report.Industry.Name, string.Join(",", report.Tags));
+                await _reportServices.UpdateReport(id, report.Title, report.Description, report.Industry, report.Tags);
                 return RedirectToAction(nameof(Index));
             }
             return View(report);

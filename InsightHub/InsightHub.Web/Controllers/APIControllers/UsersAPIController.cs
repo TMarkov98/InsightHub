@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using InsightHub.Models;
 using InsightHub.Services;
+using InsightHub.Services.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
