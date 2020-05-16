@@ -37,7 +37,7 @@ namespace InsightHub.Services
                     AuthorId = _context.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == reportDTO.Author.ToUpper()).Id,
                     IndustryId = _context.Industries.FirstOrDefaultAsync(i => i.Name.ToUpper() == reportDTO.Industry.ToUpper()).Id
                 };
-                _context.Reports.Add(report);
+                await _context.Reports.AddAsync(report);
                 AddTagsToReport(report, reportDTO.Tags);
 
                 await _context.SaveChangesAsync();

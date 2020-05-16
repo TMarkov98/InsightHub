@@ -29,7 +29,7 @@ namespace InsightHub.Services
             if (!await _context.Industries.AnyAsync(i => i.Name == name))
             {
                 var industry = IndustryMapper.MapEntityFromModel(dto);
-                _context.Industries.Add(industry);
+                await _context.Industries.AddAsync(industry);
                 await _context.SaveChangesAsync();
                 dto = IndustryMapper.MapModelFromEntity(industry);
                 return dto;
@@ -44,7 +44,9 @@ namespace InsightHub.Services
             var industry = await _context.Industries
                 .Include(i => i.Reports)
                 .FirstOrDefaultAsync(i => i.Id == id);
+
             ValidateIndustryExists(industry);
+
             var dto = IndustryMapper.MapModelFromEntity(industry);
             return dto;
         }
@@ -73,7 +75,7 @@ namespace InsightHub.Services
             var industry = await _context.Industries
                 .Include(i => i.Reports)
                 .FirstOrDefaultAsync(i => i.Id == id);
-            if (industry.IsDeleted == true || industry == null)
+            if (industry == null || industry.IsDeleted == true)
                 return false;
             industry.IsDeleted = true;
             industry.DeletedOn = DateTime.UtcNow;

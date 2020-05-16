@@ -27,7 +27,7 @@ namespace InsightHub.Services
             if (!await _context.Tags.AnyAsync(t => t.Name.ToLower() == name.ToLower()))
             {
                 var tag = TagMapper.MapEntityFromModel(tagDTO);
-                _context.Tags.Add(tag);
+                await _context.Tags.AddAsync(tag);
                 await _context.SaveChangesAsync();
                 tagDTO = TagMapper.MapModelFromEntity(tag);
                 return tagDTO;
