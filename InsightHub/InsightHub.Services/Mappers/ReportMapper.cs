@@ -31,6 +31,7 @@ namespace InsightHub.Services.Mappers
                 Description = report.Description,
                 CreatedOn = report.CreatedOn,
                 Industry = report.Industry.Name,
+                DownloadsCount = report.Downloads.Count,
                 IsDeleted = report.IsDeleted,
                 DeletedOn = report.DeletedOn,
                 IsFeatured = report.IsFeatured,
