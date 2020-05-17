@@ -27,56 +27,10 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpGet]
         public async Task<IActionResult> Get(string sort, string search, string author, string industry, string tag)
         {
-            var model = await _reportServices.GetReports();
-
-            if (sort != null)
-            {
-                switch (sort.ToLower())
-                {
-                    case "name":
-                    case "title":
-                        model = model.OrderBy(r => r.Title).ToList();
-                        break;
-                    case "author":
-                    case "user":
-                    case "creator":
-                        model = model.OrderBy(r => r.Author).ToList();
-                        break;
-                    case "industry":
-                        model = model.OrderBy(r => r.Industry).ToList();
-                        break;
-                    case "newest":
-                        model = model.OrderByDescending(r => r.CreatedOn).ToList();
-                        break;
-                    case "oldest":
-                        model = model.OrderBy(r => r.CreatedOn).ToList();
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            if (search != null)
-            {
-                model = model.Where(r => r.Title.ToLower().Contains(search.ToLower())
-                    || r.Description.ToLower().Contains(search.ToLower())).ToList();
-            }
-
-            if (author != null)
-            {
-                model = model.Where(r => r.Author.ToLower().Contains(author)).ToList();
-            }
-            if (industry != null)
-            {
-                model = model.Where(r => r.Industry.ToLower().Contains(industry)).ToList();
-            }
-            if (tag != null)
-            {
-                model = model.Where(r => string.Join(' ', r.Tags).ToLower().Contains(tag)).ToList();
-            }
+            var model = await _reportServices.GetReports(sort,search,author,industry,tag);
             if (model.Count == 0)
             {
-                return NotFound(new { message = "No tags found." });
+                return NotFound(new { message = "No Reports found." });
             }
             return Ok(model);
         }

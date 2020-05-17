@@ -10,7 +10,7 @@ namespace InsightHub.Services.Contracts
         Task<TagModel> CreateTag(string name);
         Task<bool> DeleteTag(int id);
         Task<TagModel> GetTag(int id);
-        Task<ICollection<TagModel>> GetTags();
+        Task<ICollection<TagModel>> GetTags(string sort, string search);
         Task<TagModel> UpdateTag(int id, string name);
         void ValidateTagExists(Tag tag);
     }

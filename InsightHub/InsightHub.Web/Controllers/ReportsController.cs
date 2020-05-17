@@ -26,9 +26,9 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Reports
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sort, string search, string author, string industry, string tag)
         {
-            var reports = await _reportServices.GetReports();
+            var reports = await _reportServices.GetReports(sort,search,author,industry,tag);
             return View(reports);
         }
 
