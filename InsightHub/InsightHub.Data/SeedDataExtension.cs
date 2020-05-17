@@ -134,6 +134,7 @@ namespace InsightHub.Data
                     IndustryId = 2,
                     FileUrl = "Second FileURL",
                     CreatedOn = DateTime.UtcNow,
+                    IsFeatured = true,
                 }
                 );
             modelBuilder.Entity<Report>().HasData(
@@ -146,6 +147,7 @@ namespace InsightHub.Data
                     IndustryId = 2,
                     FileUrl = "Third FileURL",
                     CreatedOn = DateTime.UtcNow,
+                    IsFeatured = true,
                 }
                 );
             //Seed Industries
@@ -155,7 +157,7 @@ namespace InsightHub.Data
                 {
                     Id = 1,
                     Name = "Next-Wave Logistics",
-                    CreatedOn =DateTime.UtcNow
+                    CreatedOn = DateTime.UtcNow
                 }
                 );
             modelBuilder.Entity<Industry>().HasData(
@@ -171,7 +173,7 @@ namespace InsightHub.Data
                 {
                     Id = 3,
                     Name = "Clean Water Services",
-                    CreatedOn =DateTime.UtcNow
+                    CreatedOn = DateTime.UtcNow
                 }
                 );
             //Seed Tags

@@ -31,15 +31,11 @@ namespace InsightHub.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> GetTop5NewestReports()
+        
+        public async Task<IActionResult> GetTop5_MostDownloaded()
         {
-            var reports = await _reportServices.GetTop5_NewReports();
-            return View(reports);
-        }
-        public async Task<IActionResult> GetTop5_MostDownLoaded()
-        {
-            var reports = await _reportServices.GetTop5_MostDownloads();
-            return View(reports);
+            var reports = await _reportServices.GetTop5MostDownloads();
+            return PartialView(reports);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

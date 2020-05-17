@@ -1,12 +1,13 @@
 ﻿@model IEnumerable<InsightHub.Models.ReportModel>
 
 @{
-    ViewData["Title"] = "GetTop5NewestReports";
+    ViewData["Title"] = "FeaturedViewComponent";
 }
 
 @inject InsightHub.Services.Contracts.IReportServices _reportService
 
 
+<h3>Featured</h3>
 <table class="table">
     <thead>
         <tr>
@@ -29,7 +30,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in await _reportService.GetTop5_NewReports())
+        @foreach (var item in Model)
         {
             <tr>
                 <td>

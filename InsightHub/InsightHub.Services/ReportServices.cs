@@ -95,22 +95,23 @@ namespace InsightHub.Services
             return reports;
         }
        
-        public async Task<ICollection<ReportModel>> GetTop5_NewReports()
+        public async Task<ICollection<ReportModel>> GetTop5NewReports()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
+                .Where(r => !r.IsPending)
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
                 .Include(r => r.Downloads)
                 .Include(r => r.Tags)
                 .ThenInclude(rt => rt.Tag)
-                .Select(r => ReportMapper.MapModelFromEntity(r))
                 .OrderByDescending(r => r.CreatedOn)
                 .Take(5)
+                .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
         }
-        public async Task<ICollection<ReportModel>> GetTop5_MostDownloads()
+        public async Task<ICollection<ReportModel>> GetTop5MostDownloads()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
@@ -119,9 +120,9 @@ namespace InsightHub.Services
                 .Include(r => r.Downloads)
                 .Include(r => r.Tags)
                 .ThenInclude(rt => rt.Tag)
-                .Select(r => ReportMapper.MapModelFromEntity(r))
-                .OrderByDescending(r => r.DownloadsCount)
+                .OrderByDescending(r => r.Downloads.Count)
                 .Take(5)
+                .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
         } 

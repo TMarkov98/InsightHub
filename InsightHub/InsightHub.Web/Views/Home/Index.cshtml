@@ -5,6 +5,12 @@
 <div class="text-center">
     <h1 class="display-4">Welcome to Insight Hub</h1>
 </div>
-<div class="text-right">
-    <partial name="Partial/_Top5NewestReports"/>
+<div>
+    @await Component.InvokeAsync("FeaturedViewComponent")
+</div>
+<div>
+    @await Component.InvokeAsync("Top5NewestViewComponent")
+</div>
+<div>
+    @await Component.InvokeAsync("Top5MostDownloadedViewComponent")
 </div>
