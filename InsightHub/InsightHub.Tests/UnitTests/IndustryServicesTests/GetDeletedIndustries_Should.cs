@@ -29,7 +29,7 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
             using (var assertContext = new InsightHubContext(options))
             {
                 var sut = new IndustryServices(assertContext);
-                var result = await sut.GetDeletedIndustries();
+                var result = await sut.GetDeletedIndustries(null);
                 Assert.AreEqual(1, result.Count);
             }
         }

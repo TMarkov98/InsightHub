@@ -24,7 +24,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         [Route("")]
         public async Task<IActionResult> Get([FromQuery] string sort, [FromQuery] string search)
         {
-            var tags = await _tagServices.GetTags();
+            var tags = await _tagServices.GetTags(sort, search);
             if (sort != null)
             {
                 switch (sort.ToLower())

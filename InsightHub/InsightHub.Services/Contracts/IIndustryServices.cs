@@ -8,7 +8,8 @@ namespace InsightHub.Services.Contracts
     {
         Task<IndustryModel> CreateIndustry(string name);
         Task<bool> DeleteIndustry(int id);
-        Task<List<IndustryModel>> GetAllIndustries();
+        Task<List<IndustryModel>> GetAllIndustries(string sort, string search);
+        Task<List<IndustryModel>> GetDeletedIndustries(string search);
         Task<IndustryModel> GetIndustry(int id);
         Task<IndustryModel> UpdateIndustry(int id, string newName);
     }

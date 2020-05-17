@@ -50,23 +50,49 @@ namespace InsightHub.Services
             var dto = IndustryMapper.MapModelFromEntity(industry);
             return dto;
         }
-        public async Task<List<IndustryModel>> GetAllIndustries()
+        public async Task<List<IndustryModel>> GetAllIndustries(string sort, string search)
         {
             var industries = await _context.Industries
                 .Where(i => !i.IsDeleted)
                 .Include(i => i.Reports)
                 .Select(i => IndustryMapper.MapModelFromEntity(i))
                 .ToListAsync();
+
+            if (sort != null)
+            {
+                switch (sort.ToLower())
+                {
+                    case "name":
+                        industries = industries.OrderBy(i => i.Name).ToList();
+                        break;
+                    case "newest":
+                        industries = industries.OrderByDescending(i => i.CreatedOn).ToList();
+                        break;
+                    case "oldest":
+                        industries = industries.OrderBy(i => i.CreatedOn).ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (search != null)
+            {
+                industries = industries.Where(i => i.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
             return industries;
         }
 
-        public async Task<List<IndustryModel>> GetDeletedIndustries()
+        public async Task<List<IndustryModel>> GetDeletedIndustries(string search)
         {
             var industries = await _context.Industries
                 .Where(i => i.IsDeleted)
                 .Include(i => i.Reports)
                 .Select(i => IndustryMapper.MapModelFromEntity(i))
                 .ToListAsync();
+            if (search != null)
+            {
+                industries = industries.Where(i => i.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
             return industries;
         }
 

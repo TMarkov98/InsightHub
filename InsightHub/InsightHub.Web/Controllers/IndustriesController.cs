@@ -25,9 +25,9 @@ namespace InsightHub.Web.Controllers
 
         // GET: Industries
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sort, string search)
         {
-            var industries = await  _industryServices.GetAllIndustries();
+            var industries = await  _industryServices.GetAllIndustries(sort, search);
             return View(industries);
         }
 

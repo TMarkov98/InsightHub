@@ -22,9 +22,9 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Tags
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sort, string search)
         {
-            var tags = await _tagServices.GetTags();
+            var tags = await _tagServices.GetTags(sort, search);
             return View(tags);
         }
 
