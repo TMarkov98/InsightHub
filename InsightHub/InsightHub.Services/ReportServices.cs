@@ -60,6 +60,7 @@ namespace InsightHub.Services
                 .Where(r => !r.IsPending)
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
+                .Include(r => r.Downloads)
                 .Include(r => r.Tags)
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
@@ -71,8 +72,9 @@ namespace InsightHub.Services
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
                 .Where(r => !r.IsPending)
-                .Where(r => !r.IsFeatured)
+                .Where(r => r.IsFeatured)
                 .Include(r => r.Industry)
+                .Include(r => r.Downloads)
                 .Include(r => r.Author)
                 .Include(r => r.Tags)
                 .ThenInclude(rt => rt.Tag)
@@ -83,7 +85,7 @@ namespace InsightHub.Services
         public async Task<ICollection<ReportModel>> GetReportsDeleted()
         {
             var reports = await _context.Reports
-                .Where(r => !r.IsDeleted)
+                .Where(r => r.IsDeleted)
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
                 .Include(r => r.Tags)
@@ -92,6 +94,38 @@ namespace InsightHub.Services
                 .ToListAsync();
             return reports;
         }
+       
+        public async Task<ICollection<ReportModel>> GetTop5NewReports()
+        {
+            var reports = await _context.Reports
+                .Where(r => !r.IsDeleted)
+                .Where(r => !r.IsPending)
+                .Include(r => r.Industry)
+                .Include(r => r.Author)
+                .Include(r => r.Downloads)
+                .Include(r => r.Tags)
+                .ThenInclude(rt => rt.Tag)
+                .OrderByDescending(r => r.CreatedOn)
+                .Take(5)
+                .Select(r => ReportMapper.MapModelFromEntity(r))
+                .ToListAsync();
+            return reports;
+        }
+        public async Task<ICollection<ReportModel>> GetTop5MostDownloads()
+        {
+            var reports = await _context.Reports
+                .Where(r => !r.IsDeleted)
+                .Include(r => r.Industry)
+                .Include(r => r.Author)
+                .Include(r => r.Downloads)
+                .Include(r => r.Tags)
+                .ThenInclude(rt => rt.Tag)
+                .OrderByDescending(r => r.Downloads.Count)
+                .Take(5)
+                .Select(r => ReportMapper.MapModelFromEntity(r))
+                .ToListAsync();
+            return reports;
+        } 
         public async Task<ICollection<ReportModel>> GetReportsPending()
         {
             var reports = await _context.Reports

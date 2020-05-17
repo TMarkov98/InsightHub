@@ -13,6 +13,7 @@ namespace InsightHub.Models
         public string Author { get; set; }
         public string Tags { get; set; }
         public string Industry { get; set; }
+        public int DownloadsCount { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
         public DateTime DeletedOn { get; set; }

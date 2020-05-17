@@ -10,6 +10,7 @@ namespace InsightHub.Data.Entities
         public Report()
         {
             this.Tags = new List<ReportTag>();
+            this.Downloads = new List<DownloadedReport>();
         }
         public int Id { get; set; }
         public string Title { get; set; }
@@ -17,6 +18,7 @@ namespace InsightHub.Data.Entities
         public User Author { get; set; }
         public int AuthorId { get; set; }
         public List<ReportTag> Tags { get; set; }
+        public List<DownloadedReport> Downloads { get; set; }
         public Industry Industry { get; set; }
         public int IndustryId { get; set; }
         public string FileUrl { get; set; }
