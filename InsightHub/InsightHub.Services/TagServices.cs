@@ -36,7 +36,7 @@ namespace InsightHub.Services
             throw new ArgumentException($"Tag with name {name} already exists.");
         }
 
-        public async Task<ICollection<TagModel>> GetTags()
+        public async Task<ICollection<TagModel>> GetTags(string sort, string search)
         {
             var tagDTOs = await _context.Tags
                 .Where(t => !t.IsDeleted)
@@ -44,6 +44,27 @@ namespace InsightHub.Services
                 .ThenInclude(rt => rt.Report)
                 .Select(t => TagMapper.MapModelFromEntity(t))
                 .ToListAsync();
+            if (sort != null)
+            {
+                switch (sort.ToLower())
+                {
+                    case "name":
+                        tagDTOs = tagDTOs.OrderBy(t => t.Name).ToList();
+                        break;
+                    case "newest":
+                        tagDTOs = tagDTOs.OrderByDescending(t => t.CreatedOn).ToList();
+                        break;
+                    case "oldest":
+                        tagDTOs = tagDTOs.OrderBy(t => t.CreatedOn).ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (search != null)
+            {
+                tagDTOs = tagDTOs.Where(t => t.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
             return tagDTOs;
         }
 

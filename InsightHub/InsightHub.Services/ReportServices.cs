@@ -53,7 +53,7 @@ namespace InsightHub.Services
             throw new ArgumentException($"Report with title {title} already exists.");
         }
 
-        public async Task<ICollection<ReportModel>> GetReports()
+        public async Task<ICollection<ReportModel>> GetReports(string sort, string search, string author, string industry, string tag)
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
@@ -65,6 +65,50 @@ namespace InsightHub.Services
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
+            if (sort != null)
+            {
+                switch (sort.ToLower())
+                {
+                    case "name":
+                    case "title":
+                        reports = reports.OrderBy(r => r.Title).ToList();
+                        break;
+                    case "author":
+                    case "user":
+                    case "creator":
+                        reports = reports.OrderBy(r => r.Author).ToList();
+                        break;
+                    case "industry":
+                        reports = reports.OrderBy(r => r.Industry).ToList();
+                        break;
+                    case "newest":
+                        reports = reports.OrderByDescending(r => r.CreatedOn).ToList();
+                        break;
+                    case "oldest":
+                        reports = reports.OrderBy(r => r.CreatedOn).ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (search != null)
+            {
+                reports = reports.Where(r => r.Title.ToLower().Contains(search.ToLower())
+                    || r.Description.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            if (author != null)
+            {
+                reports = reports.Where(r => r.Author.ToLower().Contains(author)).ToList();
+            }
+            if (industry != null)
+            {
+                reports = reports.Where(r => r.Industry.ToLower().Contains(industry)).ToList();
+            }
+            if (tag != null)
+            {
+                reports = reports.Where(r => string.Join(' ', r.Tags).ToLower().Contains(tag)).ToList();
+            }
             return reports;
         }
         public async Task<ICollection<ReportModel>> GetReportsFeatured()
@@ -94,7 +138,7 @@ namespace InsightHub.Services
                 .ToListAsync();
             return reports;
         }
-       
+
         public async Task<ICollection<ReportModel>> GetTop5NewReports()
         {
             var reports = await _context.Reports
@@ -125,7 +169,7 @@ namespace InsightHub.Services
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
-        } 
+        }
         public async Task<ICollection<ReportModel>> GetReportsPending()
         {
             var reports = await _context.Reports
@@ -198,12 +242,12 @@ namespace InsightHub.Services
                 .Include(r => r.Tags)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
-          
+
             if (report.IsPending)
                 report.IsPending = false;
             else
                 report.IsPending = true;
-            
+
             var reportDTO = ReportMapper.MapModelFromEntity(report);
             return reportDTO;
         }
@@ -228,7 +272,7 @@ namespace InsightHub.Services
 
         private async Task AddTagsToReport(Report report, string tags)
         {
-            var tagsList = tags.Split(',',';','.');
+            var tagsList = tags.Split(',', ';', '.');
             foreach (var tag in tagsList)
             {
                 _context.ReportTags.Add(new ReportTag
