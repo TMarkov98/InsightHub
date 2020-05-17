@@ -24,31 +24,10 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] string sort, [FromQuery] string search)
         {
-            var industries = await _industriesServices.GetAllIndustries();
-            if(sort != null)
-            {
-                switch (sort.ToLower())
-                {
-                    case "name":
-                        industries = industries.OrderBy(i => i.Name).ToList();
-                        break;
-                    case "newest":
-                        industries = industries.OrderByDescending(i => i.CreatedOn).ToList();
-                        break;
-                    case "oldest":
-                        industries = industries.OrderBy(i => i.CreatedOn).ToList();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            if(search != null)
-            {
-                industries = industries.Where(i => i.Name.ToLower().Contains(search.ToLower())).ToList();
-            }
+            var industries = await _industriesServices.GetAllIndustries(sort, search);
             if (industries.Count == 0)
             {
-                return NotFound(new { message = "No industry found." });
+                return NotFound(new { message = "No industries found." });
             }
             return Ok(industries);
         }

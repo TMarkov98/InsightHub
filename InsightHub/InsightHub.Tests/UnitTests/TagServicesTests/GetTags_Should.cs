@@ -31,7 +31,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
 
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
-            var act = await sut.GetTags();
+            var act = await sut.GetTags(null, null);
             var result = act.ToArray();
             Assert.AreEqual(firstTag.Name, result[0].Name);
         } 

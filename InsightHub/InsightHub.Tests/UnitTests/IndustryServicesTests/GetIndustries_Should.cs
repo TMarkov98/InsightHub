@@ -31,7 +31,7 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
             using (var assertContext = new InsightHubContext(options))
             {
                 var sut = new IndustryServices(assertContext);
-                var result = await sut.GetAllIndustries();
+                var result = await sut.GetAllIndustries(null, null);
                 Assert.AreEqual(2, result.Count);
             }
         }
