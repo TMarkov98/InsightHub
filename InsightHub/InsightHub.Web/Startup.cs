@@ -1,4 +1,5 @@
 using Azure.Storage.Blobs;
+using BeerOverflow.Web.Middlewares;
 using InsightHub.Data;
 using InsightHub.Data.Entities;
 using InsightHub.Models;
@@ -69,6 +70,7 @@ namespace InsightHub.Web
             }
             else
             {
+                app.UseMiddleware<ArgumentExceptionMiddleware>();
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
@@ -79,6 +81,8 @@ namespace InsightHub.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseMiddleware<NotFoundMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

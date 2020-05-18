@@ -98,18 +98,8 @@ namespace InsightHub.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    await _tagServices.UpdateTag(tag.Id, tag.Name);
-                }
-                catch (ArgumentNullException ex)
-                {
-                    return NotFound(new { message = ex.Message });
-                }
-                catch (ArgumentException ex)
-                {
-                    return NotFound(new { message = ex.Message });
-                }
+                await _tagServices.UpdateTag(tag.Id, tag.Name);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(tag);

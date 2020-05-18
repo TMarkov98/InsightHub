@@ -27,7 +27,7 @@ namespace InsightHub.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string sort, string search)
         {
-            var industries = await  _industryServices.GetAllIndustries(sort, search);
+            var industries = await _industryServices.GetAllIndustries(sort, search);
             return View(industries);
         }
 
@@ -37,15 +37,9 @@ namespace InsightHub.Web.Controllers
         {
             if (id == null)
                 return NotFound();
-            try
-            {
-                var industry = await _industryServices.GetIndustry(id.Value);
-                return View(industry);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+            var industry = await _industryServices.GetIndustry(id.Value);
+            return View(industry);
+
         }
 
         // GET: Industries/Create
@@ -63,20 +57,10 @@ namespace InsightHub.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    var name = industry.Name;
-                    var newIndustry = await _industryServices.CreateIndustry(name);
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (ArgumentNullException ex)
-                {
-                    return NotFound(new { message = ex.Message });
-                }
-                catch (ArgumentException ex)
-                {
-                    return NotFound(new { message = ex.Message });
-                }
+                var name = industry.Name;
+                var newIndustry = await _industryServices.CreateIndustry(name);
+                return RedirectToAction(nameof(Index));
+
             }
             return View(industry);
         }
@@ -86,15 +70,10 @@ namespace InsightHub.Web.Controllers
         {
             if (id == null)
                 return NotFound();
-            try
-            {
-                var industry = await _industryServices.GetIndustry(id.Value);
-                return View(industry);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+
+            var industry = await _industryServices.GetIndustry(id.Value);
+            return View(industry);
+
         }
 
         // POST: Industries/Edit/5
@@ -109,18 +88,9 @@ namespace InsightHub.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    await _industryServices.UpdateIndustry(industry.Id, industry.Name);
-                }
-                catch (ArgumentNullException ex)
-                {
-                    return NotFound(new { message = ex.Message });
-                }
-                catch (ArgumentException ex)
-                {
-                    return NotFound(new { message = ex.Message });
-                }
+
+                await _industryServices.UpdateIndustry(industry.Id, industry.Name);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(industry);
@@ -131,15 +101,10 @@ namespace InsightHub.Web.Controllers
         {
             if (id == null)
                 return NotFound();
-            try
-            {
-                var industry = await _industryServices.GetIndustry(id.Value);
-                return View(industry);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+
+            var industry = await _industryServices.GetIndustry(id.Value);
+            return View(industry);
+
         }
 
         // POST: Industries/Delete/5

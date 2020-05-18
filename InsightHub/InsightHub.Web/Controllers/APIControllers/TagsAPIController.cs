@@ -57,49 +57,27 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            try
-            {
-                var model = await _tagServices.GetTag(id);
-                return Ok(model);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var model = await _tagServices.GetTag(id);
+            return Ok(model);
         }
 
         // POST: api/Tags
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] string name)
         {
-            try
-            {
-                var model = await _tagServices.CreateTag(name);
-                return Ok(model);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+
+            var model = await _tagServices.CreateTag(name);
+            return Ok(model);
+
         }
 
         // PUT: api/Tags/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] string name)
         {
-            try
-            {
-                var model = await _tagServices.UpdateTag(id, name);
-                return Ok(model);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var model = await _tagServices.UpdateTag(id, name);
+            return Ok(model);
+
         }
 
         // DELETE: api/ApiWithActions/5
