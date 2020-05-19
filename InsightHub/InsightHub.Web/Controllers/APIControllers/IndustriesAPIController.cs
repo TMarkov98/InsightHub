@@ -36,15 +36,8 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            try
-            {
-                var industry = await _industriesServices.GetIndustry(id);
-                return Ok(industry);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var industry = await _industriesServices.GetIndustry(id);
+            return Ok(industry);
 
         }
 
@@ -52,15 +45,8 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] string name)
         {
-            try
-            {
-                var industry = await _industriesServices.CreateIndustry(name);
-                return Created("POST", name);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { message = ex.Message});
-            }
+            var industry = await _industriesServices.CreateIndustry(name);
+            return Created("POST", name);
 
         }
 
@@ -68,19 +54,8 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] string name)
         {
-            try
-            {
-                var industry = await _industriesServices.UpdateIndustry(id, name);
-                return Ok(industry);
-            }
-            catch(ArgumentNullException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var industry = await _industriesServices.UpdateIndustry(id, name);
+            return Ok(industry);
         }
 
         // DELETE: api/ApiWithActions/5

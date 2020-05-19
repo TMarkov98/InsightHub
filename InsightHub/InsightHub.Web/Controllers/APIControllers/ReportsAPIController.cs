@@ -27,7 +27,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpGet]
         public async Task<IActionResult> Get(string sort, string search, string author, string industry, string tag)
         {
-            var model = await _reportServices.GetReports(sort,search,author,industry,tag);
+            var model = await _reportServices.GetReports(sort, search, author, industry, tag);
             if (model.Count == 0)
             {
                 return NotFound(new { message = "No Reports found." });
@@ -39,69 +39,35 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            try
-            {
-                var model = await _reportServices.GetReport(id);
-                return Ok(model);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var model = await _reportServices.GetReport(id);
+            return Ok(model);
+
         }
 
         // GET: api/Reports/5/download
         [HttpGet("{id}/download")]
         public async Task<IActionResult> Download(int id)
         {
-            try
-            {
-                var model = await _reportServices.GetReport(id);
-                var data = await _blobServices.GetBlobAsync(model.Title + ".pdf");
-                return File(data.Content, data.ContentType);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-            catch (Azure.RequestFailedException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+            var model = await _reportServices.GetReport(id);
+            var data = await _blobServices.GetBlobAsync(model.Title + ".pdf");
+            return File(data.Content, data.ContentType);
+
         }
 
         // POST: api/Reports
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ReportModel report)
         {
-            try
-            {
-                var model = await _reportServices.CreateReport(report.Title, report.Description, report.Author, report.Industry, report.Tags.ToString());
-                return Ok(model);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var model = await _reportServices.CreateReport(report.Title, report.Description, report.Author, report.Industry, report.Tags.ToString());
+            return Ok(model);
         }
 
         // PUT: api/Reports/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] ReportModel report)
         {
-            try
-            {
-                var model = await _reportServices.UpdateReport(id, report.Title, report.Description, report.Industry, report.Tags.ToString());
-                return Ok(model);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var model = await _reportServices.UpdateReport(id, report.Title, report.Description, report.Industry, report.Tags.ToString());
+            return Ok(model);
         }
 
         // DELETE: api/ApiWithActions/5

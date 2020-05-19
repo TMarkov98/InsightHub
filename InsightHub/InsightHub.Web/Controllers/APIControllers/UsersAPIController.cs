@@ -32,30 +32,16 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            try
-            {
                 var model = await _userServices.GetUser(id);
                 return Ok(model);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
 
         // PUT: api/UsersAPI/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] UserModel user)
         {
-            try
-            {
                 var model = await _userServices.UpdateUser(id, user.FirstName, user.LastName, user.IsBanned, user.BanReason);
                 return Ok(model);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
     }
 }
