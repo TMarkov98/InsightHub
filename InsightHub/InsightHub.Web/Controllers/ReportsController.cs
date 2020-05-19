@@ -11,6 +11,7 @@ using InsightHub.Services.Contracts;
 using InsightHub.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.CodeAnalysis;
 
 namespace InsightHub.Web.Controllers
 {
@@ -28,7 +29,7 @@ namespace InsightHub.Web.Controllers
         // GET: Reports
         public async Task<IActionResult> Index(string sort, string search, string author, string industry, string tag)
         {
-            var reports = await _reportServices.GetReports(sort,search,author,industry,tag);
+            var reports = await _reportServices.GetReports(sort, search, author, industry, tag);
             return View(reports);
         }
 
@@ -52,8 +53,8 @@ namespace InsightHub.Web.Controllers
             var report = await _reportServices.GetReport(id.Value);
             if (report == null)
                 return NotFound("Report not found.");
-            var data = await _blobServices.GetBlobAsync(report.Title + ".pdf");
-            return File(data.Content, data.ContentType);
+            var data = await _blobServices.GetBlobAsync($"{report.Title}.pdf");
+            return File(data.Content, "application/pdf");
         }
 
         // GET: Reports/Create
@@ -67,13 +68,41 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Author,Industry,Tags")] ReportModel report)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Author,Industry,Tags")] ReportModel report, IFormFile file)
         {
             if (ModelState.IsValid)
             {
+                //Validate File Exists
+                if (file == null)
+                {
+                    throw new ArgumentException("Please upload a file.");
+                }
+
+                //Validate File Extension
+                else
+                {
+                    string[] permittedExtensions = { ".pdf" };
+
+
+                    var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+
+                    if (string.IsNullOrEmpty(ext) || !permittedExtensions.Contains(ext))
+                    {
+                        throw new ArgumentException("Invalid file format. Please provide a PDF.");
+                    }
+                }
+                
+                //Create Report
                 await _reportServices.CreateReport(report.Title, report.Description, report.Author, report.Industry, report.Tags);
+                
+                //Upload Report File to Blob
+                using (var stream = file.OpenReadStream())
+                {
+                    await _blobServices.UploadFileBlobAsync(stream, $"{report.Title}.pdf");
+                }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(report);
         }
 

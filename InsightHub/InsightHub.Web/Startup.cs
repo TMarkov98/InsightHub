@@ -81,7 +81,7 @@ namespace InsightHub.Web
                         context.Response.ContentType = "text/html";
 
                         await context.Response.WriteAsync("<html lang=\"en\"><body>\r\n");
-                        await context.Response.WriteAsync("ERROR!<br><br>\r\n");
+                        await context.Response.WriteAsync("Error!<br><br>\r\n");
 
                         var exceptionHandlerPathFeature =
                             context.Features.Get<IExceptionHandlerPathFeature>();
@@ -96,14 +96,14 @@ namespace InsightHub.Web
                         }
                         else if (exceptionHandlerPathFeature?.Error is ArgumentNullException)
                         {
-                            await context.Response.WriteAsync("Argument null exception thrown!<br><br>\r\n");
+                            await context.Response.WriteAsync($"{exceptionHandlerPathFeature.Error.Message}\r\n");
                         }
                         else if (exceptionHandlerPathFeature?.Error is ArgumentException)
                         {
-                            await context.Response.WriteAsync("Argument exception thrown!<br><br>\r\n");
+                            await context.Response.WriteAsync($"{exceptionHandlerPathFeature.Error.Message}\r\n");
                         }
 
-                        await context.Response.WriteAsync("<a href=\"/\">Home</a><br>\r\n");
+                        await context.Response.WriteAsync("<a href=\"/\">Return to Home</a><br>\r\n");
                         await context.Response.WriteAsync("</body></html>\r\n");
                         await context.Response.WriteAsync(new string(' ', 512)); // IE padding
                     });

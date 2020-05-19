@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using InsightHub.Models;
 using Azure.Storage.Blobs.Models;
 using System.Runtime.CompilerServices;
+using System.IO;
 
 namespace InsightHub.Services
 {
@@ -29,11 +30,11 @@ namespace InsightHub.Services
             var blobDownloadInfo = await blobClient.DownloadAsync();
             return new BlobFile(blobDownloadInfo.Value.Content, blobDownloadInfo.Value.ContentType);
         }
-        public async Task UploadFileBlobAsync(string filePath, string fileName)
+        public async Task UploadFileBlobAsync(Stream file, string fileName)
         {
             var containerClient = _blobServiceClient.GetBlobContainerClient("reports");
             var blobClient = containerClient.GetBlobClient(fileName);
-            await blobClient.UploadAsync(filePath, new BlobHttpHeaders { ContentType = "application/pdf" });
+            await blobClient.UploadAsync(file);
         }
 
         public async Task DeleteBlobAsync(string blobName)
