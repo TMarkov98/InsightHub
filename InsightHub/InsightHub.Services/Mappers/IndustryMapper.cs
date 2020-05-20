@@ -9,11 +9,12 @@ namespace InsightHub.Services.Mappers
 {
     public static class IndustryMapper
     {
-        public static IndustryModel MapModelFromInput(string name)
+        public static IndustryModel MapModelFromInput(string name, string url)
         {
             return new IndustryModel
             {
                 Name = name,
+                ImgUrl = url,
                 CreatedOn = DateTime.UtcNow
             };
         }
@@ -22,6 +23,7 @@ namespace InsightHub.Services.Mappers
             return new Industry
             {
                 Name = industryModel.Name,
+                ImgUrl = industryModel.ImgUrl,
                 CreatedOn = industryModel.CreatedOn,
             };
         }
@@ -31,6 +33,7 @@ namespace InsightHub.Services.Mappers
             {
                 Id = industry.Id,
                 Name = industry.Name,
+                ImgUrl = industry.ImgUrl,
                 CreatedOn = industry.CreatedOn,
                 ModifiedOn = industry.ModifiedOn,
                 IsDeleted = industry.IsDeleted,

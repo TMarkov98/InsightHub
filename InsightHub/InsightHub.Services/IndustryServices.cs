@@ -21,11 +21,11 @@ namespace InsightHub.Services
             this._context = context ?? throw new ArgumentNullException("Context can NOT be null.");
         }
 
-        public async Task<IndustryModel> CreateIndustry(string name)
+        public async Task<IndustryModel> CreateIndustry(string name, string imgUrl)
         {
             if (name == null)
                 throw new ArgumentNullException("Name can NOT be null.");
-            var dto = IndustryMapper.MapModelFromInput(name);
+            var dto = IndustryMapper.MapModelFromInput(name, imgUrl);
             if (!await _context.Industries.AnyAsync(i => i.Name == name))
             {
                 var industry = IndustryMapper.MapEntityFromModel(dto);
@@ -108,7 +108,7 @@ namespace InsightHub.Services
             await _context.SaveChangesAsync();
             return true;
         }
-        public async Task<IndustryModel> UpdateIndustry(int id, string newName)
+        public async Task<IndustryModel> UpdateIndustry(int id, string newName, string newImg)
         {
             if (await _context.Industries.AnyAsync(i => i.Name == newName && i.Id != id))
             {
@@ -119,6 +119,7 @@ namespace InsightHub.Services
                 .FirstOrDefaultAsync(i => i.Id == id);
             ValidateIndustryExists(industry);
             industry.Name = newName;
+            industry.ImgUrl = newImg;
             industry.ModifiedOn = DateTime.UtcNow;
             await _context.SaveChangesAsync();
             var dto = IndustryMapper.MapModelFromEntity(industry);

@@ -23,7 +23,6 @@ namespace InsightHub.Data
         public virtual DbSet<DownloadedReport> DownloadedReports { get; set; }
         public virtual DbSet<IndustrySubscription> IndustrySubscriptions { get; set; }
         public virtual DbSet<ReportTag> ReportTags { get; set; }
-        public virtual DbSet<TagSubscription> TagSubscriptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -41,13 +40,8 @@ namespace InsightHub.Data
             modelBuilder.Entity<DownloadedReport>().HasOne(ur => ur.User).WithMany(u => u.Reports).HasForeignKey(ur => ur.UserId).OnDelete(DeleteBehavior.Restrict);;
 
             modelBuilder.Entity<IndustrySubscription>().HasKey(ui => new { ui.UserId, ui.IndustryId });
-            //modelBuilder.Entity<IndustrySubscription>().HasOne(ui => ui.User).WithMany(u => u.IndustrySubscriptions).HasForeignKey(ui => ui.UserId);
 
             modelBuilder.Entity<ReportTag>().HasKey(rt => new { rt.ReportId, rt.TagId });
-            //modelBuilder.Entity<ReportTag>().HasOne(rt => rt.Report).WithMany(r => r.Tags).HasForeignKey(rt => rt.ReportId);
-
-            modelBuilder.Entity<TagSubscription>().HasKey(ut => new { ut.UserId, ut.TagId });
-            //modelBuilder.Entity<TagSubscription>().HasOne(ut => ut.User).WithMany(u => u.TagSubscriptions).HasForeignKey(ut => ut.UserId);
 
             modelBuilder.SeedData();
             base.OnModelCreating(modelBuilder);

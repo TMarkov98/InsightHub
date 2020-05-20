@@ -43,18 +43,18 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // POST: api/Industries
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] string name)
+        public async Task<IActionResult> Create([FromBody] string name, string imgUrl)
         {
-            var industry = await _industriesServices.CreateIndustry(name);
+            var industry = await _industriesServices.CreateIndustry(name, imgUrl);
             return Created("POST", name);
 
         }
 
         // PUT: api/Industries/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] string name)
+        public async Task<IActionResult> Update(int id, [FromBody] string name, string img)
         {
-            var industry = await _industriesServices.UpdateIndustry(id, name);
+            var industry = await _industriesServices.UpdateIndustry(id, name, img);
             return Ok(industry);
         }
 

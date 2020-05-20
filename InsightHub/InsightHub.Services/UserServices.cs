@@ -26,7 +26,6 @@ namespace InsightHub.Services
             var user = await _insightHubContext.Users
                 .Include(u => u.Reports)
                 .Include(u => u.Role)
-                .Include(u => u.TagSubscriptions)
                 .Include(u => u.IndustrySubscriptions)
                 .FirstOrDefaultAsync(u => u.Id == id)
                 ?? throw new ArgumentNullException("User not found.");
@@ -39,7 +38,6 @@ namespace InsightHub.Services
             var users = await _insightHubContext.Users
                 .Where(u => !u.IsBanned && !u.IsPending)
                 .Include(u => u.Reports)
-                .Include(u => u.TagSubscriptions)
                 .Include(u => u.IndustrySubscriptions)
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
@@ -51,7 +49,6 @@ namespace InsightHub.Services
             var users = await _insightHubContext.Users
                 .Where(u => u.IsBanned)
                 .Include(u => u.Reports)
-                .Include(u => u.TagSubscriptions)
                 .Include(u => u.IndustrySubscriptions)
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
@@ -63,7 +60,6 @@ namespace InsightHub.Services
             var users = await _insightHubContext.Users
                 .Where(u => u.IsPending)
                 .Include(u => u.Reports)
-                .Include(u => u.TagSubscriptions)
                 .Include(u => u.IndustrySubscriptions)
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
@@ -74,7 +70,6 @@ namespace InsightHub.Services
         {
             var user = await _insightHubContext.Users
                 .Include(u => u.Reports)
-                .Include(u => u.TagSubscriptions)
                 .Include(u => u.IndustrySubscriptions)
                 .FirstOrDefaultAsync(u => u.Id == id && !u.IsBanned)
                 ?? throw new ArgumentNullException("User not found.");

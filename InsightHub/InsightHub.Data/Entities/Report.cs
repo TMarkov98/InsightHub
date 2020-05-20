@@ -21,7 +21,7 @@ namespace InsightHub.Data.Entities
         public List<DownloadedReport> Downloads { get; set; }
         public Industry Industry { get; set; }
         public int IndustryId { get; set; }
-        public string FileUrl { get; set; }
+        public string ImgUrl { get; set; }
         public bool IsPending { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }

@@ -20,7 +20,6 @@ namespace InsightHub.Services.Mappers
                 ModifiedOn = user.ModifiedOn,
                 DownloadedReportsCount = user.Reports.Count,
                 IndustrySubscriptionsCount = user.IndustrySubscriptions.Count,
-                TagSubscriptionsCount = user.TagSubscriptions.Count,
                 IsPending = user.IsPending,
                 IsBanned = user.IsBanned,
                 BanReason = user.BanReason

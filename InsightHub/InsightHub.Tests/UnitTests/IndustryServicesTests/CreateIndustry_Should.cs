@@ -18,11 +18,12 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
             {
                 var options = Utils.GetOptions(nameof(CreateIndustry_WhenParamsAreValid));
                 var industryName = "Test Industry";
+                var imgUrl = "Test URL";
 
                 using (var assertContext = new InsightHubContext(options))
                 {
                     var sut = new IndustryServices(assertContext);
-                    var act = await sut.CreateIndustry(industryName);
+                    var act = await sut.CreateIndustry(industryName, imgUrl);
                     var result = assertContext.Industries.FirstOrDefault(t => t.Name == industryName);
                     Assert.AreEqual(industryName, result.Name);
                 }
@@ -43,8 +44,7 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
             using (var assertContext = new InsightHubContext(options)) 
             {
                 var sut = new IndustryServices(assertContext);
-                var act = sut.CreateIndustry(industryName);
-                await Assert.ThrowsExceptionAsync<ArgumentException>(() => sut.CreateIndustry(industryName));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(() => sut.CreateIndustry(industryName, "testURL"));
             }
             
         }

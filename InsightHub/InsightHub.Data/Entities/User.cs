@@ -12,7 +12,6 @@ namespace InsightHub.Data.Entities
         {
             this.Reports = new List<DownloadedReport>();
             this.IndustrySubscriptions = new List<IndustrySubscription>();
-            this.TagSubscriptions = new List<TagSubscription>();
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -22,7 +21,6 @@ namespace InsightHub.Data.Entities
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
         public List<IndustrySubscription> IndustrySubscriptions { get; set; }
-        public List<TagSubscription> TagSubscriptions { get; set; }
         public bool IsBanned { get; set; }
         public string BanReason { get; set; }
     }

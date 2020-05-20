@@ -120,7 +120,7 @@ namespace InsightHub.Data
                     Description = "First report's description.",
                     AuthorId = 2,
                     IndustryId = 1,
-                    FileUrl = "First FileURL",
+                    ImgUrl = "First FileURL",
                     CreatedOn = DateTime.UtcNow,
                 }
                 );
@@ -132,7 +132,7 @@ namespace InsightHub.Data
                     Description = "Second report's description.",
                     AuthorId = 2,
                     IndustryId = 2,
-                    FileUrl = "Second FileURL",
+                    ImgUrl = "Second FileURL",
                     CreatedOn = DateTime.UtcNow,
                     IsFeatured = true,
                 }
@@ -145,7 +145,7 @@ namespace InsightHub.Data
                     Description = "Third report's description.",
                     AuthorId = 2,
                     IndustryId = 2,
-                    FileUrl = "Third FileURL",
+                    ImgUrl = "Third FileURL",
                     CreatedOn = DateTime.UtcNow,
                     IsFeatured = true,
                 }
@@ -228,22 +228,6 @@ namespace InsightHub.Data
                 new IndustrySubscription
                 {
                     IndustryId = 1,
-                    UserId = 3,
-                });
-
-            //Seed TagSubscriptions
-
-            modelBuilder.Entity<TagSubscription>().HasData(
-                new TagSubscription
-                {
-                    TagId = 1,
-                    UserId = 3,
-                });
-
-            modelBuilder.Entity<TagSubscription>().HasData(
-                new TagSubscription
-                {
-                    TagId = 2,
                     UserId = 3,
                 });
         }

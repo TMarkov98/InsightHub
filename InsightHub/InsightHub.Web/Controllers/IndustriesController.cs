@@ -53,12 +53,13 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Industry industry)
+        public async Task<IActionResult> Create([Bind("Id,Name,ImgUrl")] Industry industry)
         {
             if (ModelState.IsValid)
             {
                 var name = industry.Name;
-                var newIndustry = await _industryServices.CreateIndustry(name);
+                var imgUrl = industry.ImgUrl;
+                var newIndustry = await _industryServices.CreateIndustry(name, imgUrl);
                 return RedirectToAction(nameof(Index));
 
             }
@@ -81,7 +82,7 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsDeleted,DeletedOn,CreatedOn,ModifiedOn")] Industry industry)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ImgUrl,IsDeleted,DeletedOn,CreatedOn,ModifiedOn")] Industry industry)
         {
             if (id != industry.Id)
                 return NotFound();
@@ -89,7 +90,7 @@ namespace InsightHub.Web.Controllers
             if (ModelState.IsValid)
             {
 
-                await _industryServices.UpdateIndustry(industry.Id, industry.Name);
+                await _industryServices.UpdateIndustry(industry.Id, industry.Name, industry.ImgUrl);
 
                 return RedirectToAction(nameof(Index));
             }
