@@ -38,7 +38,7 @@ namespace InsightHub.Services.Mappers
                 ModifiedOn = industry.ModifiedOn,
                 IsDeleted = industry.IsDeleted,
                 DeletedOn = industry.DeletedOn,
-                Reports = industry.Reports.Select(r => $"Id: {r.Id} - {r.Title}").ToList(),
+                Reports = industry.Reports.Select(r => ReportMapper.MapModelFromEntity(r) ).ToList(),
             };
         }
     }
