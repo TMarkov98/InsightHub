@@ -11,7 +11,6 @@ using InsightHub.Services.Contracts;
 using System.Net.Http;
 using Newtonsoft.Json;
 using InsightHub.Data.Entities;
-using InsightHub.Web.Helpers;
 using X.PagedList;
 
 namespace InsightHub.Web.Controllers
