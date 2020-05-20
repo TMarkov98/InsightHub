@@ -10,7 +10,7 @@ namespace InsightHub.Models
         public string Name { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
-        public List<string> Reports { get; set; }
+        public List<ReportModel> Reports { get; set; }
         public string ImgUrl { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DeletedOn { get; set; }
