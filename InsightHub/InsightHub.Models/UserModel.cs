@@ -15,7 +15,6 @@ namespace InsightHub.Models
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
         public int IndustrySubscriptionsCount { get; set; }
-        public int TagSubscriptionsCount { get; set; }
         public bool IsPending { get; set; }
         public bool IsBanned { get; set; }
         public string BanReason { get; set; }

@@ -25,9 +25,9 @@ namespace InsightHub.Services
             this._context = context ?? throw new ArgumentNullException("Context can NOT be null.");
             this._tagServices = tagServices ?? throw new ArgumentNullException("Tag Services can NOT be null.");
         }
-        public async Task<ReportModel> CreateReport(string title, string description, string author, string industry, string tags)
+        public async Task<ReportModel> CreateReport(string title, string description, string author, string imgUrl, string industry, string tags)
         {
-            var reportDTO = ReportMapper.MapModelFromInput(title, description, author, industry, tags);
+            var reportDTO = ReportMapper.MapModelFromInput(title, description, imgUrl, author, industry, tags);
             if (!await _context.Reports
                 .Include(r => r.Author)
                 .Include(r => r.Industry)
@@ -196,7 +196,7 @@ namespace InsightHub.Services
             return reportDTO;
         }
 
-        public async Task<ReportModel> UpdateReport(int id, string title, string description, string industry, string tags)
+        public async Task<ReportModel> UpdateReport(int id, string title, string description, string imgUrl, string industry, string tags)
         {
             if (await _context.Reports.AnyAsync(r => r.Title == title && r.Id != id))
             {
@@ -209,9 +209,10 @@ namespace InsightHub.Services
                 .ThenInclude(rt => rt.Tag)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
-            var reportDTO = ReportMapper.MapModelFromInput(title, description, null, industry, tags);
+            var reportDTO = ReportMapper.MapModelFromInput(title, description, imgUrl, null, industry, tags);
             report.Title = reportDTO.Title;
             report.Description = reportDTO.Description;
+            report.ImgUrl = reportDTO.ImgUrl;
             report.Industry = await _context.Industries.FirstOrDefaultAsync(i => i.Name == reportDTO.Industry);
             report.ModifiedOn = DateTime.UtcNow;
             report.Tags.Clear();

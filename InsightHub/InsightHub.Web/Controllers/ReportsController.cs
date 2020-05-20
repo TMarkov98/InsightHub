@@ -68,7 +68,7 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Author,Industry,Tags")] ReportModel report, IFormFile file)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Author,ImgUrl,Industry,Tags")] ReportModel report, IFormFile file)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace InsightHub.Web.Controllers
                 }
                 
                 //Create Report
-                await _reportServices.CreateReport(report.Title, report.Description, report.Author, report.Industry, report.Tags);
+                await _reportServices.CreateReport(report.Title, report.Description, report.Author, report.ImgUrl, report.Industry, report.Tags);
                 
                 //Upload Report File to Blob
                 using (var stream = file.OpenReadStream())
@@ -125,14 +125,14 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Industry,Tags")] ReportModel report)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,ImgUrl,Industry,Tags")] ReportModel report)
         {
             if (id != report.Id)
                 return NotFound("Id can NOT be null");
 
             if (ModelState.IsValid)
             {
-                await _reportServices.UpdateReport(id, report.Title, report.Description, report.Industry, report.Tags);
+                await _reportServices.UpdateReport(id, report.Title, report.Description, report.ImgUrl, report.Industry, report.Tags);
                 return RedirectToAction(nameof(Index));
             }
             return View(report);

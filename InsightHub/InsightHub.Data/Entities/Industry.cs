@@ -16,6 +16,7 @@ namespace InsightHub.Data.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Report> Reports { get; set; }
+        public string ImgUrl { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DeletedOn { get; set; }
         public DateTime CreatedOn { get; set; }
