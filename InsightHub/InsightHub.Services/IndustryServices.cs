@@ -55,6 +55,7 @@ namespace InsightHub.Services
             var industries = await _context.Industries
                 .Where(i => !i.IsDeleted)
                 .Include(i => i.Reports)
+                .ThenInclude(r => r.Author)
                 .Select(i => IndustryMapper.MapModelFromEntity(i))
                 .ToListAsync();
 
@@ -64,6 +65,9 @@ namespace InsightHub.Services
                 {
                     case "name":
                         industries = industries.OrderBy(i => i.Name).ToList();
+                        break;
+                    case "name_desc":
+                        industries = industries.OrderByDescending(i => i.Name).ToList();
                         break;
                     case "newest":
                         industries = industries.OrderByDescending(i => i.CreatedOn).ToList();

@@ -11,6 +11,8 @@ using InsightHub.Services.Contracts;
 using System.Net.Http;
 using Newtonsoft.Json;
 using InsightHub.Data.Entities;
+using InsightHub.Web.Helpers;
+using X.PagedList;
 
 namespace InsightHub.Web.Controllers
 {
@@ -25,10 +27,27 @@ namespace InsightHub.Web.Controllers
 
         // GET: Industries
         [HttpGet]
-        public async Task<IActionResult> Index(string sort, string search)
+        public async Task<IActionResult> Index(string sort, string search, string currentFilter, int? pageNumber)
         {
+            ViewData["CurrentSort"] = sort;
+            ViewData["SortByName"] = string.IsNullOrEmpty(sort) || sort == "name" ? "name_desc" : "name";
+            ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
+            ViewData["Search"] = search;
+
+            if (search != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = search;
+
             var industries = await _industryServices.GetAllIndustries(sort, search);
-            return View(industries);
+            int pageSize = 10;
+            return View(await industries.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
 
         // GET: Industries/Details/5

@@ -1,5 +1,5 @@
 using Azure.Storage.Blobs;
-using BeerOverflow.Web.Middlewares;
+using InsightHub.Web.Middlewares;
 using InsightHub.Data;
 using InsightHub.Data.Entities;
 using InsightHub.Models;
