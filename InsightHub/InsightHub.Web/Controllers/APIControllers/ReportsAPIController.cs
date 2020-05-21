@@ -58,7 +58,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ReportModel report)
         {
-            var model = await _reportServices.CreateReport(report.Title, report.Description, report.Author, report.ImgUrl, report.Industry, report.Tags.ToString());
+            var model = await _reportServices.CreateReport(report.Title, report.Summary, report.Description, report.Author, report.ImgUrl, report.Industry, report.Tags.ToString());
             return Ok(model);
         }
 
@@ -66,7 +66,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] ReportModel report)
         {
-            var model = await _reportServices.UpdateReport(id, report.Title, report.Description, report.ImgUrl, report.Industry, report.Tags.ToString());
+            var model = await _reportServices.UpdateReport(id, report.Title, report.Summary, report.Description, report.ImgUrl, report.Industry, report.Tags.ToString());
             return Ok(model);
         }
 

@@ -10,12 +10,13 @@ namespace InsightHub.Services.Mappers
 {
     public static class ReportMapper
     {
-        public static ReportModel MapModelFromInput(string title, string description,string imgUrl, string author, string industry, string tags)
+        public static ReportModel MapModelFromInput(string title, string summary, string description, string imgUrl, string author, string industry, string tags)
         {
             return new ReportModel
             {
                 Title = title,
                 Description = description,
+                Summary = summary,
                 ImgUrl = imgUrl,
                 Author = author,
                 Industry = industry,
@@ -29,6 +30,7 @@ namespace InsightHub.Services.Mappers
                 Id = report.Id,
                 Title = report.Title,
                 Author = $"{report.Author.FirstName} {report.Author.LastName} - {report.Author.Email}",
+                Summary = report.Summary,
                 Description = report.Description,
                 ImgUrl = report.ImgUrl,
                 CreatedOn = report.CreatedOn,

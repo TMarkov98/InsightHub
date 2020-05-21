@@ -6,7 +6,7 @@ namespace InsightHub.Services.Contracts
 {
     public interface IReportServices
     {
-        Task<ReportModel> CreateReport(string title, string description, string author, string imgUrl, string industry, string tags);
+        Task<ReportModel> CreateReport(string title, string summary, string description, string author, string imgUrl, string industry, string tags);
         Task<bool> DeleteReport(int id);
         Task<ReportModel> GetReport(int id);
         Task<ICollection<ReportModel>> GetReportsFeatured();
@@ -17,6 +17,6 @@ namespace InsightHub.Services.Contracts
         Task<ICollection<ReportModel>> GetReports(string sort, string search, string author, string industry, string tag);
         Task<ReportModel> ToggleFeatured(int id);
         Task<ReportModel> TogglePending(int id);
-        Task<ReportModel> UpdateReport(int id, string title, string description, string imgUrl, string industry, string tags);
+        Task<ReportModel> UpdateReport(int id, string title, string summary, string description, string imgUrl, string industry, string tags);
     }
 }

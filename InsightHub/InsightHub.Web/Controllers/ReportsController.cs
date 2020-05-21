@@ -93,7 +93,7 @@ namespace InsightHub.Web.Controllers
                 }
                 
                 //Create Report
-                await _reportServices.CreateReport(report.Title, report.Description, report.Author, report.ImgUrl, report.Industry, report.Tags);
+                await _reportServices.CreateReport(report.Title, report.Summary, report.Description, report.Author, report.ImgUrl, report.Industry, report.Tags);
                 
                 //Upload Report File to Blob
                 using (var stream = file.OpenReadStream())
@@ -132,7 +132,7 @@ namespace InsightHub.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                await _reportServices.UpdateReport(id, report.Title, report.Description, report.ImgUrl, report.Industry, report.Tags);
+                await _reportServices.UpdateReport(id, report.Title, report.Summary, report.Description, report.ImgUrl, report.Industry, report.Tags);
                 return RedirectToAction(nameof(Index));
             }
             return View(report);
