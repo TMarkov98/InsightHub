@@ -12,6 +12,7 @@ using InsightHub.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis;
+using X.PagedList;
 
 namespace InsightHub.Web.Controllers
 {
@@ -27,10 +28,29 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Reports
-        public async Task<IActionResult> Index(string sort, string search, string author, string industry, string tag)
+        public async Task<IActionResult> Index(string sort, string search, string author, string industry, string tag, string currentFilter, int? pageNumber)
         {
+            ViewData["CurrentSort"] = sort;
+            ViewData["SortByTitle"] = string.IsNullOrEmpty(sort) || sort == "title" || sort == "name" ? "title_desc" : "title";
+            ViewData["SortByAuthor"] = string.IsNullOrEmpty(sort) || sort == "author" || sort == "creator" || sort == "user" ? "author_desc" : "author";
+            ViewData["SortByIndustry"] = string.IsNullOrEmpty(sort) || sort == "industry" ? "industry_desc" : "industry";
+            ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
+            ViewData["Search"] = search;
+
+            if (search != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = search;
+
             var reports = await _reportServices.GetReports(sort, search, author, industry, tag);
-            return View(reports);
+            int pageSize = 10;
+            return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
 
         // GET: Reports/Details/5

@@ -73,13 +73,22 @@ namespace InsightHub.Services
                     case "title":
                         reports = reports.OrderBy(r => r.Title).ToList();
                         break;
+                    case "title_desc":
+                        reports = reports.OrderByDescending(r => r.Title).ToList();
+                        break;
                     case "author":
                     case "user":
                     case "creator":
                         reports = reports.OrderBy(r => r.Author).ToList();
                         break;
+                    case "author_desc":
+                        reports = reports.OrderByDescending(r => r.Author).ToList();
+                        break;
                     case "industry":
                         reports = reports.OrderBy(r => r.Industry).ToList();
+                        break;
+                    case "industry_desc":
+                        reports = reports.OrderByDescending(r => r.Industry).ToList();
                         break;
                     case "newest":
                         reports = reports.OrderByDescending(r => r.CreatedOn).ToList();
@@ -94,7 +103,7 @@ namespace InsightHub.Services
             if (search != null)
             {
                 reports = reports.Where(r => r.Title.ToLower().Contains(search.ToLower())
-                    || r.Description.ToLower().Contains(search.ToLower())).ToList();
+                    || r.Summary.ToLower().Contains(search.ToLower())).ToList();
             }
 
             if (author != null)

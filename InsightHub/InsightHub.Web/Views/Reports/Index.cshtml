@@ -1,5 +1,4 @@
-﻿@model IEnumerable<InsightHub.Models.ReportModel>
-
+﻿@model X.PagedList.StaticPagedList<InsightHub.Models.ReportModel>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,79 +9,109 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search Reports: <input type="text" name="search" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
-            <th /> 
+            <th />
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByTitle"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Summary
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByAuthor"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Author</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Industry)
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByIndustry"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Industry</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedOn)
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Created On</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ModifiedOn)
+                ModifiedOn
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
+                IsDeleted
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeletedOn)
+                DeletedOn
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsFeatured)
+                IsFeatured
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImgUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Industry)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeletedOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsFeatured)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImgUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Industry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDeleted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeletedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsFeatured)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sort="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageNumber - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sort="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageNumber + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
