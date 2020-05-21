@@ -9,6 +9,7 @@ using InsightHub.Data;
 using InsightHub.Models;
 using InsightHub.Services.Contracts;
 using InsightHub.Data.Entities;
+using X.PagedList;
 
 namespace InsightHub.Web.Controllers
 {
@@ -22,10 +23,27 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Tags
-        public async Task<IActionResult> Index(string sort, string search)
+        public async Task<IActionResult> Index(string sort, string search, string currentFilter, int? pageNumber)
         {
+            ViewData["CurrentSort"] = sort;
+            ViewData["SortByName"] = string.IsNullOrEmpty(sort) || sort == "name" ? "name_desc" : "name";
+            ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
+            ViewData["Search"] = search;
+
+            if (search != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = search;
+
             var tags = await _tagServices.GetTags(sort, search);
-            return View(tags);
+            int pageSize = 10;
+            return View(await tags.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
 
         // GET: Tags/Details/5
