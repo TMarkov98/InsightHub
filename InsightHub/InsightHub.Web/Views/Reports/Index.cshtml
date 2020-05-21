@@ -60,18 +60,6 @@
                    asp-route-tag="@ViewData["Tag"]"
                    asp-route-author="@ViewData["Author"]">Downloads</a>
             </th>
-            <th>
-                ModifiedOn
-            </th>
-            <th>
-                IsDeleted
-            </th>
-            <th>
-                DeletedOn
-            </th>
-            <th>
-                IsFeatured
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -83,7 +71,7 @@
                     @Html.DisplayFor(modelItem => item.ImgUrl)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Summary)
@@ -101,20 +89,7 @@
                     @Html.DisplayFor(modelItem => item.DownloadsCount)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDeleted)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeletedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsFeatured)
-                </td>
-                <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
