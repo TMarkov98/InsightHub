@@ -1,20 +1,24 @@
 ﻿@model InsightHub.Models.IndustryModel
-@{ 
+@using X.PagedList;
+@{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>@Html.DisplayFor(model => model.Name)</h1>
 
 <div>
-    <h4>Industry</h4>
+    <h4>Details</h4>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.ImgUrl)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedOn)
@@ -41,8 +45,44 @@
             @Html.DisplayFor(model => model.DeletedOn)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <h5>
+        Newest 10 Reports
+        <a class="btn btn-primary" asp-controller="Reports" asp-action="Index" asp-route-industry="@Model.Name">Show All</a>
+    </h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th />
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    CreatedOn
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Reports.OrderByDescending(r => r.CreatedOn).Take(10))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImgUrl)
+                    </td>
+                    <td>
+                        <a asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
