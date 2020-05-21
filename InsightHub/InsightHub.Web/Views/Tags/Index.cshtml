@@ -1,4 +1,5 @@
 ﻿@model X.PagedList.StaticPagedList<InsightHub.Models.TagModel>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -25,13 +26,7 @@
                 <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]">Name</a>
             </th>
             <th>
-                IsDeleted
-            </th>
-            <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-search="@ViewData["Search"]">CreatedOn</a>
-            </th>
-            <th>
-                ModifiedOn
             </th>
             <th></th>
         </tr>
@@ -41,20 +36,13 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDeleted)
+                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreatedOn)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedOn)
-                </td>
-                <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
