@@ -1,0 +1,74 @@
+﻿@model InsightHub.Models.UserModel
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Dashboard</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th />
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByTitle"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a>
+            </th>
+            <th>
+                Summary
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByAuthor"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Author</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByIndustry"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Industry</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Created On</a>
+            </th>
+            <th>
+                ModifiedOn
+            </th>
+            <th>
+                IsDeleted
+            </th>
+            <th>
+                DeletedOn
+            </th>
+            <th>
+                IsFeatured
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.DownloadedReports)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImgUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Industry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

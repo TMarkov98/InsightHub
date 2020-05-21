@@ -38,7 +38,6 @@ namespace InsightHub.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddControllersWithViews();
 
             services.AddDbContext<InsightHubContext>(options =>
                     options.UseSqlServer(
@@ -54,6 +53,13 @@ namespace InsightHub.Web
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
             });
+
+
+            services.AddMvc();
+
+            services.AddControllersWithViews();
+
+            services.AddRazorPages();
 
             services.AddSingleton(x =>
                 new BlobServiceClient(Configuration.GetValue<string>("AzureBlobStorageConnectionString")));
@@ -123,6 +129,9 @@ namespace InsightHub.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
