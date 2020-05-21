@@ -96,6 +96,12 @@ namespace InsightHub.Services
                     case "oldest":
                         reports = reports.OrderBy(r => r.CreatedOn).ToList();
                         break;
+                    case "downloads":
+                        reports = reports.OrderByDescending(r => r.DownloadsCount).ToList();
+                        break;
+                    case "downloads_asc":
+                        reports = reports.OrderBy(r => r.DownloadsCount).ToList();
+                        break;
                     default:
                         break;
                 }
@@ -108,15 +114,15 @@ namespace InsightHub.Services
 
             if (author != null)
             {
-                reports = reports.Where(r => r.Author.ToLower().Contains(author)).ToList();
+                reports = reports.Where(r => r.Author.ToLower().Contains(author.ToLower())).ToList();
             }
             if (industry != null)
             {
-                reports = reports.Where(r => r.Industry.ToLower().Contains(industry)).ToList();
+                reports = reports.Where(r => r.Industry.ToLower().Contains(industry.ToLower())).ToList();
             }
             if (tag != null)
             {
-                reports = reports.Where(r => string.Join(' ', r.Tags).ToLower().Contains(tag)).ToList();
+                reports = reports.Where(r => string.Join(' ', r.Tags).ToLower().Contains(tag.ToLower())).ToList();
             }
             return reports;
         }

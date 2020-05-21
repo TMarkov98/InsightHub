@@ -12,7 +12,7 @@
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Search tags: <input type="text" name="search" value="@ViewData["CurrentFilter"]" />
+            Search tags: <input type="text" name="search" value="@ViewData["Search"]" />
             <input type="submit" value="Search" class="btn btn-default" /> |
             <a asp-action="Index">Back to Full List</a>
         </p>
@@ -22,13 +22,13 @@
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Name</a>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]">Name</a>
             </th>
             <th>
                 IsDeleted
             </th>
             <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">CreatedOn</a>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-search="@ViewData["Search"]">CreatedOn</a>
             </th>
             <th>
                 ModifiedOn
@@ -70,14 +70,14 @@
 <a asp-action="Index"
    asp-route-sort="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageNumber - 1)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-search="@ViewData["Search"]"
    class="btn btn-default @prevDisabled">
     Previous
 </a>
 <a asp-action="Index"
    asp-route-sort="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageNumber + 1)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-search="@ViewData["Search"]"
    class="btn btn-default @nextDisabled">
     Next
 </a>
