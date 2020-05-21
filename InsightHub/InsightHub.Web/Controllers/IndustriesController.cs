@@ -51,10 +51,11 @@ namespace InsightHub.Web.Controllers
 
         // GET: Industries/Details/5
         [HttpGet]
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int? pageNumber)
         {
             if (id == null)
                 return NotFound();
+            ViewData["PageNumber"] = pageNumber;
             var industry = await _industryServices.GetIndustry(id.Value);
             return View(industry);
 
