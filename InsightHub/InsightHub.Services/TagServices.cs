@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +51,9 @@ namespace InsightHub.Services
                 {
                     case "name":
                         tagDTOs = tagDTOs.OrderBy(t => t.Name).ToList();
+                        break;
+                    case "name_desc":
+                        tagDTOs = tagDTOs.OrderByDescending(t => t.Name).ToList();
                         break;
                     case "newest":
                         tagDTOs = tagDTOs.OrderByDescending(t => t.CreatedOn).ToList();
