@@ -231,7 +231,54 @@ namespace InsightHub.Data
                 new IndustrySubscription
                 {
                     IndustryId = 1,
+                    UserId = 1,
+                });
+            modelBuilder.Entity<IndustrySubscription>().HasData(
+                new IndustrySubscription
+                {
+                    IndustryId = 2,
+                    UserId = 1,
+                });
+            modelBuilder.Entity<IndustrySubscription>().HasData(
+                new IndustrySubscription
+                {
+                    IndustryId = 1,
+                    UserId = 2,
+                });
+
+            //Seed DownloadedReports
+
+            modelBuilder.Entity<DownloadedReport>().HasData(
+                new DownloadedReport
+                {
+                    ReportId = 1,
+                    UserId = 1,
+                });
+
+            modelBuilder.Entity<DownloadedReport>().HasData(
+                new DownloadedReport
+                {
+                    ReportId = 1,
+                    UserId = 2,
+                });
+
+            modelBuilder.Entity<DownloadedReport>().HasData(
+                new DownloadedReport
+                {
+                    ReportId = 1,
                     UserId = 3,
+                });
+            modelBuilder.Entity<DownloadedReport>().HasData(
+                new DownloadedReport
+                {
+                    ReportId = 2,
+                    UserId = 1,
+                });
+            modelBuilder.Entity<DownloadedReport>().HasData(
+                new DownloadedReport
+                {
+                    ReportId = 2,
+                    UserId = 2,
                 });
         }
     }
