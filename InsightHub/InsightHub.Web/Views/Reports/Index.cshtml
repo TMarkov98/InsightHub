@@ -106,6 +106,9 @@
    asp-route-sort="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageNumber - 1)"
    asp-route-search="@ViewData["Search"]"
+   asp-route-industry="@ViewData["Industry"]"
+   asp-route-tag="@ViewData["Tag"]"
+   asp-route-author="@ViewData["Author"]"
    class="btn btn-default @prevDisabled">
     Previous
 </a>
@@ -113,6 +116,9 @@
    asp-route-sort="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageNumber + 1)"
    asp-route-search="@ViewData["Search"]"
+   asp-route-industry="@ViewData["Industry"]"
+   asp-route-tag="@ViewData["Tag"]"
+   asp-route-author="@ViewData["Author"]"
    class="btn btn-default @nextDisabled">
     Next
 </a>
