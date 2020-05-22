@@ -27,6 +27,7 @@ namespace InsightHub.Services
                 .Include(u => u.Reports)
                 .Include(u => u.Role)
                 .Include(u => u.IndustrySubscriptions)
+                .Include(u => u.Reports)
                 .FirstOrDefaultAsync(u => u.Id == id)
                 ?? throw new ArgumentNullException("User not found.");
             var userDTO = UserMapper.MapModelFromEntity(user);
@@ -84,32 +85,64 @@ namespace InsightHub.Services
             return userDTO;
         }
 
-        public async Task<bool> BanUser(int id, string reason)
+        public async Task BanUser(int id, string reason)
         {
             var user = await _insightHubContext.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
             if (user == null || user.LockoutEnabled)
-                return false;
+                throw new ArgumentException("Unable to ban user.");
 
             user.IsBanned = true;
             user.BanReason = reason;
             user.LockoutEnd = DateTime.Parse("2555-01-01 00:00:00.00");
             _insightHubContext.SaveChanges();
-            return true;
         }
 
-        public async Task<bool> UnbanUser(int id)
+        public async Task UnbanUser(int id)
         {
             var user = await _insightHubContext.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
             if (user == null || !user.LockoutEnabled)
-                return false;
+                throw new ArgumentException("Unable to unban user.");
 
             user.IsBanned = false;
             user.BanReason = string.Empty;
             user.LockoutEnd = DateTime.Parse("2000-01-01 00:00:00.00");
             _insightHubContext.SaveChanges();
-            return true;
+        }
+
+        public async Task<List<ReportModel>> GetDownloadedReports(int userId)
+        {
+            var reports = await _insightHubContext.DownloadedReports
+                .Include(ur => ur.Report)
+                .ThenInclude(r => r.Author)
+                .Include(ur => ur.Report)
+                .ThenInclude(r => r.Industry)
+                .Include(ur => ur.Report)
+                .ThenInclude(r => r.Tags)
+                .ThenInclude(r => r.Tag)
+                .Include(ur => ur.Report)
+                .ThenInclude(r => r.Downloads)
+                .Where(ur => ur.UserId == userId)
+                .Select(ur => ReportMapper.MapModelFromEntity(ur.Report))
+                .ToListAsync();
+
+            return reports;
+        }
+
+        public async Task<List<ReportModel>> GetMyReports(int userId)
+        {
+            var reports = await _insightHubContext.Reports
+                .Include(r => r.Author)
+                .Include(r => r.Industry)
+                .Include(r => r.Tags)
+                .ThenInclude(r => r.Tag)
+                .Include(r => r.Downloads)
+                .Where(r => r.AuthorId == userId)
+                .Select(r => ReportMapper.MapModelFromEntity(r))
+                .ToListAsync();
+
+            return reports;
         }
     }
 }

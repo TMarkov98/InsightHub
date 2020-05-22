@@ -13,6 +13,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InsightHub.Web.Controllers
 {
@@ -64,6 +65,8 @@ namespace InsightHub.Web.Controllers
             return View(report);
         }
 
+        // GET: Reports/Details/5/Download
+        [Authorize]
         public async Task<IActionResult> Download(int? id)
         {
             if (id == null)
