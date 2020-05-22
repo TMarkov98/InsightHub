@@ -12,7 +12,7 @@
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Search Reports: <input type="text" name="search" value="@ViewData["CurrentFilter"]" />
+            Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />
             <input type="submit" value="Search" class="btn btn-default" /> |
             <a asp-action="Index">Back to Full List</a>
         </p>
@@ -23,31 +23,42 @@
         <tr>
             <th />
             <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByTitle"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByTitle"]"
+                   asp-route-search="@ViewData["Search"]"
+                   asp-route-industry="@ViewData["Industry"]"
+                   asp-route-tag="@ViewData["Tag"]"
+                   asp-route-author="@ViewData["Author"]">Title</a>
             </th>
             <th>
                 Summary
             </th>
             <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByAuthor"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Author</a>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByAuthor"]"
+                   asp-route-search="@ViewData["Search"]"
+                   asp-route-industry="@ViewData["Industry"]"
+                   asp-route-tag="@ViewData["Tag"]"
+                   asp-route-author="@ViewData["Author"]">Author</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByIndustry"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Industry</a>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByIndustry"]"
+                   asp-route-search="@ViewData["Search"]"
+                   asp-route-industry="@ViewData["Industry"]"
+                   asp-route-tag="@ViewData["Tag"]"
+                   asp-route-author="@ViewData["Author"]">Industry</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Created On</a>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]"
+                   asp-route-search="@ViewData["Search"]"
+                   asp-route-industry="@ViewData["Industry"]"
+                   asp-route-tag="@ViewData["Tag"]"
+                   asp-route-author="@ViewData["Author"]">CreatedOn</a>
             </th>
             <th>
-                ModifiedOn
-            </th>
-            <th>
-                IsDeleted
-            </th>
-            <th>
-                DeletedOn
-            </th>
-            <th>
-                IsFeatured
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByDownloads"]"
+                   asp-route-search="@ViewData["Search"]"
+                   asp-route-industry="@ViewData["Industry"]"
+                   asp-route-tag="@ViewData["Tag"]"
+                   asp-route-author="@ViewData["Author"]">Downloads</a>
             </th>
             <th></th>
         </tr>
@@ -60,7 +71,7 @@
                     @Html.DisplayFor(modelItem => item.ImgUrl)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Summary)
@@ -75,20 +86,10 @@
                     @Html.DisplayFor(modelItem => item.CreatedOn)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDeleted)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeletedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsFeatured)
+                    @Html.DisplayFor(modelItem => item.DownloadsCount)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
@@ -104,14 +105,14 @@
 <a asp-action="Index"
    asp-route-sort="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageNumber - 1)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-search="@ViewData["Search"]"
    class="btn btn-default @prevDisabled">
     Previous
 </a>
 <a asp-action="Index"
    asp-route-sort="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageNumber + 1)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-search="@ViewData["Search"]"
    class="btn btn-default @nextDisabled">
     Next
 </a>

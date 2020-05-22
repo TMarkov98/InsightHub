@@ -23,10 +23,10 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Tags
-        public async Task<IActionResult> Index(string sort, string search, string currentFilter, int? pageNumber)
+        public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
         {
             ViewData["CurrentSort"] = sort;
-            ViewData["SortByName"] = string.IsNullOrEmpty(sort) || sort == "name" ? "name_desc" : "name";
+            ViewData["SortByName"] = sort == "name" ? "name_desc" : "name";
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
             ViewData["Search"] = search;
 
@@ -34,12 +34,8 @@ namespace InsightHub.Web.Controllers
             {
                 pageNumber = 1;
             }
-            else
-            {
-                search = currentFilter;
-            }
 
-            ViewData["CurrentFilter"] = search;
+            ViewData["Search"] = search;
 
             var tags = await _tagServices.GetTags(sort, search);
             int pageSize = 10;

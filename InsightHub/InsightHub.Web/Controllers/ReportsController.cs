@@ -29,25 +29,23 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Reports
-        public async Task<IActionResult> Index(string sort, string search, string author, string industry, string tag, string currentFilter, int? pageNumber)
+        public async Task<IActionResult> Index(string sort, string search, string author, string industry, string tag, int? pageNumber)
         {
             ViewData["CurrentSort"] = sort;
-            ViewData["SortByTitle"] = string.IsNullOrEmpty(sort) || sort == "title" || sort == "name" ? "title_desc" : "title";
-            ViewData["SortByAuthor"] = string.IsNullOrEmpty(sort) || sort == "author" || sort == "creator" || sort == "user" ? "author_desc" : "author";
-            ViewData["SortByIndustry"] = string.IsNullOrEmpty(sort) || sort == "industry" ? "industry_desc" : "industry";
+            ViewData["SortByTitle"] = sort == "title"? "title_desc" : "title";
+            ViewData["SortByAuthor"] = sort == "author" ? "author_desc" : "author";
+            ViewData["SortByIndustry"] = sort == "industry" ? "industry_desc" : "industry";
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
-            ViewData["Search"] = search;
+            ViewData["SortByDownloads"] = sort == "downloads" ? "downloads_asc" : "downloads";
 
-            if (search != null)
+            if (search != null || industry != null || tag != null || author != null)
             {
                 pageNumber = 1;
             }
-            else
-            {
-                search = currentFilter;
-            }
-
-            ViewData["CurrentFilter"] = search;
+            ViewData["Search"] = search;
+            ViewData["Industry"] = industry;
+            ViewData["Tag"] = tag;
+            ViewData["Author"] = author;
 
             var reports = await _reportServices.GetReports(sort, search, author, industry, tag);
             int pageSize = 10;
