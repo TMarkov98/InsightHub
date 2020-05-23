@@ -1,13 +1,10 @@
 ﻿@model IEnumerable<InsightHub.Models.ReportModel>
 
 @{
-    ViewData["Title"] = "FeaturedViewComponent";
+    ViewData["Title"] = "Top5NewestReports";
 }
 
-@inject InsightHub.Services.Contracts.IReportServices _reportService
-
-
-<h3>Featured</h3>
+<h3>Newest Reports</h3>
 <table class="table">
     <thead>
         <tr>

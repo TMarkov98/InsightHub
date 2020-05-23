@@ -15,12 +15,10 @@ namespace InsightHub.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IReportServices _reportServices;
 
-        public HomeController(ILogger<HomeController> logger, IReportServices reportServices)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            this._reportServices = reportServices;
         }
 
         public IActionResult Index()
@@ -31,13 +29,6 @@ namespace InsightHub.Web.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        
-        public async Task<IActionResult> GetTop5_MostDownloaded()
-        {
-            var reports = await _reportServices.GetTop5MostDownloads();
-            return PartialView(reports);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
