@@ -14,6 +14,7 @@ namespace InsightHub.Services.Contracts
         Task UnbanUser(int id);
         Task<UserModel> UpdateUser(int id, string firstName, string lastName, bool lockoutEnabled, string LockOutReason);
         Task<List<ReportModel>> GetDownloadedReports(int userId);
+        Task<List<IndustryModel>> GetMySubscriptions(int userId);
         Task<List<ReportModel>> GetMyReports(int userId);
     }
 }
