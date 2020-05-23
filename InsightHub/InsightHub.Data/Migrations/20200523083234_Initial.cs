@@ -316,9 +316,9 @@ namespace InsightHub.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "043e4950-c660-4936-91d1-9bd7779852bc", "Admin", "ADMIN" },
-                    { 2, "ee4d44c4-42e1-4e80-a102-486cc726a696", "Author", "AUTHOR" },
-                    { 3, "9125e35b-bc16-4e7e-9832-306526b10cf9", "Client", "CLIENT" }
+                    { 1, "607a6be5-5f55-4e98-9a9a-0f44b58db325", "Admin", "ADMIN" },
+                    { 2, "0ea64c32-f2c0-4184-bef7-c4c8c72dc851", "Author", "AUTHOR" },
+                    { 3, "0d915e2f-4877-449c-988b-7dec95becccc", "Client", "CLIENT" }
                 });
 
             migrationBuilder.InsertData(
@@ -326,9 +326,9 @@ namespace InsightHub.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "BanReason", "ConcurrencyStamp", "CreatedOn", "Email", "EmailConfirmed", "FirstName", "IsBanned", "IsPending", "LastName", "LockoutEnabled", "LockoutEnd", "ModifiedOn", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RoleId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1, 0, null, "463d1a8c-8a17-4825-bcc7-77b6574fc5f6", new DateTime(2020, 5, 21, 14, 20, 25, 493, DateTimeKind.Utc).AddTicks(7236), "admin@gmail.com", false, "Admincho", false, false, "Adminev", true, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAENHoIZ5XohaJHcKl0ZIoK6ryNtoz7xMLMD9E+mdaGEqrBKsPXQqF9DN44FoiX/q6ow==", null, false, null, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "admin@gmail.com" },
-                    { 2, 0, null, "60078b50-d44b-487a-85f7-411fa8b330fc", new DateTime(2020, 5, 21, 14, 20, 25, 493, DateTimeKind.Utc).AddTicks(8406), "author@gmail.com", false, "Authorcho", false, false, "Authorchevski", true, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "AUTHOR@GMAIL.COM", "AUTHOR@GMAIL.COM", "AQAAAAEAACcQAAAAECKwbHNzKgS4//Ns81NIZZZvbsnHlq9Rtj4xiZnlWvcwg/2kx8I1DZGpcwAAVrEzwg==", null, false, null, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXV", false, "author@gmail.com" },
-                    { 3, 0, null, "186347d4-f2cb-49ab-9eba-30d9c47bee63", new DateTime(2020, 5, 21, 14, 20, 25, 493, DateTimeKind.Utc).AddTicks(8419), "client@gmail.com", false, "Clientcho", false, false, "Clientev", true, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "CLIENT@GMAIL.COM", "CLIENT@GMAIL.COM", "AQAAAAEAACcQAAAAENnKXzz8w+L8VlFfBAbgxe6spf9t3KgVHxu3m0GNjGqLaeOQA+MnXTwsdu1Q4cLHcg==", null, false, null, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXF", false, "client@gmail.com" }
+                    { 1, 0, null, "42309bf2-7db4-418b-9b1e-79c8e6b6258c", new DateTime(2020, 5, 23, 8, 32, 33, 902, DateTimeKind.Utc).AddTicks(1923), "admin@gmail.com", false, "Admincho", false, false, "Adminev", true, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEGQinz4ICaYgIwOyf25U+d03ORfHYYXgY7aoevuTRime+TRKoDSLnZgpHthjQJbt7A==", null, false, null, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "admin@gmail.com" },
+                    { 2, 0, null, "4c8737a8-e59d-4cf5-b4d6-dc31c8821e65", new DateTime(2020, 5, 23, 8, 32, 33, 902, DateTimeKind.Utc).AddTicks(3135), "author@gmail.com", false, "Authorcho", false, false, "Authorchevski", true, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "AUTHOR@GMAIL.COM", "AUTHOR@GMAIL.COM", "AQAAAAEAACcQAAAAEMhMaafdNUCBEaF8B3MRUhOg6RzMRMa5Br+EBUJoymBPSEgn5NpD5Eh2kZaXxcA2Ag==", null, false, null, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXV", false, "author@gmail.com" },
+                    { 3, 0, null, "1684e08c-9067-4b61-b06c-da035a53046b", new DateTime(2020, 5, 23, 8, 32, 33, 902, DateTimeKind.Utc).AddTicks(3148), "client@gmail.com", false, "Clientcho", false, false, "Clientev", true, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "CLIENT@GMAIL.COM", "CLIENT@GMAIL.COM", "AQAAAAEAACcQAAAAEChDSch4d/GQhGbQWthQ1ThG1u9kXJDxYPIRhp/+bnVcD221E8y26f6aZLjqn5tJ5A==", null, false, null, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXF", false, "client@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -336,9 +336,9 @@ namespace InsightHub.Data.Migrations
                 columns: new[] { "Id", "CreatedOn", "DeletedOn", "ImgUrl", "IsDeleted", "ModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2020, 5, 21, 14, 20, 25, 516, DateTimeKind.Utc).AddTicks(5892), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Next-Wave Logistics" },
-                    { 2, new DateTime(2020, 5, 21, 14, 20, 25, 516, DateTimeKind.Utc).AddTicks(6432), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Space Technology" },
-                    { 3, new DateTime(2020, 5, 21, 14, 20, 25, 516, DateTimeKind.Utc).AddTicks(6462), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clean Water Services" }
+                    { 1, new DateTime(2020, 5, 23, 8, 32, 33, 924, DateTimeKind.Utc).AddTicks(9023), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Next-Wave Logistics" },
+                    { 2, new DateTime(2020, 5, 23, 8, 32, 33, 924, DateTimeKind.Utc).AddTicks(9586), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Space Technology" },
+                    { 3, new DateTime(2020, 5, 23, 8, 32, 33, 924, DateTimeKind.Utc).AddTicks(9617), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clean Water Services" }
                 });
 
             migrationBuilder.InsertData(
@@ -346,9 +346,9 @@ namespace InsightHub.Data.Migrations
                 columns: new[] { "Id", "CreatedOn", "DeletedOn", "IsDeleted", "ModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2020, 5, 21, 14, 20, 25, 516, DateTimeKind.Utc).AddTicks(8119), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Space" },
-                    { 2, new DateTime(2020, 5, 21, 14, 20, 25, 516, DateTimeKind.Utc).AddTicks(8661), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Water" },
-                    { 3, new DateTime(2020, 5, 21, 14, 20, 25, 516, DateTimeKind.Utc).AddTicks(8691), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Money" }
+                    { 1, new DateTime(2020, 5, 23, 8, 32, 33, 925, DateTimeKind.Utc).AddTicks(1322), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Space" },
+                    { 2, new DateTime(2020, 5, 23, 8, 32, 33, 925, DateTimeKind.Utc).AddTicks(1862), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Water" },
+                    { 3, new DateTime(2020, 5, 23, 8, 32, 33, 925, DateTimeKind.Utc).AddTicks(1891), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Money" }
                 });
 
             migrationBuilder.InsertData(
@@ -376,9 +376,9 @@ namespace InsightHub.Data.Migrations
                 columns: new[] { "Id", "AuthorId", "CreatedOn", "DeletedOn", "Description", "ImgUrl", "IndustryId", "IsDeleted", "IsFeatured", "IsPending", "ModifiedOn", "Summary", "Title" },
                 values: new object[,]
                 {
-                    { 1, 2, new DateTime(2020, 5, 21, 14, 20, 25, 516, DateTimeKind.Utc).AddTicks(3106), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "First report's description.", "First FileURL", 1, false, false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "First report's summary.", "First Report" },
-                    { 2, 2, new DateTime(2020, 5, 21, 14, 20, 25, 516, DateTimeKind.Utc).AddTicks(3733), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Second report's description.", "Second FileURL", 2, false, true, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Second report's summary.", "Second Report" },
-                    { 3, 2, new DateTime(2020, 5, 21, 14, 20, 25, 516, DateTimeKind.Utc).AddTicks(4173), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Third report's description.", "Third FileURL", 2, false, true, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Third report's summary.", "Third Report" }
+                    { 1, 2, new DateTime(2020, 5, 23, 8, 32, 33, 924, DateTimeKind.Utc).AddTicks(5638), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "First report's description.", "First FileURL", 1, false, false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "First report's summary.", "First Report" },
+                    { 2, 2, new DateTime(2020, 5, 23, 8, 32, 33, 924, DateTimeKind.Utc).AddTicks(6299), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Second report's description.", "Second FileURL", 2, false, true, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Second report's summary.", "Second Report" },
+                    { 3, 2, new DateTime(2020, 5, 23, 8, 32, 33, 924, DateTimeKind.Utc).AddTicks(6793), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Third report's description.", "Third FileURL", 2, false, true, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Third report's summary.", "Third Report" }
                 });
 
             migrationBuilder.InsertData(

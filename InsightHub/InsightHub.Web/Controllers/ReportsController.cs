@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis;
 using X.PagedList;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace InsightHub.Web.Controllers
 {
@@ -48,6 +49,8 @@ namespace InsightHub.Web.Controllers
             ViewData["Author"] = author;
 
             var reports = await _reportServices.GetReports(sort, search, author, industry, tag);
+            ViewData["ResultsCount"] = reports.Count;
+
             int pageSize = 10;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
@@ -74,6 +77,8 @@ namespace InsightHub.Web.Controllers
             var report = await _reportServices.GetReport(id.Value);
             if (report == null)
                 return NotFound("Report not found.");
+            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            await _reportServices.AddToDownloadsCount(userId, id.Value);
             var data = await _blobServices.GetBlobAsync($"{report.Title}.pdf");
             return File(data.Content, "application/pdf");
         }

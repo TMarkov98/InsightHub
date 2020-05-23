@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>My Downloaded Reports</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,7 +13,8 @@
     <div class="form-actions no-color">
         <p>
             Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />
-            <input type="submit" value="Search" class="btn btn-default" /> |
+            <input type="submit" value="Search" class="btn btn-default" />
+            <br/>
             <a asp-action="Index">Back to Full List</a>
         </p>
     </div>

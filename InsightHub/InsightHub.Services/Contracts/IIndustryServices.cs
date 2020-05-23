@@ -12,5 +12,7 @@ namespace InsightHub.Services.Contracts
         Task<List<IndustryModel>> GetDeletedIndustries(string search);
         Task<IndustryModel> GetIndustry(int id);
         Task<IndustryModel> UpdateIndustry(int id, string newName, string newImg);
+        Task AddSubscription(int userId, int industryId);
+        Task RemoveSubscription(int userId, int industryId);
     }
 }

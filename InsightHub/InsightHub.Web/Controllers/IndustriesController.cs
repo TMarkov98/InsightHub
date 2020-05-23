@@ -12,6 +12,8 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using InsightHub.Data.Entities;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace InsightHub.Web.Controllers
 {
@@ -54,6 +56,15 @@ namespace InsightHub.Web.Controllers
             var industry = await _industryServices.GetIndustry(id.Value);
             return View(industry);
 
+        }
+        [Authorize]
+        public async Task<IActionResult> Subscribe(int? id)
+        {
+            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            if (id == null)
+                return NotFound();
+            await _industryServices.AddSubscription(userId, id.Value);
+            return RedirectToAction(nameof(Details), new { id = id });
         }
 
         // GET: Industries/Create

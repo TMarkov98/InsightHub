@@ -11,6 +11,7 @@ namespace InsightHub.Data.Entities
         public Industry()
         {
             this.Reports = new List<Report>();
+            this.Subscriptions = new List<IndustrySubscription>();
         }
 
         public int Id { get; set; }
@@ -21,5 +22,6 @@ namespace InsightHub.Data.Entities
         public DateTime DeletedOn { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
+        public List<IndustrySubscription> Subscriptions { get; set; }
     }
 }
