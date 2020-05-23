@@ -1,0 +1,104 @@
+﻿@model X.PagedList.StaticPagedList<InsightHub.Models.ReportModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>My Uploaded Reports</h1>
+
+<p>
+    <a asp-area="" asp-controller="Reports" asp-action="Create">Create New</a>
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+            <br />
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th />
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByTitle"]"
+                   asp-route-search="@ViewData["Search"]">Title</a>
+            </th>
+            <th>
+                Summary
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByAuthor"]"
+                   asp-route-search="@ViewData["Search"]">Author</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByIndustry"]"
+                   asp-route-search="@ViewData["Search"]">Industry</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]"
+                   asp-route-search="@ViewData["Search"]">CreatedOn</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByDownloads"]"
+                   asp-route-search="@ViewData["Search"]">Downloads</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImgUrl)
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Industry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DownloadsCount)
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Reports" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-area="" asp-controller="Reports" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sort="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageNumber - 1)"
+   asp-route-search="@ViewData["Search"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sort="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageNumber + 1)"
+   asp-route-search="@ViewData["Search"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

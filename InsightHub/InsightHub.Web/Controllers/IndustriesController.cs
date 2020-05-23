@@ -64,7 +64,7 @@ namespace InsightHub.Web.Controllers
             if (id == null)
                 return NotFound();
             await _industryServices.AddSubscription(userId, id.Value);
-            return RedirectToAction(nameof(Details), new { id = id });
+            return RedirectToAction(nameof(Details), new { id });
         }
 
         // GET: Industries/Create
