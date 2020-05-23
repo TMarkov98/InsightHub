@@ -14,16 +14,16 @@ namespace InsightHub.Services
 {
     public class UserServices : IUserServices
     {
-        private readonly InsightHubContext _insightHubContext;
+        private readonly InsightHubContext _context;
 
-        public UserServices(InsightHubContext insightHubContext)
+        public UserServices(InsightHubContext context)
         {
-            _insightHubContext = insightHubContext;
+            _context = context;
         }
 
         public async Task<UserModel> GetUser(int id)
         {
-            var user = await _insightHubContext.Users
+            var user = await _context.Users
                 .Include(u => u.Reports)
                 .Include(u => u.Role)
                 .Include(u => u.IndustrySubscriptions)
@@ -36,7 +36,7 @@ namespace InsightHub.Services
 
         public async Task<List<UserModel>> GetUsers()
         {
-            var users = await _insightHubContext.Users
+            var users = await _context.Users
                 .Where(u => !u.IsBanned && !u.IsPending)
                 .Include(u => u.Reports)
                 .Include(u => u.IndustrySubscriptions)
@@ -47,7 +47,7 @@ namespace InsightHub.Services
 
         public async Task<List<UserModel>> GetBannedUsers()
         {
-            var users = await _insightHubContext.Users
+            var users = await _context.Users
                 .Where(u => u.IsBanned)
                 .Include(u => u.Reports)
                 .Include(u => u.IndustrySubscriptions)
@@ -58,7 +58,7 @@ namespace InsightHub.Services
 
         public async Task<List<UserModel>> GetPendingUsers()
         {
-            var users = await _insightHubContext.Users
+            var users = await _context.Users
                 .Where(u => u.IsPending)
                 .Include(u => u.Reports)
                 .Include(u => u.IndustrySubscriptions)
@@ -69,7 +69,7 @@ namespace InsightHub.Services
 
         public async Task<UserModel> UpdateUser(int id, string firstName, string lastName, bool isBanned, string banReason)
         {
-            var user = await _insightHubContext.Users
+            var user = await _context.Users
                 .Include(u => u.Reports)
                 .Include(u => u.IndustrySubscriptions)
                 .FirstOrDefaultAsync(u => u.Id == id && !u.IsBanned)
@@ -81,13 +81,13 @@ namespace InsightHub.Services
             user.BanReason = banReason;
 
             var userDTO = UserMapper.MapModelFromEntity(user);
-            _insightHubContext.SaveChanges();
+            await _context.SaveChangesAsync();
             return userDTO;
         }
 
         public async Task BanUser(int id, string reason)
         {
-            var user = await _insightHubContext.Users
+            var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
             if (user == null || user.LockoutEnabled)
                 throw new ArgumentException("Unable to ban user.");
@@ -95,12 +95,12 @@ namespace InsightHub.Services
             user.IsBanned = true;
             user.BanReason = reason;
             user.LockoutEnd = DateTime.Parse("2555-01-01 00:00:00.00");
-            _insightHubContext.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async Task UnbanUser(int id)
         {
-            var user = await _insightHubContext.Users
+            var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
             if (user == null || !user.LockoutEnabled)
                 throw new ArgumentException("Unable to unban user.");
@@ -108,12 +108,12 @@ namespace InsightHub.Services
             user.IsBanned = false;
             user.BanReason = string.Empty;
             user.LockoutEnd = DateTime.Parse("2000-01-01 00:00:00.00");
-            _insightHubContext.SaveChanges();
+            _context.SaveChanges();
         }
 
         public async Task<List<ReportModel>> GetDownloadedReports(int userId)
         {
-            var reports = await _insightHubContext.DownloadedReports
+            var reports = await _context.DownloadedReports
                 .Include(ur => ur.Report)
                 .ThenInclude(r => r.Author)
                 .Include(ur => ur.Report)
@@ -132,7 +132,7 @@ namespace InsightHub.Services
 
         public async Task<List<ReportModel>> GetMyReports(int userId)
         {
-            var reports = await _insightHubContext.Reports
+            var reports = await _context.Reports
                 .Include(r => r.Author)
                 .Include(r => r.Industry)
                 .Include(r => r.Tags)
@@ -143,6 +143,18 @@ namespace InsightHub.Services
                 .ToListAsync();
 
             return reports;
+        }
+
+        public async Task<List<IndustryModel>> GetMySubscriptions(int userId)
+        {
+            var industries = await _context.IndustrySubscriptions
+                .Include(ui => ui.Industry)
+                .ThenInclude(i => i.Subscriptions)
+                .Where(ui => ui.UserId == userId)
+                .Select(ui => IndustryMapper.MapModelFromEntity(ui.Industry))
+                .ToListAsync();
+
+            return industries;
         }
     }
 }

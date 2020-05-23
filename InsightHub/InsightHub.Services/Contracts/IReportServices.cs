@@ -18,5 +18,6 @@ namespace InsightHub.Services.Contracts
         Task<ReportModel> ToggleFeatured(int id);
         Task<ReportModel> TogglePending(int id);
         Task<ReportModel> UpdateReport(int id, string title, string summary, string description, string imgUrl, string industry, string tags);
+        Task AddToDownloadsCount(int userId, int reportId);
     }
 }

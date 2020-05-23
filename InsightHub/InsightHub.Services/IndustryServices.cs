@@ -42,6 +42,7 @@ namespace InsightHub.Services
         public async Task<IndustryModel> GetIndustry(int id)
         {
             var industry = await _context.Industries
+                .Include(i => i.Subscriptions)
                 .Include(i => i.Reports)
                 .ThenInclude(r => r.Author)
                 .FirstOrDefaultAsync(i => i.Id == id);
@@ -134,6 +135,32 @@ namespace InsightHub.Services
         {
             if (industry == null)
                 throw new ArgumentNullException("No Industry found.");
+        }
+
+        public async Task AddSubscription(int userId, int industryId)
+        {
+            if(!await _context.IndustrySubscriptions.AnyAsync(ui => ui.UserId == userId && ui.IndustryId == industryId))
+            {
+                await _context.IndustrySubscriptions.AddAsync(new IndustrySubscription
+                {
+                    UserId = userId,
+                    IndustryId = industryId
+                });
+            }
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task RemoveSubscription(int userId, int industryId)
+        {
+            if (await _context.IndustrySubscriptions.AnyAsync(ui => ui.UserId == userId && ui.IndustryId == industryId))
+            {
+                _context.IndustrySubscriptions.Remove(new IndustrySubscription
+                {
+                    UserId = userId,
+                    IndustryId = industryId
+                });
+            }
+            await _context.SaveChangesAsync();
         }
     }
 }

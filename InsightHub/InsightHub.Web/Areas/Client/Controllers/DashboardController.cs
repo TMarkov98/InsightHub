@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using InsightHub.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using X.PagedList;
@@ -19,10 +20,10 @@ namespace InsightHub.Web.Areas.Client.Controllers
         {
             _userServices = userServices;
         }
+        [Authorize]
         // GET: Dashboard 
         public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
         {
-            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             ViewData["CurrentSort"] = sort;
             ViewData["SortByTitle"] = sort == "title" ? "title_desc" : "title";
@@ -38,6 +39,7 @@ namespace InsightHub.Web.Areas.Client.Controllers
 
             ViewData["Search"] = search;
 
+            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var reports = await _userServices.GetDownloadedReports(userId);
             var pageSize = 10;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));

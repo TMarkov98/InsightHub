@@ -310,10 +310,25 @@ namespace InsightHub.Services
             return tag;
         }
 
+        public async Task AddToDownloadsCount(int userId, int reportId)
+        {
+            if(!await _context.DownloadedReports.AnyAsync(ur => ur.UserId == userId && ur.ReportId == reportId))
+            {
+                await _context.DownloadedReports.AddAsync(new DownloadedReport
+                {
+                    UserId = userId,
+                    ReportId = reportId
+                });
+                await _context.SaveChangesAsync();
+            }
+        }
+
         private void ValidateReportExists(Report report)
         {
             if (report == null)
                 throw new ArgumentNullException("No Report found.");
         }
+
+        
     }
 }
