@@ -40,6 +40,12 @@
                                 <a class="nav-link text-dark" asp-area="Client" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
                             </li>
                         }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Author"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Author" asp-controller="UploadedReports" asp-action="Index">My Reports</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
