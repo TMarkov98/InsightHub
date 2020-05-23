@@ -34,7 +34,7 @@ namespace InsightHub.Services
             return userDTO;
         }
 
-        public async Task<List<UserModel>> GetUsers()
+        public async Task<List<UserModel>> GetUsers(string search)
         {
             var users = await _context.Users
                 .Where(u => !u.IsBanned && !u.IsPending)
@@ -42,6 +42,14 @@ namespace InsightHub.Services
                 .Include(u => u.IndustrySubscriptions)
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
+
+            if(search != null)
+            {
+                users = users.Where(u => u.FirstName.ToLower().Contains(search.ToLower())
+                || u.LastName.ToLower().Contains(search.ToLower())
+                || u.Email.ToLower().Contains(search.ToLower())).ToList();
+            }
+
             return users;
         }
 
@@ -111,6 +119,13 @@ namespace InsightHub.Services
             _context.SaveChanges();
         }
 
+        public async Task DeleteUser(int id)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<ReportModel>> GetDownloadedReports(int userId)
         {
             var reports = await _context.DownloadedReports
@@ -130,7 +145,7 @@ namespace InsightHub.Services
             return reports;
         }
 
-        public async Task<List<ReportModel>> GetMyReports(int userId)
+        public async Task<List<ReportModel>> GetUploadedReports(int userId)
         {
             var reports = await _context.Reports
                 .Include(r => r.Author)
@@ -156,5 +171,6 @@ namespace InsightHub.Services
 
             return industries;
         }
+
     }
 }
