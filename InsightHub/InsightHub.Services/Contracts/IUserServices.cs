@@ -16,5 +16,6 @@ namespace InsightHub.Services.Contracts
         Task<List<ReportModel>> GetDownloadedReports(int userId);
         Task<List<IndustryModel>> GetMySubscriptions(int userId);
         Task<List<ReportModel>> GetMyReports(int userId);
+        Task<string> GetSubscribedUsers(string industry);
     }
 }

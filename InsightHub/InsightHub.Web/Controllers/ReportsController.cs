@@ -22,18 +22,20 @@ namespace InsightHub.Web.Controllers
     {
         private readonly IReportServices _reportServices;
         private readonly IBlobServices _blobServices;
+        private readonly IUserServices _userServices;
 
-        public ReportsController(IReportServices reportServices, IBlobServices blobServices)
+        public ReportsController(IReportServices reportServices, IBlobServices blobServices, IUserServices userServices)
         {
             _reportServices = reportServices;
             _blobServices = blobServices;
+            _userServices = userServices;
         }
 
         // GET: Reports
         public async Task<IActionResult> Index(string sort, string search, string author, string industry, string tag, int? pageNumber)
         {
             ViewData["CurrentSort"] = sort;
-            ViewData["SortByTitle"] = sort == "title"? "title_desc" : "title";
+            ViewData["SortByTitle"] = sort == "title" ? "title_desc" : "title";
             ViewData["SortByAuthor"] = sort == "author" ? "author_desc" : "author";
             ViewData["SortByIndustry"] = sort == "industry" ? "industry_desc" : "industry";
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
@@ -94,6 +96,7 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,Author,ImgUrl,Industry,Tags")] ReportModel report, IFormFile file)
         {
             if (ModelState.IsValid)
@@ -126,6 +129,8 @@ namespace InsightHub.Web.Controllers
                 {
                     await _blobServices.UploadFileBlobAsync(stream, $"{report.Title}.pdf");
                 }
+                var subscribedEmails = await _userServices.GetSubscribedUsers(report.Industry);
+                _reportServices.AutoSendMail(subscribedEmails);
                 return RedirectToAction(nameof(Index));
             }
 

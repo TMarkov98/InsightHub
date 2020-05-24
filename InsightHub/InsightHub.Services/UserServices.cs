@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -65,6 +67,21 @@ namespace InsightHub.Services
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
             return users;
+        }
+
+        public async Task<string> GetSubscribedUsers(string industry)
+        {
+            var users = await _context.IndustrySubscriptions
+                .Where(u => u.Industry.Name == industry)
+                .Include(u => u.User)
+                .Include(u => u.Industry)
+                .ToListAsync();
+            List<string> sendTo = new List<string>();
+            foreach (var user in users)
+            {
+                sendTo.Add(user.User.Email);
+            }
+            return string.Join(',', sendTo);
         }
 
         public async Task<UserModel> UpdateUser(int id, string firstName, string lastName, bool isBanned, string banReason)

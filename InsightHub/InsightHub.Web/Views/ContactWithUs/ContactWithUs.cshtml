@@ -1,0 +1,34 @@
+﻿@model InsightHub.Web.Models.SendEmailModel
+
+<h4>SendEmailModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ContactWithUs">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Your Email</label>
+                <input asp-for="SentFrom" class="form-control" />
+                <span asp-validation-for="SentFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <textarea asp-for="Subject" class="form-control"></textarea>
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Body" class="control-label"></label>
+                <textarea asp-for="Body" class="form-control" rows="3" cols="15"></textarea>
+                <span asp-validation-for="Body" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send Email" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
