@@ -10,9 +10,12 @@
     <h4>Details</h4>
     <div>
         <a asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe</a>
-        <br/>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-        <br/>
+        <br />
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        }
+        <br />
         <a asp-action="Index">Back to List</a>
     </div>
     <hr />

@@ -17,10 +17,12 @@ namespace InsightHub.Web.Areas.Admin.Controllers
     public class PendingReportsController : Controller
     {
         private readonly IReportServices _reportServices;
+        private readonly IUserServices _userServices;
 
-        public PendingReportsController(IReportServices reportServices)
+        public PendingReportsController(IReportServices reportServices, IUserServices userServices)
         {
-            _reportServices = reportServices;
+            _reportServices = reportServices ?? throw new ArgumentNullException("ReportServices can NOT be null");
+            _userServices = userServices ?? throw new ArgumentNullException("UserServices can NOT be null");
         }
 
         // GET: Admin/PendingReports
@@ -54,7 +56,9 @@ namespace InsightHub.Web.Areas.Admin.Controllers
                     return NotFound();
                 }
                 await _reportServices.ApproveReport(id.Value);
-
+                var approvedReport = await _reportServices.GetReport(id.Value);
+                var subscribedEmails = await _userServices.GetSubscribedUsers(approvedReport.Industry);
+                _reportServices.AutoSendMail(subscribedEmails);
                 return RedirectToAction(nameof(Index));
             }
         }
