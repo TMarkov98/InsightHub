@@ -20,5 +20,7 @@ namespace InsightHub.Services.Contracts
         Task<ReportModel> UpdateReport(int id, string title, string summary, string description, string imgUrl, string industry, string tags);
         Task PermanentlyDeleteReport(int id);
         Task AddToDownloadsCount(int userId, int reportId);
+        void AutoSendMail(string to);
+
     }
 }

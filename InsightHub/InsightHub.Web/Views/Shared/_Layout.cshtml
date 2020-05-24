@@ -49,9 +49,12 @@
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Author"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Author" asp-controller="UploadedReports" asp-action="Index">My Reports</a>
+                                <a class="nav-link text-dark" asp-area="Author" asp-controller="UploadedReports" asp-action="ContactWithUs">My Reports</a>
                             </li>
                         }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ContactWithUs" asp-action="ContactWithUs">Contact With Us</a>
+                        </li>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
@@ -91,7 +94,6 @@
                                 </div>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
