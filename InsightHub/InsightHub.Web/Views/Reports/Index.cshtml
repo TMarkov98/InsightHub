@@ -14,9 +14,9 @@
         <p>
             Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />
             <input type="submit" value="Search" class="btn btn-default" />
-            <br/>
+            <br />
             @ViewData["ResultsCount"] result(s)
-            <br/>
+            <br />
             <a asp-action="Index">Back to Full List</a>
         </p>
     </div>
@@ -92,8 +92,11 @@
                     @Html.DisplayFor(modelItem => item.DownloadsCount)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br/>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @if (User.Identity.IsAuthenticated && User.Identity.Name == item.Author.Split(' ').Last() || User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
                 </td>
             </tr>
         }

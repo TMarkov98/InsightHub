@@ -15,7 +15,7 @@
         <p>
             Search Industries: <input type="text" name="search" value="@ViewData["Search"]" />
             <input type="submit" value="Search" class="btn btn-default" />
-            <br/>
+            <br />
             <a asp-action="Index">Back to Full List</a>
         </p>
     </div>
@@ -43,8 +43,11 @@
                     @Html.DisplayFor(modelItem => item.CreatedOn)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br/>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
                 </td>
             </tr>
         }

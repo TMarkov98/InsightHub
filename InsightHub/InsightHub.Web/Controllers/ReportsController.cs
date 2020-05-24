@@ -134,7 +134,7 @@ namespace InsightHub.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(report);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Reports/Edit/5

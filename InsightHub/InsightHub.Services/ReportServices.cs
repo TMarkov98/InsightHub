@@ -244,12 +244,13 @@ namespace InsightHub.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ReportModel> ApproveReport(int id)
+        public async Task ApproveReport(int id)
         {
             var report = await _context.Reports
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
                 .Include(r => r.Tags)
+                .ThenInclude(ur => ur.Tag)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
 
@@ -257,8 +258,6 @@ namespace InsightHub.Services
                 report.IsPending = false;
 
             await _context.SaveChangesAsync();
-            var reportDTO = ReportMapper.MapModelFromEntity(report);
-            return reportDTO;
         }
 
         public async Task<ReportModel> ToggleFeatured(int id)
@@ -296,8 +295,8 @@ namespace InsightHub.Services
 
         private async Task<Tag> CreateTagIfDoesntExist(string name)
         {
-            name = name.Trim();
-            if (!await _context.Tags.AnyAsync(t => t.Name == name))
+            name = name.ToLower().Trim();
+            if (!await _context.Tags.AnyAsync(t => t.Name.ToLower() == name))
             {
                 await _tagServices.CreateTag(name);
             }
