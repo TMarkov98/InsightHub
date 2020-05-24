@@ -62,6 +62,18 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <br/>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <br />
+    @if (Model.IsPending)
+    {
+        <a asp-area="Admin" asp-controller="PendingUsers" asp-action="Approve" asp-route-id="@Model.Id">Approve</a> <br />
+    }
+    @if (Model.IsBanned)
+    {
+        <a asp-area="Admin" asp-controller="BannedUsers" asp-action="Unban" asp-route-id="@Model.Id">Unban</a> <br />
+    }
+    @if (!Model.IsBanned)
+    {
+        <a asp-area="Admin" asp-controller="Users" asp-action="Ban" asp-route-id="@Model.Id">Ban</a> <br />
+    }
     <a asp-action="Index">Back to List</a>
 </div>
