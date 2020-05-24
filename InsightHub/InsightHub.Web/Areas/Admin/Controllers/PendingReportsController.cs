@@ -1,29 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using InsightHub.Services.Contracts;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using InsightHub.Data;
+using InsightHub.Data.Entities;
+using System.Security.Claims;
+using InsightHub.Services.Contracts;
 using X.PagedList;
 
-namespace InsightHub.Web.Areas.Author.Controllers
+namespace InsightHub.Web.Areas.Admin.Controllers
 {
-    [Area("Author")]
-    public class UploadedReportsController : Controller
+    [Area("Admin")]
+    public class PendingReportsController : Controller
     {
-        private readonly IUserServices _userServices;
+        private readonly IReportServices _reportServices;
 
-        public UploadedReportsController(IUserServices userServices)
+        public PendingReportsController(IReportServices reportServices)
         {
-            _userServices = userServices;
+            _reportServices = reportServices;
         }
-        // GET: UploadedReports
-        [Authorize]
+
+        // GET: Admin/PendingReports
         public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
         {
+
             ViewData["CurrentSort"] = sort;
             ViewData["SortByTitle"] = sort == "title" ? "title_desc" : "title";
             ViewData["SortByAuthor"] = sort == "author" ? "author_desc" : "author";
@@ -39,9 +42,21 @@ namespace InsightHub.Web.Areas.Author.Controllers
             ViewData["Search"] = search;
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var reports = await _userServices.GetUploadedReports(userId);
+            var reports = await _reportServices.GetReportsPending(sort, search);
             var pageSize = 10;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
+        }
+        public async Task<IActionResult> Approve(int? id)
+        {
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                await _reportServices.ApproveReport(id.Value);
+
+                return RedirectToAction(nameof(Index));
+            }
         }
     }
 }

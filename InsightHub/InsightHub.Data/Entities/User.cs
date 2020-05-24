@@ -12,6 +12,7 @@ namespace InsightHub.Data.Entities
         {
             this.Reports = new List<DownloadedReport>();
             this.IndustrySubscriptions = new List<IndustrySubscription>();
+            this.IsPending = true;
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }

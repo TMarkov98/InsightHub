@@ -45,6 +45,7 @@ namespace InsightHub.Services
                 await _context.Reports.AddAsync(report);
                 report.AuthorId = _context.Users.FirstOrDefault(u => u.NormalizedEmail == reportDTO.Author.ToUpper()).Id;
                 report.IndustryId = _context.Industries.FirstOrDefault(i => i.Name.ToUpper() == reportDTO.Industry.ToUpper()).Id;
+                report.IsPending = true;
                 await _context.SaveChangesAsync();
                 await AddTagsToReport(report, reportDTO.Tags);
 
@@ -67,52 +68,10 @@ namespace InsightHub.Services
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
-            if (sort != null)
-            {
-                switch (sort.ToLower())
-                {
-                    case "name":
-                    case "title":
-                        reports = reports.OrderBy(r => r.Title).ToList();
-                        break;
-                    case "title_desc":
-                        reports = reports.OrderByDescending(r => r.Title).ToList();
-                        break;
-                    case "author":
-                    case "user":
-                    case "creator":
-                        reports = reports.OrderBy(r => r.Author).ToList();
-                        break;
-                    case "author_desc":
-                        reports = reports.OrderByDescending(r => r.Author).ToList();
-                        break;
-                    case "industry":
-                        reports = reports.OrderBy(r => r.Industry).ToList();
-                        break;
-                    case "industry_desc":
-                        reports = reports.OrderByDescending(r => r.Industry).ToList();
-                        break;
-                    case "newest":
-                        reports = reports.OrderByDescending(r => r.CreatedOn).ToList();
-                        break;
-                    case "oldest":
-                        reports = reports.OrderBy(r => r.CreatedOn).ToList();
-                        break;
-                    case "downloads":
-                        reports = reports.OrderByDescending(r => r.DownloadsCount).ToList();
-                        break;
-                    case "downloads_asc":
-                        reports = reports.OrderBy(r => r.DownloadsCount).ToList();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            if (search != null)
-            {
-                reports = reports.Where(r => r.Title.ToLower().Contains(search.ToLower())
-                    || r.Summary.ToLower().Contains(search.ToLower())).ToList();
-            }
+
+            SortReports(sort, reports);
+
+            SearchReports(search, reports);
 
             if (author != null)
             {
@@ -141,9 +100,10 @@ namespace InsightHub.Services
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
+
             return reports;
         }
-        public async Task<ICollection<ReportModel>> GetReportsDeleted()
+        public async Task<ICollection<ReportModel>> GetReportsDeleted(string sort, string search)
         {
             var reports = await _context.Reports
                 .Where(r => r.IsDeleted)
@@ -153,6 +113,29 @@ namespace InsightHub.Services
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
+
+            SortReports(sort, reports);
+
+            SearchReports(search, reports);
+
+            return reports;
+        }
+
+        public async Task<ICollection<ReportModel>> GetReportsPending(string sort, string search)
+        {
+            var reports = await _context.Reports
+                .Where(r => r.IsPending)
+                .Include(r => r.Industry)
+                .Include(r => r.Author)
+                .Include(r => r.Tags)
+                .ThenInclude(rt => rt.Tag)
+                .Select(r => ReportMapper.MapModelFromEntity(r))
+                .ToListAsync();
+
+            SortReports(sort, reports);
+
+            SearchReports(search, reports);
+
             return reports;
         }
 
@@ -176,6 +159,7 @@ namespace InsightHub.Services
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
+                .Where(r => !r.IsPending)
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
                 .Include(r => r.Downloads)
@@ -187,18 +171,7 @@ namespace InsightHub.Services
                 .ToListAsync();
             return reports;
         }
-        public async Task<ICollection<ReportModel>> GetReportsPending()
-        {
-            var reports = await _context.Reports
-                .Where(r => r.IsPending)
-                .Include(r => r.Industry)
-                .Include(r => r.Author)
-                .Include(r => r.Tags)
-                .ThenInclude(rt => rt.Tag)
-                .Select(r => ReportMapper.MapModelFromEntity(r))
-                .ToListAsync();
-            return reports;
-        }
+        
 
         public async Task<ReportModel> GetReport(int id)
         {
@@ -233,6 +206,7 @@ namespace InsightHub.Services
             report.Industry = await _context.Industries.FirstOrDefaultAsync(i => i.Name == reportDTO.Industry);
             report.ModifiedOn = DateTime.UtcNow;
             report.Tags.Clear();
+            report.IsPending = true;
             await _context.SaveChangesAsync();
             await AddTagsToReport(report, reportDTO.Tags);
             await _context.SaveChangesAsync();
@@ -240,19 +214,37 @@ namespace InsightHub.Services
             return reportDTO;
         }
 
-        public async Task<bool> DeleteReport(int id)
+        public async Task DeleteReport(int id)
         {
             var report = await _context.Reports
                 .FirstOrDefaultAsync(r => r.Id == id);
             if (report.IsDeleted == true || report == null)
-                return false;
+                throw new ArgumentException("Unable to delete report.");
             report.IsDeleted = true;
             report.DeletedOn = DateTime.UtcNow;
             await _context.SaveChangesAsync();
-            return true;
         }
 
-        public async Task<ReportModel> TogglePending(int id)
+        public async Task RestoreReport(int id)
+        {
+            var report = await _context.Reports.FirstOrDefaultAsync(r => r.Id == id);
+            if (report.IsDeleted == false || report == null)
+                throw new ArgumentException("Unable to restore report.");
+            report.IsDeleted = false;
+            report.DeletedOn = DateTime.MinValue;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task PermanentlyDeleteReport(int id)
+        {
+            var report = await _context.Reports.FirstOrDefaultAsync(r => r.Id == id);
+            if (report.IsDeleted == false || report == null)
+                throw new ArgumentException("Unable to delete report.");
+            _context.Reports.Remove(report);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<ReportModel> ApproveReport(int id)
         {
             var report = await _context.Reports
                 .Include(r => r.Industry)
@@ -263,9 +255,8 @@ namespace InsightHub.Services
 
             if (report.IsPending)
                 report.IsPending = false;
-            else
-                report.IsPending = true;
 
+            await _context.SaveChangesAsync();
             var reportDTO = ReportMapper.MapModelFromEntity(report);
             return reportDTO;
         }
@@ -277,6 +268,7 @@ namespace InsightHub.Services
                 .Include(r => r.Author)
                 .Include(r => r.Tags)
                 .FirstOrDefaultAsync(r => r.Id == id);
+
             ValidateReportExists(report);
 
             if (report.IsFeatured)
@@ -284,6 +276,7 @@ namespace InsightHub.Services
             else
                 report.IsFeatured = true;
 
+            await _context.SaveChangesAsync();
             var reportDTO = ReportMapper.MapModelFromEntity(report);
             return reportDTO;
         }
@@ -332,6 +325,7 @@ namespace InsightHub.Services
         }
 
 
+<<<<<<< HEAD
         public void AutoSendMail(string to)
         {
             var mailMessage = MailMessageMapper(to);
@@ -366,5 +360,63 @@ namespace InsightHub.Services
             smtpClient.Credentials = new NetworkCredential("insighthub.official@gmail.com", "InsightHub");
             return smtpClient;
         }
+=======
+        private ICollection<ReportModel> SortReports(string sort, List<ReportModel> reports)
+        {
+            if (sort != null)
+            {
+                switch (sort.ToLower())
+                {
+                    case "name":
+                    case "title":
+                        reports = reports.OrderBy(r => r.Title).ToList();
+                        break;
+                    case "title_desc":
+                        reports = reports.OrderByDescending(r => r.Title).ToList();
+                        break;
+                    case "author":
+                    case "user":
+                    case "creator":
+                        reports = reports.OrderBy(r => r.Author).ToList();
+                        break;
+                    case "author_desc":
+                        reports = reports.OrderByDescending(r => r.Author).ToList();
+                        break;
+                    case "industry":
+                        reports = reports.OrderBy(r => r.Industry).ToList();
+                        break;
+                    case "industry_desc":
+                        reports = reports.OrderByDescending(r => r.Industry).ToList();
+                        break;
+                    case "newest":
+                        reports = reports.OrderByDescending(r => r.CreatedOn).ToList();
+                        break;
+                    case "oldest":
+                        reports = reports.OrderBy(r => r.CreatedOn).ToList();
+                        break;
+                    case "downloads":
+                        reports = reports.OrderByDescending(r => r.DownloadsCount).ToList();
+                        break;
+                    case "downloads_asc":
+                        reports = reports.OrderBy(r => r.DownloadsCount).ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return reports;
+        }
+
+        private ICollection<ReportModel> SearchReports(string search, ICollection<ReportModel> reports)
+        {
+            if (search != null)
+            {
+                reports = reports.Where(r => r.Title.ToLower().Contains(search.ToLower())
+                    || r.Summary.ToLower().Contains(search.ToLower())).ToList();
+            }
+            return reports;
+        }
+        
+>>>>>>> development
     }
 }

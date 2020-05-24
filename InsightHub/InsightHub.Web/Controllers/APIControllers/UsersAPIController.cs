@@ -22,9 +22,9 @@ namespace InsightHub.Web.Controllers.APIControllers
         }
         // GET: api/UsersAPI
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(string search)
         {
-            var model = await _userServices.GetUsers();
+            var model = await _userServices.GetUsers(search);
             return Ok(model);
         }
 

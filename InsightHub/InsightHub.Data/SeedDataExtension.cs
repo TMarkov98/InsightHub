@@ -26,7 +26,8 @@ namespace InsightHub.Data
                 NormalizedEmail = "ADMIN@GMAIL.COM",
                 CreatedOn = DateTime.UtcNow,
                 LockoutEnabled = true,
-                SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN"
+                SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN",
+                IsPending = false,
             };
 
             User author = new User
@@ -40,7 +41,8 @@ namespace InsightHub.Data
                 NormalizedEmail = "AUTHOR@GMAIL.COM",
                 CreatedOn = DateTime.UtcNow,
                 LockoutEnabled = true,
-                SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXV"
+                SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXV",
+                IsPending = false,
             };
             User client = new User
             {
@@ -53,7 +55,8 @@ namespace InsightHub.Data
                 NormalizedEmail = "CLIENT@GMAIL.COM",
                 CreatedOn = DateTime.UtcNow,
                 LockoutEnabled = true,
-                SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXF"
+                SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXF",
+                IsPending = false,
             };
 
             admin.PasswordHash = hasher.HashPassword(admin, "admin123");
@@ -123,6 +126,7 @@ namespace InsightHub.Data
                     IndustryId = 1,
                     ImgUrl = "First FileURL",
                     CreatedOn = DateTime.UtcNow,
+                    IsPending = false,
                 }
                 );
             modelBuilder.Entity<Report>().HasData(
@@ -137,6 +141,7 @@ namespace InsightHub.Data
                     ImgUrl = "Second FileURL",
                     CreatedOn = DateTime.UtcNow,
                     IsFeatured = true,
+                    IsPending = false,
                 }
                 );
             modelBuilder.Entity<Report>().HasData(
@@ -151,8 +156,8 @@ namespace InsightHub.Data
                     ImgUrl = "Third FileURL",
                     CreatedOn = DateTime.UtcNow,
                     IsFeatured = true,
-                }
-                );
+                    IsPending = false,
+                });
             //Seed Industries
 
             modelBuilder.Entity<Industry>().HasData(
