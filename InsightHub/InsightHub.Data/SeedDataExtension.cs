@@ -126,6 +126,7 @@ namespace InsightHub.Data
                     IndustryId = 1,
                     ImgUrl = "First FileURL",
                     CreatedOn = DateTime.UtcNow,
+                    IsPending = false,
                 }
                 );
             modelBuilder.Entity<Report>().HasData(
@@ -140,6 +141,7 @@ namespace InsightHub.Data
                     ImgUrl = "Second FileURL",
                     CreatedOn = DateTime.UtcNow,
                     IsFeatured = true,
+                    IsPending = false,
                 }
                 );
             modelBuilder.Entity<Report>().HasData(
@@ -154,8 +156,8 @@ namespace InsightHub.Data
                     ImgUrl = "Third FileURL",
                     CreatedOn = DateTime.UtcNow,
                     IsFeatured = true,
-                }
-                );
+                    IsPending = false,
+                });
             //Seed Industries
 
             modelBuilder.Entity<Industry>().HasData(
