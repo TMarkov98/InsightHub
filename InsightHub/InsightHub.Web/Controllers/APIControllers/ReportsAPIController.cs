@@ -74,10 +74,8 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var model = await _reportServices.DeleteReport(id);
-            if (model)
-                return NoContent();
-            return BadRequest();
+            await _reportServices.DeleteReport(id);
+            return NoContent();
         }
     }
 }
