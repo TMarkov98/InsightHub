@@ -80,7 +80,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Download" asp-route-id="@Model.Id">Download</a> <br/>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <br/>
+    <a asp-action="Download" asp-route-id="@Model.Id">Download</a> <br />
+    @if (User.Identity.IsAuthenticated && User.Identity.Name == Model.Author.Split(' ').Last() || User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <br />
+    }
     <a asp-action="Index">All Reports</a>
 </div>
