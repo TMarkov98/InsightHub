@@ -14,7 +14,7 @@
     <div class="form-actions no-color">
         <p>
             Search tags: <input type="text" name="search" value="@ViewData["Search"]" />
-            <input type="submit" value="Search" class="btn btn-default" /> |
+            <input type="submit" value="Search" class="btn btn-default" /> <br/>
             <a asp-action="Index">Back to Full List</a>
         </p>
     </div>
@@ -42,7 +42,7 @@
                     @Html.DisplayFor(modelItem => item.CreatedOn)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br/>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>

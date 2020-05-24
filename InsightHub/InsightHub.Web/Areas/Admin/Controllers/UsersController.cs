@@ -72,7 +72,7 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,IsPending,CreatedOn,ModifiedOn,IsBanned,BanReason,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] UserModel userModel)
+        public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,IsPending,CreatedOn,ModifiedOn,IsBanned,BanReason,Id")] UserModel userModel)
         {
             if (id != userModel.Id)
             {
@@ -134,7 +134,7 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         public async Task<IActionResult> BanConfirmed(int id, string banReason)
         {
             await _userServices.BanUser(id, banReason);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
     }
 }

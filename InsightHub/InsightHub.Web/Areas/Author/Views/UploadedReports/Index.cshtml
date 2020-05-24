@@ -14,7 +14,7 @@
         <p>
             Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />
             <input type="submit" value="Search" class="btn btn-default" />
-            <br />
+            <br/> 
             <a asp-action="Index">Back to Full List</a>
         </p>
     </div>
@@ -75,7 +75,7 @@
                     @Html.DisplayFor(modelItem => item.DownloadsCount)
                 </td>
                 <td>
-                    <a asp-area="" asp-controller="Reports" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-area="" asp-controller="Reports" asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br/>
                     <a asp-area="" asp-controller="Reports" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>

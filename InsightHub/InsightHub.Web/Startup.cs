@@ -126,6 +126,8 @@ namespace InsightHub.Web
             app.UseAuthorization();
 
             app.UseMiddleware<NotFoundMiddleware>();
+            app.UseMiddleware<ArgumentExceptionMiddleware>();
+            app.UseMiddleware<UserLockedOutMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
