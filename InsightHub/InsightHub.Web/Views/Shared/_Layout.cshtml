@@ -52,11 +52,9 @@
                                 <a class="nav-link text-dark" asp-area="Author" asp-controller="UploadedReports" asp-action="ContactWithUs">My Reports</a>
                             </li>
                         }
-<<<<<<< HEAD
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ContactWithUs" asp-action="ContactWithUs">Contact With Us</a>
                         </li>
-=======
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
@@ -96,8 +94,6 @@
                                 </div>
                             </li>
                         }
-
->>>>>>> development
                     </ul>
                 </div>
             </div>

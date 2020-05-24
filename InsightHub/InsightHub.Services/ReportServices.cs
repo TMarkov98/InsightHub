@@ -324,8 +324,6 @@ namespace InsightHub.Services
                 throw new ArgumentNullException("No Report found.");
         }
 
-
-<<<<<<< HEAD
         public void AutoSendMail(string to)
         {
             var mailMessage = MailMessageMapper(to);
@@ -360,7 +358,6 @@ namespace InsightHub.Services
             smtpClient.Credentials = new NetworkCredential("insighthub.official@gmail.com", "InsightHub");
             return smtpClient;
         }
-=======
         private ICollection<ReportModel> SortReports(string sort, List<ReportModel> reports)
         {
             if (sort != null)
@@ -416,7 +413,5 @@ namespace InsightHub.Services
             }
             return reports;
         }
-        
->>>>>>> development
     }
 }
