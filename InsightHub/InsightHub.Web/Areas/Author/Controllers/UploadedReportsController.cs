@@ -39,7 +39,7 @@ namespace InsightHub.Web.Areas.Author.Controllers
             ViewData["Search"] = search;
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var reports = await _userServices.GetMyReports(userId);
+            var reports = await _userServices.GetUploadedReports(userId);
             var pageSize = 10;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }

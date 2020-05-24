@@ -40,5 +40,15 @@ namespace InsightHub.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult UserBanned()
+        {
+            return View();
+        }
+
+        public IActionResult UserPending()
+        {
+            return View();
+        }
     }
 }

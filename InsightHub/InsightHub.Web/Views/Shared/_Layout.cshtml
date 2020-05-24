@@ -49,6 +49,28 @@
                                 <a class="nav-link text-dark" asp-area="Author" asp-controller="UploadedReports" asp-action="Index">My Reports</a>
                             </li>
                         }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
+                                        Users
+                                    </button>
+                                    <ul class="dropdown-menu text-dark">
+                                        <li>
+                                            <a class="dropdown text-dark" asp-area="Admin" asp-controller="Users" asp-action="Index">Active Users</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown text-dark" asp-area="Admin" asp-controller="PendingUsers" asp-action="Index">Pending Users</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown text-dark" asp-area="Admin" asp-controller="BannedUsers" asp-action="Index">Banned Users</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
