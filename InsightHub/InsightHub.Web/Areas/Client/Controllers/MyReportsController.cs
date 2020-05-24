@@ -12,16 +12,16 @@ using X.PagedList;
 namespace InsightHub.Web.Areas.Client.Controllers
 {
     [Area("Client")]
-    public class DashboardController : Controller
+    public class MyReportsController : Controller
     {
         private readonly IUserServices _userServices;
 
-        public DashboardController(IUserServices userServices)
+        public MyReportsController(IUserServices userServices)
         {
             _userServices = userServices;
         }
         [Authorize]
-        // GET: Dashboard 
+        // GET: MyReports 
         public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
         {
 
@@ -44,5 +44,6 @@ namespace InsightHub.Web.Areas.Client.Controllers
             var pageSize = 10;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
+
     }
 }
