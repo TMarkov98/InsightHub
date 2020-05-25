@@ -41,6 +41,7 @@ namespace InsightHub.Services
             var users = await _context.Users
                 .Where(u => !u.IsBanned && !u.IsPending)
                 .Include(u => u.Reports)
+                .Include(u => u.Role)
                 .Include(u => u.IndustrySubscriptions)
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
@@ -54,6 +55,7 @@ namespace InsightHub.Services
         {
             var users = await _context.Users
                 .Where(u => u.IsBanned)
+                .Include(u => u.Role)
                 .Include(u => u.Reports)
                 .Include(u => u.IndustrySubscriptions)
                 .Select(u => UserMapper.MapModelFromEntity(u))
@@ -68,6 +70,7 @@ namespace InsightHub.Services
         {
             var users = await _context.Users
                 .Where(u => u.IsPending)
+                .Include(u => u.Role)
                 .Include(u => u.Reports)
                 .Include(u => u.IndustrySubscriptions)
                 .Select(u => UserMapper.MapModelFromEntity(u))
