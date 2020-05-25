@@ -93,11 +93,11 @@
     {
         @if (Model.IsFeatured)
         {
-            <a asp-action="ToggleFeatured" asp-route-id="@Model.Id">Remove from Featured</a>
+            <a asp-action="ToggleFeatured" asp-route-id="@Model.Id">Remove from Featured</a> <br />
         }
         else
         {
-            <a asp-action="ToggleFeatured" asp-route-id="@Model.Id">Feature</a>
+            <a asp-action="ToggleFeatured" asp-route-id="@Model.Id">Feature</a> <br />
         }
     }
     <a asp-action="Index">All Reports</a>
