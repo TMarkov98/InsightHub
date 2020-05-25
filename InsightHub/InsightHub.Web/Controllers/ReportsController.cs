@@ -67,6 +67,9 @@ namespace InsightHub.Web.Controllers
             if (report == null)
                 return NotFound("Report not found.");
 
+            ViewData["AuthorEmail"] = report.Author.Split("- ").Select(a => a.Trim()).Last();
+            ViewData["Tags"] = report.Tags.Split(',').Select(t => t.Trim());
+
             return View(report);
         }
 
@@ -167,6 +170,17 @@ namespace InsightHub.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(report);
+        }
+
+        public async Task<IActionResult> ToggleFeatured(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound("Id cannot be null.");
+            }
+            await _reportServices.ToggleFeatured(id.Value);
+
+            return RedirectToAction(nameof(Details), new { id });
         }
 
         // GET: Reports/Delete/5

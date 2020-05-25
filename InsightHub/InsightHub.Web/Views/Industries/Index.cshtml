@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Industries</h1>
+<h2>Industries</h2>
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
     <p>
@@ -25,6 +25,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th />
             <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]">Name</a>
             </th>
@@ -38,6 +39,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
+                </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                 </td>
