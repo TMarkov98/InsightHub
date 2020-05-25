@@ -5,11 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-controller="Industries" asp-action="Create">Create New</a>
-</p>
+<h1>Industries</h1>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-controller="Industries" asp-action="Create">Create New</a>
+    </p>
+}
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>

@@ -11,6 +11,7 @@ namespace InsightHub.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public string Role { get; set; }
         public int DownloadedReportsCount { get; set; }
         public List<ReportModel> DownloadedReports { get; set; }
         public DateTime CreatedOn { get; set; }

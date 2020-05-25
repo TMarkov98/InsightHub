@@ -5,16 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<h1>Tags</h1>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
             Search tags: <input type="text" name="search" value="@ViewData["Search"]" />
-            <input type="submit" value="Search" class="btn btn-default" /> <br/>
+            <input type="submit" value="Search" class="btn btn-default" /> <br />
             <a asp-action="Index">Back to Full List</a>
         </p>
     </div>
@@ -41,10 +43,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CreatedOn)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br/>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
             </tr>
         }
     </tbody>
