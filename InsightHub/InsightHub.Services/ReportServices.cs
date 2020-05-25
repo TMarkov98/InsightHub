@@ -260,7 +260,7 @@ namespace InsightHub.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ReportModel> ToggleFeatured(int id)
+        public async Task ToggleFeatured(int id)
         {
             var report = await _context.Reports
                 .Include(r => r.Industry)
@@ -276,8 +276,6 @@ namespace InsightHub.Services
                 report.IsFeatured = true;
 
             await _context.SaveChangesAsync();
-            var reportDTO = ReportMapper.MapModelFromEntity(report);
-            return reportDTO;
         }
 
         private async Task AddTagsToReport(Report report, string tags)

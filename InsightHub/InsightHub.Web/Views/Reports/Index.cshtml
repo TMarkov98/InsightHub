@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h2>Reports</h2>
 @if (User.Identity.IsAuthenticated && User.IsInRole("Author") || User.IsInRole("Admin"))
 {
     <p>
@@ -73,7 +73,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ImgUrl)
+                    <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
                 </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
