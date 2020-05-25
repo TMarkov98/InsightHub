@@ -2,7 +2,7 @@
 
 <h1 class="text-left">My Subscriptions</h1>
 <h5 class="text-left">Industries that you are subscriped to:</h5>
-<h6 class="text-left">You are will get email every time a new <a asp-area="" asp-controller="Reports" asp-action="Index">report</a> from one of these industries is published.</h6> 
+<h6 class="text-left">You are will get email every time a new <a asp-area="" asp-controller="Reports" asp-action="Index">report</a> from one of these industries is published.</h6>
 
 <table class="table">
     <thead>
@@ -21,12 +21,16 @@
         {
             <tr>
                 <td>
-                    <a asp-area=""asp-controller="Industries" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                    <a asp-area="" asp-controller="Industries" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreatedOn)
                 </td>
+                <td>
+                    <a asp-area="" asp-controller="Industries" asp-action="RemoveSubscription" asp-route-id="@item.Id">Remove Subscription</a>
+                </td>
             </tr>
+
         }
     </tbody>
 </table>
