@@ -9,7 +9,14 @@
 <div>
     <h4>Details</h4>
     <div>
-        <a asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe</a>
+        @if ((bool)ViewData["SubscriptionExists"])
+        {
+            <a asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe</a>
+        }
+        else
+        {
+            <a asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe</a>
+        }
         <br />
         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
         {

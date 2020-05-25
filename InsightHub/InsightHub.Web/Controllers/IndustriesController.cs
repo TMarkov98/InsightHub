@@ -48,11 +48,12 @@ namespace InsightHub.Web.Controllers
 
         // GET: Industries/Details/5
         [HttpGet]
-        public async Task<IActionResult> Details(int? id, int? pageNumber)
+        public async Task<IActionResult> Details(int? id)
         {
+            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            ViewData["SubscriptionExists"] = await _industryServices.SubscriptionExists(userId, id.Value);
             if (id == null)
                 return NotFound();
-            ViewData["PageNumber"] = pageNumber;
             var industry = await _industryServices.GetIndustry(id.Value);
             return View(industry);
 
@@ -64,6 +65,16 @@ namespace InsightHub.Web.Controllers
             if (id == null)
                 return NotFound();
             await _industryServices.AddSubscription(userId, id.Value);
+            return RedirectToAction(nameof(Details), new { id });
+        }
+
+
+        public async Task<IActionResult> RemoveSubscription(int? id)
+        {
+            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            if (id == null)
+                return NotFound();
+            await _industryServices.RemoveSubscription(userId, id.Value);
             return RedirectToAction(nameof(Details), new { id });
         }
 

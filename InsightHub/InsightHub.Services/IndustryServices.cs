@@ -139,7 +139,7 @@ namespace InsightHub.Services
 
         public async Task AddSubscription(int userId, int industryId)
         {
-            if(!await _context.IndustrySubscriptions.AnyAsync(ui => ui.UserId == userId && ui.IndustryId == industryId))
+            if (!await SubscriptionExists(userId, industryId))
             {
                 await _context.IndustrySubscriptions.AddAsync(new IndustrySubscription
                 {
@@ -152,7 +152,7 @@ namespace InsightHub.Services
 
         public async Task RemoveSubscription(int userId, int industryId)
         {
-            if (await _context.IndustrySubscriptions.AnyAsync(ui => ui.UserId == userId && ui.IndustryId == industryId))
+            if (await SubscriptionExists(userId, industryId))
             {
                 _context.IndustrySubscriptions.Remove(new IndustrySubscription
                 {
@@ -161,6 +161,11 @@ namespace InsightHub.Services
                 });
             }
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> SubscriptionExists(int userId, int industryId)
+        {
+            return await _context.IndustrySubscriptions.AnyAsync(ui => ui.UserId == userId && ui.IndustryId == industryId);
         }
     }
 }

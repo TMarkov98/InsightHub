@@ -28,6 +28,5 @@ namespace InsightHub.Web.Areas.Client.Controllers
             var subscriptions = await _userServices.GetMySubscriptions(userId);
             return View(subscriptions);
         }
-
     }
 }

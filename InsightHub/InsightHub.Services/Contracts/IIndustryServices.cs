@@ -14,5 +14,6 @@ namespace InsightHub.Services.Contracts
         Task<IndustryModel> UpdateIndustry(int id, string newName, string newImg);
         Task AddSubscription(int userId, int industryId);
         Task RemoveSubscription(int userId, int industryId);
+        Task<bool> SubscriptionExists(int userId, int industryId);
     }
 }
