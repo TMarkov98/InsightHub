@@ -23,12 +23,14 @@ namespace InsightHub.Web.Controllers
         private readonly IReportServices _reportServices;
         private readonly IBlobServices _blobServices;
         private readonly IUserServices _userServices;
+        private readonly IIndustryServices _industryServices;
 
-        public ReportsController(IReportServices reportServices, IBlobServices blobServices, IUserServices userServices)
+        public ReportsController(IReportServices reportServices, IBlobServices blobServices, IUserServices userServices, IIndustryServices industryServices)
         {
             _reportServices = reportServices;
             _blobServices = blobServices;
             _userServices = userServices;
+            _industryServices = industryServices;
         }
 
         // GET: Reports
@@ -89,8 +91,13 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Reports/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var user = await _userServices.GetUser(userId);
+            var industries = await _industryServices.GetAllIndustries(null, null);
+            ViewData["Industry"] = new SelectList(industries.Select(i => i.Name));
+            ViewData["Author"] = user.Email;
             return View();
         }
 
@@ -133,7 +140,10 @@ namespace InsightHub.Web.Controllers
                     await _blobServices.UploadFileBlobAsync(stream, $"{report.Title}.pdf");
                 }
                 var subscribedEmails = await _userServices.GetSubscribedUsers(report.Industry);
-                _reportServices.AutoSendMail(subscribedEmails);
+                if(subscribedEmails.Length > 0)
+                {
+                    _reportServices.AutoSendMail(subscribedEmails);
+                }
                 return RedirectToAction(nameof(Index));
             }
 
