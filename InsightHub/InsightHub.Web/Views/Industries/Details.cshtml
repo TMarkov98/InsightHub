@@ -9,13 +9,13 @@
 <div>
     <h4>Details</h4>
     <div>
-        @if ((bool)ViewData["SubscriptionExists"])
+        @if ((bool)ViewData["SubscriptionExists"] && User.IsInRole("Client"))
         {
-            <a asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe</a>
+            <a asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe from Email notifications</a>
         }
         else
         {
-            <a asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe</a>
+            <a asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe for Email notifications</a>
         }
         <br />
         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))

@@ -107,7 +107,7 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Author,ImgUrl,Industry,Tags")] ReportModel report, IFormFile file)
+        public async Task<IActionResult> Create([Bind("Id,Title,Summary,Description,Author,ImgUrl,Industry,Tags")] ReportModel report, IFormFile file)
         {
             if (ModelState.IsValid)
             {
