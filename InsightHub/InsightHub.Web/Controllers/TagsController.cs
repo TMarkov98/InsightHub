@@ -10,6 +10,7 @@ using InsightHub.Models;
 using InsightHub.Services.Contracts;
 using InsightHub.Data.Entities;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InsightHub.Web.Controllers
 {
@@ -23,6 +24,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Tags
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
         {
             ViewData["CurrentSort"] = sort;
@@ -43,6 +45,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Tags/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -61,6 +64,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Tags/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -82,6 +86,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Tags/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -120,6 +125,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Tags/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

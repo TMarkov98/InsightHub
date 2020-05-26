@@ -58,7 +58,8 @@ namespace InsightHub.Web.Controllers
             return View(industry);
 
         }
-        [Authorize]
+        
+        [Authorize(Roles="Client")]
         public async Task<IActionResult> Subscribe(int? id)
         {
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -68,7 +69,7 @@ namespace InsightHub.Web.Controllers
             return RedirectToAction(nameof(Details), new { id });
         }
 
-
+        [Authorize(Roles = "Client")]
         public async Task<IActionResult> RemoveSubscription(int? id)
         {
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -79,6 +80,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Industries/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -103,6 +105,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Industries/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -134,6 +137,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Industries/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

@@ -10,19 +10,23 @@ using InsightHub.Data.Entities;
 using System.Security.Claims;
 using InsightHub.Services.Contracts;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InsightHub.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class PendingReportsController : Controller
     {
         private readonly IReportServices _reportServices;
         private readonly IUserServices _userServices;
+        private readonly IEmailSenderServices _emailSenderServices;
 
-        public PendingReportsController(IReportServices reportServices, IUserServices userServices)
+        public PendingReportsController(IReportServices reportServices, IUserServices userServices, IEmailSenderServices emailSenderServices)
         {
             _reportServices = reportServices ?? throw new ArgumentNullException("ReportServices can NOT be null");
             _userServices = userServices ?? throw new ArgumentNullException("UserServices can NOT be null");
+            _emailSenderServices = emailSenderServices ?? throw new ArgumentNullException("EmailSenderServices can NOT be null");
         }
 
         // GET: Admin/PendingReports
@@ -58,7 +62,7 @@ namespace InsightHub.Web.Areas.Admin.Controllers
                 await _reportServices.ApproveReport(id.Value);
                 var approvedReport = await _reportServices.GetReport(id.Value);
                 var subscribedEmails = await _userServices.GetSubscribedUsers(approvedReport.Industry);
-                _reportServices.AutoSendMail(subscribedEmails);
+                _emailSenderServices.AutoSendMail(subscribedEmails);
                 return RedirectToAction(nameof(Index));
             }
         }

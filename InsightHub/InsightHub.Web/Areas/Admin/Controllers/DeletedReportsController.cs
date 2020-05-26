@@ -10,10 +10,12 @@ using InsightHub.Data.Entities;
 using System.Security.Claims;
 using InsightHub.Services.Contracts;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InsightHub.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class DeletedReportsController : Controller
     {
         private readonly IReportServices _reportServices;

@@ -9,10 +9,12 @@ using InsightHub.Data;
 using InsightHub.Data.Entities;
 using InsightHub.Services.Contracts;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InsightHub.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class PendingUsersController : Controller
     {
         private readonly IUserServices _userServices;

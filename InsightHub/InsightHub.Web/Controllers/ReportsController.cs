@@ -74,7 +74,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Reports/Details/5/Download
-        [Authorize]
+        [Authorize(Roles = "Admin, Client")]
         public async Task<IActionResult> Download(int? id)
         {
             if (id == null)
@@ -89,6 +89,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Reports/Create
+        [Authorize(Roles = "Admin, Author")]
         public IActionResult Create()
         {
             return View();
@@ -99,7 +100,6 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,Author,ImgUrl,Industry,Tags")] ReportModel report, IFormFile file)
         {
             if (ModelState.IsValid)
@@ -132,8 +132,6 @@ namespace InsightHub.Web.Controllers
                 {
                     await _blobServices.UploadFileBlobAsync(stream, $"{report.Title}.pdf");
                 }
-                var subscribedEmails = await _userServices.GetSubscribedUsers(report.Industry);
-                _reportServices.AutoSendMail(subscribedEmails);
                 return RedirectToAction(nameof(Index));
             }
 
@@ -141,6 +139,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Reports/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -171,7 +170,7 @@ namespace InsightHub.Web.Controllers
             }
             return View(report);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ToggleFeatured(int? id)
         {
             if(id == null)
@@ -184,6 +183,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Reports/Delete/5
+        [Authorize(Roles = "Admin, Author")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
