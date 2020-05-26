@@ -28,7 +28,8 @@ namespace InsightHub.Data
         {
             modelBuilder.Entity<Report>().Property(r => r.Title).HasMaxLength(100).IsRequired();
             modelBuilder.Entity<Report>().HasOne(r => r.Author);
-            modelBuilder.Entity<Report>().Property(r => r.Description).HasMaxLength(1000).IsRequired();
+            modelBuilder.Entity<Report>().Property(r => r.Summary).HasMaxLength(300).IsRequired();
+            modelBuilder.Entity<Report>().Property(r => r.Description).HasMaxLength(5000).IsRequired();
             modelBuilder.Entity<Report>().HasOne(r => r.Industry);
 
             modelBuilder.Entity<User>().Property(u => u.FirstName).IsRequired();
