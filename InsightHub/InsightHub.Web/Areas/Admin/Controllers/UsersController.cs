@@ -10,10 +10,12 @@ using InsightHub.Data.Entities;
 using InsightHub.Services.Contracts;
 using InsightHub.Models;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InsightHub.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly IUserServices _userServices;

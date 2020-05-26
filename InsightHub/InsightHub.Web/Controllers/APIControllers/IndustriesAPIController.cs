@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using InsightHub.Services;
 using InsightHub.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
@@ -43,6 +44,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // POST: api/Industries
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] string name, string imgUrl)
         {
             var industry = await _industriesServices.CreateIndustry(name, imgUrl);
@@ -52,6 +54,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // PUT: api/Industries/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, [FromBody] string name, string img)
         {
             var industry = await _industriesServices.UpdateIndustry(id, name, img);
@@ -60,6 +63,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             if (await _industriesServices.DeleteIndustry(id))

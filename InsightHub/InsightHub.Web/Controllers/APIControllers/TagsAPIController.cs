@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using InsightHub.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -63,6 +64,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // POST: api/Tags
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Post([FromBody] string name)
         {
 
@@ -73,6 +75,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // PUT: api/Tags/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Put(int id, [FromBody] string name)
         {
             var model = await _tagServices.UpdateTag(id, name);
@@ -82,6 +85,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var model = await _tagServices.DeleteTag(id);

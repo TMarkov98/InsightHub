@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using InsightHub.Models;
 using InsightHub.Services;
 using InsightHub.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 {
     [Route("api/users")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class UsersAPIController : ControllerBase
     {
         private readonly IUserServices _userServices;

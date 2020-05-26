@@ -68,6 +68,7 @@ namespace InsightHub.Web
             services.AddScoped<IIndustryServices, IndustryServices>();
             services.AddScoped<IReportServices, ReportServices>();
             services.AddScoped<ITagServices, TagServices>();
+            services.AddScoped<IEmailSenderServices, EmailSenderServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

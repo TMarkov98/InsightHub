@@ -5,6 +5,7 @@ using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using InsightHub.Models;
 using InsightHub.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,6 +47,8 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // GET: api/Reports/5/download
         [HttpGet("{id}/download")]
+        [Authorize]
+
         public async Task<IActionResult> Download(int id)
         {
             var model = await _reportServices.GetReport(id);
@@ -56,6 +59,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // POST: api/Reports
         [HttpPost]
+        [Authorize(Roles = "Admin, Author")]
         public async Task<IActionResult> Post([FromBody] ReportModel report)
         {
             var model = await _reportServices.CreateReport(report.Title, report.Summary, report.Description, report.Author, report.ImgUrl, report.Industry, report.Tags.ToString());
@@ -64,6 +68,8 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // PUT: api/Reports/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, Author")]
+
         public async Task<IActionResult> Put(int id, [FromBody] ReportModel report)
         {
             var model = await _reportServices.UpdateReport(id, report.Title, report.Summary, report.Description, report.ImgUrl, report.Industry, report.Tags.ToString());
@@ -72,6 +78,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin, Author")]
         public async Task<IActionResult> Delete(int id)
         {
             await _reportServices.DeleteReport(id);
