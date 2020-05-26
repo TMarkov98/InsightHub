@@ -62,7 +62,10 @@ namespace InsightHub.Web.Areas.Admin.Controllers
                 await _reportServices.ApproveReport(id.Value);
                 var approvedReport = await _reportServices.GetReport(id.Value);
                 var subscribedEmails = await _userServices.GetSubscribedUsers(approvedReport.Industry);
-                _emailSenderServices.AutoSendMail(subscribedEmails);
+                if (subscribedEmails.Length > 0)
+                {
+                    _emailSenderServices.AutoSendMail(subscribedEmails);
+                }
                 return RedirectToAction(nameof(Index));
             }
         }
