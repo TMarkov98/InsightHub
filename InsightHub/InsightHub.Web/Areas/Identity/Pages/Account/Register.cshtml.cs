@@ -76,6 +76,9 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            public bool IsClient { get; set; }
+            public bool IsAuthor { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -86,12 +89,24 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            if(Input.IsClient == false && Input.IsAuthor == false)
+            {
+                throw new ArgumentException("The account must be either a Client, or an Author, or both.");
+            }
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
                 var user = new User { FirstName = Input.FirstName, LastName = Input.LastName, UserName = Input.Email, PhoneNumber = Input.PhoneNumber, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                if(Input.IsClient)
+                {
+                    await _userManager.AddToRoleAsync(user, "Client");
+                }
+                if(Input.IsAuthor)
+                {
+                    await _userManager.AddToRoleAsync(user, "Author");
+                }
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
