@@ -278,6 +278,19 @@ namespace InsightHub.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task AddToDownloadsCount(int userId, int reportId)
+        {
+            if(!await _context.DownloadedReports.AnyAsync(ur => ur.UserId == userId && ur.ReportId == reportId))
+            {
+                await _context.DownloadedReports.AddAsync(new DownloadedReport
+                {
+                    UserId = userId,
+                    ReportId = reportId
+                });
+                await _context.SaveChangesAsync();
+            }
+        }
+
         private async Task AddTagsToReport(Report report, string tags)
         {
             var tagsList = tags.Split(',', ';', '.');
@@ -300,19 +313,6 @@ namespace InsightHub.Services
             }
             var tag = _context.Tags.FirstOrDefault(t => t.Name == name);
             return tag;
-        }
-
-        public async Task AddToDownloadsCount(int userId, int reportId)
-        {
-            if(!await _context.DownloadedReports.AnyAsync(ur => ur.UserId == userId && ur.ReportId == reportId))
-            {
-                await _context.DownloadedReports.AddAsync(new DownloadedReport
-                {
-                    UserId = userId,
-                    ReportId = reportId
-                });
-                await _context.SaveChangesAsync();
-            }
         }
 
         private void ValidateReportExists(Report report)

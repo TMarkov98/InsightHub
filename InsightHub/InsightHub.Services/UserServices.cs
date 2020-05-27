@@ -103,10 +103,11 @@ namespace InsightHub.Services
 
             user.FirstName = firstName;
             user.LastName = lastName;
-            user.LockoutEnabled = isBanned;
+            user.IsBanned = isBanned;
             user.BanReason = banReason;
 
             var userDTO = UserMapper.MapModelFromEntity(user);
+            user.ModifiedOn = DateTime.UtcNow;
             await _context.SaveChangesAsync();
             return userDTO;
         }

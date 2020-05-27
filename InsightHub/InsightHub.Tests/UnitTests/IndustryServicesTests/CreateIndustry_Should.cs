@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace InsightHub.Tests.UnitTests.IndustryServicesTests
 {
     [TestClass]
-    public class CreateIndustry_Should
+    public class CreateReport_Should
     {
         [TestMethod]
         public async Task CreateIndustry_WhenParamsAreValid()
