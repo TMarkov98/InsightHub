@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InsightHub.Tests.UnitTests.TagServicesTests
+namespace InsightHub.Tests.UnitTests.UserServicesTests
 {
     [TestClass]
     public class UpdateUser_Should
@@ -34,10 +34,10 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
             var act = await sut.UpdateUser(1, "Test First Name", "Test Last Name", true, "Test Ban Reason");
             var result = assertContext.Users.FirstOrDefault();
             Assert.AreEqual("Test First Name", result.FirstName);
-            Assert.AreEqual("Test Last Name", result.FirstName);
+            Assert.AreEqual("Test Last Name", result.LastName);
             Assert.IsTrue(result.IsBanned);
             Assert.AreEqual("Test Ban Reason", result.BanReason);
-            Assert.AreNotEqual(originalModifiedDate, act.ModifiedOn);
+            Assert.AreNotEqual(originalModifiedDate, result.ModifiedOn);
         }
         [TestMethod]
         public async Task Throw_WhenUserDoesntExist()
