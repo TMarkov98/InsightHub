@@ -69,9 +69,9 @@ namespace InsightHub.Services
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
 
-            SortReports(sort, reports);
+            reports = SortReports(sort, reports).ToList();
 
-            SearchReports(search, reports);
+            reports = SearchReports(search, reports).ToList();
 
             if (author != null)
             {
@@ -114,9 +114,9 @@ namespace InsightHub.Services
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
 
-            SortReports(sort, reports);
+            reports = SortReports(sort, reports).ToList();
 
-            SearchReports(search, reports);
+            reports = SearchReports(search, reports).ToList();
 
             return reports;
         }
@@ -132,9 +132,9 @@ namespace InsightHub.Services
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
 
-            SortReports(sort, reports);
+            reports = SortReports(sort, reports).ToList();
 
-            SearchReports(search, reports);
+            reports = SearchReports(search, reports).ToList();
 
             return reports;
         }

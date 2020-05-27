@@ -42,7 +42,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
 
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
-            await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => sut.GetTag(1));
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => sut.UpdateTag(5, "n"));
         }
         [TestMethod]
         public async Task ThrowArgumentException_When_ParamNotValid()
