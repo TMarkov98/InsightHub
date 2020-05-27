@@ -132,13 +132,38 @@ namespace InsightHub.Tests.UnitTests
         {
             return new User
             {
-                Id = 1,
+                Id = 3,
                 FirstName = "Third",
                 LastName = "Test",
                 Email = "thirdTest@user.com",
                 UserName = "thirdTest@user.com",
                 CreatedOn = DateTime.UtcNow,
                 PhoneNumber = "123321",
+            };
+        }
+        //Seed Downloaded Reports
+        public static DownloadedReport SeedDownloadedReport()
+        {
+            return new DownloadedReport
+            {
+                UserId = 1,
+                ReportId = 1,
+            };
+        }
+        public static DownloadedReport SeedDownloadedReport2()
+        {
+            return new DownloadedReport
+            {
+                UserId = 1,
+                ReportId = 2,
+            };
+        }
+        public static DownloadedReport SeedDownloadedReport3()
+        {
+            return new DownloadedReport
+            {
+                UserId = 2,
+                ReportId = 2,
             };
         }
     }

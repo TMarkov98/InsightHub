@@ -23,7 +23,6 @@ namespace InsightHub.Services
         {
             _context = context;
         }
-        [Authorize]
         public async Task<UserModel> GetUser(int id)
         {
             var user = await _context.Users
@@ -36,7 +35,6 @@ namespace InsightHub.Services
             var userDTO = UserMapper.MapModelFromEntity(user);
             return userDTO;
         }
-        [Authorize]
         public async Task<List<UserModel>> GetUsers(string search)
         {
             var users = await _context.Users
@@ -47,11 +45,10 @@ namespace InsightHub.Services
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
 
-            SearchUsers(search, users);
+            users = SearchUsers(search, users);
 
             return users;
         }
-        [Authorize]
         public async Task<List<UserModel>> GetBannedUsers(string search)
         {
             var users = await _context.Users
@@ -62,11 +59,10 @@ namespace InsightHub.Services
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
 
-            SearchUsers(search, users);
+            users = SearchUsers(search, users);
 
             return users;
         }
-        [Authorize]
         public async Task<List<UserModel>> GetPendingUsers(string search)
         {
             var users = await _context.Users
@@ -77,11 +73,11 @@ namespace InsightHub.Services
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
 
-            SearchUsers(search, users);
+            users = SearchUsers(search, users);
 
             return users;
         }
-        [Authorize]
+
         public async Task<string> GetSubscribedUsers(string industry)
         {
             var users = await _context.IndustrySubscriptions
@@ -96,7 +92,7 @@ namespace InsightHub.Services
             }
             return string.Join(',', sendTo);
         }
-        [Authorize]
+
         public async Task<UserModel> UpdateUser(int id, string firstName, string lastName, bool isBanned, string banReason)
         {
             var user = await _context.Users
@@ -114,7 +110,6 @@ namespace InsightHub.Services
             await _context.SaveChangesAsync();
             return userDTO;
         }
-        [Authorize]
         public async Task BanUser(int id, string reason)
         {
             var user = await _context.Users
@@ -126,7 +121,6 @@ namespace InsightHub.Services
             user.BanReason = reason;
             await _context.SaveChangesAsync();
         }
-        [Authorize]
         public async Task ApproveUser(int id)
         {
             var user = await _context.Users
@@ -136,7 +130,6 @@ namespace InsightHub.Services
             user.IsPending = false;
             await _context.SaveChangesAsync();
         }
-        [Authorize]
         public async Task UnbanUser(int id)
         {
             var user = await _context.Users
@@ -148,14 +141,16 @@ namespace InsightHub.Services
             user.BanReason = string.Empty;
             _context.SaveChanges();
         }
-        [Authorize]
         public async Task DeleteUser(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            if(user == null)
+            {
+                throw new ArgumentException("Unable to delete user.");
+            }
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
         }
-        [Authorize]
         public async Task<List<ReportModel>> GetDownloadedReports(int userId)
         {
             var reports = await _context.DownloadedReports
@@ -174,7 +169,6 @@ namespace InsightHub.Services
 
             return reports;
         }
-        [Authorize]
         public async Task<List<ReportModel>> GetUploadedReports(int userId)
         {
             var reports = await _context.Reports
@@ -189,8 +183,7 @@ namespace InsightHub.Services
 
             return reports;
         }
-        [Authorize]
-        public async Task<List<IndustryModel>> GetMySubscriptions(int userId)
+        public async Task<List<IndustryModel>> GetSubscriptions(int userId)
         {
             var industries = await _context.IndustrySubscriptions
                 .Include(ui => ui.Industry)
@@ -201,7 +194,6 @@ namespace InsightHub.Services
 
             return industries;
         }
-        [Authorize]
         private List<UserModel> SearchUsers(string search, List<UserModel> users)
         {
             if(search != null)

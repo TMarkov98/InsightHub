@@ -25,7 +25,7 @@ namespace InsightHub.Web.Areas.Client.Controllers
         public async Task<IActionResult> Index()
         {
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var subscriptions = await _userServices.GetMySubscriptions(userId);
+            var subscriptions = await _userServices.GetSubscriptions(userId);
             return View(subscriptions);
         }
     }
