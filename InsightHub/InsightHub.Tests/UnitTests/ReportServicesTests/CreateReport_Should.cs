@@ -27,10 +27,10 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
 
             using (var arrangeContext = new InsightHubContext(options))
             {
-                arrangeContext.Users.Add(author);
-                arrangeContext.Industries.Add(industry);
-                arrangeContext.Tags.Add(tag);
-                arrangeContext.SaveChanges();
+                await arrangeContext.Users.AddAsync(author);
+                await arrangeContext.Industries.AddAsync(industry);
+                await arrangeContext.Tags.AddAsync(tag);
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var assertContext = new InsightHubContext(options))

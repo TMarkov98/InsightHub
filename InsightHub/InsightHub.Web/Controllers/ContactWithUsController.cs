@@ -27,7 +27,7 @@ namespace InsightHub.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ContactWithUs(SendEmailModel sendEmailModel)
         {
-            sendEmailModel.Body = $"Email from:{sendEmailModel.SentFrom}.\n" + sendEmailModel.Body;
+            sendEmailModel.Body = $"Email from: {sendEmailModel.SentFrom}.\n" + sendEmailModel.Body;
             var mailMessage = MailMessageMapper("insighthub.official@gmail.com", sendEmailModel.Subject, sendEmailModel.Body);
             var smtpClient = SmtpClientMapper();
 
