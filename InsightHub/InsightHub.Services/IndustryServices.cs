@@ -42,7 +42,7 @@ namespace InsightHub.Services
         public async Task<IndustryModel> GetIndustry(int id)
         {
             var industry = await _context.Industries
-                .Include(i => i.Subscriptions)
+                .Include(i => i.SubscribedUsers)
                 .Include(i => i.Reports)
                 .ThenInclude(r => r.Author)
                 .FirstOrDefaultAsync(i => i.Id == id);

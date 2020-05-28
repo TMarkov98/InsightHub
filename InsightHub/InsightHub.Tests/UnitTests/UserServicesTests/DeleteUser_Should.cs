@@ -36,7 +36,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
 
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
-            await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.DeleteUser(5));
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.DeleteUser(5));
         }
     }
 }

@@ -73,6 +73,7 @@ namespace InsightHub.Tests.UnitTests
                 AuthorId = 1,
                 CreatedOn = DateTime.UtcNow,
                 Title = "TestReport1",
+                Summary = "TestSummary1",
                 Description = "TestDescription1",
                 IndustryId = 1,
             };
@@ -82,9 +83,10 @@ namespace InsightHub.Tests.UnitTests
             return new Report
             {
                 Id = 2,
-                AuthorId = 2,
+                AuthorId = 1,
                 CreatedOn = DateTime.UtcNow,
                 Title = "TestReport2",
+                Summary = "TestSummary2",
                 Description = "TestDescription2",
                 IndustryId = 2,
             };
@@ -94,8 +96,9 @@ namespace InsightHub.Tests.UnitTests
             return new Report
             {
                 Id = 3,
-                AuthorId = 3,
+                AuthorId = 1,
                 CreatedOn = DateTime.UtcNow,
+                Summary = "TestSummary3",
                 Title = "TestReport3",
                 Description = "TestDescription3",
                 IndustryId = 3,

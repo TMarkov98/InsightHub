@@ -94,7 +94,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(2308),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(6239),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://help-investor.com/wp-content/uploads/2018/07/Accountant.jpg",
                             IsDeleted = false,
@@ -104,7 +104,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(2876),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(6809),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.henkel.com/resource/image/946964/4x3/1120/840/e9b0d415e2ab94d019b20e32cf0f015/el/aerospace-industry-growth.jpg",
                             IsDeleted = false,
@@ -114,7 +114,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(2904),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(6837),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://media.foxbusiness.com/BrightCove/854081161001/202005/2760/854081161001_6157982707001_6157986352001-vs.jpg",
                             IsDeleted = false,
@@ -124,7 +124,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(2920),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(6852),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://j2offshore.com/wp-content/uploads/2018/05/automative-2.jpg",
                             IsDeleted = false,
@@ -134,7 +134,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(2933),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(6866),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://studyabroad.bg/wp-content/uploads/2016/04/Bank.jpg",
                             IsDeleted = false,
@@ -144,7 +144,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(2949),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(6882),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://goguide.bg/upload/places/inner/1576236597Embassy.png",
                             IsDeleted = false,
@@ -154,7 +154,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(2963),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(6896),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://rr-hk.com/Building_material/img/62614691_custom.jpg",
                             IsDeleted = false,
@@ -164,7 +164,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(2975),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(6909),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://ftguidetobusinesstraining.com/wp-content/uploads/2018/08/Business-Services01.jpg",
                             IsDeleted = false,
@@ -174,7 +174,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(2987),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(6923),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://q-cf.bstatic.com/images/hotel/max1024x768/240/240066005.jpg",
                             IsDeleted = false,
@@ -184,7 +184,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3002),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7006),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/CH_cow_2_cropped.jpg/1200px-CH_cow_2_cropped.jpg",
                             IsDeleted = false,
@@ -194,7 +194,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3015),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7021),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://scstylecaster.files.wordpress.com/2018/08/nyfw-fi.png",
                             IsDeleted = false,
@@ -204,7 +204,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 12,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3027),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7034),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://cfhsprowler.com/wp-content/uploads/2020/01/download.jpg",
                             IsDeleted = false,
@@ -214,7 +214,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 13,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3040),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7048),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://ctbhost.com/wp-content/uploads/2019/07/computer-internet-franchise-1.jpg",
                             IsDeleted = false,
@@ -224,7 +224,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3052),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7061),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://s27389.pcdn.co/wp-content/uploads/2019/07/digital-transformation-construction-industry-1024x440.jpeg",
                             IsDeleted = false,
@@ -234,7 +234,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 15,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3065),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7075),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.netafim.com/48da28/globalassets/demo/products-and-solutions/open-fields/open_fields_headvisual-graded.jpg?height=620&width=1440&mode=crop&quality=80",
                             IsDeleted = false,
@@ -244,7 +244,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 16,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3077),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7088),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.maritime-executive.com/media/images/article/Photos/Cruise_Ships/Diamond-Princess-sailing-in-Japan-courtesy-Princess-Cruises.78319a.jpg",
                             IsDeleted = false,
@@ -254,7 +254,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 17,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3090),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7101),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://lh3.googleusercontent.com/proxy/B2Ha-PwtOsxqi3MXwm2SCOWM6CxKChDn4KM5xQ3G58LEULJkzZAS68_6Dz5k00fyK3WIca58WzfewwtRH5khlEgdF69EPlFKQ3QtiJF4KQGXKxv1v76dGKsixlpP",
                             IsDeleted = false,
@@ -264,7 +264,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 18,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3141),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7115),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://idsb.tmgrup.com.tr/2015/10/05/GenelBuyuk/1443984579449_rs.jpg",
                             IsDeleted = false,
@@ -274,7 +274,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 19,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3156),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7128),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.orthodonticslimited.com/wp-content/uploads/2017/12/Depositphotos_dentisttool.jpg",
                             IsDeleted = false,
@@ -284,7 +284,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 20,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3169),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7140),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://miro.medium.com/max/3200/1*afTS3knLUSHCJDirSOlq1g.jpeg",
                             IsDeleted = false,
@@ -294,7 +294,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 21,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3182),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7153),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.healthcaresalestraining.com/photo/5.jpg",
                             IsDeleted = false,
@@ -304,7 +304,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 22,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3194),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7166),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.e-spincorp.com/wp-content/uploads/2019/02/laser-micro-machining-electrical-industry-e1549935628710.jpg",
                             IsDeleted = false,
@@ -314,7 +314,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 23,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3207),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7178),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.power-technology.com/wp-content/uploads/sites/7/2018/01/Renewable_Energy_on_the_Grid.jpg",
                             IsDeleted = false,
@@ -324,7 +324,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 24,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3220),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7191),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.marketingtochina.com/wp-content/uploads/2017/08/seo-marketing.jpg",
                             IsDeleted = false,
@@ -334,7 +334,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 25,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3232),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7204),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://lh3.googleusercontent.com/proxy/Zm1otIkpcrSH9UHtVeqp3QWllwBRaPjVWkRHlKMDCT88mbJkkj7xzg1qO87ZdpMsFkhdfl8DoVSbQhbyitaQYqSDepQ_fpFWF0z8zXjWMz2AqN3jtOXcJhqYLBkV14SGJQGPDcLqIF-_OdlxCgoOlSG97VZdLubN",
                             IsDeleted = false,
@@ -344,7 +344,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 26,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3244),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7216),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://upload.wikimedia.org/wikipedia/commons/7/7e/Farm_Kartoffelfeld_Schweden.jpg",
                             IsDeleted = false,
@@ -354,7 +354,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 27,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3258),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7229),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.newdma.org/wp-content/uploads/2015/01/Digital-marketing-for-the-Finance-industry.jpg",
                             IsDeleted = false,
@@ -364,7 +364,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 28,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3270),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7242),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://miro.medium.com/max/5120/1*YENSrU0nehgyGk6W-G8Rpg.jpeg",
                             IsDeleted = false,
@@ -374,7 +374,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 29,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3283),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7255),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.makeinethiopia.com/wp-content/uploads/2018/06/Food-Processing.png",
                             IsDeleted = false,
@@ -384,7 +384,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 30,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3295),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7299),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://news.northeastern.edu/wp-content/uploads/2016/07/prison_money-800x0-c-default.jpg",
                             IsDeleted = false,
@@ -394,7 +394,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 31,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3308),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7313),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://wallenius-sol.com/sites/wallenius-sol.com/files/the-forest-industry_photo-shutterstock_wallenius-sol_the-enabler_1920x1080px.jpg",
                             IsDeleted = false,
@@ -404,7 +404,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 32,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3321),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7326),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://wiedemanfuneralhome.com/4640/Ultra/Woodbridge_Gardening.jpg",
                             IsDeleted = false,
@@ -414,7 +414,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 33,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3333),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7339),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://plsadaptive.s3.amazonaws.com/eco/images/channel_content/images/offshore_platform.jpg",
                             IsDeleted = false,
@@ -424,7 +424,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 34,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3348),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7355),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.pinimg.com/originals/da/9b/60/da9b60f63d0957cc785967b309c7d775.jpg",
                             IsDeleted = false,
@@ -434,7 +434,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 35,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3360),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7368),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://geekculturepodcast.com/wp-content/uploads/2019/05/Healthcare-Industry.jpg",
                             IsDeleted = false,
@@ -444,7 +444,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 36,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3372),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7381),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://cdn.aiidatapro.net/media/ec/a5/90/t780x490/eca590e038af4adfb46a726b3c0f9a98.jpg",
                             IsDeleted = false,
@@ -454,7 +454,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 37,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3416),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7394),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://miro.medium.com/max/960/1*VghRFv3Ejzs18nJ0MHzg9g.jpeg",
                             IsDeleted = false,
@@ -464,7 +464,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 38,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3430),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7406),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://multimedia.europarl.europa.eu/documents/20143/0/AP_97209887+%281%29.jpg",
                             IsDeleted = false,
@@ -474,7 +474,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 39,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3442),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7419),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://synchronium.io/wp-content/uploads/2019/02/blockchain-insurance-619x410.jpg",
                             IsDeleted = false,
@@ -484,7 +484,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 40,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3456),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7432),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://w7.pngwing.com/pngs/595/460/png-transparent-industry-businessperson-labor-industrail-workers-and-engineers-miscellaneous-people-employment.png",
                             IsDeleted = false,
@@ -494,7 +494,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 41,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3468),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7445),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.wallpaperup.com/uploads/wallpapers/2015/06/02/708905/8a78abe919157ab98171b9aa86e21eb7-700.jpg",
                             IsDeleted = false,
@@ -504,7 +504,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 42,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3480),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7458),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://blogs.3ds.com/delmia/wp-content/uploads/sites/24/2018/06/meat-disassembly-blog.jpg",
                             IsDeleted = false,
@@ -514,7 +514,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 43,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3493),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7471),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.tibco.com/blog/wp-content/uploads/2015/03/How-The-Music-Industry-is-Getting-Smarter.jpg",
                             IsDeleted = false,
@@ -524,7 +524,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 44,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3506),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7484),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://lh3.googleusercontent.com/proxy/nYMe910fGr1aP9-4Vvjhd61EQ1vOgqPcfEcl9LsLAE-7jVV6-eadYp0lnn0v4BBtuY8mmzU1tUMEQG9qBPAHgYarOEk7VnCP3VpDb_Yg8BcMGrTbDHQH97ffNdBH-5w4ee7T4KTUfYD3WF0dfJ7YPcdNu50Uy1XE4tt9MA",
                             IsDeleted = false,
@@ -534,7 +534,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 45,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3518),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7497),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://burdockgroup.com/wp-content/uploads/2018/05/dietary-supplements-wooden-spoons-copy.jpg",
                             IsDeleted = false,
@@ -544,7 +544,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 46,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3531),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7510),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://cdn.pixabay.com/photo/2015/11/03/08/56/question-mark-1019820_1280.jpg",
                             IsDeleted = false,
@@ -554,7 +554,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 47,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3543),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7523),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.digitalais.com/wp-content/uploads/2017/06/Farmaceutick%C3%BD-pr%C5%AFmysl.jpg",
                             IsDeleted = false,
@@ -564,7 +564,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 48,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3555),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7535),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.marketingchina.agency/wp-content/uploads/2018/02/mobile-phone-industry-500x329.jpg",
                             IsDeleted = false,
@@ -574,7 +574,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 49,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3568),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7579),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.uoe.co.uk/wp-content/uploads/2018/07/Post-box-1.jpg",
                             IsDeleted = false,
@@ -584,7 +584,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 50,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3580),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7592),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://erp.bg/wp-content/uploads/2017/05/1-print-industry_2.gif",
                             IsDeleted = false,
@@ -594,7 +594,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 51,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3592),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7606),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://assets.kpmg/content/dam/kpmg/images/2015/02/electric-power-lines.jpg/jcr:content/renditions/original",
                             IsDeleted = false,
@@ -604,7 +604,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 52,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3605),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7618),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://w7.pngwing.com/pngs/734/1/png-transparent-business-interior-design-services-building-private-equity-money-business-building-people-investment.png",
                             IsDeleted = false,
@@ -614,7 +614,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 53,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3617),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7631),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://userscontent2.emaze.com/images/52feb565-01b5-4632-ae33-217f1becc980/329bdafc34fc27857aa6f2a0cb0168a0.jpg",
                             IsDeleted = false,
@@ -624,7 +624,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 54,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3630),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7643),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://lh3.googleusercontent.com/proxy/V8LQ-lwAm3Ra4I_PvVE6U4WahtpFtpHwXd6BU77kyUPo0a-x0KXYBdRJSMuXxX85yaGNNIqczkOUCaq35M_4Qbh2YKUyJeMVn9yU01ywE9DuAi7mEZg",
                             IsDeleted = false,
@@ -634,7 +634,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 55,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3642),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7656),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://miro.medium.com/max/660/1*XaXQRJiI5BSFY3uFhTFCAg.jpeg",
                             IsDeleted = false,
@@ -644,7 +644,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 56,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3655),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7669),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://lh3.googleusercontent.com/proxy/u9QC1f3VUFnFbVfG8l7YXkRA-f7a8MwWjt9pD7doK-Taz9IiHr0klERuKsJF9tqnIEwjBIGZMhC2Ki5T6m9Sda8HNbtLT9XPZmKxz0BY9ikRVuKuq6kcWwfs60Iur1SGORnHJYo",
                             IsDeleted = false,
@@ -654,7 +654,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 57,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3669),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7682),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://bookingprotect.com/wp-content/uploads/2019/08/live_entertainment.jpg",
                             IsDeleted = false,
@@ -664,7 +664,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 58,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3715),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7694),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://w0.pngwave.com/png/303/783/select-sweets-retail-sales-industry-ecommerce-payment-system-png-clip-art.png",
                             IsDeleted = false,
@@ -674,7 +674,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 59,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3728),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7707),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.liberty.edu/champion/wp-content/uploads/2020/03/SPORTS-800x280.jpg",
                             IsDeleted = false,
@@ -684,7 +684,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 60,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3741),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7722),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.usnews.com/dims4/USNEWS/01e1de6/2147483647/thumbnail/640x420/quality/85/?url=http%3A%2F%2Fmedia.beam.usnews.com%2F00%2F58%2F5926109d42de9f633868cd479f65%2F190111-investingsectors-stock.jpg",
                             IsDeleted = false,
@@ -694,7 +694,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 61,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3753),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7735),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://thehustle.co/wp-content/uploads/2019/02/share_me_now_brief_2019-02-27T021549.567Z-1.jpg",
                             IsDeleted = false,
@@ -704,7 +704,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 62,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3766),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7747),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://plug-n-score.com/wp-content/files/2014/08/credit-in-the-telecom-industry.png",
                             IsDeleted = false,
@@ -714,7 +714,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 63,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3779),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7760),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.see-industry.com/Files/statii/22017_02_Industry_Textile.jpg",
                             IsDeleted = false,
@@ -724,7 +724,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 64,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3792),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7772),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://daxueconsulting.com/wp-content/uploads/2016/01/Daxue-Consulting-China-Tobacco-Industry-Market-Research.jpg",
                             IsDeleted = false,
@@ -734,7 +734,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 65,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3804),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7786),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.odtap.com/wp-content/uploads/2019/03/5-Top-Technology-Trends-in-Transportation-and-Logistics-Industry.png",
                             IsDeleted = false,
@@ -744,7 +744,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 66,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3818),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7800),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://s29755.pcdn.co/wp-content/uploads/2019/08/2019_Top_Five_Class_5-Mack.jpg",
                             IsDeleted = false,
@@ -754,7 +754,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 67,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3832),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7843),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://lh3.googleusercontent.com/proxy/YZfiizLwa44Nzb58s3cKhWFgUbFevmGdK9QJQbaC7ASQtfVniCSHHZBL3RFv_e7XBowp4mSE-T6FyJvgTARAYSoJhFucvNE",
                             IsDeleted = false,
@@ -764,7 +764,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 68,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3844),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7857),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.unionindustry.eu/assets/uploads/2010/10/jobs-ants.jpg",
                             IsDeleted = false,
@@ -774,7 +774,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 69,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3857),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7870),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.vegan.io/blog/assets/10-healthiest-vegetables-to-include-in-your-vegan-diet-2018-04-16/healthiest-vegetables-df1cf550711076d052eaade12c38289a2637c38e546182d3c0136a90cb0bb0b3.jpg",
                             IsDeleted = false,
@@ -784,7 +784,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 70,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(3869),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(7883),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://www.wyzowl.com/wp-content/uploads/2017/05/The-20-Best-Nonprofit-Explainer-Videos-Youll-Ever-See-ffb612.png",
                             IsDeleted = false,
@@ -802,8 +802,6 @@ namespace InsightHub.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("UserId", "IndustryId");
-
-                    b.HasIndex("IndustryId");
 
                     b.ToTable("IndustrySubscriptions");
 
@@ -887,7 +885,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 1,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(8004),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(1806),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Real GDP contracted 4.8 percent at an annualized rate in the first quarter according to the advance estimate from the Bureau of Economic Analysis, worse than the consensus expectation for a 4.0 percent decline. The coronavirus pandemic and restrictions on movement led to big declines in consumer spending and business investment (down 7.6 percent and 8.6 percent annualized, respectively).",
                             ImgUrl = "https://www.agenda-bg.com/wp-content/uploads/2016/09/What-To-Expect-In-2015-An-Economic-Outlook-For-Small-And-Medium-Businesses-Making-It-TV.jpg",
@@ -903,7 +901,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 2,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9044),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(2827),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "PNC's Market Expectation Survey lists the current consensus forecast for key economic data releases for the upcoming week, as well as PNC's own forecast for each item. A comprehensive calendar listing recent data for key economic indicators is provided on the second page.",
                             ImgUrl = "https://www.questionpro.com/blog/wp-content/uploads/2018/05/Market-Survey_Final-800x478.jpg",
@@ -919,7 +917,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 3,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9094),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(2872),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Despite pricing pressures and tariff concerns, measures of optimism are approaching the record-setting highs measured in spring 2018, according to the latest PNC semi-annual survey of small and mid-size business owners and executives.",
                             ImgUrl = "https://images.financialexpress.com/2019/06/ECONOMIC_SURVEY_660.jpg",
@@ -935,7 +933,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 4,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9519),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3302),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "The Aerospace Industries Association (AIA) is the most authoritative and influential trade association representing the aerospace and defense industry. We are the leading voice for the industry on Capitol Hill, within the administration, and internationally.",
                             ImgUrl = "https://cdn.canadianmetalworking.com/a/aerospace-sector-report-a-jetstream-of-trends-1489163413.jpg?size=1000x1000",
@@ -951,7 +949,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 5,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9551),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3333),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Foreword Airline fare setting is a complex and dynamic process, varying by carrier, route and time. It lies at the heart of an airline’s commercial strategy as it aims to maximise the return on its assets employed, namely its aircraft and its people. In the following report, we have sought to describe clearly and comprehensively how the numerous factors an airline has to juggle play into the fare that passengers ultimately face. As a team who has an airline background, and advises both airlines and airports on matters of strategy, ICF has been uniquely well placed to do this.",
                             ImgUrl = "https://www.aljazeera.com/mritems/Images/2019/12/4/b604dd8d57c942a892cdc71f21d09973_18.jpg",
@@ -967,7 +965,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 6,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9571),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3353),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Since the introduction of the smartphone, it has become clear that customers are quick to adopt even highly complex and expensive technology if it makes their lives easier. In other words, users value convenience and ease. These core values turned the automobile into the defining technical cultural item of the 20th century. Now it is time to translate these properties into the context of today's – and tomorrow's –  technology and society. ",
                             ImgUrl = "https://eenews.cdnartwhere.eu/sites/default/files/styles/inner_article/public/sites/default/files/images/2019-10-17_automotive_cybersecurity_hacking_software_dark_web_intsights.jpg?itok=x-9upxnf",
@@ -983,7 +981,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 7,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9585),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3368),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This Report contains the conclusions from the comprehensive review of the Slovenian banking sector undertaken by the Bank of Sloveniain cooperation with the Slovenian Ministry of Finance over the period June to December 2013. This Asset Quality Review and Stress Test is a cornerstone in the broader initiative to restore the health in the Slovenian banking sector.",
                             ImgUrl = "https://www.assignmentpoint.com/wp-content/uploads/2013/04/E-Banking-in-Bangladesh.jpg",
@@ -999,7 +997,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 8,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9600),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3383),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "The report is divided into three sections. The first part reviews the supply side of the pub market, revealing numbers, trends and the contrasting fortunes of different sectors, and identifying some of the areas in which pubs are succeeding. The second section analyses the customer base: their demographics, habits and motivations. The final part takes a look at reasons for optimism, with insights into increasing appeal and sales and the emerging new breeds of pub in Britain. At a time of great challenges for both the out of home eating and drinking market and the UK economy as a whole, this report highlights the many positive trends and developments in the British pub market. We hope you enjoy reading it.",
                             ImgUrl = "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2019%2F12%2Fuk-pubs-growth-FT-BLOG1219.jpg&q=85",
@@ -1015,7 +1013,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 9,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9614),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3398),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This report is intended to be of practical use in reducing the environmental impacts of construction. Nicole Lazarus will be glad to hear from any readers with feedback and examples of its application.",
                             ImgUrl = "https://lh3.googleusercontent.com/proxy/yv-Fqqhl26oZXf_TqO-irARoppooPkNe6DcoAoldvOSdkXl42fpaATpfcnqeuCs7qyZ_lv40MmzP2DikBzqshhJAhaXb9fi0gaDOCAEE0W6rtkbyUMYPDlYu8ixTEfPHorTtC8PB",
@@ -1031,7 +1029,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 10,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9629),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3414),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This report covers Audit and accounting; Business services; Professional services; and Legal services.",
                             ImgUrl = "https://www.antal.com/uploads/library/files/Business-Services.jpg",
@@ -1047,7 +1045,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 11,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9643),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3428),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Casino Gambling has become a majorindustry in the United States over the past twodecades.  Nationwide, annual casino revenue tops $40billion. This report provides an analysis of casino gam-bling in the United States and discusses the economicissues surrounding casino gambling. The informationcontained in this report should prove useful to localofficials and policy-makers who may be considering theadoption of casino gambling or who already have casi-no gambling in their jurisdictions.",
                             ImgUrl = "https://royalepalmscasino-sofia.com/wp-content/uploads/2019/04/IMG_1710-1024x683.jpg",
@@ -1063,7 +1061,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 12,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9657),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3480),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Particularly in Central and South America, expansion of pastures for livestock production has been one of the driving forces behind this wholesale destruction.Deforestation causes incalculable environmental damage, releasing billions of tonnes of carbon dioxide into the atmosphere and driving thousands of species of life to extinction each year. Effective policies are urgently needed to discourage expansion of livestock production in forest areas and promote sustainable grazing systems that will halt the cycle of degradation and abandonment on cleared forest lands.",
                             ImgUrl = "https://fayranches.com/wp-content/uploads/2016/01/savvy-investors-cattle-ranches.jpg",
@@ -1079,7 +1077,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 13,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9671),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3495),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "The way we make, use and throwaway our clothes is unsustainable. Textile production contributes more to climate change than international aviation and shipping combined, consumes lake-sized volumes of fresh water and creates chemical and plastic pollution. Synthetic fibres are being found in the deep sea, in Arctic sea ice, in fish and shellfish. Our biggest retailers have ‘chased the cheap needle around the planet’, commissioning production  in  countries  with  low  pay,  little  trade  union  representation  and  weak  environmental protection. In many countries, poverty pay and conditions are standard for garment workers, most of whom are women. We are also concerned about the use of  child  labour,  prison  labour,  forced  labour  and  bonded  labour  in  factories  and  the  garment supply chain. Fast fashions’ overproduction and overconsumption of clothing is based on the globalisation of indifference towards these manual workers.",
                             ImgUrl = "https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F190912152727-uglyleaddd.jpg",
@@ -1095,7 +1093,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 14,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9685),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3510),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This report discusses the changes that have occurred in the Australian workforce since the end of World War II (1945-2000). A review of some of the available literature provides insights into the changing role of women and migrants in the workforce, and the influence of new technologies and changing levels of unemployment have also been considered.",
                             ImgUrl = "https://upload.wikimedia.org/wikipedia/commons/1/1a/Chapin_Hall%2C_Williams_College_-_Williamstown%2C_Massachusetts.jpg",
@@ -1111,7 +1109,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 15,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9699),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3523),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "In this paper we quantify the usage of main resources (CPU, main memory, disk space and network bandwidth) of Windows 2000 machines from classroom laboratories. For that purpose, 169 machines of 11 classroom laboratories of an academic institution were monitored over 77 consecutive days. Samples were collected from all machines every 15 minutes for a total of 583653 samples. Besides evaluating availability of machines (uptime and downtime) and usage habits of users, the paper assesses usage of main resources, focusing on the impact of interactive login sessions over resource consumptions. Also, recurring to Self Monitoring Analysis and Reporting Technology (SMART) parameters of hard disks, the study estimates the average uptime per hard drive power cycle for the whole life of monitored computers. The paper also analyzes the potential of non-dedicated classroom Windows machines for distributed and parallel computing, evaluating the mean stability of group of machines. Our results show that resources idleness in classroom computers is very high, with an average CPU idleness of 97.93%, unused memory averaging 42.06% and unused disk space of the order of gigabytes per machine. Moreover, this study confirms the 2:1 equivalence rule found out by similar works, with N non-dedicated resources delivering an average CPU computing power roughly similar to N/2 dedicated machines. These results confirm the potentiality of these systems for resource harvesting, especially for grid desktop computing schemes. However, the efficient exploitation of the computational power of these environments requires adaptive fault-tolerance schemes to overcome the high volatility of resources.",
                             ImgUrl = "https://lh3.googleusercontent.com/proxy/ii7FxKnpaVHEW-pQ2JB5BikxCX8RvaXGzDlT41yX3mN9eDfvQjJoJhaCe0lc9kVmLFwkIAoqFF0y58zYnnYiSQwQBB_SVD9G_yn8KJNGls_2vL4bKA",
@@ -1127,7 +1125,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 16,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9713),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3538),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Currently, Construction is 99.9% complete. Commissioning Pre-functional test was completed by ARUP and draft report has been received. MEOR is scheduled to review and evaluate draft report from ARUP. Once MEOR reviews draft report, ARUP will issue final  Commissioning  report.  Substantial  Completion  is  estimated  to  be  issued  in  August,  after  the  issuance  of the final Commissioning report and Punch list items are issued to the Contractor.",
                             ImgUrl = "https://specials-images.forbesimg.com/imageserve/5c0077cc31358e5b43383ffc/960x0.jpg?fit=scale",
@@ -1143,7 +1141,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 17,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9727),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3551),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This page intentionally left blank.",
                             ImgUrl = "https://media.nationalgeographic.org/assets/photos/120/983/091a0e2f-b93d-481b-9a60-db520c87ec33.jpg",
@@ -1159,7 +1157,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 18,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9777),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3566),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Cruise Lines International Association (CLIA), the world’s largest cruise industry trade association, has released the 2019 Cruise Trends and State of the Cruise Industry Outlook. The report offers a look at the trends impacting cruise travel in the coming year and beyond as well as the overall global economic impact. Cruise Lines International Association (CLIA) is the unified global organizationhelping members succeed by advocating, educating and promoting for the common interests of the cruise community.",
                             ImgUrl = "https://www.gannett-cdn.com/presto/2018/12/20/USAT/b3fa36d4-b0ed-48c5-a991-924c48685469-Costa_LNG__Side_Perspective.jpg?crop=2999,1687,x0,y299&width=2999&height=1687&format=pjpg&auto=webp",
@@ -1175,7 +1173,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 19,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 156, DateTimeKind.Utc).AddTicks(9794),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(3580),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This article is based on the IFCN Dairy Report 2019. This annual report summarises the work of IFCN Research Partners from over 100 countries. IFCN is a global network for dairy economic research and consultancy. In 2019, researchers from over 100 countries and more than 140 agribusiness companies are members of the network. IFCN has created a better understanding of the dairy world for 20 years. Key insights 2019 will be the year of lowest milk production growth since 2013. As this did not translate into milk price increases, IFCN identifies a structural drop in demand growth as one of the reasons. Milk production trends by regions are highly diverse and dynamic. The 3-5% rule indicates that strong regions grow and weak ones decline by this rate every year. Dairy farm structure dynamics drive milk supply and the speed of change is under-estimated. IFCN recommends using the annual growth of milk production per farm as an indicator. In the EU and the USA farms grew by 8% per year. The key driver for farm structure developments lies in dairy farm economics and the current structure of economies of scale. The Dairy Report analyses this in over 50 countries. The IFCN Dairy Report has been published annually since 2000 and has become a guideline publication for researchers and companies involved in the dairy chain. It enables to gain a global holistic view of the industry and serves as a solid fact base for discussions and strategic decisions.",
                             ImgUrl = "https://lh3.googleusercontent.com/proxy/B2Ha-PwtOsxqi3MXwm2SCOWM6CxKChDn4KM5xQ3G58LEULJkzZAS68_6Dz5k00fyK3WIca58WzfewwtRH5khlEgdF69EPlFKQ3QtiJF4KQGXKxv1v76dGKsixlpP",
@@ -1253,21 +1251,21 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "3bb58ada-1360-4420-a6a8-92fd77e2f11c",
+                            ConcurrencyStamp = "e8f4ba3f-f71b-4455-b08a-37ccf21fa131",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "6af1f93f-2b0b-4441-bb9f-d91f78d6e5e8",
+                            ConcurrencyStamp = "2e2fce54-862b-4537-936c-9ab713741d5a",
                             Name = "Author",
                             NormalizedName = "AUTHOR"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "152a1223-ff42-42d8-926a-d9d587c14798",
+                            ConcurrencyStamp = "9c3aac45-ca00-41ea-ae42-549c45833e0f",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });
@@ -1303,7 +1301,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(5573),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 126, DateTimeKind.Utc).AddTicks(9739),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1312,7 +1310,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(6107),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 127, DateTimeKind.Utc).AddTicks(287),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1321,7 +1319,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 157, DateTimeKind.Utc).AddTicks(6135),
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 127, DateTimeKind.Utc).AddTicks(315),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1429,8 +1427,8 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ba9d548b-45b0-4ed2-8610-ef1463e229b3",
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 134, DateTimeKind.Utc).AddTicks(847),
+                            ConcurrencyStamp = "0edd0ac3-a0fd-45ff-b396-d885d50aabdb",
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 103, DateTimeKind.Utc).AddTicks(6855),
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admincho",
@@ -1441,7 +1439,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBtwWc8zB+KmRnlJMGNQR7f8Uw3jovlhB/1RlC52iCzDYi5woKpu7ejcFLiyrXXDXA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK/XREK+qSK0Fb0Zq9hxPiJAVP+vLf1HtLAhT/4XGonN8edSgUd8K9SEBXlJrSiRNw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -1451,8 +1449,8 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f38494b8-ec05-4ba6-a514-b03ffc4a8091",
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 134, DateTimeKind.Utc).AddTicks(2025),
+                            ConcurrencyStamp = "e15d1724-71cf-497a-bfe1-496964b58dd4",
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 103, DateTimeKind.Utc).AddTicks(8038),
                             Email = "author@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Authorcho",
@@ -1463,7 +1461,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "AUTHOR@GMAIL.COM",
                             NormalizedUserName = "AUTHOR@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEODOFoWPRPcBnhLjMbg7wr8BKwCldaWuEKpRa34Iim0zHL2jmdk6RmzaZfncagJYOA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEATtPlIfeuQbxVT6odTt4UxC0zQdtARa2wbITG7lg6tPNOe9n3m/bdJghZD9oCCFGg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXV",
                             TwoFactorEnabled = false,
@@ -1473,8 +1471,8 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1e06fb1-120f-4a13-bcf0-ef62550ca0e6",
-                            CreatedOn = new DateTime(2020, 5, 26, 15, 31, 23, 134, DateTimeKind.Utc).AddTicks(2040),
+                            ConcurrencyStamp = "7abcd29f-9548-4a3c-a6fe-862412584cdd",
+                            CreatedOn = new DateTime(2020, 5, 28, 14, 29, 16, 103, DateTimeKind.Utc).AddTicks(8051),
                             Email = "client@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Clientcho",
@@ -1485,7 +1483,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "CLIENT@GMAIL.COM",
                             NormalizedUserName = "CLIENT@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOX1pYVeRRb2QYPQvCPLBJn6M8ORWrCe4tbwuuWrFzsBivH1Gqyw0FR0eVCp6usIOw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENtV5RJ4wc4GbqKB5YPgSVdUxTZ1Dh4jkLeIOtKVkRd4zr1NmaTOeOtS6G/CtS1YQw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXF",
                             TwoFactorEnabled = false,
@@ -1626,15 +1624,15 @@ namespace InsightHub.Data.Migrations
                     b.HasOne("InsightHub.Data.Entities.User", "User")
                         .WithMany("Reports")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("InsightHub.Data.Entities.IndustrySubscription", b =>
                 {
                     b.HasOne("InsightHub.Data.Entities.Industry", "Industry")
-                        .WithMany("Subscriptions")
-                        .HasForeignKey("IndustryId")
+                        .WithMany("SubscribedUsers")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
