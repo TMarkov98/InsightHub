@@ -146,7 +146,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // GET: Reports/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Author")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -156,6 +156,9 @@ namespace InsightHub.Web.Controllers
 
             if (report == null)
                 return NotFound("Report not found.");
+
+            var industries = await _industryServices.GetAllIndustries(null, null);
+            ViewData["Industry"] = new SelectList(industries.Select(i => i.Name));
 
             return View(report);
         }

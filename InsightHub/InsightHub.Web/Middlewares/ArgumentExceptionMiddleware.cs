@@ -23,7 +23,7 @@ namespace InsightHub.Web.Middlewares
             {
                 await _next.Invoke(context);
             }
-            catch (Exception)
+            catch (ArgumentException)
             {
                 context.Response.Redirect("/Home/ArgumentException");
             }
