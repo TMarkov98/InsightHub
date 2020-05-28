@@ -13,7 +13,7 @@
         {
             <a asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe from Email notifications</a>
         }
-        else
+        else if ((bool)ViewData["SubscriptionExists"] && User.IsInRole("Client"))
         {
             <a asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe for Email notifications</a>
         }
@@ -88,7 +88,7 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ImgUrl)
+                        <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
                     </td>
                     <td>
                         <a asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
