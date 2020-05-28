@@ -30,8 +30,10 @@ namespace InsightHub.Services
                 .Include(u => u.Role)
                 .Include(u => u.IndustrySubscriptions)
                 .Include(u => u.Reports)
-                .FirstOrDefaultAsync(u => u.Id == id)
-                ?? throw new ArgumentNullException("User not found.");
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            ValidateUserExists(user);
+
             var userDTO = UserMapper.MapModelFromEntity(user);
             return userDTO;
         }
@@ -98,8 +100,9 @@ namespace InsightHub.Services
             var user = await _context.Users
                 .Include(u => u.Reports)
                 .Include(u => u.IndustrySubscriptions)
-                .FirstOrDefaultAsync(u => u.Id == id && !u.IsBanned)
-                ?? throw new ArgumentNullException("User not found.");
+                .FirstOrDefaultAsync(u => u.Id == id && !u.IsBanned);
+
+            ValidateUserExists(user);
 
             user.FirstName = firstName;
             user.LastName = lastName;
@@ -115,8 +118,13 @@ namespace InsightHub.Services
         {
             var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
-            if (user == null || user.IsBanned)
-                throw new ArgumentException("Unable to ban user.");
+
+            ValidateUserExists(user);
+
+            if(user.IsBanned)
+            {
+                throw new ArgumentException("User already banned.");
+            }
 
             user.IsBanned = true;
             user.BanReason = reason;
@@ -126,8 +134,9 @@ namespace InsightHub.Services
         {
             var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
-            if (user == null)
-                throw new ArgumentException("Unable to approve user.");
+
+            ValidateUserExists(user);
+
             user.IsPending = false;
             await _context.SaveChangesAsync();
         }
@@ -135,9 +144,13 @@ namespace InsightHub.Services
         {
             var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
-            if (user == null || !user.IsBanned)
-                throw new ArgumentException("Unable to unban user.");
 
+            ValidateUserExists(user);
+
+            if(!user.IsBanned)
+            {
+                throw new ArgumentException("Unable to unban user. User not banned.");
+            }
             user.IsBanned = false;
             user.BanReason = string.Empty;
             _context.SaveChanges();
@@ -145,15 +158,17 @@ namespace InsightHub.Services
         public async Task DeleteUser(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
-            if(user == null)
-            {
-                throw new ArgumentException("Unable to delete user.");
-            }
+
+            ValidateUserExists(user);
+
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
         }
         public async Task<List<ReportModel>> GetDownloadedReports(int userId)
         {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            ValidateUserExists(user);
+
             var reports = await _context.DownloadedReports
                 .Include(ur => ur.Report)
                 .ThenInclude(r => r.Author)
@@ -164,6 +179,7 @@ namespace InsightHub.Services
                 .ThenInclude(r => r.Tag)
                 .Include(ur => ur.Report)
                 .ThenInclude(r => r.Downloads)
+                .Where(ur => !ur.Report.IsDeleted)
                 .Where(ur => ur.UserId == userId)
                 .Select(ur => ReportMapper.MapModelFromEntity(ur.Report))
                 .ToListAsync();
@@ -172,6 +188,9 @@ namespace InsightHub.Services
         }
         public async Task<List<ReportModel>> GetUploadedReports(int userId)
         {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            ValidateUserExists(user);
+
             var reports = await _context.Reports
                 .Include(r => r.Author)
                 .Include(r => r.Industry)
@@ -186,9 +205,12 @@ namespace InsightHub.Services
         }
         public async Task<List<IndustryModel>> GetSubscriptions(int userId)
         {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            ValidateUserExists(user);
+
             var industries = await _context.IndustrySubscriptions
                 .Include(ui => ui.Industry)
-                .ThenInclude(i => i.Subscriptions)
+                .ThenInclude(i => i.SubscribedUsers)
                 .Where(ui => ui.UserId == userId)
                 .Select(ui => IndustryMapper.MapModelFromEntity(ui.Industry))
                 .ToListAsync();
@@ -205,5 +227,14 @@ namespace InsightHub.Services
             }
             return users;
         }
+
+        private void ValidateUserExists(User user)
+        {
+            if(user == null)
+            {
+                throw new ArgumentNullException("User not found.");
+            }
+        }
+
     }
 }

@@ -39,7 +39,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
 
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
-            await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.BanUser(5, "Test"));
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.BanUser(5, "Test"));
         }
 
         [TestMethod]
