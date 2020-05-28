@@ -5,7 +5,7 @@
 }
 
 <h3>Newest Reports</h3>
-<table class="table">
+<<table class="table">
     <thead>
         <tr>
             <th>
@@ -31,16 +31,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    <a asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Summary)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Author)
+                    <a asp-controller="Reports" asp-action="Index" asp-route-author=@ViewData["AuthorEmail"]>@Html.DisplayFor(modelItem => item.Author)</a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Industry)
+                    <a asp-controller="Reports" asp-action="Index" asp-route-industry=@Html.DisplayFor(modelItem => item.Industry)>@Html.DisplayFor(modelItem => item.Industry)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreatedOn)
