@@ -14,9 +14,9 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
     public class GetTags_Should
     {
         [TestMethod]
-        public async Task ReturnCurrectTags_When_ParamValid()
+        public async Task ReturnCorrectTags_When_ParamValid()
         {
-            var options = Utils.GetOptions(nameof(ReturnCurrectTags_When_ParamValid));
+            var options = Utils.GetOptions(nameof(ReturnCorrectTags_When_ParamValid));
             var firstTag = TestModelsSeeder.SeedTag();
             var secondTag = TestModelsSeeder.SeedTag2();
             var thirdTag = TestModelsSeeder.SeedTag3();
@@ -36,9 +36,9 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
             Assert.AreEqual(firstTag.Name, result[0].Name);
         }
         [TestMethod]
-        public async Task ReturnCurrectTags_WithSort_When_ParamValid()
+        public async Task ReturnCorrectTags_WithSort_When_ParamValid()
         {
-            var options = Utils.GetOptions(nameof(ReturnCurrectTags_WithSort_When_ParamValid));
+            var options = Utils.GetOptions(nameof(ReturnCorrectTags_WithSort_When_ParamValid));
             var firstTag = TestModelsSeeder.SeedTag();
             var secondTag = TestModelsSeeder.SeedTag2();
             var thirdTag = TestModelsSeeder.SeedTag3();
@@ -60,9 +60,9 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
             Assert.AreEqual(firstTag.Name, result[2].Name);
         }
         [TestMethod]
-        public async Task ReturnCurrectTags_WithSearch_When_ParamValid()
+        public async Task ReturnCorrectTags_WithSearch_When_ParamValid()
         {
-            var options = Utils.GetOptions(nameof(ReturnCurrectTags_WithSearch_When_ParamValid));
+            var options = Utils.GetOptions(nameof(ReturnCorrectTags_WithSearch_When_ParamValid));
             var firstTag = TestModelsSeeder.SeedTag();
             var secondTag = TestModelsSeeder.SeedTag2();
             var thirdTag = TestModelsSeeder.SeedTag3();
@@ -83,9 +83,9 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
             Assert.AreEqual(thirdTag.Name, result[0].Name);
         }
         [TestMethod]
-        public async Task ReturnCurrectTags_WithSortAndSearch_When_ParamValid()
+        public async Task ReturnCorrectTags_WithSortAndSearch_When_ParamValid()
         {
-            var options = Utils.GetOptions(nameof(ReturnCurrectTags_WithSortAndSearch_When_ParamValid));
+            var options = Utils.GetOptions(nameof(ReturnCorrectTags_WithSortAndSearch_When_ParamValid));
             var firstTag = TestModelsSeeder.SeedTag();
             var secondTag = TestModelsSeeder.SeedTag2();
             var thirdTag = TestModelsSeeder.SeedTag3();

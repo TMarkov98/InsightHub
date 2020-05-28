@@ -40,15 +40,3 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
         }
     }
 }
-//var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Id == id);
-
-//            if (tag == null || tag.IsDeleted)
-//            {
-//                return false;
-//            }
-
-//            tag.IsDeleted = true;
-//            tag.DeletedOn = DateTime.UtcNow;
-//            await _context.SaveChangesAsync();
-
-//            return true;

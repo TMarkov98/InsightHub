@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace InsightHub.Tests.UnitTests
@@ -75,6 +76,22 @@ namespace InsightHub.Tests.UnitTests
                 Title = "TestReport1",
                 Summary = "TestSummary1",
                 Description = "TestDescription1",
+                Tags = new List<ReportTag>()
+                {
+                    new ReportTag
+                    {
+                        ReportId = 1,
+                        TagId = 1,
+                    }
+                },
+                Downloads = new List<DownloadedReport>()
+                {
+                    new DownloadedReport
+                    {
+                        UserId = 1,
+                        ReportId = 1,
+                    },
+                },
                 IndustryId = 1,
             };
         }
@@ -89,6 +106,20 @@ namespace InsightHub.Tests.UnitTests
                 Summary = "TestSummary2",
                 Description = "TestDescription2",
                 IndustryId = 2,
+                Downloads = new List<DownloadedReport>()
+                {
+                    new DownloadedReport
+                    {
+                        UserId = 2,
+                        ReportId = 2,
+                    },
+                    new DownloadedReport
+                    {
+                        UserId = 1,
+                        ReportId = 2,
+                    },
+
+                },
             };
         }
         public static Report SeedReport3()
@@ -114,6 +145,7 @@ namespace InsightHub.Tests.UnitTests
                 LastName = "Test",
                 Email = "firstTest@user.com",
                 UserName = "firstTest@user.com",
+                NormalizedEmail = "FIRSTTEST@USER.COM",
                 CreatedOn = DateTime.UtcNow,
                 PhoneNumber = "333221",
             };

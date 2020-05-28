@@ -12,9 +12,9 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
     public class GetTag_Should
     {
         [TestMethod]
-        public async Task ReturnCurrectTag_When_ParamValid()
+        public async Task ReturnCorrectTag_When_ParamValid()
         {
-            var options = Utils.GetOptions(nameof(ReturnCurrectTag_When_ParamValid));
+            var options = Utils.GetOptions(nameof(ReturnCorrectTag_When_ParamValid));
             var tag = TestModelsSeeder.SeedTag();
 
             using (var arrangeContext = new InsightHubContext(options))

@@ -12,9 +12,9 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
     public class CreateTag_Should
     {
         [TestMethod]
-        public async Task ReturnCurrectNewTag_When_ParamValid()
+        public async Task ReturnCorrectNewTag_When_ParamValid()
         {
-            var options = Utils.GetOptions(nameof(ReturnCurrectNewTag_When_ParamValid));
+            var options = Utils.GetOptions(nameof(ReturnCorrectNewTag_When_ParamValid));
             var tagName = "space";
 
             using var assertContext = new InsightHubContext(options);

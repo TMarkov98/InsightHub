@@ -13,9 +13,9 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
     public class GetDeletedTags_Should
     {
         [TestMethod]
-        public async Task ReturnCurrectDeletedTags_When_ParamsValid()
+        public async Task ReturnCorrectDeletedTags_When_ParamsValid()
         {
-            var options = Utils.GetOptions(nameof(ReturnCurrectDeletedTags_When_ParamsValid));
+            var options = Utils.GetOptions(nameof(ReturnCorrectDeletedTags_When_ParamsValid));
             var firstTag = TestModelsSeeder.SeedTag(); 
             var secondTag = TestModelsSeeder.SeedTag2();
 
