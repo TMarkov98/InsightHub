@@ -65,5 +65,15 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 Assert.AreEqual(2, result.Count);
             }
         }
+
+        [TestMethod]
+        public async Task Throw_WhenUserDoesntExist()
+        {
+            var options = Utils.GetOptions(nameof(Throw_WhenUserDoesntExist));
+
+            using var assertContext = new InsightHubContext(options);
+            var sut = new UserServices(assertContext);
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.GetDownloadedReports(5));
+        }
     }
 }
