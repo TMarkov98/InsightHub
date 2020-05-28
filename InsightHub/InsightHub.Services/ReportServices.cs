@@ -40,6 +40,7 @@ namespace InsightHub.Services
                 {
                     Title = reportDTO.Title,
                     Description = reportDTO.Description,
+                    Summary = reportDTO.Summary,
                     CreatedOn = DateTime.UtcNow
                 };
                 await _context.Reports.AddAsync(report);
