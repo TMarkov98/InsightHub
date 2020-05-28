@@ -202,6 +202,7 @@ namespace InsightHub.Services
             ValidateReportExists(report);
             var reportDTO = ReportMapper.MapModelFromInput(title, summary, description, imgUrl, null, industry, tags);
             report.Title = reportDTO.Title;
+            report.Summary = reportDTO.Summary;
             report.Description = reportDTO.Description;
             report.ImgUrl = reportDTO.ImgUrl;
             report.Industry = await _context.Industries.FirstOrDefaultAsync(i => i.Name == reportDTO.Industry);
@@ -312,7 +313,7 @@ namespace InsightHub.Services
             {
                 await _tagServices.CreateTag(name);
             }
-            var tag = _context.Tags.FirstOrDefault(t => t.Name == name);
+            var tag = _context.Tags.FirstOrDefault(t => t.Name.ToLower() == name);
             return tag;
         }
 

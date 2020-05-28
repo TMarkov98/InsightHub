@@ -42,20 +42,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Tags.Add(tag2);
                 arrangeContext.Industries.Add(industry1);
                 arrangeContext.Industries.Add(industry2);
-
-                arrangeContext.DownloadedReports.Add(new DownloadedReport
-                {
-                    UserId = 1,
-                    ReportId = 1,
-                });
-                arrangeContext.DownloadedReports.Add(new DownloadedReport
-                {
-                    UserId = 1,
-                    ReportId = 2,
-                });
-
                 await arrangeContext.SaveChangesAsync();
-                
             }
 
             using (var assertContext = new InsightHubContext(options))

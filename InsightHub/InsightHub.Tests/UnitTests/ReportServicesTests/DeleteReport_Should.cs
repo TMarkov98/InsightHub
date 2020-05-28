@@ -54,15 +54,5 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await Assert.ThrowsExceptionAsync<ArgumentException>(() => sut.DeleteReport(1));
             }
         }
-        //public async Task DeleteReport(int id)
-        //{
-        //    var report = await _context.Reports
-        //        .FirstOrDefaultAsync(r => r.Id == id);
-        //    if (report.IsDeleted == true || report == null)
-        //        throw new ArgumentException("Unable to delete report.");
-        //    report.IsDeleted = true;
-        //    report.DeletedOn = DateTime.UtcNow;
-        //    await _context.SaveChangesAsync();
-        //}
     }
 }

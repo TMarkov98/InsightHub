@@ -41,7 +41,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 var result = assertContext.Reports.FirstOrDefault(t => t.Title == title);
                 Assert.AreEqual(title, result.Title);
                 Assert.AreEqual(description, result.Description);
-                Assert.AreEqual(tag, result.Tags);
+                Assert.AreEqual(tag.Name, result.Tags.First().Tag.Name);
             }
         }
 
@@ -71,7 +71,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
             {
                 var sutTags = new TagServices(assertContext);
                 var sutReports = new ReportServices(assertContext, sutTags);
-                Assert.ThrowsException<ArgumentException>(() => sutReports.CreateReport(report.Title, summary, description, author.Email, imgURL, industry.Name, tag.Name));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(() => sutReports.CreateReport(report.Title, summary, description, author.Email, imgURL, industry.Name, tag.Name));
             }
 
         }
