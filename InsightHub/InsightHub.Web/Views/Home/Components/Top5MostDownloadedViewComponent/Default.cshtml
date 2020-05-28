@@ -42,7 +42,7 @@
                     <a asp-controller="Reports" asp-action="Index" asp-route-author=@ViewData["AuthorEmail"]>@Html.DisplayFor(modelItem => item.Author)</a>
                 </td>
                 <td>
-                    <a asp-controller="Reports" asp-action="Index" asp-route-industry=@Html.DisplayFor(modelItem => item.Industry)>@Html.DisplayFor(modelItem => item.Industry)</a>
+                    <a asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>@Html.DisplayFor(modelItem => item.Industry)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreatedOn)
