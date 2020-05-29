@@ -71,36 +71,36 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Summary)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Industry)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DownloadsCount)
-                </td>
-                <td>
-                    @if (User.Identity.IsAuthenticated && User.Identity.Name == item.Author.Split(' ').Last() || User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    }
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+            <td>
+                <a asp-controller="Reports" asp-action="Index" asp-route-author=@item.Author.Split(' ').Last()>@Html.DisplayFor(modelItem => item.Author)</a>
+            </td>
+            <td>
+                <a asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>@Html.DisplayFor(modelItem => item.Industry)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DownloadsCount)
+            </td>
+            <td>
+                @if (User.Identity.IsAuthenticated && User.Identity.Name == item.Author.Split(' ').Last() || User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                }
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -36,7 +36,7 @@
                     @Html.DisplayFor(modelItem => item.Summary)
                 </td>
                 <td>
-                    <a asp-controller="Reports" asp-action="Index" asp-route-author=@ViewData["AuthorEmail"]>@Html.DisplayFor(modelItem => item.Author)</a>
+                    <a asp-controller="Reports" asp-action="Index" asp-route-author=@item.Author.Split(' ').Last()>@Html.DisplayFor(modelItem => item.Author)</a>
                 </td>
                 <td>
                     <a asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>@Html.DisplayFor(modelItem => item.Industry)</a>

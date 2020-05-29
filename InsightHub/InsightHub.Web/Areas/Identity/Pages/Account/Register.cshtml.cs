@@ -109,7 +109,7 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
                 }
                 if (result.Succeeded)
                 {
-                    user.CreatedOn = DateTime.Now;
+                    user.CreatedOn = DateTime.UtcNow;
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

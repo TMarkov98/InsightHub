@@ -33,7 +33,7 @@
             @Html.DisplayNameFor(model => model.Author)
         </dt>
         <dd class="col-sm-10">
-            <a asp-action="Index" asp-route-author=@ViewData["AuthorEmail"]>@Html.DisplayFor(model => model.Author)</a>
+            <a asp-action="Index" asp-route-author=@Model.Author.Split(' ').Last()>@Html.DisplayFor(model => model.Author)</a>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Industry)
