@@ -32,7 +32,8 @@
                    asp-route-search="@ViewData["Search"]"
                    asp-route-industry="@ViewData["Industry"]"
                    asp-route-tag="@ViewData["Tag"]"
-                   asp-route-author="@ViewData["Author"]">Title</a>
+                   asp-route-author="@ViewData["Author"]"
+                   asp-route-pageNumber="@ViewData["PageNumber"]">Title</a>
             </th>
             <th>
                 Summary
@@ -42,28 +43,32 @@
                    asp-route-search="@ViewData["Search"]"
                    asp-route-industry="@ViewData["Industry"]"
                    asp-route-tag="@ViewData["Tag"]"
-                   asp-route-author="@ViewData["Author"]">Author</a>
+                   asp-route-author="@ViewData["Author"]"
+                   asp-route-pageNumber="@ViewData["PageNumber"]">Author</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["SortByIndustry"]"
                    asp-route-search="@ViewData["Search"]"
                    asp-route-industry="@ViewData["Industry"]"
                    asp-route-tag="@ViewData["Tag"]"
-                   asp-route-author="@ViewData["Author"]">Industry</a>
+                   asp-route-author="@ViewData["Author"]"
+                   asp-route-pageNumber="@ViewData["PageNumber"]">Industry</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]"
                    asp-route-search="@ViewData["Search"]"
                    asp-route-industry="@ViewData["Industry"]"
                    asp-route-tag="@ViewData["Tag"]"
-                   asp-route-author="@ViewData["Author"]">CreatedOn</a>
+                   asp-route-author="@ViewData["Author"]"
+                   asp-route-pageNumber="@ViewData["PageNumber"]">CreatedOn</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["SortByDownloads"]"
                    asp-route-search="@ViewData["Search"]"
                    asp-route-industry="@ViewData["Industry"]"
                    asp-route-tag="@ViewData["Tag"]"
-                   asp-route-author="@ViewData["Author"]">Downloads</a>
+                   asp-route-author="@ViewData["Author"]"
+                   asp-route-pageNumber="@ViewData["PageNumber"]">Downloads</a>
             </th>
             <th></th>
         </tr>
