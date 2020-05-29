@@ -1,5 +1,5 @@
-﻿using InsightHub.Models;
-using InsightHub.Services.DTOs;
+﻿using InsightHub.Data.Entities;
+using InsightHub.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,11 +7,11 @@ namespace InsightHub.Services.Contracts
 {
     public interface ITagServices
     {
-        Task<TagDTO> CreateTag(string name);
+        Task<TagModel> CreateTag(string name);
         Task<bool> DeleteTag(int id);
-        Task<TagDTO> GetTag(int id);
-        Task<ICollection<TagDTO>> GetTags();
-        Task<TagDTO> UpdateTag(int id, string name);
+        Task<TagModel> GetTag(int id);
+        Task<ICollection<TagModel>> GetTags(string sort, string search);
+        Task<TagModel> UpdateTag(int id, string name);
         void ValidateTagExists(Tag tag);
     }
 }

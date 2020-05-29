@@ -1,0 +1,76 @@
+﻿@model InsightHub.Models.ReportModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<httpRuntime maxRequestLength="2000000000" executionTimeout="999999" />
+<security>
+    <requestFiltering>
+        <requestLimits maxAllowedContentLength="2000000000" />
+    </requestFiltering>
+</security>*@
+
+<h2>Create</h2>
+
+<h4>Report</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Summary" class="control-label"></label>
+                <input asp-for="Summary" class="form-control" />
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tags" class="control-label">Tags (comma separated)</label>
+                <input asp-for="Tags" class="form-control" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Industry" class="control-label"></label>
+                <select asp-for="Industry" class="form-control" asp-items="@ViewData["Industry"] as IEnumerable<SelectListItem>"></select>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" value="@ViewData["Author"]"/>
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImgUrl" class="control-label">Image URL</label>
+                <input asp-for="ImgUrl" class="form-control" />
+                <span asp-validation-for="ImgUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>Upload a file to your report:</p>
+                    <input type="file" name="file" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

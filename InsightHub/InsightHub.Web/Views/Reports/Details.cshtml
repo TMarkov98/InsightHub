@@ -1,0 +1,112 @@
+﻿@model InsightHub.Models.ReportModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(model => model.Title)</h2>
+<h4>Details</h4>
+
+<div>
+    <h4>Report</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+        </dt>
+        <dd class="col-sm-10">
+            <img src=@Html.DisplayFor(model => model.ImgUrl) width="200" height="200">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-action="Index" asp-route-author=@Model.Author.Split(' ').Last()>@Html.DisplayFor(model => model.Author)</a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Industry)
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-action="Index" asp-route-industry=@Model.Industry>@Html.DisplayFor(model => model.Industry)</a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var tag in ViewData["Tags"] as IEnumerable<string>)
+            {
+                <a asp-action="Index" asp-route-tag=@tag>@tag</a><br />
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IsDeleted)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeletedOn)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeletedOn)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IsFeatured)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IsFeatured)
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Download" asp-route-id="@Model.Id">Download</a> <br />
+    @if (User.Identity.IsAuthenticated && User.Identity.Name == Model.Author.Split(' ').Last() || User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <br />
+        <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> <br />
+    }
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        @if (Model.IsPending)
+        {
+            <a asp-area="Admin" asp-controller="PendingReports" asp-action="Approve" asp-route-id="@Model.Id">Approve</a> <br />
+        }
+        @if (Model.IsFeatured)
+        {
+            <a asp-action="ToggleFeatured" asp-route-id="@Model.Id">Remove from Featured</a> <br />
+        }
+        else
+        {
+            <a asp-action="ToggleFeatured" asp-route-id="@Model.Id">Feature</a> <br />
+        }
+    }
+    <a asp-action="Index">All Reports</a>
+</div>

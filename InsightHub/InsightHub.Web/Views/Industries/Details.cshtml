@@ -1,42 +1,86 @@
-﻿@model InsightHub.Services.DTOs.IndustryDTO
+﻿@model InsightHub.Models.IndustryModel
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
 <div>
-    <h4>Industry</h4>
+    <h4>Details</h4>
+    @if ((bool)ViewData["SubscriptionExists"] && User.IsInRole("Client"))
+    {
+        <a asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe from Email notifications</a>
+    }
+    else if (User.IsInRole("Client"))
+    {
+        <a asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe for Email notifications</a>
+    }
+    <br />
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    }
+    <br />
+    <a asp-action="Index">Back to List</a>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+        <dt class="col-sm-2">
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+        <dd class="col-sm-10">
+            <img src=@Html.DisplayFor(model => model.ImgUrl) width="200" height="200">
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsDeleted)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SubscriptionsCount)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsDeleted)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SubscriptionsCount)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedOn)
+        @*<dd class="col-sm-2">
+            Reports
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModifiedOn)
-        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Reports.Where(r => r.Industry == model.Name).Count())
+        </dd>*@
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <h5>
+        Newest 10 Reports
+        <a class="btn btn-primary" asp-controller="Reports" asp-action="Index" asp-route-industry="@Model.Name">Show All</a>
+    </h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th />
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    CreatedOn
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Reports.OrderByDescending(r => r.CreatedOn).Take(10))
+            {
+                <tr>
+                    <td>
+                        <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
+                    </td>
+                    <td>
+                        <a asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Summary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

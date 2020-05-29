@@ -1,0 +1,39 @@
+﻿@model IEnumerable<InsightHub.Models.IndustryModel>
+
+<h1 class="text-left">My Subscriptions</h1>
+<h5 class="text-left">Industries that you are subscribed to:</h5>
+<h6 class="text-left">You are will get an email every time a new report from one of these industries is published.</h6>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Created On
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Industries" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Industries" asp-action="RemoveSubscription" asp-route-id="@item.Id">Remove Subscription</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

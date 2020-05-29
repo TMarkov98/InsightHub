@@ -1,4 +1,4 @@
-﻿using InsightHub.Services.DTOs;
+﻿using InsightHub.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,10 +6,14 @@ namespace InsightHub.Services.Contracts
 {
     public interface IIndustryServices
     {
-        Task<IndustryDTO> CreateIndustry(string name);
+        Task<IndustryModel> CreateIndustry(string name, string imgUrl);
         Task<bool> DeleteIndustry(int id);
-        Task<List<IndustryDTO>> GetAllIndustries();
-        Task<IndustryDTO> GetIndustry(int id);
-        Task<IndustryDTO> UpdateIndustry(int id, string newName);
+        Task<List<IndustryModel>> GetAllIndustries(string sort, string search);
+        Task<List<IndustryModel>> GetDeletedIndustries(string search);
+        Task<IndustryModel> GetIndustry(int id);
+        Task<IndustryModel> UpdateIndustry(int id, string newName, string newImg);
+        Task AddSubscription(int userId, int industryId);
+        Task RemoveSubscription(int userId, int industryId);
+        Task<bool> SubscriptionExists(int userId, int industryId);
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using InsightHub.Web.Models;
+using InsightHub.Services.Contracts;
+using Microsoft.AspNetCore.Diagnostics;
+using System.IO;
 
 namespace InsightHub.Web.Controllers
 {
@@ -32,6 +35,20 @@ namespace InsightHub.Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public new IActionResult NotFound()
+        {
+            return View();
+        }
+
+        public IActionResult UserBanned()
+        {
+            return View();
+        }
+
+        public IActionResult UserPending()
+        {
+            return View();
         }
     }
 }

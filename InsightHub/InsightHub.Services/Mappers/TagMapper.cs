@@ -1,5 +1,5 @@
-﻿using InsightHub.Models;
-using InsightHub.Services.DTOs;
+﻿using InsightHub.Data.Entities;
+using InsightHub.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,34 +9,35 @@ namespace InsightHub.Services.Mappers
 {
     public static class TagMapper
     {
-        public static TagDTO MapDTOFromInput(string name)
+        public static TagModel MapModelFromInput(string name)
         {
-            return new TagDTO()
+            return new TagModel()
             {
                 Name = name,
                 CreatedOn = DateTime.UtcNow,
             };
         }
 
-        public static TagDTO MapDTOFromTag(Tag tag)
+        public static TagModel MapModelFromEntity(Tag tag)
         {
-            return new TagDTO()
+            return new TagModel()
             {
                 Id = tag.Id,
                 Name = tag.Name,
                 CreatedOn = tag.CreatedOn,
                 ModifiedOn = tag.ModifiedOn,
                 IsDeleted = tag.IsDeleted,
-                Reports = tag.Reports.Select(r => new string("Id: " + r.Report.Id + " - " + r.Report.Title)).ToList(),
+                DeletedOn = tag.DeletedOn,
+                Reports = tag.Reports.Select(r => $"Id: {r.Report.Id} - {r.Report.Title}").ToList(),
             };
         }
 
-        public static Tag MapTagFromDTO(TagDTO tagDTO)
+        public static Tag MapEntityFromModel(TagModel tagModel)
         {
             return new Tag()
             {
-                Name = tagDTO.Name,
-                CreatedOn = tagDTO.CreatedOn
+                Name = tagModel.Name,
+                CreatedOn = tagModel.CreatedOn
             };
         }
     }

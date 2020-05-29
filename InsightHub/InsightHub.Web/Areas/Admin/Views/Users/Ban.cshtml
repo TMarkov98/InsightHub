@@ -1,0 +1,24 @@
+﻿@model InsightHub.Models.UserModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ban @Html.DisplayFor(model => model.Email)</h2>
+
+<h4>Are you sure you want to ban this user?</h4>
+<div>
+    <form asp-action="Ban">
+        <div class="form-group">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label asp-for="BanReason" class="control-label"></label>
+            <input asp-for="BanReason" class="form-control" />
+            <span asp-validation-for="BanReason" class="text-danger"></span>
+        </div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <input type="submit" value="Ban" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
