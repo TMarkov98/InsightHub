@@ -21,5 +21,6 @@ namespace InsightHub.Models
         public DateTime DeletedOn { get; set; }
         public bool IsDeleted { get; set; }
         public bool IsFeatured { get; set; }
+        public bool IsPending { get; set; }
     }
 }

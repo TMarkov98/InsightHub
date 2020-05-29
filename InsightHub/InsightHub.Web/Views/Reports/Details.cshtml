@@ -95,6 +95,10 @@
     }
     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
     {
+        @if (Model.IsPending)
+        {
+            <a asp-area="Admin" asp-controller="PendingReports" asp-action="Approve" asp-route-id="@Model.Id">Approve</a> <br />
+        }
         @if (Model.IsFeatured)
         {
             <a asp-action="ToggleFeatured" asp-route-id="@Model.Id">Remove from Featured</a> <br />

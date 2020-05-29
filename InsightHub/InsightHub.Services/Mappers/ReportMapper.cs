@@ -40,6 +40,7 @@ namespace InsightHub.Services.Mappers
                 DeletedOn = report.DeletedOn,
                 IsFeatured = report.IsFeatured,
                 ModifiedOn = report.ModifiedOn,
+                IsPending = report.IsPending,
                 Tags = string.Join(", ", report.Tags.Select(t => t.Tag.Name))
             };
         }

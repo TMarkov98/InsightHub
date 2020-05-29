@@ -435,7 +435,7 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 4,
-                    Name = "Automotive",
+                    Name = "Automobile & Automotive",
                     ImgUrl = "https://j2offshore.com/wp-content/uploads/2018/05/automative-2.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
