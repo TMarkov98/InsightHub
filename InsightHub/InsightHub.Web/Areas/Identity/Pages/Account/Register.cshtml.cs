@@ -89,7 +89,7 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            if(Input.IsClient == false && Input.IsAuthor == false)
+            if (Input.IsClient == false && Input.IsAuthor == false)
             {
                 throw new ArgumentException("The account must be either a Client, or an Author, or both.");
             }
@@ -97,19 +97,19 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new User { FirstName = Input.FirstName, LastName = Input.LastName, UserName = Input.Email, PhoneNumber = Input.PhoneNumber, Email = Input.Email };
+                var user = new User
+                {
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    UserName = Input.Email,
+                    PhoneNumber = Input.PhoneNumber,
+                    Email = Input.Email,
+                    CreatedOn = DateTime.UtcNow,
+                };
                 var result = await _userManager.CreateAsync(user, Input.Password);
-                if(Input.IsClient)
-                {
-                    await _userManager.AddToRoleAsync(user, "Client");
-                }
-                if(Input.IsAuthor)
-                {
-                    await _userManager.AddToRoleAsync(user, "Author");
-                }
+                
                 if (result.Succeeded)
                 {
-                    user.CreatedOn = DateTime.UtcNow;
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -119,6 +119,15 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
                         pageHandler: null,
                         values: new { area = "Identity", userId = user.Id, code = code },
                         protocol: Request.Scheme);
+
+                    if (Input.IsClient)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Client");
+                    }
+                    if (Input.IsAuthor)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Author");
+                    }
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
@@ -131,6 +140,7 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
+
                 }
                 foreach (var error in result.Errors)
                 {

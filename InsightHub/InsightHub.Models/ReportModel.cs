@@ -1,6 +1,7 @@
 ﻿using InsightHub.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace InsightHub.Models
@@ -8,11 +9,19 @@ namespace InsightHub.Models
     public class ReportModel
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(100, MinimumLength = 5)]
         public string Title { get; set; }
+        [Required]
+        [StringLength(300, MinimumLength = 5)]
         public string Summary { get; set; }
+        [Required]
+        [StringLength(5000, MinimumLength = 5)]
         public string Description { get; set; }
+        [Required]
         public string Author { get; set; }
         public string Tags { get; set; }
+        [Required]
         public string Industry { get; set; }
         public int DownloadsCount { get; set; }
         public string ImgUrl { get; set; }
