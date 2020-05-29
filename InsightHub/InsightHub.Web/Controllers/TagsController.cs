@@ -31,9 +31,7 @@ namespace InsightHub.Web.Controllers
             ViewData["SortByName"] = sort == "name" ? "name_desc" : "name";
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
             ViewData["Search"] = search;
-
-            ViewData["Search"] = search;
-
+            ViewData["PageNumber"] = pageNumber;
             var tags = await _tagServices.GetTags(sort, search);
             int pageSize = 10;
             return View(await tags.ToPagedListAsync(pageNumber ?? 1, pageSize));

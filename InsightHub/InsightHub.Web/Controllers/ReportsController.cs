@@ -42,7 +42,7 @@ namespace InsightHub.Web.Controllers
             ViewData["SortByIndustry"] = sort == "industry" ? "industry_desc" : "industry";
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
             ViewData["SortByDownloads"] = sort == "downloads" ? "downloads_asc" : "downloads";
-
+            ViewData["PageNumber"] = pageNumber;
             ViewData["Search"] = search;
             ViewData["Industry"] = industry;
             ViewData["Tag"] = tag;

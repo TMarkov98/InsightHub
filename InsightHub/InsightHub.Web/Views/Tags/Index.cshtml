@@ -25,10 +25,10 @@
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]">Name</a>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">Name</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-search="@ViewData["Search"]">CreatedOn</a>
+                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">CreatedOn</a>
             </th>
             <th></th>
         </tr>
