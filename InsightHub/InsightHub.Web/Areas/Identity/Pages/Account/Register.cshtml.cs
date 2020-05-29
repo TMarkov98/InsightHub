@@ -89,7 +89,7 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            if(Input.IsClient == false && Input.IsAuthor == false)
+            if (Input.IsClient == false && Input.IsAuthor == false)
             {
                 throw new ArgumentException("The account must be either a Client, or an Author, or both.");
             }
@@ -97,19 +97,26 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new User { FirstName = Input.FirstName, LastName = Input.LastName, UserName = Input.Email, PhoneNumber = Input.PhoneNumber, Email = Input.Email };
+                var user = new User
+                {
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    UserName = Input.Email,
+                    PhoneNumber = Input.PhoneNumber,
+                    Email = Input.Email,
+                    CreatedOn = DateTime.UtcNow,
+                };
                 var result = await _userManager.CreateAsync(user, Input.Password);
-                if(Input.IsClient)
+                if (Input.IsClient)
                 {
                     await _userManager.AddToRoleAsync(user, "Client");
                 }
-                if(Input.IsAuthor)
+                if (Input.IsAuthor)
                 {
                     await _userManager.AddToRoleAsync(user, "Author");
                 }
                 if (result.Succeeded)
                 {
-                    user.CreatedOn = DateTime.UtcNow;
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
