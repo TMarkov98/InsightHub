@@ -51,7 +51,7 @@ namespace InsightHub.Web.Controllers
             var reports = await _reportServices.GetReports(sort, search, author, industry, tag);
             ViewData["ResultsCount"] = reports.Count;
 
-            int pageSize = 10;
+            int pageSize = 8;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
 

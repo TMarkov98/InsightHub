@@ -3,15 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - InsightHub.Web</title>
+    <title>@ViewData["Title"] - InsightHub</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:#04202C">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">InsightHub.Web</a>
+                <b>
+                    <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">InsightHub</a>
+                </b>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,97 +22,97 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Industries" asp-action="Index">Industries</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Industries" asp-action="Index">Industries</a>
                         </li>
 
                         @if (!User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index">Reports</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Reports" asp-action="Index">Reports</a>
                             </li>
                         }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Client") && User.IsInRole("Author"))
                         {
                             <li class="nav-item">
                                 <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
+                                    <button class="btn btn-default dropdown-toggle text-white" type="button" data-toggle="dropdown" data-hover="dropdown">
                                         My Reports
                                     </button>
-                                    <ul class="dropdown-menu text-dark">
+                                    <ul class="dropdown-menu text-white">
                                         <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-area="Client" asp-controller="MyReports" asp-action="Index">Downloaded Reports</a>
+                                            <a class="nav-link text-white" asp-area="Client" asp-controller="MyReports" asp-action="Index">Downloaded Reports</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-area="Author" asp-controller="UploadedReports" asp-action="Index">Uploaded Reports</a>
+                                            <a class="nav-link text-white" asp-area="Author" asp-controller="UploadedReports" asp-action="Index">Uploaded Reports</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Client" asp-controller="MySubscriptions" asp-action="Index">My Subscriptions</a>
+                                <a class="nav-link text-white" asp-area="Client" asp-controller="MySubscriptions" asp-action="Index">My Subscriptions</a>
                             </li>
                         }
                         else if (User.Identity.IsAuthenticated && User.IsInRole("Client"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Client" asp-controller="MyReports" asp-action="Index">My Reports</a>
+                                <a class="nav-link text-white" asp-area="Client" asp-controller="MyReports" asp-action="Index">My Reports</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Client" asp-controller="MySubscriptions" asp-action="Index">My Subscriptions</a>
+                                <a class="nav-link text-white" asp-area="Client" asp-controller="MySubscriptions" asp-action="Index">My Subscriptions</a>
                             </li>
                         }
                         else if (User.Identity.IsAuthenticated && User.IsInRole("Author"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Author" asp-controller="UploadedReports" asp-action="Index">My Reports</a>
+                                <a class="nav-link text-white" asp-area="Author" asp-controller="UploadedReports" asp-action="Index">My Reports</a>
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ContactWithUs" asp-action="ContactWithUs">Contact Us</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="ContactWithUs" asp-action="ContactWithUs">Contact Us</a>
                         </li>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Tags" asp-action="Index">Tags</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Tags" asp-action="Index">Tags</a>
                             </li>
                             <li class="nav-item">
                                 <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
+                                    <button class="btn btn-default dropdown-toggle text-white" type="button" data-toggle="dropdown" data-hover="dropdown">
                                         Reports
                                     </button>
-                                    <ul class="dropdown-menu text-dark">
+                                    <ul class="dropdown-menu" style="background-color:#304040">
                                         <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index">Active Reports</a>
+                                            <a class="nav-link text-white" asp-area="" asp-controller="Reports" asp-action="Index">Active Reports</a>
                                         </li>
                                         <li>
-                                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="PendingReports" asp-action="Index">Pending Reports</a>
+                                            <a class="nav-link text-white" asp-area="Admin" asp-controller="PendingReports" asp-action="Index">Pending Reports</a>
                                         </li>
                                         <li>
-                                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="DeletedReports" asp-action="Index">Deleted Reports</a>
+                                            <a class="nav-link text-white" asp-area="Admin" asp-controller="DeletedReports" asp-action="Index">Deleted Reports</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
                                 <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
+                                    <button class="btn btn-default dropdown-toggle text-white" type="button" data-toggle="dropdown" data-hover="dropdown">
                                         Users
                                     </button>
-                                    <ul class="dropdown-menu text-dark">
+                                    <ul class="dropdown-menu" style="background-color:#304040">
                                         <li>
-                                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Users" asp-action="Index">Active Users</a>
+                                            <a class="nav-link text-white" asp-area="Admin" asp-controller="Users" asp-action="Index">Active Users</a>
                                         </li>
                                         <li>
-                                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="PendingUsers" asp-action="Index">Pending Users</a>
+                                            <a class="nav-link text-white" asp-area="Admin" asp-controller="PendingUsers" asp-action="Index">Pending Users</a>
                                         </li>
                                         <li>
-                                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="BannedUsers" asp-action="Index">Banned Users</a>
+                                            <a class="nav-link text-white" asp-area="Admin" asp-controller="BannedUsers" asp-action="Index">Banned Users</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -127,9 +129,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="background-color:#04202C">
         <div class="container">
-            &copy; 2020 - InsightHub.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - InsightHub - <a class="btn btn-outline-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
