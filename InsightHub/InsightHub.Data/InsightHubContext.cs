@@ -33,6 +33,8 @@ namespace InsightHub.Data
             modelBuilder.Entity<Report>().HasOne(r => r.Author);
             modelBuilder.Entity<Report>().HasOne(r => r.Industry);
 
+            modelBuilder.Entity<Industry>().Property(i => i.Name).HasMaxLength(50).IsRequired();
+
             modelBuilder.Entity<User>().Property(u => u.FirstName).IsRequired();
             modelBuilder.Entity<User>().Property(u => u.LastName).IsRequired();
             modelBuilder.Entity<User>().Property(u => u.Email).IsRequired();

@@ -107,14 +107,7 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
                     CreatedOn = DateTime.UtcNow,
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
-                if (Input.IsClient)
-                {
-                    await _userManager.AddToRoleAsync(user, "Client");
-                }
-                if (Input.IsAuthor)
-                {
-                    await _userManager.AddToRoleAsync(user, "Author");
-                }
+                
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
@@ -127,6 +120,15 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = user.Id, code = code },
                         protocol: Request.Scheme);
 
+                    if (Input.IsClient)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Client");
+                    }
+                    if (Input.IsAuthor)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Author");
+                    }
+
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
@@ -138,6 +140,7 @@ namespace InsightHub.Web.Areas.Identity.Pages.Account
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
+
                 }
                 foreach (var error in result.Errors)
                 {

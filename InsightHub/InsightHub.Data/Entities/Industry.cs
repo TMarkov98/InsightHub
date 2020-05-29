@@ -12,6 +12,10 @@ namespace InsightHub.Data.Entities
         {
             this.Reports = new List<Report>();
             this.SubscribedUsers = new List<IndustrySubscription>();
+            if(this.ImgUrl == null || this.ImgUrl == string.Empty)
+            {
+                this.ImgUrl = "https://www.axiz.com/wp-content/uploads/2019/04/industry40petro-1024x679.png";
+            }
         }
 
         public int Id { get; set; }
