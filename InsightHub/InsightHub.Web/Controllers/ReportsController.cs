@@ -168,7 +168,7 @@ namespace InsightHub.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,ImgUrl,Industry,Tags")] ReportModel report)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Summary,Description,ImgUrl,Industry,Tags")] ReportModel report)
         {
             if (id != report.Id)
                 return NotFound("Id can NOT be null");

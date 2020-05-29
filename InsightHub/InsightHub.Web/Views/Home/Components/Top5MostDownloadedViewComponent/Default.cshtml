@@ -23,7 +23,7 @@
                 @Html.DisplayNameFor(model => model.Industry)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedOn)
+                @Html.DisplayNameFor(model => model.DownloadsCount)
             </th>
             <th></th>
         </tr>
@@ -45,7 +45,7 @@
                     <a asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>@Html.DisplayFor(modelItem => item.Industry)</a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                    @Html.DisplayFor(modelItem => item.DownloadsCount)
                 </td>
             </tr>
         }

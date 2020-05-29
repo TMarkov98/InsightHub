@@ -51,7 +51,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ImgUrl)
+                    <img src="@Html.DisplayFor(modelItem => item.ImgUrl)" height="75" width="75" />
                 </td>
                 <td>
                     <a asp-area="" asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
