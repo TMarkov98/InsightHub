@@ -34,11 +34,6 @@ namespace InsightHub.Web.Controllers
             ViewData["SortByName"] = sort == "name" ? "name_desc" : "name";
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
 
-            if (search != null)
-            {
-                pageNumber = 1;
-            }
-
             ViewData["Search"] = search;
 
             var industries = await _industryServices.GetAllIndustries(sort, search);

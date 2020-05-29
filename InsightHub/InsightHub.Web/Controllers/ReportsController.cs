@@ -43,10 +43,6 @@ namespace InsightHub.Web.Controllers
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
             ViewData["SortByDownloads"] = sort == "downloads" ? "downloads_asc" : "downloads";
 
-            if (search != null || industry != null || tag != null || author != null)
-            {
-                pageNumber = 1;
-            }
             ViewData["Search"] = search;
             ViewData["Industry"] = industry;
             ViewData["Tag"] = tag;
