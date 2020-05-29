@@ -32,11 +32,6 @@ namespace InsightHub.Web.Controllers
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
             ViewData["Search"] = search;
 
-            if (search != null)
-            {
-                pageNumber = 1;
-            }
-
             ViewData["Search"] = search;
 
             var tags = await _tagServices.GetTags(sort, search);
