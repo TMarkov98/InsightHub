@@ -33,7 +33,7 @@ namespace InsightHub.Web.Controllers
             ViewData["CurrentSort"] = sort;
             ViewData["SortByName"] = sort == "name" ? "name_desc" : "name";
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
-
+            ViewData["PageNumber"] = pageNumber;
             ViewData["Search"] = search;
 
             var industries = await _industryServices.GetAllIndustries(sort, search);
