@@ -69,7 +69,6 @@ namespace InsightHub.Web.Controllers
             if (report == null)
                 return NotFound("Report not found.");
 
-            ViewData["AuthorEmail"] = report.Author.Split("- ").Select(a => a.Trim()).Last();
             ViewData["Tags"] = report.Tags.Split(',').Select(t => t.Trim());
 
             return View(report);
