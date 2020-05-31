@@ -2663,11 +2663,11 @@ fieldset:disabled a.btn {
   border-color: #04202C;
 }
 
-.btn-dark:hover {
-  color: #fff;
-  background-color: #23272b;
-  border-color: #1d2124;
-}
+    .btn-dark:hover {
+        color: #04202C;
+        background-color: #fff;
+        border-color: #04202C;
+    }
 
 .btn-dark:focus, .btn-dark.focus {
   box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5);

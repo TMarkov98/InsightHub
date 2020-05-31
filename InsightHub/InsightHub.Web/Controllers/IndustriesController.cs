@@ -37,7 +37,7 @@ namespace InsightHub.Web.Controllers
             ViewData["Search"] = search;
 
             var industries = await _industryServices.GetAllIndustries(sort, search);
-            int pageSize = 10;
+            int pageSize = 8;
             return View(await industries.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
 
