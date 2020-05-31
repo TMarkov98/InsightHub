@@ -19,7 +19,7 @@
             <div class="form-actions">
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Author") || User.IsInRole("Admin"))
                 {
-                    <a class="d-inline-flex btn-lg btn-dark float-right" asp-action="Create">New Report</a>
+                    <a class="d-inline-flex btn-lg btn-dark float-right" style="padding-bottom:10px" asp-action="Create">New Report</a>
                 }
                 <p style="color:#4D648D">
                     Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />

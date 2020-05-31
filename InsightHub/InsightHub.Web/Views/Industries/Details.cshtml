@@ -4,10 +4,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<dl class="row">
+    <dt class="col-sm-2">
+    </dt>
+    <dd class="img-fluid">
+        <img src=@Html.DisplayFor(model => model.ImgUrl) height="200" width="1000">
+    </dd>
+</dl>
 <h2>@Html.DisplayFor(model => model.Name)</h2>
+<dl class="row">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin, Author"))
+    {
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SubscriptionsCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SubscriptionsCount)
+        </dd>
+    }
+    @*<dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Reports.Count())
+        </dd>*@
+</dl>
 
 <div>
-    <h4>Details</h4>
     @if ((bool)ViewData["SubscriptionExists"] && User.IsInRole("Client"))
     {
         <a asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe from Email notifications</a>
@@ -24,63 +45,54 @@
     <br />
     <a asp-action="Index">Back to List</a>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-        </dt>
-        <dd class="col-sm-10">
-            <img src=@Html.DisplayFor(model => model.ImgUrl) width="200" height="200">
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SubscriptionsCount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SubscriptionsCount)
-        </dd>
-        @*<dd class="col-sm-2">
-            Reports
-        </dd>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Reports.Where(r => r.Industry == model.Name).Count())
-        </dd>*@
-    </dl>
-    <h5>
-        Newest 10 Reports
-        <a class="btn btn-primary" asp-controller="Reports" asp-action="Index" asp-route-industry="@Model.Name">Show All</a>
-    </h5>
-    <table class="table">
-        <thead>
-            <tr>
-                <th />
-                <th>
-                    Title
-                </th>
-                <th>
-                    Description
-                </th>
-                <th>
-                    CreatedOn
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Reports.OrderByDescending(r => r.CreatedOn).Take(10))
-            {
-                <tr>
+
+    <h4 class="font-italic">
+       Latest Reports 
+    </h4>
+    <a class="btn btn-primary" asp-controller="Reports" asp-action="Index" asp-route-industry="@Model.Name">Show All</a>
+    @foreach (var item in Model.Reports.OrderByDescending(r => r.CreatedOn).Take(10))
+    {
+        <div class="row">
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <a asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                        </h2>
+                        <p class="card-text text-roght">@item.CreatedOn</p>
+                        <p class="card-text text-left">@item.Summary</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary btn-sm">More Info</a>
+                    </div>
+                </div>
+            </div>
+            @*<tr>
                     <td>
                         <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
                     </td>
-                    <td>
-                        <a asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Summary)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedOn)
-                    </td>
                 </tr>
-            }
-        </tbody>
-    </table>
+
+                <table class="table">
+                        <thead>
+                            <tr>
+                                <th />
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    CreatedOn
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>*@
+        </div>
+    }
 </div>
