@@ -10,7 +10,7 @@
     <div class="container">
         <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
 
-        <h1 class="display-3" style="color:#04202C">
+        <h1 class="display-3" style="color:#04202C; font-family: Cambria">
             <b>
                 Reports
             </b>
@@ -84,20 +84,23 @@
                     <div class="card h-100 mw-100" style="background-color: #0a4863">
                         <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.ImgUrl)" width="500" height="200" alt="">
                         <div class="card-body text-white">
-                            <div class="d-inline-flex float-left">
-                                <a class="text-white" asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>@Html.DisplayFor(modelItem => item.Industry)</a>
+                            <div class="row">
+                                <div class="col-6 float-left">
+                                    <a class="text-white" asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>
+                                        @item.Industry
+                                    </a>
+                                </div>
+                                <div class="col-6 float-right" style="color:#C9D1C8">
+                                    @item.CreatedOn.ToShortDateString()
+                                </div>
                             </div>
-                            <div class="d-inline-flex float-right" style="color:#C9D1C8">
-                                @item.CreatedOn.ToShortDateString()
-                            </div>
-                            <p />
-                            <div class="d-inline-block text-center">
+                            <row class="d-inline-block text-center">
                                 <h5>
                                     <b>
-                                        <a class="text-white font-weight-bold" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                                        <a class="text-white font-weight-bold" style="font-family: Cambria" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
                                     </b>
                                 </h5>
-                            </div>
+                            </row>
                             <div class="row text-left" style="color:#C9D1C8">
                                 @Html.DisplayFor(modelItem => item.Summary)
                             </div>
