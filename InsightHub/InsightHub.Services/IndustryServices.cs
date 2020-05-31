@@ -122,6 +122,8 @@ namespace InsightHub.Services
             }
             var industry = await _context.Industries
                 .Include(i => i.Reports)
+                .Include(i => i.Reports)
+                .ThenInclude(r => r.Author)
                 .FirstOrDefaultAsync(i => i.Id == id);
             ValidateIndustryExists(industry);
             industry.Name = newName;

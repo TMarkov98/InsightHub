@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace InsightHub.Data
@@ -227,7 +228,7 @@ namespace InsightHub.Data
                     Description = "The report is divided into three sections. The first part reviews the supply side of the pub market, revealing numbers, trends and the contrasting fortunes of different sectors, and identifying some of the areas in which pubs are succeeding. The second section analyses the customer base: their demographics, habits and motivations. The final part takes a look at reasons for optimism, with insights into increasing appeal and sales and the emerging new breeds of pub in Britain. At a time of great challenges for both the out of home eating and drinking market and the UK economy as a whole, this report highlights the many positive trends and developments in the British pub market. We hope you enjoy reading it.",
                     Summary = "This report draws on CGA’s unrivalled suite of research services to provide a comprehensive picture of Great Britain’s pubs and their opportunities for growth",
                     AuthorId = 2,
-                    IndustryId = 6,
+                    IndustryId = 17,
                     ImgUrl = "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2019%2F12%2Fuk-pubs-growth-FT-BLOG1219.jpg&q=85",
                     CreatedOn = DateTime.UtcNow,
                     IsFeatured = true,
@@ -299,7 +300,7 @@ namespace InsightHub.Data
                     Description = "The way we make, use and throwaway our clothes is unsustainable. Textile production contributes more to climate change than international aviation and shipping combined, consumes lake-sized volumes of fresh water and creates chemical and plastic pollution. Synthetic fibres are being found in the deep sea, in Arctic sea ice, in fish and shellfish. Our biggest retailers have ‘chased the cheap needle around the planet’, commissioning production  in  countries  with  low  pay,  little  trade  union  representation  and  weak  environmental protection. In many countries, poverty pay and conditions are standard for garment workers, most of whom are women. We are also concerned about the use of  child  labour,  prison  labour,  forced  labour  and  bonded  labour  in  factories  and  the  garment supply chain. Fast fashions’ overproduction and overconsumption of clothing is based on the globalisation of indifference towards these manual workers.",
                     Summary = "Fixing Fashion: Clothing Consumption and Sustainability",
                     AuthorId = 2,
-                    IndustryId = 11,
+                    IndustryId = 10,
                     ImgUrl = "https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F190912152727-uglyleaddd.jpg",
                     CreatedOn = DateTime.UtcNow,
                     IsPending = false,
@@ -402,14 +403,15 @@ namespace InsightHub.Data
             //        CreatedOn = DateTime.UtcNow,
             //        IsPending = false,
             //    });
+
             //Seed Industries
 
             modelBuilder.Entity<Industry>().HasData(
                 new Industry
                 {
                     Id = 1,
-                    Name = "Business Services",
-                    ImgUrl = "https://help-investor.com/wp-content/uploads/2018/07/Accountant.jpg",
+                    Name = "Finance",
+                    ImgUrl = "https://www.k-international.com/wp-content/uploads/2015/10/financial-translation-service.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -417,8 +419,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 2,
-                    Name = "Aerospace & Air Transport",
-                    ImgUrl = "https://www.henkel.com/resource/image/946964/4x3/1120/840/e9b0d415e2ab94d019b20e32cf0f015/el/aerospace-industry-growth.jpg",
+                    Name = "Airlines",
+                    ImgUrl = "https://www.travelagewest.com/uploadedImages/All_Gateways/Other_-_General/TAW_Agent_Tools/1300x450_151116_SPOTLIGHT_CS_Airlines.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -426,8 +428,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 3,
-                    Name = "Healthcare & Pharmaceuticals",
-                    ImgUrl = "https://miro.medium.com/max/3200/1*afTS3knLUSHCJDirSOlq1g.jpeg",
+                    Name = "Healthcare",
+                    ImgUrl = "https://cdn2.mageplaza.com/media/general2/6ZFJLD3.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -435,8 +437,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 4,
-                    Name = "Automobile & Automotive",
-                    ImgUrl = "https://j2offshore.com/wp-content/uploads/2018/05/automative-2.jpg",
+                    Name = "Automobile",
+                    ImgUrl = "https://igniteoutsourcing.com/wp-content/uploads/2018/02/blockchain-in-automotive-industry.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -444,8 +446,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 5,
-                    Name = "Finance & Banking",
-                    ImgUrl = "https://studyabroad.bg/wp-content/uploads/2016/04/Bank.jpg",
+                    Name = "Business Services",
+                    ImgUrl = "https://www.clustertech.com/sites/default/files/Landing%20Page/Business%20Solutions/65%29%20Business%20solutions%20landing.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -453,8 +455,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 6,
-                    Name = "Bars & Restaurants",
-                    ImgUrl = "https://goguide.bg/upload/places/inner/1576236597Embassy.png",
+                    Name = "Space",
+                    ImgUrl = "https://www.star2star.com/sites/default/files/headers/Space-Museum_0.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -462,8 +464,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 7,
-                    Name = "Construction & Equipment",
-                    ImgUrl = "https://rr-hk.com/Building_material/img/62614691_custom.jpg",
+                    Name = "Construction",
+                    ImgUrl = "https://blog.plangrid.com/wp-content/uploads/2018/10/New-Zealand-Construction-Industry-Aukland-Build.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -471,8 +473,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 8,
-                    Name = "Crops & Cattle",
-                    ImgUrl = "https://www.netafim.com/48da28/globalassets/demo/products-and-solutions/open-fields/open_fields_headvisual-graded.jpg?height=620&width=1440&mode=crop&quality=80",
+                    Name = "Agriculture",
+                    ImgUrl = "https://www.deere.com.au/assets/images/region-4/industries/agriculture/r4a063080-ag-1366x347.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -480,8 +482,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 9,
-                    Name = "Casinos & Gambling",
-                    ImgUrl = "https://q-cf.bstatic.com/images/hotel/max1024x768/240/240066005.jpg",
+                    Name = "Casino",
+                    ImgUrl = "https://granitegrok.com/wp-content/uploads/Clearwater-Casino1-2.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -489,8 +491,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 10,
-                    Name = "Entertainment & TV",
-                    ImgUrl = "https://www.marketingtochina.com/wp-content/uploads/2017/08/seo-marketing.jpg",
+                    Name = "Fashion",
+                    ImgUrl = "https://i.imgur.com/TFcnTmD.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -498,8 +500,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 11,
-                    Name = "Clothing & Fashion",
-                    ImgUrl = "https://scstylecaster.files.wordpress.com/2018/08/nyfw-fi.png",
+                    Name = "Blockchain",
+                    ImgUrl = "https://edtechmagazine.com/k12/sites/edtechmagazine.com.k12/files/styles/cdw_hero/public/articles/EdTech/201708/monsitj_K12ITFuturist.jpg?itok=x6-qgDRB",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -508,7 +510,7 @@ namespace InsightHub.Data
                 {
                     Id = 12,
                     Name = "Education",
-                    ImgUrl = "https://www.healthcaresalestraining.com/photo/5.jpg",
+                    ImgUrl = "https://www.homesteaderslife.com/hubfs/Images/Banners/Events_Education_Banner.jpg#keepProtocol",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -516,8 +518,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 13,
-                    Name = "Computers & Software",
-                    ImgUrl = "https://ctbhost.com/wp-content/uploads/2019/07/computer-internet-franchise-1.jpg",
+                    Name = "Technology",
+                    ImgUrl = "https://www.exponent.com/~/media/practices-capabilities-and-industries/electronics-information/electronicsinformation_1250x450px.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -525,8 +527,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 14,
-                    Name = "Energy & Natural Resources",
-                    ImgUrl = "https://www.power-technology.com/wp-content/uploads/sites/7/2018/01/Renewable_Energy_on_the_Grid.jpg",
+                    Name = "Energy",
+                    ImgUrl = "https://i.imgur.com/5pZJcpA.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -534,8 +536,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 15,
-                    Name = "Food & Drink",
-                    ImgUrl = "https://industrytoday.com/wp-content/uploads/2019/08/food-and-beverages.jpg",
+                    Name = "Food",
+                    ImgUrl = "http://3uvqeisena11zr8q939vd5i1-wpengine.netdna-ssl.com/wp-content/uploads/2017/09/supply-chain-management-fast-food-industry.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -543,8 +545,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 16,
-                    Name = "Vacation & Tourism",
-                    ImgUrl = "https://www.maritime-executive.com/media/images/article/Photos/Cruise_Ships/Diamond-Princess-sailing-in-Japan-courtesy-Princess-Cruises.78319a.jpg",
+                    Name = "Tourism",
+                    ImgUrl = "https://www.elevatelimited.com/wp-content/uploads/2019/09/Sustainable-Tourism-2019-Summit-banner-FINAL-min.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -552,11 +554,12 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 17,
-                    Name = "Transport & Trucking",
-                    ImgUrl = "https://lh3.googleusercontent.com/proxy/B2Ha-PwtOsxqi3MXwm2SCOWM6CxKChDn4KM5xQ3G58LEULJkzZAS68_6Dz5k00fyK3WIca58WzfewwtRH5khlEgdF69EPlFKQ3QtiJF4KQGXKxv1v76dGKsixlpP",
+                    Name = "Restaurants",
+                    ImgUrl = "https://i.imgur.com/fJ5s33U.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
+            
             //Seed Tags
 
             modelBuilder.Entity<Tag>().HasData(
