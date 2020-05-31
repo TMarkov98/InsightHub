@@ -99,6 +99,7 @@ namespace InsightHub.Services
                 .Include(r => r.Author)
                 .Include(r => r.Tags)
                 .ThenInclude(rt => rt.Tag)
+                .OrderByDescending(r => r.ModifiedOn)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
 
@@ -276,7 +277,7 @@ namespace InsightHub.Services
                 report.IsFeatured = false;
             else
                 report.IsFeatured = true;
-
+            report.ModifiedOn = DateTime.UtcNow;
             await _context.SaveChangesAsync();
         }
 

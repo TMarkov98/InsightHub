@@ -104,7 +104,10 @@
                         </div>
                         <div class="card-footer">
                             <p class="row text-left" style="color:#C9D1C8">
-                                Written by:&nbsp;<a class="text-white" asp-action="Index" asp-route-author=@item.Author.Split(' ').Last()>@Html.DisplayFor(modelItem => item.Author)</a>
+                                By:&nbsp;
+                                <a class="text-white" asp-action="Index" asp-route-author=@item.Author.Split(' ').Last()>
+                                    @item.Author.Substring(0, item.Author.Substring(0, item.Author.Length - 1).LastIndexOf("- "))
+                                </a>
                             </p>
                             <p class="row text-left" style="color:#C9D1C8">
                                 Downloaded @Html.DisplayFor(modelItem => item.DownloadsCount) times
