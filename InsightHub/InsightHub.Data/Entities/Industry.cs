@@ -14,7 +14,7 @@ namespace InsightHub.Data.Entities
             this.SubscribedUsers = new List<IndustrySubscription>();
             if(this.ImgUrl == null || this.ImgUrl == string.Empty)
             {
-                this.ImgUrl = "https://www.axiz.com/wp-content/uploads/2019/04/industry40petro-1024x679.png";
+                this.ImgUrl = "https://i.imgur.com/AoW6Iqh.png";
             }
         }
 
