@@ -15,6 +15,18 @@
                 Reports
             </b>
         </h1>
+        @if (ViewData["Industry"] != null)
+        {
+            <h3 style="color:#04202C; font-family: Cambria">in the @ViewData["Industry"] industry</h3>
+        }
+        @if (ViewData["Tag"] != null)
+        {
+            <h3 style="color:#04202C; font-family: Cambria">tagged with @ViewData["Tag"]</h3>
+        }
+        @if (ViewData["Author"] != null)
+        {
+            <h3 style="color:#04202C; font-family: Cambria">Uploaded by @ViewData["Author"]</h3>
+        }
         <form asp-action="Index" method="get">
             <div class="form-actions">
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Author") || User.IsInRole("Admin"))

@@ -175,7 +175,7 @@ namespace InsightHub.Services
                 .Include(ur => ur.Report)
                 .ThenInclude(r => r.Industry)
                 .Include(ur => ur.Report)
-                .ThenInclude(r => r.Tags)
+                .ThenInclude(r => r.ReportTags)
                 .ThenInclude(r => r.Tag)
                 .Include(ur => ur.Report)
                 .ThenInclude(r => r.Downloads)
@@ -194,7 +194,7 @@ namespace InsightHub.Services
             var reports = await _context.Reports
                 .Include(r => r.Author)
                 .Include(r => r.Industry)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(r => r.Tag)
                 .Include(r => r.Downloads)
                 .Where(r => r.AuthorId == userId)

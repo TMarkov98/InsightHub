@@ -48,7 +48,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
             {
                 var sutTags = new TagServices(assertContext);
                 var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetReportsDeleted(null, null);
+                var act = await sut.GetDeletedReports(null, null);
                 var result = act.ToArray();
                 Assert.AreEqual(2, result.Length);
                 Assert.AreEqual(report1.Title, result[0].Title);
@@ -93,7 +93,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
             {
                 var sutTags = new TagServices(assertContext);
                 var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetReportsDeleted("title_desc", null);
+                var act = await sut.GetDeletedReports("title_desc", null);
                 var result = act.ToArray();
                 Assert.AreEqual(2, result.Length);
                 Assert.AreEqual(report2.Title, result[0].Title);
@@ -138,7 +138,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
             {
                 var sutTags = new TagServices(assertContext);
                 var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetReportsDeleted(null, "TestReport");
+                var act = await sut.GetDeletedReports(null, "TestReport");
                 var result = act.ToArray();
                 Assert.AreEqual(2, result.Length);
                 Assert.AreEqual(report1.Title, result[0].Title);
@@ -188,7 +188,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
             {
                 var sutTags = new TagServices(assertContext);
                 var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetReportsDeleted("title_desc", "TestReport");
+                var act = await sut.GetDeletedReports("title_desc", "TestReport");
                 var result = act.ToList();
                 Assert.AreEqual(3, result.Count());
                 Assert.AreEqual(report3.Title, result[0].Title);

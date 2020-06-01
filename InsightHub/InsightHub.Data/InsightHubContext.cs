@@ -49,7 +49,7 @@ namespace InsightHub.Data
             modelBuilder.Entity<IndustrySubscription>().HasOne(ui => ui.Industry).WithMany(i => i.SubscribedUsers).HasForeignKey(ui => ui.UserId);
 
             modelBuilder.Entity<ReportTag>().HasKey(rt => new { rt.ReportId, rt.TagId });
-            modelBuilder.Entity<ReportTag>().HasOne(rt => rt.Report).WithMany(u => u.Tags).HasForeignKey(rt => rt.ReportId);
+            modelBuilder.Entity<ReportTag>().HasOne(rt => rt.Report).WithMany(u => u.ReportTags).HasForeignKey(rt => rt.ReportId);
             modelBuilder.Entity<ReportTag>().HasOne(rt => rt.Tag).WithMany(u => u.Reports).HasForeignKey(rt => rt.TagId);
 
             modelBuilder.SeedData();
