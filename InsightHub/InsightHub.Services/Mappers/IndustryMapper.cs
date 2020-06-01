@@ -39,6 +39,7 @@ namespace InsightHub.Services.Mappers
                 IsDeleted = industry.IsDeleted,
                 DeletedOn = industry.DeletedOn,
                 Reports = industry.Reports.Select(r => ReportMapper.MapModelFromEntity(r)).ToList(),
+                ReportsCount = industry.Reports.Count(),
                 SubscriptionsCount = industry.SubscribedUsers.Count
             };
         }
