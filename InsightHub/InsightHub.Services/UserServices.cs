@@ -164,7 +164,7 @@ namespace InsightHub.Services
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
         }
-        public async Task<List<ReportModel>> GetDownloadedReports(int userId)
+        public async Task<List<ReportModel>> GetDownloadedReports(int userId, string search)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
             ValidateUserExists(user);
@@ -184,9 +184,11 @@ namespace InsightHub.Services
                 .Select(ur => ReportMapper.MapModelFromEntity(ur.Report))
                 .ToListAsync();
 
+            reports = SearchReports(search, reports).ToList();
+
             return reports;
         }
-        public async Task<List<ReportModel>> GetUploadedReports(int userId)
+        public async Task<List<ReportModel>> GetUploadedReports(int userId, string search)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
             ValidateUserExists(user);
@@ -200,6 +202,8 @@ namespace InsightHub.Services
                 .Where(r => r.AuthorId == userId)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
+
+            reports = SearchReports(search, reports).ToList();
 
             return reports;
         }
@@ -236,5 +240,14 @@ namespace InsightHub.Services
             }
         }
 
+        private ICollection<ReportModel> SearchReports(string search, ICollection<ReportModel> reports)
+        {
+            if (search != null)
+            {
+                reports = reports.Where(r => r.Title.ToLower().Contains(search.ToLower())
+                    || r.Summary.ToLower().Contains(search.ToLower())).ToList();
+            }
+            return reports;
+        }
     }
 }

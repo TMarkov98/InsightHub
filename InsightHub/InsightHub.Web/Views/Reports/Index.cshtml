@@ -10,7 +10,7 @@
     <div class="container">
         <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
 
-        <h1 class="display-3" style="color:#04202C; font-family: Cambria">
+        <h1 class="display-4" style="color:#04202C; font-family: Cambria">
             <b>
                 Reports
             </b>
@@ -87,7 +87,7 @@
                 <br />
             </div>
         </form>
-
+        <hr/>
         <div class="row text-center">
 
             @foreach (var item in Model)
@@ -137,6 +137,7 @@
                 </div>
             }
         </div>
+        <hr/>
         @{
             var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
             var nextDisabled = !Model.HasNextPage ? "disabled" : "";

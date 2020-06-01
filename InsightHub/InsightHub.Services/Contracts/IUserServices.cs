@@ -15,8 +15,8 @@ namespace InsightHub.Services.Contracts
         Task<UserModel> UpdateUser(int id, string firstName, string lastName, bool isBanned, string banReason);
         Task DeleteUser(int id);
         Task ApproveUser(int id);
-        Task<List<ReportModel>> GetDownloadedReports(int userId);
-        Task<List<ReportModel>> GetUploadedReports(int userId);
+        Task<List<ReportModel>> GetDownloadedReports(int userId, string search);
+        Task<List<ReportModel>> GetUploadedReports(int userId, string search);
         Task<List<IndustryModel>> GetSubscriptions(int userId);
         Task<string> GetSubscribedUsers(string industry);
     }

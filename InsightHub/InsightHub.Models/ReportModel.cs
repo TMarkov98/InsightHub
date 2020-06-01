@@ -19,6 +19,7 @@ namespace InsightHub.Models
         [StringLength(5000, MinimumLength = 5)]
         public string Description { get; set; }
         public string Author { get; set; }
+        [Required]
         public string Tags { get; set; }
         [Required]
         public string Industry { get; set; }
