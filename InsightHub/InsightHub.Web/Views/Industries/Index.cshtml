@@ -5,60 +5,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Industries</h2>
+<a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
+<h1 class="display-3" style="color:#04202C; font-family: Cambria">
+    <b>
+        Industries
+    </b>
+</h1>
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
     <p>
-        <a asp-controller="Industries" asp-action="Create">Create New</a>
+        <a class="btn btn-dark" asp-controller="Industries" asp-action="Create">New Industry</a>
     </p>
 }
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
             Search Industries: <input type="text" name="search" value="@ViewData["Search"]" />
-            <input type="submit" value="Search" class="btn btn-default" />
+            <input type="submit" value="Search" class="btn btn-outline-dark" />
             <br />
-            <a asp-action="Index">Back to Full List</a>
+            @ViewData["ResultsCount"] result(s)
         </p>
     </div>
 </form>
-<table class="table">
-    <thead>
-        <tr>
-            <th />
-            <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">Name</a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">Created On</a>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    }
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+@*<th>
+        <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">Name</a>
+    </th>
+    <th>
+        <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">Created On</a>
+
+    </th>*@
+<div class="container">
+
+    @foreach (var item in Model)
+    {
+        <div style="padding-bottom:20px">
+            <div class="row">
+                <div class="col-lg-9">
+                    <a class="row" asp-action="Details" asp-route-id="@item.Id">
+                        <img class="d-inline text-left" src=@Html.DisplayFor(modelItem => item.ImgUrl) width="805" height="217">
+                    </a>
+                </div>
+                <div class="col-lg-3">
+                    <h2 class="d-inline" style="font-family: Cambria">
+                        <a class="row" style="vertical-align:top; color: #04202C" asp-action="Details" asp-route-id="@item.Id">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </a>
+                    </h2>
+                    <div class="row d-inline">
+                        Total Reports:&nbsp;
+                        @Html.DisplayFor(modelItem => item.ReportsCount)
+                    </div>
+                    <div class="row">
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <a class="btn btn-outline-dark" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <text>
+                                &nbsp;
+                            </text>
+                            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
@@ -69,13 +80,13 @@
    asp-route-sort="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageNumber - 1)"
    asp-route-search="@ViewData["Search"]"
-   class="btn btn-default @prevDisabled">
+   class="btn btn-outline-dark @prevDisabled">
     Previous
 </a>
 <a asp-action="Index"
    asp-route-sort="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageNumber + 1)"
    asp-route-search="@ViewData["Search"]"
-   class="btn btn-default @nextDisabled">
+   class="btn btn-outline-dark @nextDisabled">
     Next
 </a>
