@@ -411,7 +411,7 @@ namespace InsightHub.Data
                 {
                     Id = 1,
                     Name = "Finance",
-                    ImgUrl = "https://www.k-international.com/wp-content/uploads/2015/10/financial-translation-service.jpg",
+                    ImgUrl = "https://i.imgur.com/8Rkh6JW.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -420,7 +420,7 @@ namespace InsightHub.Data
                 {
                     Id = 2,
                     Name = "Airlines",
-                    ImgUrl = "https://www.travelagewest.com/uploadedImages/All_Gateways/Other_-_General/TAW_Agent_Tools/1300x450_151116_SPOTLIGHT_CS_Airlines.jpg",
+                    ImgUrl = "https://i.imgur.com/dX9t5lS.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -429,7 +429,7 @@ namespace InsightHub.Data
                 {
                     Id = 3,
                     Name = "Healthcare",
-                    ImgUrl = "https://cdn2.mageplaza.com/media/general2/6ZFJLD3.jpg",
+                    ImgUrl = "https://i.imgur.com/TC7qZPP.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -438,7 +438,7 @@ namespace InsightHub.Data
                 {
                     Id = 4,
                     Name = "Automobile",
-                    ImgUrl = "https://igniteoutsourcing.com/wp-content/uploads/2018/02/blockchain-in-automotive-industry.jpg",
+                    ImgUrl = "https://i.imgur.com/AO7gOGs.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -447,7 +447,7 @@ namespace InsightHub.Data
                 {
                     Id = 5,
                     Name = "Business Services",
-                    ImgUrl = "https://www.clustertech.com/sites/default/files/Landing%20Page/Business%20Solutions/65%29%20Business%20solutions%20landing.jpg",
+                    ImgUrl = "https://i.imgur.com/MWr58IA.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -456,7 +456,7 @@ namespace InsightHub.Data
                 {
                     Id = 6,
                     Name = "Space",
-                    ImgUrl = "https://www.star2star.com/sites/default/files/headers/Space-Museum_0.png",
+                    ImgUrl = "https://i.imgur.com/evwFFDj.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -464,8 +464,8 @@ namespace InsightHub.Data
                 new Industry
                 {
                     Id = 7,
-                    Name = "Construction",
-                    ImgUrl = "https://blog.plangrid.com/wp-content/uploads/2018/10/New-Zealand-Construction-Industry-Aukland-Build.jpg",
+                    Name = "Building",
+                    ImgUrl = "https://i.imgur.com/io9aGef.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -474,7 +474,7 @@ namespace InsightHub.Data
                 {
                     Id = 8,
                     Name = "Agriculture",
-                    ImgUrl = "https://www.deere.com.au/assets/images/region-4/industries/agriculture/r4a063080-ag-1366x347.jpg",
+                    ImgUrl = "https://i.imgur.com/0aD3uZj.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -483,7 +483,7 @@ namespace InsightHub.Data
                 {
                     Id = 9,
                     Name = "Casino",
-                    ImgUrl = "https://granitegrok.com/wp-content/uploads/Clearwater-Casino1-2.jpg",
+                    ImgUrl = "https://i.imgur.com/MIkU108.jpg",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -501,7 +501,7 @@ namespace InsightHub.Data
                 {
                     Id = 11,
                     Name = "Blockchain",
-                    ImgUrl = "https://edtechmagazine.com/k12/sites/edtechmagazine.com.k12/files/styles/cdw_hero/public/articles/EdTech/201708/monsitj_K12ITFuturist.jpg?itok=x6-qgDRB",
+                    ImgUrl = "https://i.imgur.com/ArAIUQ0.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -510,7 +510,7 @@ namespace InsightHub.Data
                 {
                     Id = 12,
                     Name = "Education",
-                    ImgUrl = "https://www.homesteaderslife.com/hubfs/Images/Banners/Events_Education_Banner.jpg#keepProtocol",
+                    ImgUrl = "https://i.imgur.com/WeTQtUK.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -519,7 +519,7 @@ namespace InsightHub.Data
                 {
                     Id = 13,
                     Name = "Technology",
-                    ImgUrl = "https://www.exponent.com/~/media/practices-capabilities-and-industries/electronics-information/electronicsinformation_1250x450px.jpg",
+                    ImgUrl = "https://i.imgur.com/ApJqXTX.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -537,7 +537,7 @@ namespace InsightHub.Data
                 {
                     Id = 15,
                     Name = "Food",
-                    ImgUrl = "http://3uvqeisena11zr8q939vd5i1-wpengine.netdna-ssl.com/wp-content/uploads/2017/09/supply-chain-management-fast-food-industry.png",
+                    ImgUrl = "https://i.imgur.com/oWIukyA.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
@@ -546,7 +546,7 @@ namespace InsightHub.Data
                 {
                     Id = 16,
                     Name = "Tourism",
-                    ImgUrl = "https://www.elevatelimited.com/wp-content/uploads/2019/09/Sustainable-Tourism-2019-Summit-banner-FINAL-min.jpg",
+                    ImgUrl = "https://i.imgur.com/GMNHXMs.png",
                     CreatedOn = DateTime.UtcNow
                 }
                 );
