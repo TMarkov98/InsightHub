@@ -43,7 +43,6 @@ namespace InsightHub.Web.Areas.Admin.Controllers
 
             ViewData["Search"] = search;
 
-            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var reports = await _reportServices.GetDeletedReports(sort, search);
 
             ViewData["ResultsCount"] = reports.Count;

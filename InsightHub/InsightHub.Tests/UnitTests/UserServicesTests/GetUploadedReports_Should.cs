@@ -52,7 +52,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
             using (var assertContext = new InsightHubContext(options))
             {
                 var sut = new UserServices(assertContext);
-                var result = await sut.GetUploadedReports(user1.Id);
+                var result = await sut.GetUploadedReports(user1.Id, null);
                 Assert.AreEqual(2, result.Count);
             }
         }
@@ -64,7 +64,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
 
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
-            await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.GetUploadedReports(5));
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.GetUploadedReports(5, null));
         }
     }
 }
