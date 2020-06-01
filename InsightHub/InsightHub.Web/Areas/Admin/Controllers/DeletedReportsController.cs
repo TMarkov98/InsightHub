@@ -44,7 +44,7 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             ViewData["Search"] = search;
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var reports = await _reportServices.GetReportsDeleted(sort, search);
+            var reports = await _reportServices.GetDeletedReports(sort, search);
             var pageSize = 10;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
@@ -71,6 +71,18 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         public async Task<IActionResult> RemoveConfirmed(int id)
         {
             await _reportServices.PermanentlyDeleteReport(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Restore(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            await _reportServices.RestoreReport(id.Value);
+
             return RedirectToAction(nameof(Index));
         }
     }

@@ -46,7 +46,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
             {
                 var sutTags = new TagServices(assertContext);
                 var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetTop5MostDownloads();
+                var act = await sut.GetMostDownloadedReports();
                 var result = act.ToArray();
                 Assert.AreEqual(3, result.Length);
                 Assert.AreEqual(report2.Title, result[0].Title);

@@ -50,7 +50,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 Assert.AreEqual(newDescription, result.Description);
                 Assert.AreEqual(newIndustry.Name, result.Industry.Name);
                 Assert.AreEqual(newImgURL, result.ImgUrl);
-                Assert.AreEqual(newTag.Name, result.Tags.First().Tag.Name);
+                Assert.AreEqual(newTag.Name, result.ReportTags.First().Tag.Name);
             }
         }
 

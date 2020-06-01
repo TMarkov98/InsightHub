@@ -19,7 +19,7 @@ namespace InsightHub.Web.Models
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var reports = await _reportServices.GetReportsFeatured();
+            var reports = await _reportServices.GetFeaturedReports();
             return View(reports);
         }
     }

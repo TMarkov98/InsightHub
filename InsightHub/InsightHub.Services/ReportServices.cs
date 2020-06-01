@@ -33,7 +33,7 @@ namespace InsightHub.Services
             if (!await _context.Reports
                 .Include(r => r.Author)
                 .Include(r => r.Industry)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .AnyAsync(r => r.Title == title))
             {
                 var report = new Report()
@@ -65,7 +65,7 @@ namespace InsightHub.Services
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
                 .Include(r => r.Downloads)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
@@ -88,7 +88,7 @@ namespace InsightHub.Services
             }
             return reports;
         }
-        public async Task<ICollection<ReportModel>> GetReportsFeatured()
+        public async Task<ICollection<ReportModel>> GetFeaturedReports()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
@@ -97,21 +97,22 @@ namespace InsightHub.Services
                 .Include(r => r.Industry)
                 .Include(r => r.Downloads)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .OrderByDescending(r => r.ModifiedOn)
+                .Take(4)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
 
             return reports;
         }
-        public async Task<ICollection<ReportModel>> GetReportsDeleted(string sort, string search)
+        public async Task<ICollection<ReportModel>> GetDeletedReports(string sort, string search)
         {
             var reports = await _context.Reports
                 .Where(r => r.IsDeleted)
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
@@ -123,13 +124,13 @@ namespace InsightHub.Services
             return reports;
         }
 
-        public async Task<ICollection<ReportModel>> GetReportsPending(string sort, string search)
+        public async Task<ICollection<ReportModel>> GetPendingReports(string sort, string search)
         {
             var reports = await _context.Reports
                 .Where(r => r.IsPending)
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
@@ -141,7 +142,7 @@ namespace InsightHub.Services
             return reports;
         }
 
-        public async Task<ICollection<ReportModel>> GetTop5NewReports()
+        public async Task<ICollection<ReportModel>> GetNewestReports()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
@@ -149,15 +150,15 @@ namespace InsightHub.Services
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
                 .Include(r => r.Downloads)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .OrderByDescending(r => r.CreatedOn)
-                .Take(5)
+                .Take(4)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
         }
-        public async Task<ICollection<ReportModel>> GetTop5MostDownloads()
+        public async Task<ICollection<ReportModel>> GetMostDownloadedReports()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
@@ -165,10 +166,10 @@ namespace InsightHub.Services
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
                 .Include(r => r.Downloads)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .OrderByDescending(r => r.Downloads.Count)
-                .Take(5)
+                .Take(4)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
@@ -180,7 +181,7 @@ namespace InsightHub.Services
             var report = await _context.Reports
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
@@ -197,7 +198,7 @@ namespace InsightHub.Services
             var report = await _context.Reports
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
@@ -208,7 +209,7 @@ namespace InsightHub.Services
             report.ImgUrl = reportDTO.ImgUrl;
             report.Industry = await _context.Industries.FirstOrDefaultAsync(i => i.Name == reportDTO.Industry);
             report.ModifiedOn = DateTime.UtcNow;
-            report.Tags.Clear();
+            report.ReportTags.Clear();
             report.IsPending = true;
             await _context.SaveChangesAsync();
             await AddTagsToReport(report, reportDTO.Tags);
@@ -252,7 +253,7 @@ namespace InsightHub.Services
             var report = await _context.Reports
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(ur => ur.Tag)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
@@ -268,7 +269,7 @@ namespace InsightHub.Services
             var report = await _context.Reports
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .FirstOrDefaultAsync(r => r.Id == id);
 
             ValidateReportExists(report);

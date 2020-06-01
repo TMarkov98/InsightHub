@@ -76,7 +76,7 @@ namespace InsightHub.Tests.UnitTests
                 Title = "TestReport1",
                 Summary = "TestSummary1",
                 Description = "TestDescription1",
-                Tags = new List<ReportTag>()
+                ReportTags = new List<ReportTag>()
                 {
                     new ReportTag
                     {

@@ -41,7 +41,7 @@ namespace InsightHub.Services.Mappers
                 IsFeatured = report.IsFeatured,
                 ModifiedOn = report.ModifiedOn,
                 IsPending = report.IsPending,
-                Tags = string.Join(", ", report.Tags.Select(t => t.Tag.Name))
+                Tags = string.Join(", ", report.ReportTags.Select(t => t.Tag.Name))
             };
         }
     }

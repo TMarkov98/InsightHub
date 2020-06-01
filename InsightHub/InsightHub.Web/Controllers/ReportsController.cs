@@ -171,9 +171,9 @@ namespace InsightHub.Web.Controllers
             if (ModelState.IsValid)
             {
                 await _reportServices.UpdateReport(id, report.Title, report.Summary, report.Description, report.ImgUrl, report.Industry, report.Tags);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), new { report.Id });
             }
-            return View(report);
+            return RedirectToAction(nameof(Index));
         }
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ToggleFeatured(int? id)

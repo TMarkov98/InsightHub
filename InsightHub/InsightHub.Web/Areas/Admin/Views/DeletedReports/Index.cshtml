@@ -4,99 +4,130 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Deleted Reports</h2>
+<div class="container">
+    <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
 
-<form asp-action="Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />
-            <input type="submit" value="Search" class="btn btn-default" />
+    <h1 style="color:#04202C; font-family: Cambria">Deleted Reports</h1>
+
+    <form asp-action="Index" method="get">
+        <div class="form-actions">
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Author") || User.IsInRole("Admin"))
+            {
+                <a class="d-inline-flex btn-lg btn-dark float-right" style="padding-bottom:10px" asp-action="Create">New Report</a>
+            }
+            <p style="color:#4D648D">
+                Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />
+                <input type="submit" value="Search" class="btn btn-outline-dark" />
+            </p>
+            <p class="d-inline-block">
+                @ViewData["ResultsCount"] result(s)
+                <div class="dropdown float-right">
+                    <button class="d-inline-flex btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown">
+                        Sort By
+                    </button>
+                    <ul class="dropdown-menu text-white" style="background-color: #4D648D">
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByTitle"]"
+                               asp-route-search="@ViewData["Search"]">Title</a>
+                        </li>
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByAuthor"]"
+                               asp-route-search="@ViewData["Search"]">Author</a>
+                        </li>
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByIndustry"]"
+                               asp-route-search="@ViewData["Search"]">Industry</a>
+                        </li>
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByDate"]"
+                               asp-route-search="@ViewData["Search"]">Date</a>
+                        </li>
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByDownloads"]"
+                               asp-route-search="@ViewData["Search"]">Downloads</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </p>
             <br />
-            <a asp-action="Index">Back to Full List</a>
-        </p>
-    </div>
-</form>
-<table class="table">
-    <thead>
-        <tr>
-            <th />
-            <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByTitle"]"
-                   asp-route-search="@ViewData["Search"]">Title</a>
-            </th>
-            <th>
-                Summary
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByAuthor"]"
-                   asp-route-search="@ViewData["Search"]">Author</a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByIndustry"]"
-                   asp-route-search="@ViewData["Search"]">Industry</a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]"
-                   asp-route-search="@ViewData["Search"]">CreatedOn</a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByDownloads"]"
-                   asp-route-search="@ViewData["Search"]">Downloads</a>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+        </div>
+    </form>
+
+    <div class="row text-center">
+
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <img src="@Html.DisplayFor(modelItem => item.ImgUrl)" height="75" width="75" />
-                </td>
-                <td>
-                    <a asp-area="" asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Summary)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Industry)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DownloadsCount)
-                </td>
-                <td>
-                    <a asp-area="" asp-controller="Reports" asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
-                    <a asp-area="Admin" asp-controller="DeletedReports" asp-action="Remove" asp-route-id="@item.Id">Remove</a>
-                </td>
-            </tr>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card h-100 mw-100" style="background-color: #0a4863">
+                    <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.ImgUrl)" width="500" height="200" alt="">
+                    <div class="card-body text-white">
+                        <div class="row">
+                            <div class="col-6 float-left">
+                                <a class="text-white" asp-area="" asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>
+                                    @item.Industry
+                                </a>
+                            </div>
+                            <div class="col-6 float-right" style="color:#C9D1C8">
+                                @item.CreatedOn.ToShortDateString()
+                            </div>
+                        </div>
+                        <row class="d-inline-block text-center">
+                            <h5>
+                                <b>
+                                    <a class="text-white font-weight-bold" style="font-family: Cambria"
+                                       asp-area=""
+                                       asp-controller="Reports"
+                                       asp-action="Details"
+                                       asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                                </b>
+                            </h5>
+                        </row>
+                        <div class="row text-left" style="color:#C9D1C8">
+                            @Html.DisplayFor(modelItem => item.Summary)
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="row text-left" style="color:#C9D1C8">
+                            By:&nbsp;
+                            <a class="text-white" asp-area="" asp-controller="Reports" asp-action="Index" asp-route-author=@item.Author.Split(' ').Last()>
+                                @item.Author.Substring(0, item.Author.Substring(0, item.Author.Length - 1).LastIndexOf("- "))
+                            </a>
+                        </p>
+                        <p class="row text-left" style="color:#C9D1C8">
+                            Downloaded @Html.DisplayFor(modelItem => item.DownloadsCount) times
+                        </p>
+                        @if (User.Identity.IsAuthenticated && User.Identity.Name == item.Author.Split(' ').Last() || User.IsInRole("Admin"))
+                        {
+                            <a class="btn btn-outline-warning" asp-area="Admin" asp-controller="DeletedReports" asp-action="Restore" asp-route-id="@item.Id">Restore</a>
+                            <a class="btn btn-outline-light" asp-area="" asp-controller="Reports" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-outline-danger" asp-area="Admin" asp-controller="DeletedReports" asp-action="Remove" asp-route-id="@item.Id">Remove</a>
+                        }
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
-
-
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
-
-<a asp-action="Index"
-   asp-route-sort="@ViewData["CurrentSort"]"
-   asp-route-pageNumber="@(Model.PageNumber - 1)"
-   asp-route-search="@ViewData["Search"]"
-   class="btn btn-default @prevDisabled">
-    Previous
-</a>
-<a asp-action="Index"
-   asp-route-sort="@ViewData["CurrentSort"]"
-   asp-route-pageNumber="@(Model.PageNumber + 1)"
-   asp-route-search="@ViewData["Search"]"
-   class="btn btn-default @nextDisabled">
-    Next
-</a>
+    </div>
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+    <p class="text-dark">
+        <a asp-action="Index"
+           asp-route-sort="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageNumber - 1)"
+           asp-route-search="@ViewData["Search"]"
+           class="btn btn-outline-dark @prevDisabled">
+            Previous
+        </a>
+        &nbsp;@(ViewData["PageNumber"] ?? 1)&nbsp;
+        <a asp-action="Index"
+           asp-route-sort="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageNumber + 1)"
+           asp-route-search="@ViewData["Search"]"
+           class="btn btn-outline-dark @nextDisabled">
+            Next
+        </a>
+    </p>
+</div>

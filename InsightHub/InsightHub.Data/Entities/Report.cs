@@ -9,7 +9,7 @@ namespace InsightHub.Data.Entities
     {
         public Report()
         {
-            this.Tags = new List<ReportTag>();
+            this.ReportTags = new List<ReportTag>();
             this.Downloads = new List<DownloadedReport>();
             if(ImgUrl == null || ImgUrl == string.Empty)
             {
@@ -22,7 +22,7 @@ namespace InsightHub.Data.Entities
         public string Description { get; set; }
         public User Author { get; set; }
         public int AuthorId { get; set; }
-        public List<ReportTag> Tags { get; set; }
+        public List<ReportTag> ReportTags { get; set; }
         public List<DownloadedReport> Downloads { get; set; }
         public Industry Industry { get; set; }
         public int IndustryId { get; set; }

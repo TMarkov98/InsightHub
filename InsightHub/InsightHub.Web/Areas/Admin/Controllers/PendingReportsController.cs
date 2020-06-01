@@ -48,7 +48,7 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             ViewData["Search"] = search;
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var reports = await _reportServices.GetReportsPending(sort, search);
+            var reports = await _reportServices.GetPendingReports(sort, search);
             var pageSize = 10;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }

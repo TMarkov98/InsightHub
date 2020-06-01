@@ -41,7 +41,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 var result = assertContext.Reports.FirstOrDefault(t => t.Title == title);
                 Assert.AreEqual(title, result.Title);
                 Assert.AreEqual(description, result.Description);
-                Assert.AreEqual(tag.Name, result.Tags.First().Tag.Name);
+                Assert.AreEqual(tag.Name, result.ReportTags.First().Tag.Name);
             }
         }
 
