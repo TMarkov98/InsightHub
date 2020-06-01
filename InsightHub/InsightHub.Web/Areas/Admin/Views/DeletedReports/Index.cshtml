@@ -47,13 +47,11 @@
                                asp-route-search="@ViewData["Search"]">Downloads</a>
                         </li>
                     </ul>
-
                 </div>
-
             </p>
-            <br />
         </div>
     </form>
+    <hr />
 
     <div class="row text-center">
 
@@ -109,6 +107,7 @@
             </div>
         }
     </div>
+    <hr/>
     @{
         var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.HasNextPage ? "disabled" : "";

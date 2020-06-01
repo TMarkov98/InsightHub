@@ -22,25 +22,15 @@ namespace InsightHub.Web.Areas.Author.Controllers
         }
         // GET: UploadedReports
         [Authorize]
-        public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
+        public async Task<IActionResult> Index(string search, int? pageNumber)
         {
-            ViewData["CurrentSort"] = sort;
-            ViewData["SortByTitle"] = sort == "title" ? "title_desc" : "title";
-            ViewData["SortByAuthor"] = sort == "author" ? "author_desc" : "author";
-            ViewData["SortByIndustry"] = sort == "industry" ? "industry_desc" : "industry";
-            ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
-            ViewData["SortByDownloads"] = sort == "downloads" ? "downloads_asc" : "downloads";
-
-            if (search != null)
-            {
-                pageNumber = 1;
-            }
-
             ViewData["Search"] = search;
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var reports = await _userServices.GetUploadedReports(userId);
-            var pageSize = 10;
+            var reports = await _userServices.GetUploadedReports(userId, search);
+
+            ViewData["ResultsCount"] = reports.Count;
+            var pageSize = 8;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
     }

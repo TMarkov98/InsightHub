@@ -45,7 +45,10 @@ namespace InsightHub.Web.Areas.Admin.Controllers
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var reports = await _reportServices.GetDeletedReports(sort, search);
-            var pageSize = 10;
+
+            ViewData["ResultsCount"] = reports.Count;
+
+            var pageSize = 8;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
 

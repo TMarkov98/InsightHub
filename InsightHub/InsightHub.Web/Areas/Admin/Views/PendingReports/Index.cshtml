@@ -48,13 +48,11 @@
                                asp-route-search="@ViewData["Search"]">Downloads</a>
                         </li>
                     </ul>
-
                 </div>
-
             </p>
-            <br />
         </div>
     </form>
+    <hr/>
 
     <div class="row text-center">
 
@@ -99,7 +97,7 @@
                         <p class="row text-left" style="color:#C9D1C8">
                             Downloaded @Html.DisplayFor(modelItem => item.DownloadsCount) times
                         </p>
-                        <a class="btn btn-outline-warning" asp-area="Admin" asp-controller="PendingReports" asp-action="Approve" asp-route-id="@item.Id">Approve</a>
+                        <a class="btn btn-outline-info" asp-area="Admin" asp-controller="PendingReports" asp-action="Approve" asp-route-id="@item.Id">Approve</a>
                         <a class="btn btn-outline-light" asp-area="" asp-controller="Reports" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                         <a class="btn btn-outline-danger" asp-area="" asp-controller="Reports" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </div>
@@ -107,6 +105,7 @@
             </div>
         }
     </div>
+    <hr/>
     @{
         var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.HasNextPage ? "disabled" : "";
