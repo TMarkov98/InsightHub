@@ -28,6 +28,8 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Index(string search, int? pageNumber)
         {
             var users = await _userServices.GetBannedUsers(search);
+            ViewData["ResultsCount"] = users.Count;
+            ViewData["Search"] = search;
             if (search != null)
             {
                 pageNumber = 1;

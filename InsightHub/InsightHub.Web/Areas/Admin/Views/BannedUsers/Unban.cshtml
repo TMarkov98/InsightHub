@@ -11,14 +11,12 @@
 <div>
     <form asp-action="Unban">
         <div class="form-group">
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.BanReason)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.BanReason)
-                </dd>
-            </dl>
+            <div>
+                <b>
+                    Ban Reason:&nbsp;
+                </b>
+                @Html.DisplayFor(model => model.BanReason)
+            </div>
         </div>
         <input type="hidden" asp-for="Id" />
         <div class="form-group">
