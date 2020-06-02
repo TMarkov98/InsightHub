@@ -28,7 +28,8 @@ namespace InsightHub.Services.Mappers
                 ModifiedOn = tag.ModifiedOn,
                 IsDeleted = tag.IsDeleted,
                 DeletedOn = tag.DeletedOn,
-                Reports = tag.Reports.Select(r => $"Id: {r.Report.Id} - {r.Report.Title}").ToList(),
+                Reports = tag.ReportTags.Select(r => $"Id: {r.Report.Id} - {r.Report.Title}").ToList(),
+                ReportsCount = tag.ReportTags.Count,
             };
         }
 

@@ -50,7 +50,7 @@ namespace InsightHub.Data
 
             modelBuilder.Entity<ReportTag>().HasKey(rt => new { rt.ReportId, rt.TagId });
             modelBuilder.Entity<ReportTag>().HasOne(rt => rt.Report).WithMany(u => u.ReportTags).HasForeignKey(rt => rt.ReportId);
-            modelBuilder.Entity<ReportTag>().HasOne(rt => rt.Tag).WithMany(u => u.Reports).HasForeignKey(rt => rt.TagId);
+            modelBuilder.Entity<ReportTag>().HasOne(rt => rt.Tag).WithMany(u => u.ReportTags).HasForeignKey(rt => rt.TagId);
 
             modelBuilder.SeedData();
             base.OnModelCreating(modelBuilder);
