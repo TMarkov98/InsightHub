@@ -41,7 +41,7 @@ namespace InsightHub.Services
         {
             var tagDTOs = await _context.Tags
                 .Where(t => !t.IsDeleted)
-                .Include(t => t.Reports)
+                .Include(t => t.ReportTags)
                 .ThenInclude(rt => rt.Report)
                 .Select(t => TagMapper.MapModelFromEntity(t))
                 .ToListAsync();
@@ -61,6 +61,12 @@ namespace InsightHub.Services
                     case "oldest":
                         tagDTOs = tagDTOs.OrderBy(t => t.CreatedOn).ToList();
                         break;
+                    case "reports":
+                        tagDTOs = tagDTOs.OrderByDescending(t => t.ReportsCount).ToList();
+                        break;
+                    case "reports_desc":
+                        tagDTOs = tagDTOs.OrderBy(t => t.ReportsCount).ToList();
+                        break;
                     default:
                         break;
                 }
@@ -76,7 +82,7 @@ namespace InsightHub.Services
         {
             var tagDTOs = await _context.Tags
                 .Where(t => t.IsDeleted)
-                .Include(t => t.Reports)
+                .Include(t => t.ReportTags)
                 .ThenInclude(rt => rt.Report)
                 .Select(t => TagMapper.MapModelFromEntity(t))
                 .ToListAsync();
@@ -87,7 +93,7 @@ namespace InsightHub.Services
         {
             var tag = await _context.Tags
                 .Where(t => !t.IsDeleted)
-                .Include(t => t.Reports)
+                .Include(t => t.ReportTags)
                 .ThenInclude(rt => rt.Report)
                 .FirstOrDefaultAsync(t => t.Id == id);
 
