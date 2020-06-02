@@ -30,6 +30,7 @@ namespace InsightHub.Web.Controllers
             ViewData["CurrentSort"] = sort;
             ViewData["SortByName"] = sort == "name" ? "name_desc" : "name";
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
+            ViewData["SortByReportsCount"] = sort == "reports" ? "reports_asc" : "reports";
             ViewData["Search"] = search;
             ViewData["PageNumber"] = pageNumber;
             var tags = await _tagServices.GetTags(sort, search);
@@ -137,6 +138,7 @@ namespace InsightHub.Web.Controllers
         }
 
         // POST: Tags/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
