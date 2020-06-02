@@ -5,9 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<div>
+    <a class="btn btn-outline-dark" asp-action="Index">Back to List</a>
+</div>
 
-<h4>User</h4>
+<h2 class="display-4" style="color:#04202C; font-family: Cambria">
+    Edit
+</h2>
+
+<h4>
+    User:&nbsp;@Html.DisplayFor(model => model.Email)
+</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,7 +36,7 @@
                     <input class="form-check-input" asp-for="IsPending" /> @Html.DisplayNameFor(model => model.IsPending)
                 </label>
             </div>
-            
+
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsBanned" /> @Html.DisplayNameFor(model => model.IsBanned)
@@ -41,13 +49,8 @@
             </div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-outline-dark" />
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

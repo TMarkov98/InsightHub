@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Unban @Html.DisplayFor(model => model.Email)</h2>
+<h2 class="display-4" style="color:#04202C; font-family: Cambria">Unban @Html.DisplayFor(model => model.Email)</h2>
 
-<h4>Are you sure you want to unban this user?</h4>
+<h4 class="font-italic">Are you sure you want to unban this user?</h4>
 <div>
     <form asp-action="Unban">
         <div class="form-group">
@@ -22,7 +22,7 @@
         </div>
         <input type="hidden" asp-for="Id" />
         <div class="form-group">
-            <input type="submit" value="Unban" class="btn btn-primary" />
+            <input type="submit" value="Unban" class="btn btn-outline-success" />
         </div>
     </form>
 </div>
