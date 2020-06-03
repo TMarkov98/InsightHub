@@ -50,5 +50,10 @@ namespace InsightHub.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult DevelopersApi()
+        {
+            return Redirect("/swagger");
+        }
     }
 }

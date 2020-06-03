@@ -13,7 +13,7 @@
             <div class="container">
                 <b>
                     <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">
-                        <img src="~/img/Logo.png" height="60" alt="InsightHub"/>
+                        <img src="~/img/Logo.png" height="60" alt="InsightHub" />
                     </a>
                 </b>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -23,9 +23,6 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" style="padding-top:10px">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Industries" asp-action="Index">Industries</a>
                         </li>
@@ -133,7 +130,10 @@
 
     <footer class="border-top footer text-muted" style="background-color:#04202C">
         <div class="container">
-            &copy; 2020 - InsightHub - <a class="btn btn-outline-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - InsightHub - <a class="btn btn-outline-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>&nbsp;
+            <a class="btn btn-outline-light" asp-area="" asp-controller="Home" asp-action="DevelopersApi">Developers API </a>
+        </div>
+        <div class="nav-item">
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
