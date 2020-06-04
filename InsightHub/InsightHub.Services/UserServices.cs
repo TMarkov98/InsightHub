@@ -23,6 +23,12 @@ namespace InsightHub.Services
         {
             _context = context;
         }
+
+        /// <summary>
+        /// Gets a User from the context by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the target User.</param>
+        /// <returns>User Model on success. Throws ArgumentNullException if User does not exist.</returns>
         public async Task<UserModel> GetUser(int id)
         {
             var user = await _context.Users
@@ -37,7 +43,13 @@ namespace InsightHub.Services
             var userDTO = UserMapper.MapModelFromEntity(user);
             return userDTO;
         }
-        public async Task<List<UserModel>> GetUsers(string search)
+
+        /// <summary>
+        /// Lists all Active users.
+        /// </summary>
+        /// <param name="search">Searches the collection by First Name, Last Name, Email.</param>
+        /// <returns>ICollection of User Models.</returns>
+        public async Task<ICollection<UserModel>> GetUsers(string search)
         {
             var users = await _context.Users
                 .Where(u => !u.IsBanned && !u.IsPending)
@@ -47,11 +59,17 @@ namespace InsightHub.Services
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
 
-            users = SearchUsers(search, users);
+            users = SearchUsers(search, users).ToList();
 
             return users;
         }
-        public async Task<List<UserModel>> GetBannedUsers(string search)
+
+        /// <summary>
+        /// Lists all Banned users.
+        /// </summary>
+        /// <param name="search">Searches the collection by First Name, Last Name, Email.</param>
+        /// <returns>ICollection of User Models.</returns>
+        public async Task<ICollection<UserModel>> GetBannedUsers(string search)
         {
             var users = await _context.Users
                 .Where(u => u.IsBanned)
@@ -61,25 +79,37 @@ namespace InsightHub.Services
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
 
-            users = SearchUsers(search, users);
+            users = SearchUsers(search, users).ToList();
 
             return users;
         }
-        public async Task<List<UserModel>> GetPendingUsers(string search)
+
+        /// <summary>
+        /// Lists all Pending users.
+        /// </summary>
+        /// <param name="search">Searches the collection by First Name, Last Name, Email.</param>
+        /// <returns>ICollection of User Models.</returns>
+        public async Task<ICollection<UserModel>> GetPendingUsers(string search)
         {
             var users = await _context.Users
                 .Where(u => u.IsPending)
                 .Include(u => u.Role)
                 .Include(u => u.Reports)
                 .Include(u => u.IndustrySubscriptions)
+                .OrderBy(u => u.CreatedOn)
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
 
-            users = SearchUsers(search, users);
+            users = SearchUsers(search, users).ToList();
 
             return users;
         }
 
+        /// <summary>
+        /// Lists all Users subscribed to an Industry.
+        /// </summary>
+        /// <param name="industry">The name of the target Industry.</param>
+        /// <returns>String with Joined users' Email addresses.</returns>
         public async Task<string> GetSubscribedUsers(string industry)
         {
             var users = await _context.IndustrySubscriptions
@@ -95,6 +125,15 @@ namespace InsightHub.Services
             return string.Join(',', sendTo);
         }
 
+        /// <summary>
+        /// Updates the properties of an existing User.
+        /// </summary>
+        /// <param name="id">The ID of the target User.</param>
+        /// <param name="firstName">The new First Name for the User.</param>
+        /// <param name="lastName">The new Last Name for the User.</param>
+        /// <param name="isBanned">The new IsBanned property.</param>
+        /// <param name="banReason">The new BanReason property.</param>
+        /// <returns>User Model on success. Throws ArgumentNullException if User does not exist.</returns>
         public async Task<UserModel> UpdateUser(int id, string firstName, string lastName, bool isBanned, string banReason)
         {
             var user = await _context.Users
@@ -114,6 +153,13 @@ namespace InsightHub.Services
             await _context.SaveChangesAsync();
             return userDTO;
         }
+
+        /// <summary>
+        /// Sets the IsBanned property of a User to True.
+        /// </summary>
+        /// <param name="id">The ID of the target user.</param>
+        /// <param name="reason">The reason for banning the user.</param>
+        /// <returns>Throws ArgumentNullException if User does not exist. Throws ArgumentException if the User is already banned.</returns>
         public async Task BanUser(int id, string reason)
         {
             var user = await _context.Users
@@ -130,6 +176,12 @@ namespace InsightHub.Services
             user.BanReason = reason;
             await _context.SaveChangesAsync();
         }
+
+        /// <summary>
+        /// Approves a Pending User.
+        /// </summary>
+        /// <param name="id">The ID of the target User.</param>
+        /// <returns>Throws ArgumentNullException if User does not exist.</returns>
         public async Task ApproveUser(int id)
         {
             var user = await _context.Users
@@ -140,6 +192,12 @@ namespace InsightHub.Services
             user.IsPending = false;
             await _context.SaveChangesAsync();
         }
+
+        /// <summary>
+        /// Sets the IsBanned property of a User to False.
+        /// </summary>
+        /// <param name="id">The ID of the target User.</param>
+        /// <returns>Throws ArgumentNullException if User does not exist. Throws ArgumentException if the User is already banned.</returns>
         public async Task UnbanUser(int id)
         {
             var user = await _context.Users
@@ -155,6 +213,12 @@ namespace InsightHub.Services
             user.BanReason = string.Empty;
             _context.SaveChanges();
         }
+
+        /// <summary>
+        /// Permanently deletes a user from the context.
+        /// </summary>
+        /// <param name="id">The ID of the target User.</param>
+        /// <returns>Throws ArgumentNullException if User does not exist.</returns>
         public async Task DeleteUser(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
@@ -164,7 +228,14 @@ namespace InsightHub.Services
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
         }
-        public async Task<List<ReportModel>> GetDownloadedReports(int userId, string search)
+
+        /// <summary>
+        /// Gets all the Downloaded Reports for a User.
+        /// </summary>
+        /// <param name="userId">The ID of the target User.</param>
+        /// <param name="search">Searches the Reports by Title and Summary.</param>
+        /// <returns>ICollection of Report Models.</returns>
+        public async Task<ICollection<ReportModel>> GetDownloadedReports(int userId, string search)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
             ValidateUserExists(user);
@@ -188,7 +259,14 @@ namespace InsightHub.Services
 
             return reports;
         }
-        public async Task<List<ReportModel>> GetUploadedReports(int userId, string search)
+
+        /// <summary>
+        /// Gets all the Uploaded Reports from a User.
+        /// </summary>
+        /// <param name="userId">The ID of the target User.</param>
+        /// <param name="search">Searches the Reports by Title and Summary.</param>
+        /// <returns>ICollection of Report Models.</returns>
+        public async Task<ICollection<ReportModel>> GetUploadedReports(int userId, string search)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
             ValidateUserExists(user);
@@ -207,7 +285,13 @@ namespace InsightHub.Services
 
             return reports;
         }
-        public async Task<List<IndustryModel>> GetSubscriptions(int userId)
+
+        /// <summary>
+        /// Gets all the Industry Subscriptions for a User.
+        /// </summary>
+        /// <param name="userId">The target User ID.</param>
+        /// <returns>ICollection of Industry Models.</returns>
+        public async Task<ICollection<IndustryModel>> GetSubscriptions(int userId)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
             ValidateUserExists(user);
@@ -221,7 +305,13 @@ namespace InsightHub.Services
 
             return industries;
         }
-        private List<UserModel> SearchUsers(string search, List<UserModel> users)
+        /// <summary>
+        /// Searches a collection of Users by First Name, Last Name, Email.
+        /// </summary>
+        /// <param name="search">The search query string.</param>
+        /// <param name="users">The collection of Users.</param>
+        /// <returns>ICollection of User Models.</returns>
+        private ICollection<UserModel> SearchUsers(string search, List<UserModel> users)
         {
             if(search != null)
             {
@@ -232,6 +322,10 @@ namespace InsightHub.Services
             return users;
         }
 
+        /// <summary>
+        /// Checks if a User exists. Throws ArgumentNullException if the User is Null.
+        /// </summary>
+        /// <param name="user"></param>
         private void ValidateUserExists(User user)
         {
             if(user == null)
@@ -240,6 +334,12 @@ namespace InsightHub.Services
             }
         }
 
+        /// <summary>
+        /// Searches a Collection of Reports by Title and Summary.
+        /// </summary>
+        /// <param name="search">The search query string.</param>
+        /// <param name="reports">The Collection of Reports.</param>
+        /// <returns>ICollection of Report Models.</returns>
         private ICollection<ReportModel> SearchReports(string search, ICollection<ReportModel> reports)
         {
             if (search != null)

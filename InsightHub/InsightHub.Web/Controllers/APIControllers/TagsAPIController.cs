@@ -88,10 +88,8 @@ namespace InsightHub.Web.Controllers.APIControllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
-            var model = await _tagServices.DeleteTag(id);
-            if (model)
-                return NoContent();
-            return BadRequest();
+            await _tagServices.DeleteTag(id);
+            return NoContent();
         }
     }
 }

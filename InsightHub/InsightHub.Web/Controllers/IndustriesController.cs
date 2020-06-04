@@ -149,10 +149,8 @@ namespace InsightHub.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (await _industryServices.DeleteIndustry(id))
-                return RedirectToAction(nameof(Index));
-            else
-                return NotFound();
+            await _industryServices.DeleteIndustry(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

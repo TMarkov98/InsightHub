@@ -66,11 +66,8 @@ namespace InsightHub.Web.Controllers.APIControllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
-            if (await _industriesServices.DeleteIndustry(id))
-            {
-                return NoContent();
-            }
-            return BadRequest();
+            await _industriesServices.DeleteIndustry(id);
+            return NoContent();
         }
     }
 }

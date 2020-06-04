@@ -30,7 +30,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 var sutTag = new TagServices(assertContext);
                 var sut = new ReportServices(assertContext, sutTag);
                 assertContext.Reports.First(r => r.Id == 1).IsDeleted = true;
-                await sut.PermanentlyDeleteReport(1);
+                await sut.PermanentlyDeleteReport(report.Id);
                 Assert.AreEqual(0, assertContext.Reports.Count());
             }
         }
