@@ -11,6 +11,7 @@ using InsightHub.Services.Contracts;
 using InsightHub.Models;
 using X.PagedList;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace InsightHub.Web.Areas.Admin.Controllers
 {

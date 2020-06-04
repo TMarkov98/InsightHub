@@ -144,7 +144,7 @@ namespace InsightHub.Web.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var tag = await _tagServices.GetTag(id);
-            var tagDeleted = await _tagServices.DeleteTag(id);
+            await _tagServices.DeleteTag(id);
             return RedirectToAction(nameof(Index));
         }
     }
