@@ -20,7 +20,18 @@ namespace InsightHub.Web.Areas.Client.Controllers
         {
             _userServices = userServices;
         }
+
+        /// <summary>
+        /// Get All Subscriptions Of Certain User
+        /// </summary>
+        /// <param name="search">The string to search for</param>
+        /// <param name="pageNumber">The int for a page number</param>
+        ///<returns>On success - View with subscriptions(industries)(in a paged list). </returns>
+        /// <response code="200">Returns All Subscriptions Of Certain User(in a paged list).</response>
+        // GET: MyReports 
         [Authorize]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         // GET: MySubscriptions 
         public async Task<IActionResult> Index()
         {

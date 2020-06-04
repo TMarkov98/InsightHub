@@ -21,36 +21,59 @@ namespace InsightHub.Web.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Load Home Page
+        /// </summary>
+        /// <returns>On success - View</returns>
         public IActionResult Index()
         {
             return View();
         }
-
+        /// <summary>
+        /// Load Privacy Page
+        /// </summary>
+        /// <returns>On success - View</returns>
         public IActionResult Privacy()
         {
             return View();
         }
-
+        /// <summary>
+        /// Load Error Page
+        /// </summary>
+        /// <returns>On success - View</returns>
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        /// <summary>
+        /// Load NotFound Middleware Page
+        /// </summary>
+        /// <returns>On success - View</returns>
         public new IActionResult NotFound()
         {
             return View();
         }
-
+        /// <summary>
+        /// Load UserVanned Page
+        /// </summary>
+        /// <returns>On success - View</returns>
         public IActionResult UserBanned()
         {
             return View();
         }
-
+        /// <summary>
+        /// Load UserPending Page
+        /// </summary>
+        /// <returns>On success - View</returns>
         public IActionResult UserPending()
         {
             return View();
         }
-
+        /// <summary>
+        /// Load NotFound Middleware Page
+        /// </summary>
+        /// <returns>On success - View</returns>
         public IActionResult DevelopersApi()
         {
             return Redirect("/swagger");
