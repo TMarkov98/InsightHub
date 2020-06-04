@@ -20,8 +20,18 @@ namespace InsightHub.Web.Areas.Author.Controllers
         {
             _userServices = userServices;
         }
+
+        /// <summary>
+        /// Get All Uploaded Reports Of Certain User
+        /// </summary>
+        /// <param name="search">The string to search for</param>
+        /// <param name="pageNumber">The int for a page number</param>
+        ///<returns>On success - View with reports(in a paged list). </returns>
+        /// <response code="200">Returns All Uploaded Reports Of Certain User(in a paged list).</response>
         // GET: UploadedReports
         [Authorize]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Index(string search, int? pageNumber)
         {
             ViewData["Search"] = search;

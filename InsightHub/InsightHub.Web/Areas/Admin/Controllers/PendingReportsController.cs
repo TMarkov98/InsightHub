@@ -11,6 +11,7 @@ using System.Security.Claims;
 using InsightHub.Services.Contracts;
 using X.PagedList;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace InsightHub.Web.Areas.Admin.Controllers
 {
@@ -29,7 +30,16 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             _emailSenderServices = emailSenderServices ?? throw new ArgumentNullException("EmailSenderServices can NOT be null");
         }
 
+        /// <summary>
+        /// Get All Pending Reports
+        /// </summary>
+        /// <param name="search">The string to search for</param>
+        /// <param name="pageNumber">The int for a page number</param>
+        ///<returns>On success - View with reports(in a paged list). </returns>
+        /// <response code="200">Returns All Pending Reports(in a paged list).</response>
         // GET: Admin/PendingReports
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
         {
 
@@ -54,6 +64,18 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             var pageSize = 8;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
+        /// <summary>
+        /// Aprove report
+        /// </summary>
+        /// <param name="id">The id of the report.</param>
+        /// <returns>On success - Redirect to Index View</returns>
+        /// <response code="308">Approved - Redirect To Index View.</response>
+        /// <response code="404">If id is null - NotFound</response>
+        // Get: Admin/PendingReports/Approve/5
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Approve(int? id)
         {
             {
