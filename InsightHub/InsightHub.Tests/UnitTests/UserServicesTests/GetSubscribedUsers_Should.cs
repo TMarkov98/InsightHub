@@ -6,5 +6,8 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
 {
     class GetSubscribedUsers_Should
     {
+        //Arrange
+
+        //Act & Assert
     }
 }

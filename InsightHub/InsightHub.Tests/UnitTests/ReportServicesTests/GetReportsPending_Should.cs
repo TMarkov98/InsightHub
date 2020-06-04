@@ -15,6 +15,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
         [TestMethod]
         public async Task GetsPendingReports_When_ParamsValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(GetsPendingReports_When_ParamsValid));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
@@ -43,23 +44,22 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTags = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetPendingReports(null, null);
-                var result = act.ToArray();
-                Assert.AreEqual(2, result.Length);
-                Assert.AreEqual(report1.Title, result[0].Title);
-                Assert.AreEqual(report1.Summary, result[0].Summary);
-                Assert.AreEqual(report2.Title, result[1].Title);
-                Assert.AreEqual(report2.Summary, result[1].Summary);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTags = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTags);
+            var act = await sut.GetPendingReports(null, null);
+            var result = act.ToArray();
+            Assert.AreEqual(2, result.Length);
+            Assert.AreEqual(report1.Title, result[0].Title);
+            Assert.AreEqual(report1.Summary, result[0].Summary);
+            Assert.AreEqual(report2.Title, result[1].Title);
+            Assert.AreEqual(report2.Summary, result[1].Summary);
         }
         [TestMethod]
         public async Task ReturnPendingReports_WithSort_When_ParamValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnPendingReports_WithSort_When_ParamValid));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
@@ -88,23 +88,22 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTags = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetPendingReports("title_desc", null);
-                var result = act.ToArray();
-                Assert.AreEqual(2, result.Length);
-                Assert.AreEqual(report2.Title, result[0].Title);
-                Assert.AreEqual(report2.Summary, result[0].Summary);
-                Assert.AreEqual(report1.Title, result[1].Title);
-                Assert.AreEqual(report1.Summary, result[1].Summary);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTags = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTags);
+            var act = await sut.GetPendingReports("title_desc", null);
+            var result = act.ToArray();
+            Assert.AreEqual(2, result.Length);
+            Assert.AreEqual(report2.Title, result[0].Title);
+            Assert.AreEqual(report2.Summary, result[0].Summary);
+            Assert.AreEqual(report1.Title, result[1].Title);
+            Assert.AreEqual(report1.Summary, result[1].Summary);
         }
         [TestMethod]
         public async Task ReturnPendingReports_WithSearch_When_ParamValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnPendingReports_WithSearch_When_ParamValid));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
@@ -133,26 +132,25 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTags = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetPendingReports(null, "TestReport");
-                var result = act.ToArray();
-                Assert.AreEqual(2, result.Length);
-                Assert.AreEqual(report1.Title, result[0].Title);
-                Assert.AreEqual(report1.Summary, result[0].Summary);
-                Assert.IsTrue(result[0].Title.Contains("TestReport"));
-                Assert.AreEqual(report2.Title, result[1].Title);
-                Assert.AreEqual(report2.Summary, result[1].Summary);
-                Assert.IsTrue(result[1].Title.Contains("TestReport"));
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTags = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTags);
+            var act = await sut.GetPendingReports(null, "TestReport");
+            var result = act.ToArray();
+            Assert.AreEqual(2, result.Length);
+            Assert.AreEqual(report1.Title, result[0].Title);
+            Assert.AreEqual(report1.Summary, result[0].Summary);
+            Assert.IsTrue(result[0].Title.Contains("TestReport"));
+            Assert.AreEqual(report2.Title, result[1].Title);
+            Assert.AreEqual(report2.Summary, result[1].Summary);
+            Assert.IsTrue(result[1].Title.Contains("TestReport"));
         }
 
         [TestMethod]
         public async Task ReturnPendingReport_WithSortAndSearch_When_ParamValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnPendingReport_WithSortAndSearch_When_ParamValid));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
@@ -183,24 +181,22 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTags = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetPendingReports("title_desc", "TestReport");
-                var result = act.ToList();
-                Assert.AreEqual(3, result.Count());
-                Assert.AreEqual(report3.Title, result[0].Title);
-                Assert.AreEqual(report3.Summary, result[0].Summary);
-                Assert.IsTrue(result[0].Title.Contains("TestReport"));
-                Assert.AreEqual(report2.Title, result[1].Title);
-                Assert.AreEqual(report2.Summary, result[1].Summary);
-                Assert.IsTrue(result[1].Title.Contains("TestReport"));
-                Assert.AreEqual(report1.Title, result[2].Title);
-                Assert.AreEqual(report1.Summary, result[2].Summary);
-                Assert.IsTrue(result[2].Title.Contains("TestReport"));
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTags = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTags);
+            var act = await sut.GetPendingReports("title_desc", "TestReport");
+            var result = act.ToList();
+            Assert.AreEqual(3, result.Count());
+            Assert.AreEqual(report3.Title, result[0].Title);
+            Assert.AreEqual(report3.Summary, result[0].Summary);
+            Assert.IsTrue(result[0].Title.Contains("TestReport"));
+            Assert.AreEqual(report2.Title, result[1].Title);
+            Assert.AreEqual(report2.Summary, result[1].Summary);
+            Assert.IsTrue(result[1].Title.Contains("TestReport"));
+            Assert.AreEqual(report1.Title, result[2].Title);
+            Assert.AreEqual(report1.Summary, result[2].Summary);
+            Assert.IsTrue(result[2].Title.Contains("TestReport"));
         }
     }
 }

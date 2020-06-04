@@ -16,6 +16,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task CorrectlyBanUser_WhenParamsValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(CorrectlyBanUser_WhenParamsValid));
             var user = TestModelsSeeder.SeedUser();
 
@@ -24,7 +25,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Users.Add(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await sut.BanUser(user.Id, "Test");
@@ -35,8 +36,9 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task Throw_WhenUserDoesntExist()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenUserDoesntExist));
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.BanUser(5, "Test"));
@@ -45,6 +47,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task Throw_WhenUserAlreadyBanned()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenUserAlreadyBanned));
             var user = TestModelsSeeder.SeedUser();
             user.IsBanned = true;
@@ -54,7 +57,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Users.Add(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.BanUser(user.Id, "Test"));

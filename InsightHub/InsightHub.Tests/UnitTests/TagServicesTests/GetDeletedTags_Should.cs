@@ -15,6 +15,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
         [TestMethod]
         public async Task ReturnCorrectDeletedTags_When_ParamsValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnCorrectDeletedTags_When_ParamsValid));
             var firstTag = TestModelsSeeder.SeedTag(); 
             var secondTag = TestModelsSeeder.SeedTag2();
@@ -25,18 +26,16 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
                 arrangeContext.Tags.Add(secondTag);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new TagServices(assertContext);
-                await sut.DeleteTag(1);
-                await sut.DeleteTag(2);
-                var act = await sut.GetDeletedTags();
-                var result = act.ToArray();
-                Assert.AreEqual(2, result.Length);
-                Assert.AreEqual(firstTag.Name, result[0].Name);
-                Assert.AreEqual(secondTag.Name, result[1].Name);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new TagServices(assertContext);
+            await sut.DeleteTag(1);
+            await sut.DeleteTag(2);
+            var act = await sut.GetDeletedTags();
+            var result = act.ToArray();
+            Assert.AreEqual(2, result.Length);
+            Assert.AreEqual(firstTag.Name, result[0].Name);
+            Assert.AreEqual(secondTag.Name, result[1].Name);
         }
     }
 }

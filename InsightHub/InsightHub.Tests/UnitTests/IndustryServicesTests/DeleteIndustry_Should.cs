@@ -16,40 +16,38 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
         [TestMethod]
         public async Task SetDeletedFlag_WhenParamsAreValid()
         {
+            //Arrange
+            var options = Utils.GetOptions(nameof(SetDeletedFlag_WhenParamsAreValid));
+            var industry = TestModelsSeeder.SeedIndustry();
+
+            using (var arrangeContext = new InsightHubContext(options))
             {
-                var options = Utils.GetOptions(nameof(SetDeletedFlag_WhenParamsAreValid));
-                var industry = TestModelsSeeder.SeedIndustry();
-
-                using (var arrangeContext = new InsightHubContext(options))
-                {
-                    await arrangeContext.Industries.AddAsync(industry);
-                    await arrangeContext.SaveChangesAsync();
-                }
-
-                using (var assertContext = new InsightHubContext(options))
-                {
-                    var sut = new IndustryServices(assertContext);
-                    await sut.DeleteIndustry(1);
-                    var result = await assertContext.Industries.FirstOrDefaultAsync(i => i.Name == industry.Name);
-                    Assert.IsTrue(result.IsDeleted);
-                }
+                await arrangeContext.Industries.AddAsync(industry);
+                await arrangeContext.SaveChangesAsync();
             }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new IndustryServices(assertContext);
+            await sut.DeleteIndustry(1);
+            var result = await assertContext.Industries.FirstOrDefaultAsync(i => i.Name == industry.Name);
+            Assert.IsTrue(result.IsDeleted);
         }
 
         [TestMethod]
         public async Task Throw_WhenIdIsInvalid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenIdIsInvalid));
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new IndustryServices(assertContext);
-                await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.DeleteIndustry(5));
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new IndustryServices(assertContext);
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.DeleteIndustry(5));
 
         }
         [TestMethod]
         public async Task ReturnFalse_WhenIndustryAlreadyDeleted()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnFalse_WhenIndustryAlreadyDeleted));
             var industry = TestModelsSeeder.SeedIndustry();
             industry.IsDeleted = true;
@@ -59,12 +57,10 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
                 await arrangeContext.Industries.AddAsync(industry);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new IndustryServices(assertContext);
-                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.DeleteIndustry(industry.Id));
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new IndustryServices(assertContext);
+            await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.DeleteIndustry(industry.Id));
         }
     }
 }

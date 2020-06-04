@@ -15,6 +15,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
         [TestMethod]
         public async Task GetsFeaturedReports_When_ParamsValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(GetsFeaturedReports_When_ParamsValid));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
@@ -43,17 +44,15 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTags = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetFeaturedReports();
-                var result = act.ToArray();
-                Assert.AreEqual(2, result.Length);
-                Assert.AreEqual(report1.Title, result[0].Title);
-                Assert.AreEqual(report2.Title, result[1].Title);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTags = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTags);
+            var act = await sut.GetFeaturedReports();
+            var result = act.ToArray();
+            Assert.AreEqual(2, result.Length);
+            Assert.AreEqual(report1.Title, result[0].Title);
+            Assert.AreEqual(report2.Title, result[1].Title);
         }
     }
 }

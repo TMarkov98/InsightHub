@@ -15,6 +15,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task ReturnCorrectUser_WhenParamsValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnCorrectUser_WhenParamsValid));
             var user = TestModelsSeeder.SeedUser();
 
@@ -23,22 +24,21 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Users.Add(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new UserServices(assertContext);
-                var result = await sut.GetUser(user.Id);
-                Assert.AreEqual(user.Id, result.Id);
-                Assert.AreEqual(user.IsBanned, result.IsBanned);
-                Assert.AreEqual(user.IsPending, result.IsPending);
-                Assert.AreEqual(user.Email, result.Email);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new UserServices(assertContext);
+            var result = await sut.GetUser(user.Id);
+            Assert.AreEqual(user.Id, result.Id);
+            Assert.AreEqual(user.IsBanned, result.IsBanned);
+            Assert.AreEqual(user.IsPending, result.IsPending);
+            Assert.AreEqual(user.Email, result.Email);
         }
         [TestMethod]
         public async Task Throw_WhenUserDoesntExist()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenUserDoesntExist));
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.GetUser(5));

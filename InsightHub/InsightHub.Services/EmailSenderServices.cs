@@ -50,11 +50,13 @@ namespace InsightHub.Services
         /// <returns>SmtpClient</returns>
         private SmtpClient SmtpClientMapper()
         {
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-            smtpClient.Port = 587;
-            smtpClient.UseDefaultCredentials = true;
-            smtpClient.EnableSsl = true;
-            smtpClient.Credentials = new NetworkCredential("insighthub.official@gmail.com", "InsightHub");
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                UseDefaultCredentials = true,
+                EnableSsl = true,
+                Credentials = new NetworkCredential("insighthub.official@gmail.com", "InsightHub")
+            };
             return smtpClient;
         }
     }
