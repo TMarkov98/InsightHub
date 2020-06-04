@@ -1,6 +1,7 @@
 ﻿using InsightHub.Models.Contracts;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace InsightHub.Data.Entities
@@ -19,6 +20,8 @@ namespace InsightHub.Data.Entities
         }
 
         public int Id { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 5)]
         public string Name { get; set; }
         public List<Report> Reports { get; set; }
         public string ImgUrl { get; set; }
