@@ -14,6 +14,7 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
         [TestMethod]
         public async Task ReturnDeletedIndustries()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnDeletedIndustries));
             var industry = TestModelsSeeder.SeedIndustry();
             var industry2 = TestModelsSeeder.SeedIndustry2();
@@ -25,17 +26,16 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
                 await arrangeContext.Industries.AddAsync(industry2);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new IndustryServices(assertContext);
-                var result = await sut.GetDeletedIndustries(null);
-                Assert.AreEqual(1, result.Count);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new IndustryServices(assertContext);
+            var result = await sut.GetDeletedIndustries(null);
+            Assert.AreEqual(1, result.Count);
         }
         [TestMethod]
         public async Task ReturnDeletedIndustries_WithSearch()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnDeletedIndustries_WithSearch));
             var industry = TestModelsSeeder.SeedIndustry();
             var industry2 = TestModelsSeeder.SeedIndustry2();
@@ -48,13 +48,11 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
                 await arrangeContext.Industries.AddAsync(industry2);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new IndustryServices(assertContext);
-                var result = await sut.GetDeletedIndustries("Test");
-                Assert.AreEqual(2, result.Count);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new IndustryServices(assertContext);
+            var result = await sut.GetDeletedIndustries("Test");
+            Assert.AreEqual(2, result.Count);
         }
     }
 }

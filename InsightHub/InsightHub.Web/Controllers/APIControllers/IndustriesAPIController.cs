@@ -95,9 +95,8 @@ namespace InsightHub.Web.Controllers.APIControllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] string name, string imgUrl)
         {
-            var industry = await _industriesServices.CreateIndustry(name, imgUrl);
+            await _industriesServices.CreateIndustry(name, imgUrl);
             return Created("POST", name);
-
         }
 
         /// <summary>

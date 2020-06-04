@@ -16,6 +16,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task CorrectlyUnbanUser_WhenParamsValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(CorrectlyUnbanUser_WhenParamsValid));
             var user = TestModelsSeeder.SeedUser();
             user.IsBanned = true;
@@ -25,7 +26,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Users.Add(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await sut.UnbanUser(user.Id);
@@ -36,8 +37,9 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task Throw_WhenUserDoesntExist()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenUserDoesntExist));
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.UnbanUser(5));
@@ -46,6 +48,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task Throw_When_UserNotBanned()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_When_UserNotBanned));
             var user = TestModelsSeeder.SeedUser();
             user.IsBanned = false;
@@ -55,7 +58,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Users.Add(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.UnbanUser(user.Id));

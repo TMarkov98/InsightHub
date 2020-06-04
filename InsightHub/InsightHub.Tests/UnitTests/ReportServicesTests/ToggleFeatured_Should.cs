@@ -15,6 +15,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
         [TestMethod]
         public async Task ToggleReport_ToFeatured_When_NotFeatured()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ToggleReport_ToFeatured_When_NotFeatured));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
@@ -29,19 +30,19 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTag = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTag);
-                Assert.IsFalse(assertContext.Reports.First(u => u.Id == 1).IsFeatured);
-                await sut.ToggleFeatured(1);
-                Assert.IsTrue(assertContext.Reports.First(u => u.Id == 1).IsFeatured);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTag = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTag);
+            Assert.IsFalse(assertContext.Reports.First(u => u.Id == 1).IsFeatured);
+            await sut.ToggleFeatured(1);
+            Assert.IsTrue(assertContext.Reports.First(u => u.Id == 1).IsFeatured);
         }
 
         [TestMethod]
         public async Task ToggleReport_NotFeatured_When_IsFeatured()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ToggleReport_NotFeatured_When_IsFeatured));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
@@ -56,20 +57,20 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTag = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTag);
-                Assert.IsTrue(assertContext.Reports.First(u => u.Id == 1).IsFeatured);
-                await sut.ToggleFeatured(1);
-                Assert.IsFalse(assertContext.Reports.First(u => u.Id == 1).IsFeatured);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTag = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTag);
+            Assert.IsTrue(assertContext.Reports.First(u => u.Id == 1).IsFeatured);
+            await sut.ToggleFeatured(1);
+            Assert.IsFalse(assertContext.Reports.First(u => u.Id == 1).IsFeatured);
         }
 
 
         [TestMethod]
         public async Task ThrowArgumentException_When_FeaturedReportNotExists()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ThrowArgumentException_When_FeaturedReportNotExists));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
@@ -84,12 +85,11 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTag = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTag);
-                await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => sut.ToggleFeatured(5));
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTag = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTag);
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => sut.ToggleFeatured(5));
         }
     }
 }

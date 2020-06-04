@@ -15,6 +15,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task RemoveUser_WhenParamsValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(RemoveUser_WhenParamsValid));
             var user = TestModelsSeeder.SeedUser();
 
@@ -23,7 +24,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Users.Add(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await sut.DeleteUser(user.Id);
@@ -32,8 +33,9 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task Throw_WhenUserDoesntExist()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenUserDoesntExist));
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.DeleteUser(5));

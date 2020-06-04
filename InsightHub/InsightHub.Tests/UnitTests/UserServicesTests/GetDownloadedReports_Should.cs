@@ -18,6 +18,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task ReturnAllDownloadedReports()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnAllDownloadedReports));
             var user1 = TestModelsSeeder.SeedUser();
             var report1 = TestModelsSeeder.SeedReport();
@@ -44,20 +45,19 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Industries.Add(industry2);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new UserServices(assertContext);
-                var result = await sut.GetDownloadedReports(user1.Id, null);
-                Assert.AreEqual(2, result.Count);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new UserServices(assertContext);
+            var result = await sut.GetDownloadedReports(user1.Id, null);
+            Assert.AreEqual(2, result.Count);
         }
 
         [TestMethod]
         public async Task Throw_WhenUserDoesntExist()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenUserDoesntExist));
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.GetDownloadedReports(5, null));

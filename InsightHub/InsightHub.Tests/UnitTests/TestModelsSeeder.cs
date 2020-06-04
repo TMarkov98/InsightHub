@@ -37,6 +37,7 @@ namespace InsightHub.Tests.UnitTests
                 Name = "TestTag3",
             };
         }
+
         //Seed Industries
         public static Industry SeedIndustry()
         {
@@ -65,6 +66,7 @@ namespace InsightHub.Tests.UnitTests
                 Name = "TestIndustry3",
             };
         }
+
         //Seed Reports
         public static Report SeedReport()
         {
@@ -135,6 +137,7 @@ namespace InsightHub.Tests.UnitTests
                 IndustryId = 3,
             };
         }
+
         //Seed Users
         public static User SeedUser()
         {
@@ -176,6 +179,7 @@ namespace InsightHub.Tests.UnitTests
                 PhoneNumber = "123321",
             };
         }
+
         //Seed Downloaded Reports
         public static DownloadedReport SeedDownloadedReport()
         {

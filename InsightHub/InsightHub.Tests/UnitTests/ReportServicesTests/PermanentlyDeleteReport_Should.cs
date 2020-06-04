@@ -25,14 +25,12 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 arrangeContext.SaveChanges();
             }
 
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTag = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTag);
-                assertContext.Reports.First(r => r.Id == 1).IsDeleted = true;
-                await sut.PermanentlyDeleteReport(report.Id);
-                Assert.AreEqual(0, assertContext.Reports.Count());
-            }
+            using var assertContext = new InsightHubContext(options);
+            var sutTag = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTag);
+            assertContext.Reports.First(r => r.Id == 1).IsDeleted = true;
+            await sut.PermanentlyDeleteReport(report.Id);
+            Assert.AreEqual(0, assertContext.Reports.Count());
         }
 
         [TestMethod]
@@ -47,12 +45,10 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 arrangeContext.SaveChanges();
             }
 
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTag = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTag);
-                await Assert.ThrowsExceptionAsync<ArgumentException>(() => sut.RestoreReport(1));
-            }
+            using var assertContext = new InsightHubContext(options);
+            var sutTag = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTag);
+            await Assert.ThrowsExceptionAsync<ArgumentException>(() => sut.RestoreReport(1));
         }
         
     }

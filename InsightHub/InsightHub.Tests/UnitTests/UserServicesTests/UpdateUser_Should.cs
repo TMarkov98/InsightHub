@@ -19,6 +19,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task CorrectlyUpdateData_WhenParamsValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(CorrectlyUpdateData_WhenParamsValid));
             var user = TestModelsSeeder.SeedUser();
             var originalModifiedDate = user.ModifiedOn;
@@ -28,7 +29,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Users.Add(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             var act = await sut.UpdateUser(1, "Test First Name", "Test Last Name", true, "Test Ban Reason");
@@ -42,8 +43,9 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task Throw_WhenUserDoesntExist()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenUserDoesntExist));
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => sut.UpdateUser(5, "f", "l", false, ""));

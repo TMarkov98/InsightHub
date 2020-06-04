@@ -14,9 +14,10 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
         [TestMethod]
         public async Task ReturnCorrectNewTag_When_ParamValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnCorrectNewTag_When_ParamValid));
             var tagName = "space";
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
             var act = await sut.CreateTag(tagName);
@@ -27,6 +28,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
         [TestMethod]
         public async Task ThrowArgumentException_When_AlreadyExists()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ThrowArgumentException_When_AlreadyExists));
             var tag = TestModelsSeeder.SeedTag();
             var tagName = "TestTag1";
@@ -36,7 +38,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
                 arrangeContext.Tags.Add(tag);
                 arrangeContext.SaveChanges();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentException>(() => sut.CreateTag(tagName));
