@@ -113,8 +113,8 @@ namespace InsightHub.Web.Controllers
                 return NotFound("Report not found.");
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             await _reportServices.AddToDownloadsCount(userId, id.Value);
-            var data = await _blobServices.GetBlobAsync($"{report.Title}.pdf");
-            return File(data.Content, "application/pdf");
+            var data = await _blobServices.GetBlobAsync($"{report.Id}.pdf");
+            return File(data.Content, "application/pdf", report.Title);
         }
 
         /// <summary>
@@ -172,11 +172,13 @@ namespace InsightHub.Web.Controllers
                 
                 //Create Report
                 await _reportServices.CreateReport(report.Title, report.Summary, report.Description, report.Author, report.ImgUrl, report.Industry, report.Tags);
-                
+
+                //Get New Report ID
+                var reportId = await _reportServices.GetReportsCount();
                 //Upload Report File to Blob
                 using (var stream = file.OpenReadStream())
                 {
-                    await _blobServices.UploadFileBlobAsync(stream, $"{report.Title}.pdf");
+                    await _blobServices.UploadFileBlobAsync(stream, $"{reportId}.pdf");
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -231,30 +233,29 @@ namespace InsightHub.Web.Controllers
             if (id != report.Id)
                 return NotFound("Id can NOT be null");
 
-            //Check if a new File was uploaded
-            if(file != null)
-            {
-                //Check that File is a PDF
-                string[] permittedExtensions = { ".pdf" };
-                
-                var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
-
-                if (string.IsNullOrEmpty(ext) || !permittedExtensions.Contains(ext))
-                {
-                    throw new ArgumentException("Invalid file format. Please provide a PDF.");
-                }
-            }
-            
             if (ModelState.IsValid)
             {
                 //Update Report
                 await _reportServices.UpdateReport(id, report.Title, report.Summary, report.Description, report.ImgUrl, report.Industry, report.Tags);
 
-                //Upload Report File to Blob
-                using (var stream = file.OpenReadStream())
+                //Check if a new File was uploaded
+                if (file != null)
                 {
-                    await _blobServices.UploadFileBlobAsync(stream, $"{report.Title}.pdf");
+                    //Check that File is a PDF
+                    string[] permittedExtensions = { ".pdf" };
+
+                    var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+
+                    if (string.IsNullOrEmpty(ext) || !permittedExtensions.Contains(ext))
+                    {
+                        throw new ArgumentException("Invalid file format. Please provide a PDF.");
+                    }
+
+                    //Upload Report File to Blob
+                    using var stream = file.OpenReadStream();
+                    await _blobServices.UploadFileBlobAsync(stream, $"{report.Id}.pdf");
                 }
+                
                 return RedirectToAction(nameof(Details), new { report.Id });
             }
             return RedirectToAction(nameof(Index));

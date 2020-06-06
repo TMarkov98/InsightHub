@@ -71,20 +71,24 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         /// <returns>On success - Redirect to Index View</returns>
         /// <response code="308">Approved - Redirect To Index View.</response>
         /// <response code="404">If id is null - NotFound</response>
-        // Get: Admin/PendingReports/Approve/5
+        // GET: Admin/PendingReports/Approve/5
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status308PermanentRedirect)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Approve(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
+
+            var report = await _reportServices.GetReport(id.Value);
+            if (report == null)
+            {
+                return NotFound();
+            }
             await _reportServices.ApproveReport(id.Value);
-            var approvedReport = await _reportServices.GetReport(id.Value);
-            var subscribedEmails = await _userServices.GetSubscribedUsers(approvedReport.Industry);
+            var subscribedEmails = await _userServices.GetSubscribedUsers(report.Industry);
             if (subscribedEmails.Length > 0)
             {
                 _emailSenderServices.AutoSendMail(subscribedEmails);

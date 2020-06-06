@@ -54,15 +54,6 @@ namespace InsightHub.Web.Controllers.APIControllers
         /// <summary>
         /// Get a Report by id
         /// </summary>
-        /// <remarks>
-        /// Sample request:
-        ///
-        ///     Get /Reports/
-        ///     {
-        ///        "id": 1,
-        ///     }
-        ///
-        /// </remarks>
         /// <param name="id">The id of the Report.</param>
         /// <returns>On success - A Report Model.
         /// If the Report does not exists - Throws Argument Null Exception</returns>
@@ -89,8 +80,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         [Authorize]
         public async Task<IActionResult> Download(int id)
         {
-            var model = await _reportServices.GetReport(id);
-            var data = await _blobServices.GetBlobAsync(model.Title + ".pdf");
+            var data = await _blobServices.GetBlobAsync(id + ".pdf");
             return File(data.Content, data.ContentType);
         }
 
@@ -124,7 +114,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         // PUT: api/Reports/5
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [Authorize(Roles = "Admin, Author")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Put(int id, [FromBody] ReportModel report)
         {
             var model = await _reportServices.UpdateReport(id, report.Title, report.Summary, report.Description, report.ImgUrl, report.Industry, report.Tags.ToString());
@@ -134,21 +124,12 @@ namespace InsightHub.Web.Controllers.APIControllers
         /// <summary>
         /// Delete a Report
         /// </summary>
-        /// <remarks>
-        /// Sample request:
-        ///
-        ///     Delete /Reports
-        ///     {
-        ///        "id": 1,
-        ///     }
-        ///
-        /// </remarks>
         /// <param name="id">The id of the deleted report</param>
         /// <returns>On success - Nothing if the Industry was deleted. 
         /// If the Report does not exists - Throws Argument Null Exception</returns>
         /// <response code="204">Nothing if the Report was deleted</response>
         /// <response code="400">If the Report does not exists - Throws Argument Null Exception</response>            
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/Delete/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
