@@ -1,112 +1,88 @@
-# InsightHub
-.NET Team Project
+# Insight Hub
 
-This document describes a team project assignment for the .NET cohort at Telerik Academy.
+Insight Hub is a Reports Portal Web application that gives instant access to reports which lists insights into major business and technology trends in order to help them stay aheadand make smarter decisions for their organizations.It focuses around downloading and uploading reports. Clients are able to subscribe to a favorite industry, so they get the full positive of being first to know any news.
 
-Project Description
+## Getting Started
 
-Today, the pace of digital change is faster than ever. Looking ahead is critical to success. Businesses need instant access to reports that lists insights into major business and technology trends that will help them stay ahead and make smarter decisions for their organizations. Your company is about to build such portal - InsightHub. InsightHub is a Reports Portal web application. Some of the possible actions it enables its users to do are:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-- Publish numerous reports 
-- Browse reports based on an industry 
-- Download reports
-- Subscribe for email notifications when new reports are available 
+### Prerequisites
 
-You may look for inspiration at the Gartner portal, the Forrester portal or the IDC portal. The goal is to have a place that makes it easy for businesses to have instant access to insights and analysis. Build a clean, simple application that gets the job done!
+What things you need to install the software and how to install them
 
-Functional Requirements
+```
+Give examples
+```
 
-Public Part (anonymous users)
+### Installing
 
-The public part of your projects should be visible without authentication. This includes:
+A step by step series of examples that tell you how to get a development env running
 
-A landing page that has a list with three categories:
-- Featured (reports selected by the admins)
-- Popular (the reports with the most downloads)
-- New (the newest reports)
+Say what the step will be
 
-Users that are not logged in must be able to still see details for each report:
-- Name
-- Summary
-- Creator
-- Tags
-- Number of downloads
-- Download button (that redirects to the sign-in page)
+```
+Give the example
+```
 
-Users that are not logged in must be able to filter reports by name, industry, tags and sort by the following fields:
-- Report Name
-- Number of downloads
-- Upload date
-- Users that are not logged in must not be able to download a report.
-- There must be capability for users to register/login
+And repeat
 
-Registered users
-Registered users should be in one of three roles – authors, customers or admins.
+```
+until finished
+```
 
-Authors
+End with an example of getting some data out of the system or using it for a little demo
 
-Authors must have private area in the web application accessible after successful login, where they could see all reports that are owned by the currently logged user. Additionally, the author user must be able to:
-Delete/Update/Create their own report
-Each report must have the following data:
-- Name
-- Description
-- Author
-- Industry (IT, Healthcare, Government, Finance, Defence, etc.)
-- Tags (e.g. Audit & Risk, Customer Service & Support, Human Resources, Marketing, Sales,  etc.)
-- Binary content (the report document itself)
+## Running the tests
 
-Once report is created the it is “pending” state until the administrator approves it. The report is visible to customers only if it is approved.
+Explain how to run the automated tests for this system
 
-Customers
-Customers must be able to browse and download all reports. They should also be able to subscribe for email notification (per industry) in case a new report is released (I.e. approved by admins and visible to customers).
-Additionally, customers must have private area in the web application accessible after successful login, where they could see all reports that they have downloaded.
+### Break down into end to end tests
 
-Admins
+Explain what these tests test and why
 
-System administrators can administer all major information objects in the system. The administrators have the following capabilities:
-- Administrators must be able to approve new reports
-- Administrators must be able to delete/edit all reports
-- Administrators must be able to approve user accounts
-- Administrators must be able to disable users accounts
+```
+Give an example
+```
 
-Registration process
-To register, anonymous users must provide their first name, last name, email, type of registration (author or customer), phone number and to specify their password. They should be able to login into the system only after admin approves their registration request.
+### And coding style tests
 
-REST API
+Explain what these tests test and why
 
-In order to provide other organizations and/or developers with your service, you need to develop a REST API. The REST API should leverage HTTP as a transport protocol and clear text JSON for the request and response payloads.
-API documentation is the information that is required to successfully consume and integrate with an API. Use Swagger to document yours.
-Note: All privacy rules apply for REST API endpoints. For example, unauthenticated user cannot edit a beer or add it to his wish list.
-Technical Requirements
-General development guidelines
-Use Visual Studio
-Following OOP principles when coding
-Following KISS, SOLID, DRY principles when coding
-Following REST API design best practices when designing the REST API
-Following BDD when writing tests
-You should implement sensible Exception handling
-Database
-The data of the application must be stored in a relational database (Microsoft SQL Server is preferred). Identify the core domain objects and model their relationships accordingly. Follow the data modeling best practices. Normalize!
+```
+Give an example
+```
 
-Backend
+## Deployment
 
-Use C# and .NET Core
-Use tiered project structure (separate the application components in layers)
-Use ASP.NET Core MVC
-Use Entity Framework Core in the Persistence layer
-Service layer (e.g. “business” functionality) should have at least 80%-unit test coverage
+Add additional notes about how to deploy this on a live system
 
-Frontend
+## Built With
 
-Use AJAX for making asynchronous requests to the server where you find it appropriate
-You may change the standard theme and modify it to apply own web design and visual styles. For example, you could search and use some free html & css template to make your web application look good. 
-It is highly recommended to use Bootstrap
+* [ASP.NET Core](https://docs.microsoft.com/aspnet/core/) - The web framework used
+* [SQL SERVER](https://www.microsoft.com/sql-server/) - Dependency Management
+* [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework) - Object-Relational Mapper
 
-Optional Requirements
+## Contributing
 
-Integrate your app with a Continuous Integration server (e.g. GitLab’s own, Jenkins or other). Configure your unit tests to run on each commit to your master branch 
-Host your application’s backend in a public hosting provider of your choice (e.g. AWS, Azure)
-Research Gitflow Workflow and work on branches
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-Use Git issues to track bugs
-Use JavaScript (AJAX) to fetch data from the API asynchronously 
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
+
