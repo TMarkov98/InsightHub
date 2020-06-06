@@ -50,11 +50,8 @@ namespace InsightHub.Web.Controllers.APIControllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     Get /Industries/
-        ///     {
-        ///        "id": 1,
-        ///     }
-        ///
+        ///     GET /Industries/5
+        ///     
         /// </remarks>
         /// <param name="id">The id of the Industry.</param>
         /// <returns>On success - An Industry Model.
@@ -78,7 +75,6 @@ namespace InsightHub.Web.Controllers.APIControllers
         ///
         ///     POST /Industries
         ///     {
-        ///        "id": 1,
         ///        "name": "Business",
         ///        "imgUrl": https://i.imgur.com/MWr58IA.png
         ///     }
@@ -105,9 +101,8 @@ namespace InsightHub.Web.Controllers.APIControllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     Put /Industries
+        ///     PUT /Industries/5
         ///     {
-        ///        "id": 1,
         ///        "name": "Business",
         ///        "imgUrl": https://i.imgur.com/MWr58IA.png
         ///     }
@@ -134,10 +129,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     Delete /Industries
-        ///     {
-        ///        "id": 1,
-        ///     }
+        ///     Delete /Industries/5
         ///
         /// </remarks>
         /// <param name="id">The id of the deleted industry</param>
@@ -145,7 +137,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         /// If the Industry does not exists - Throws Argument Null Exception</returns>
         /// <response code="204">Nothing if the Industry was deleted</response>
         /// <response code="400">If the Industry does not exists - Throws Argument Null Exception</response>            
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/Delete/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

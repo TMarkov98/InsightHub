@@ -15,6 +15,7 @@ namespace InsightHub.Services.Contracts
         Task<ICollection<ReportModel>> GetNewestReports();
         Task<ICollection<ReportModel>> GetMostDownloadedReports();
         Task<ICollection<ReportModel>> GetReports(string sort, string search, string author, string industry, string tag);
+        Task<int> GetReportsCount();
         Task ToggleFeatured(int id);
         Task ApproveReport(int id);
         Task<ReportModel> UpdateReport(int id, string title, string summary, string description, string imgUrl, string industry, string tags);

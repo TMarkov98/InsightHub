@@ -430,6 +430,15 @@ namespace InsightHub.Services
                 await _context.SaveChangesAsync();
             }
         }
+        /// <summary>
+        /// Returns the Count of all Reports in the context.
+        /// </summary>
+        /// <returns>int</returns>
+        public async Task<int> GetReportsCount()
+        {
+            var count = await _context.Reports.CountAsync();
+            return count;
+        }
 
         /// <summary>
         /// Adds Tags to a target Report. Creates Tags if they don't exist.
