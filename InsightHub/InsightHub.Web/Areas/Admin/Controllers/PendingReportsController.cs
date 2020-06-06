@@ -37,7 +37,7 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         /// <param name="pageNumber">The int for a page number</param>
         ///<returns>On success - View with reports(in a paged list). </returns>
         /// <response code="200">Returns All Pending Reports(in a paged list).</response>
-        // GET: Admin/PendingReports
+        // GET: Admin/PendingReports/5
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
@@ -73,25 +73,23 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         /// <response code="404">If id is null - NotFound</response>
         // Get: Admin/PendingReports/Approve/5
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status308PermanentRedirect)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Approve(int? id)
         {
+            if (id == null)
             {
-                if (id == null)
-                {
-                    return NotFound();
-                }
-                await _reportServices.ApproveReport(id.Value);
-                var approvedReport = await _reportServices.GetReport(id.Value);
-                var subscribedEmails = await _userServices.GetSubscribedUsers(approvedReport.Industry);
-                if (subscribedEmails.Length > 0)
-                {
-                    _emailSenderServices.AutoSendMail(subscribedEmails);
-                }
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
+            await _reportServices.ApproveReport(id.Value);
+            var approvedReport = await _reportServices.GetReport(id.Value);
+            var subscribedEmails = await _userServices.GetSubscribedUsers(approvedReport.Industry);
+            if (subscribedEmails.Length > 0)
+            {
+                _emailSenderServices.AutoSendMail(subscribedEmails);
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }

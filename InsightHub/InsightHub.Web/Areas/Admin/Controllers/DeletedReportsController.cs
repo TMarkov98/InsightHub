@@ -111,10 +111,9 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         /// <response code="308">Deleted - Redirect To Index View.</response>
         /// <response code="404">If id is null - NotFound</response>
         // POST: Admin/DeletedUsers/Remove/5
-        [HttpPost, ActionName("Remove")]
+        [HttpGet, ActionName("Restore")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Restore(int? id)
         {
             if(id == null)

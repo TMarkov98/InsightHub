@@ -12,6 +12,9 @@
     </requestFiltering>
 </security>*@
 
+<div>
+    <a class="btn btn-outline-dark" asp-action="Index">Back to List</a>
+</div>
 <h2 style="color:#04202C; font-family: Cambria">Create Report</h2>
 
 <hr />
@@ -60,15 +63,12 @@
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-outline-dark" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
