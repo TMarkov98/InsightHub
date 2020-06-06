@@ -89,8 +89,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         [Authorize]
         public async Task<IActionResult> Download(int id)
         {
-            var model = await _reportServices.GetReport(id);
-            var data = await _blobServices.GetBlobAsync(model.Title + ".pdf");
+            var data = await _blobServices.GetBlobAsync(id + ".pdf");
             return File(data.Content, data.ContentType);
         }
 

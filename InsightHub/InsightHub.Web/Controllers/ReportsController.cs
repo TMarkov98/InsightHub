@@ -113,7 +113,7 @@ namespace InsightHub.Web.Controllers
                 return NotFound("Report not found.");
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             await _reportServices.AddToDownloadsCount(userId, id.Value);
-            var data = await _blobServices.GetBlobAsync($"{report.Title}.pdf");
+            var data = await _blobServices.GetBlobAsync($"{report.Id}.pdf");
             return File(data.Content, "application/pdf");
         }
 
@@ -176,7 +176,7 @@ namespace InsightHub.Web.Controllers
                 //Upload Report File to Blob
                 using (var stream = file.OpenReadStream())
                 {
-                    await _blobServices.UploadFileBlobAsync(stream, $"{report.Title}.pdf");
+                    await _blobServices.UploadFileBlobAsync(stream, $"{report.Id}.pdf");
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -253,7 +253,7 @@ namespace InsightHub.Web.Controllers
                 //Upload Report File to Blob
                 using (var stream = file.OpenReadStream())
                 {
-                    await _blobServices.UploadFileBlobAsync(stream, $"{report.Title}.pdf");
+                    await _blobServices.UploadFileBlobAsync(stream, $"{report.Id}.pdf");
                 }
                 return RedirectToAction(nameof(Details), new { report.Id });
             }
