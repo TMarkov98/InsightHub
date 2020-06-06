@@ -37,7 +37,7 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         /// <param name="pageNumber">The int for a page number</param>
         ///<returns>On success - View with reports(in a paged list). </returns>
         /// <response code="200">Returns All Pending Reports(in a paged list).</response>
-        // GET: Admin/PendingReports
+        // GET: Admin/PendingReports/5
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
@@ -73,7 +73,7 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         /// <response code="404">If id is null - NotFound</response>
         // GET: Admin/PendingReports/Approve/5
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status308PermanentRedirect)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Approve(int? id)
         {

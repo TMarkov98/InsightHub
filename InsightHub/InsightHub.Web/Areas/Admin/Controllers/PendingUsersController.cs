@@ -55,19 +55,17 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         /// <response code="404">If id is null - NotFound</response>
         // Get: Admin/PendingUsers/Approve/5
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status308PermanentRedirect)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Approve(int? id)
         {
+            if (id == null)
             {
-                if (id == null)
-                {
-                    return NotFound();
-                }
-                await _userServices.ApproveUser(id.Value);
-
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
+            await _userServices.ApproveUser(id.Value);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
