@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using InsightHub.Models;
 using InsightHub.Services.Contracts;
@@ -17,11 +18,13 @@ namespace InsightHub.Web.Controllers.APIControllers
     {
         private readonly IReportServices _reportServices;
         private readonly IBlobServices _blobServices;
+        private readonly IUserServices _userServices;
 
-        public ReportsAPIController(IReportServices reportServices, IBlobServices blobServices)
+        public ReportsAPIController(IReportServices reportServices, IBlobServices blobServices, IUserServices userServices)
         {
             this._reportServices = reportServices ?? throw new ArgumentNullException("Report Services can NOT be null.");
             this._blobServices = blobServices ?? throw new ArgumentNullException("Blob Services can NOT be null.");
+            this._userServices = userServices ?? throw new ArgumentNullException("User Services can NOT be null.");
         }
 
         /// <summary>
@@ -104,7 +107,9 @@ namespace InsightHub.Web.Controllers.APIControllers
         [Authorize(Roles = "Admin, Author")]
         public async Task<IActionResult> Post([FromBody] ReportModel report)
         {
-            var model = await _reportServices.CreateReport(report.Title, report.Summary, report.Description, report.Author, report.ImgUrl, report.Industry, report.Tags.ToString());
+            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var user = await _userServices.GetUser(userId);
+            var model = await _reportServices.CreateReport(report.Title, report.Summary, report.Description, user.Email, report.ImgUrl, report.Industry, report.Tags.ToString());
             return Ok(model);
         }
 

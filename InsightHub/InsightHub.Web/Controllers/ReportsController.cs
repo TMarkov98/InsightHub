@@ -226,14 +226,35 @@ namespace InsightHub.Web.Controllers
         [ProducesResponseType(StatusCodes.Status308PermanentRedirect)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Summary,Description,ImgUrl,Industry,Tags")] ReportModel report)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Summary,Description,ImgUrl,Industry,Tags")] ReportModel report, IFormFile file)
         {
             if (id != report.Id)
                 return NotFound("Id can NOT be null");
 
+            //Check if a new File was uploaded
+            if(file != null)
+            {
+                //Check that File is a PDF
+                string[] permittedExtensions = { ".pdf" };
+                
+                var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+
+                if (string.IsNullOrEmpty(ext) || !permittedExtensions.Contains(ext))
+                {
+                    throw new ArgumentException("Invalid file format. Please provide a PDF.");
+                }
+            }
+            
             if (ModelState.IsValid)
             {
+                //Update Report
                 await _reportServices.UpdateReport(id, report.Title, report.Summary, report.Description, report.ImgUrl, report.Industry, report.Tags);
+
+                //Upload Report File to Blob
+                using (var stream = file.OpenReadStream())
+                {
+                    await _blobServices.UploadFileBlobAsync(stream, $"{report.Title}.pdf");
+                }
                 return RedirectToAction(nameof(Details), new { report.Id });
             }
             return RedirectToAction(nameof(Index));

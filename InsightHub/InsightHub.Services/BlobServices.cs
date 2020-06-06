@@ -44,7 +44,7 @@ namespace InsightHub.Services
         {
             var containerClient = _blobServiceClient.GetBlobContainerClient("reports");
             var blobClient = containerClient.GetBlobClient(fileName);
-            await blobClient.UploadAsync(file);
+            await blobClient.UploadAsync(file, overwrite: true);
         }
 
         /// <summary>
