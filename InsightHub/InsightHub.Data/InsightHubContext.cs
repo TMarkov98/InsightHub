@@ -30,8 +30,8 @@ namespace InsightHub.Data
             modelBuilder.Entity<Report>().Property(r => r.Title).HasMaxLength(100).IsRequired();
             modelBuilder.Entity<Report>().Property(r => r.Summary).HasMaxLength(300).IsRequired();
             modelBuilder.Entity<Report>().Property(r => r.Description).HasMaxLength(5000).IsRequired();
-            modelBuilder.Entity<Report>().HasOne(r => r.Author);
-            modelBuilder.Entity<Report>().HasOne(r => r.Industry);
+            modelBuilder.Entity<Report>().HasOne(r => r.Author).WithMany(u => u.UploadedReports).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Report>().HasOne(r => r.Industry).WithMany(i => i.Reports);
 
             modelBuilder.Entity<Industry>().Property(i => i.Name).HasMaxLength(50).IsRequired();
 
@@ -42,7 +42,7 @@ namespace InsightHub.Data
 
             modelBuilder.Entity<DownloadedReport>().HasKey(ur => new { ur.UserId, ur.ReportId });
             modelBuilder.Entity<DownloadedReport>().HasOne(ur => ur.Report).WithMany(u => u.Downloads).HasForeignKey(ur => ur.ReportId);
-            modelBuilder.Entity<DownloadedReport>().HasOne(ur => ur.User).WithMany(u => u.Reports).HasForeignKey(ur => ur.UserId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<DownloadedReport>().HasOne(ur => ur.User).WithMany(u => u.DownloadedReports).HasForeignKey(ur => ur.UserId);
 
             modelBuilder.Entity<IndustrySubscription>().HasKey(ui => new { ui.UserId, ui.IndustryId });
             modelBuilder.Entity<IndustrySubscription>().HasOne(ui => ui.User).WithMany(u => u.IndustrySubscriptions).HasForeignKey(ui => ui.UserId);

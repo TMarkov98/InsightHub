@@ -23,7 +23,7 @@ namespace InsightHub.Services.Mappers
                 Email = user.Email,
                 CreatedOn = user.CreatedOn,
                 ModifiedOn = user.ModifiedOn,
-                DownloadedReportsCount = user.Reports.Count,
+                DownloadedReportsCount = user.DownloadedReports.Count,
                 IndustrySubscriptionsCount = user.IndustrySubscriptions.Count,
                 IsPending = user.IsPending,
                 IsBanned = user.IsBanned,
