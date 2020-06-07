@@ -21,7 +21,7 @@
             </p>
         </div>
     </form>
-    <hr/>
+    <hr />
     <div class="container">
 
         @foreach (var item in Model)
@@ -67,6 +67,7 @@
        class="btn btn-outline-dark @prevDisabled">
         Previous
     </a>
+    <text>&nbsp;@(ViewData["PageNumber"] ?? 1)&nbsp;</text>
     <a asp-action="Index"
        asp-route-pageNumber="@(Model.PageNumber + 1)"
        asp-route-search="@ViewData["Search"]"
@@ -76,6 +77,6 @@
 }
 else
 {
-    <hr/>
+    <hr />
     <h5 class="font-italic">No subscriptions found.</h5>
 }
