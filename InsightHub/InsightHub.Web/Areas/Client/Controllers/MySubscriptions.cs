@@ -40,6 +40,9 @@ namespace InsightHub.Web.Areas.Client.Controllers
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var industries = await _userServices.GetSubscriptions(userId);
+
+            ViewData["ResultsCount"] = industries.Count;
+
             int pageSize = 8;
             return View(await industries.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
