@@ -8,9 +8,11 @@
 <div>
     @await Component.InvokeAsync("FeaturedViewComponent")
 </div>
-<div>
-    @await Component.InvokeAsync("NewestViewComponent")
-</div>
-<div>
-    @await Component.InvokeAsync("MostDownloadedViewComponent")
+<div class="row align-items-center">
+    <div class="col-lg-6">
+        @await Component.InvokeAsync("NewestViewComponent")
+    </div>
+    <div class="col-lg-6">
+        @await Component.InvokeAsync("MostDownloadedViewComponent")
+    </div>
 </div>
