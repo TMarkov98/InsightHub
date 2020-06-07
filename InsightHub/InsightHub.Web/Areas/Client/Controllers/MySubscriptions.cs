@@ -33,11 +33,15 @@ namespace InsightHub.Web.Areas.Client.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         // GET: MySubscriptions 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search, int? pageNumber)
         {
+            ViewData["PageNumber"] = pageNumber;
+            ViewData["Search"] = search;
+
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var subscriptions = await _userServices.GetSubscriptions(userId);
-            return View(subscriptions);
+            var industries = await _userServices.GetSubscriptions(userId);
+            int pageSize = 8;
+            return View(await industries.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
     }
 }

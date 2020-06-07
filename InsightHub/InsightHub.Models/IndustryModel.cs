@@ -13,11 +13,12 @@ namespace InsightHub.Models
         public string Name { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
-        public List<ReportModel> Reports { get; set; }
+        public IEnumerable<ReportModel> Reports { get; set; }
         public int ReportsCount { get; set; }
         public string ImgUrl { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DeletedOn { get; set; }
         public int SubscriptionsCount { get; set; }
+        public IEnumerable<string> SubscribedUsers { get; set; }
     }
 }

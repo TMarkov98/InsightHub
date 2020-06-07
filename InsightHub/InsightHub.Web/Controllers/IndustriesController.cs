@@ -42,6 +42,8 @@ namespace InsightHub.Web.Controllers
             ViewData["CurrentSort"] = sort;
             ViewData["SortByName"] = sort == "name" ? "name_desc" : "name";
             ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
+            ViewData["SortBySubscribers"] = sort == "subscribers" ? "subscribers_asc" : "subscribers";
+            ViewData["SortByReports"] = sort == "reports" ? "reports_asc" : "reports";
             ViewData["PageNumber"] = pageNumber;
             ViewData["Search"] = search;
 
@@ -64,9 +66,6 @@ namespace InsightHub.Web.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Details(int? id)
         {
-            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            ViewData["SubscriptionExists"] = await _industryServices.SubscriptionExists(userId, id.Value);
-
             if (id == null)
                 return NotFound();
 
@@ -79,13 +78,13 @@ namespace InsightHub.Web.Controllers
         }
 
         /// <summary>
-        /// Subscribe a certain user with some industry
+        /// Subscribe the logged in User to an Industry
         /// </summary>
         /// <param name="id">The id of the industry</param>
-        /// <returns>On success - Redirect to industry's Details View</returns>
+        /// <returns>On success - Redirect to same page</returns>
         /// <response code="308">Successful subscribed - Redirect to industry's Details View</response>
         /// <response code="404">If id is null - NotFound</response>
-        [Authorize(Roles="Client")]
+        [Authorize(Roles = "Client")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status308PermanentRedirect)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -95,14 +94,14 @@ namespace InsightHub.Web.Controllers
             if (id == null)
                 return NotFound();
             await _industryServices.AddSubscription(userId, id.Value);
-            return RedirectToAction(nameof(Details), new { id });
+            return Redirect(Request.Headers["Referer"].ToString());
         }
 
         /// <summary>
-        /// Remove Subscription of a certain user with some industry
+        /// Remove Subscription to an Industry of a logged in User
         /// </summary>
         /// <param name="id">The id of the industry</param>
-        /// <returns>On success - Redirect to industry's Details View</returns>
+        /// <returns>On success - Redirect to same page</returns>
         /// <response code="308">Successful removed subscription - Redirect to industry's Details View</response>
         /// <response code="404">If id is null - NotFound</response>
         [Authorize(Roles = "Client")]
@@ -115,7 +114,7 @@ namespace InsightHub.Web.Controllers
             if (id == null)
                 return NotFound();
             await _industryServices.RemoveSubscription(userId, id.Value);
-            return RedirectToAction(nameof(Details), new { id });
+            return Redirect(Request.Headers["Referer"].ToString());
         }
 
         /// <summary>

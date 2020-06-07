@@ -53,6 +53,7 @@ namespace InsightHub.Services
         {
             var industry = await _context.Industries
                 .Include(i => i.SubscribedUsers)
+                .ThenInclude(ui => ui.User)
                 .Include(i => i.Reports)
                 .ThenInclude(r => r.Author)
                 .FirstOrDefaultAsync(i => i.Id == id);
@@ -73,6 +74,8 @@ namespace InsightHub.Services
         {
             var industries = await _context.Industries
                 .Where(i => !i.IsDeleted)
+                .Include(i => i.SubscribedUsers)
+                .ThenInclude(ui => ui.User)
                 .Include(i => i.Reports)
                 .ThenInclude(r => r.Author)
                 .Select(i => IndustryMapper.MapModelFromEntity(i))
@@ -230,6 +233,18 @@ namespace InsightHub.Services
                         break;
                     case "oldest":
                         industries = industries.OrderBy(i => i.CreatedOn).ToList();
+                        break;
+                    case "subscribers":
+                        industries = industries.OrderByDescending(i => i.SubscriptionsCount).ToList();
+                        break;
+                    case "subscribers_asc":
+                        industries = industries.OrderBy(i => i.SubscriptionsCount).ToList();
+                        break;
+                    case "reports":
+                        industries = industries.OrderByDescending(i => i.ReportsCount).ToList();
+                        break;
+                    case "reports_asc":
+                        industries = industries.OrderBy(i => i.ReportsCount).ToList();
                         break;
                     default:
                         break;

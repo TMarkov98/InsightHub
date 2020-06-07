@@ -299,6 +299,7 @@ namespace InsightHub.Services
             var industries = await _context.IndustrySubscriptions
                 .Include(ui => ui.Industry)
                 .ThenInclude(i => i.SubscribedUsers)
+                .ThenInclude(ui => ui.User)
                 .Where(ui => ui.UserId == userId)
                 .Select(ui => IndustryMapper.MapModelFromEntity(ui.Industry))
                 .ToListAsync();

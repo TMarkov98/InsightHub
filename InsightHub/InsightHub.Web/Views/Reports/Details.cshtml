@@ -17,7 +17,7 @@
                     <text class="d-inline float-right" style="color:#808080">@Model.CreatedOn.ToShortDateString()</text>
                 </h6>
                 <p>
-                    <h1 class="d-inline-block text-left font-weight-bold">@Model.Title</h1>
+                    <h1 class="row d-inline-block text-left font-weight-bold">@Model.Title</h1>
                     <h6 class="d-inline-flex float-right" style="font-size: 20px">
                         <text style="color:#808080">
                             By&nbsp;
@@ -26,9 +26,9 @@
                             @Model.Author.Substring(0, Model.Author.Substring(0, Model.Author.Length - 1).LastIndexOf("- "))
                         </a>
                     </h6>
-                    <a class="d-inline-flex float-left btn-lg btn-dark" asp-action="Download" asp-route-id="@Model.Id">Download</a>
+                    <a class="d-inline float-left btn-lg btn-dark" asp-action="Download" asp-route-id="@Model.Id">Download</a>
                 </p>
-                <p class="d-inline-block text-left">@Model.Description</p>
+                <p class="row d-inline-block text-left">@Model.Description</p>
                 <h6 class="text-left" style="color:#808080">
                     Tags:
                 </h6>

@@ -16,28 +16,29 @@
     <h1 style="font-family:Cambria">
         @Html.DisplayFor(model => model.Name)
     </h1>
-    @if ((bool)ViewData["SubscriptionExists"] && User.IsInRole("Client"))
+    @if (Model.SubscribedUsers.Contains(User.Identity.Name) && User.IsInRole("Client"))
     {
-        <a class="float-right btn btn-outline-danger" asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe from Email notifications</a>
+        <a class="float-right btn btn-danger" asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe from Email notifications</a>
     }
     else if (User.IsInRole("Client"))
     {
-        <a class="float-right btn btn-outline-dark" asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe for Email notifications</a>
+        <a class="float-right btn btn-dark" asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe for Email notifications</a>
     }
 </div>
-<div>
-    @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Author")))
-    {
-        <p>
-            <div class="text-left" style="color:#04202C">
-                <b>
-                    Subscribed Users:&nbsp;
-                </b>
-                @Html.DisplayFor(model => model.SubscriptionsCount)
-            </div>
-        </p>
-    }
-</div>
+<p>
+    <div class="text-left" style="color:#04202C">
+        <b>
+            Subscribed Users:&nbsp;
+        </b>
+        @Html.DisplayFor(model => model.SubscriptionsCount)
+    </div>
+    <div class="text-left" style="color:#04202C">
+        <b>
+            Total Reports:&nbsp;
+        </b>
+        @Html.DisplayFor(model => model.ReportsCount)
+    </div>
+</p>
 <div>
     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
     {
@@ -83,44 +84,44 @@
     <div class="row">
         @foreach (var item in Model.Reports.OrderByDescending(r => r.CreatedOn).Take(4))
         {
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100 mw-100" style="background-color: #0a4863">
-                <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.ImgUrl)" width="500" height="200" alt="">
-                <div class="card-body text-white">
-                    <div class="row">
-                        <div class="col-6 float-left">
-                            <a class="text-white" asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>
-                                @item.Industry
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card h-100 mw-100" style="background-color: #0a4863">
+                    <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.ImgUrl)" width="500" height="200" alt="">
+                    <div class="card-body text-white">
+                        <div class="row">
+                            <div class="col-6 float-left">
+                                <a class="text-white" asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>
+                                    @item.Industry
+                                </a>
+                            </div>
+                            <div class="col-6 float-right" style="color:#C9D1C8">
+                                @item.CreatedOn.ToShortDateString()
+                            </div>
+                        </div>
+                        <row class="d-inline-block text-center">
+                            <h5>
+                                <b>
+                                    <a class="text-white font-weight-bold" style="font-family: Cambria" asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                                </b>
+                            </h5>
+                        </row>
+                        <div class="row text-left" style="color:#C9D1C8">
+                            @Html.DisplayFor(modelItem => item.Summary)
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="row text-left" style="color:#C9D1C8">
+                            By:&nbsp;
+                            <a class="text-white" asp-controller="Reports" asp-action="Index" asp-route-author=@item.Author.Split(' ').Last()>
+                                @item.Author.Substring(0, item.Author.Substring(0, item.Author.Length - 1).LastIndexOf("- "))
                             </a>
-                        </div>
-                        <div class="col-6 float-right" style="color:#C9D1C8">
-                            @item.CreatedOn.ToShortDateString()
-                        </div>
+                        </p>
+                        <p class="row text-left" style="color:#C9D1C8">
+                            Downloaded @Html.DisplayFor(modelItem => item.DownloadsCount) times
+                        </p>
                     </div>
-                    <row class="d-inline-block text-center">
-                        <h5>
-                            <b>
-                                <a class="text-white font-weight-bold" style="font-family: Cambria" asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
-                            </b>
-                        </h5>
-                    </row>
-                    <div class="row text-left" style="color:#C9D1C8">
-                        @Html.DisplayFor(modelItem => item.Summary)
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <p class="row text-left" style="color:#C9D1C8">
-                        By:&nbsp;
-                        <a class="text-white" asp-controller="Reports" asp-action="Index" asp-route-author=@item.Author.Split(' ').Last()>
-                            @item.Author.Substring(0, item.Author.Substring(0, item.Author.Length - 1).LastIndexOf("- "))
-                        </a>
-                    </p>
-                    <p class="row text-left" style="color:#C9D1C8">
-                        Downloaded @Html.DisplayFor(modelItem => item.DownloadsCount) times
-                    </p>
                 </div>
             </div>
-        </div>
         }
     </div>
 </div>

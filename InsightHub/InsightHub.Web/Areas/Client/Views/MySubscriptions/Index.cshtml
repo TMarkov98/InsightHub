@@ -1,44 +1,79 @@
-﻿@model IEnumerable<InsightHub.Models.IndustryModel>
+﻿@model X.PagedList.StaticPagedList<InsightHub.Models.IndustryModel>
 
 <h1 class="text-left">My Subscriptions</h1>
-<h6 class="text-left">(You are will get an email every time a new report from one of these industries is published.)</h6><br />
+<h6 class="text-left">(You are will get an email every time a new report from one of these industries is published.)</h6>
+<br />
 <h5 class="text-left">Industries that you are subscribed to:</h5>
 
 @if (Model.Count() > 0)
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th />
-                <th>
-                    Name
-                </th>
-                <th>
-                    Created On
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
-                    </td>
-                    <td>
-                        <a asp-area="" asp-controller="Industries" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedOn)
-                    </td>
-                    <td>
-                        <a class="btn btn-outline-danger" asp-area="" asp-controller="Industries" asp-action="RemoveSubscription" asp-route-id="@item.Id">Remove Subscription</a>
-                    </td>
-                </tr>
+    <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
+    <h1 class="display-3" style="color:#04202C; font-family: Cambria">
+        <b>
+            Industries
+        </b>
+    </h1>
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Search Industries: <input type="text" name="search" value="@ViewData["Search"]" />
+                <input type="submit" value="Search" class="btn btn-outline-dark" />
+                <br />
+                @ViewData["ResultsCount"] result(s)
+            </p>
+        </div>
+    </form>
+    <div class="container">
 
-            }
-        </tbody>
-    </table>
+        @foreach (var item in Model)
+        {
+            <div style="padding-bottom:20px">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <a class="row" asp-action="Details" asp-route-id="@item.Id">
+                            <img class="d-inline text-left" src=@Html.DisplayFor(modelItem => item.ImgUrl) width="805" height="217">
+                        </a>
+                    </div>
+                    <div class="col-lg-3">
+                        <h2 class="d-inline" style="font-family: Cambria">
+                            <a class="row" style="vertical-align:top; color: #04202C" asp-action="Details" asp-route-id="@item.Id">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </a>
+                        </h2>
+                        <div class="row" style="color:#04202C">
+                            <b>
+                                Subscribed Users:&nbsp;&nbsp;
+                            </b>
+                            @Html.DisplayFor(modelItem => item.SubscriptionsCount)
+                        </div>
+                        <div class="row">
+                            <b>
+                                Total Reports:&nbsp;&nbsp;
+                            </b>
+                            @Html.DisplayFor(modelItem => item.ReportsCount)
+                        </div>
+                        <a class="btn btn-danger" asp-area="" asp-controller="Industries" asp-action="RemoveSubscription" asp-route-id="@item.Id">Unsubscribe</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageNumber - 1)"
+       asp-route-search="@ViewData["Search"]"
+       class="btn btn-outline-dark @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageNumber + 1)"
+       asp-route-search="@ViewData["Search"]"
+       class="btn btn-outline-dark @nextDisabled">
+        Next
+    </a>
 }
 else
 {

@@ -17,23 +17,42 @@
         <a class="btn btn-dark" asp-controller="Industries" asp-action="Create">New Industry</a>
     </p>
 }
-<form asp-action="Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Search Industries: <input type="text" name="search" value="@ViewData["Search"]" />
-            <input type="submit" value="Search" class="btn btn-outline-dark" />
-            <br />
-            @ViewData["ResultsCount"] result(s)
-        </p>
-    </div>
-</form>
-@*<th>
-        <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">Name</a>
-    </th>
-    <th>
-        <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">Created On</a>
-
-    </th>*@
+<div class="container">
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Search Industries: <input type="text" name="search" value="@ViewData["Search"]" />
+                <input type="submit" value="Search" class="btn btn-outline-dark" />
+            </p>
+            <p class="d-inline">
+                @ViewData["ResultsCount"] result(s)
+                <div class="dropdown float-right">
+                    <button class="d-inline btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown">
+                        Sort By
+                    </button>
+                    <ul class="dropdown-menu text-white" style="background-color: #4D648D">
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByName"]"
+                               asp-route-search="@ViewData["Search"]">Name</a>
+                        </li>
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByDate"]"
+                               asp-route-search="@ViewData["Search"]">Date</a>
+                        </li>
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortBySubscribers"]"
+                               asp-route-search="@ViewData["Search"]">Subscribers Count</a>
+                        </li>
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByReports"]"
+                               asp-route-search="@ViewData["Search"]">Reports Count</a>
+                        </li>
+                    </ul>
+                </div>
+            </p>
+        </div>
+    </form>
+</div>
 <div class="container">
 
     @foreach (var item in Model)
@@ -51,10 +70,19 @@
                             @Html.DisplayFor(modelItem => item.Name)
                         </a>
                     </h2>
-                    <div class="row d-inline">
-                        Total Reports:&nbsp;
+                    <div class="row" style="color:#04202C">
+                        <b>
+                            Subscribed Users:&nbsp;&nbsp;
+                        </b>
+                        @Html.DisplayFor(modelItem => item.SubscriptionsCount)
+                    </div>
+                    <div class="row">
+                        <b>
+                            Total Reports:&nbsp;&nbsp;
+                        </b>
                         @Html.DisplayFor(modelItem => item.ReportsCount)
                     </div>
+
                     <div class="row">
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
@@ -65,6 +93,14 @@
                             <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         }
                     </div>
+                    @if (item.SubscribedUsers.Contains(User.Identity.Name) && User.IsInRole("Client"))
+                    {
+                        <a class="btn btn-danger" asp-action="RemoveSubscription" asp-route-id="@item.Id">Unsubscribe</a>
+                    }
+                    else if (User.IsInRole("Client"))
+                    {
+                        <a class="btn btn-dark" asp-action="Subscribe" asp-route-id="@item.Id">Subscribe</a>
+                    }
                 </div>
             </div>
         </div>
