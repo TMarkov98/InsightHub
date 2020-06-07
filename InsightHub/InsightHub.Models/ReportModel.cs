@@ -10,13 +10,13 @@ namespace InsightHub.Models
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(100, MinimumLength = 5)]
+        [StringLength(100, MinimumLength = 10)]
         public string Title { get; set; }
         [Required]
-        [StringLength(300, MinimumLength = 5)]
+        [StringLength(300, MinimumLength = 10)]
         public string Summary { get; set; }
         [Required]
-        [StringLength(5000, MinimumLength = 5)]
+        [StringLength(5000, MinimumLength = 50)]
         public string Description { get; set; }
         public string Author { get; set; }
         [Required]
