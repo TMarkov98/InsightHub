@@ -60,6 +60,7 @@ namespace InsightHub.Services
                 Title = reportModel.Title,
                 Description = reportModel.Description,
                 Summary = reportModel.Summary,
+                ImgUrl = reportModel.ImgUrl,
                 CreatedOn = DateTime.UtcNow
             };
             await _context.Reports.AddAsync(report);
