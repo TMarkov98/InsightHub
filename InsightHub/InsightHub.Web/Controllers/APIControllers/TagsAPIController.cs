@@ -17,7 +17,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         public TagsAPIController(ITagServices tagServices)
         {
-            this._tagServices = tagServices ?? throw new ArgumentNullException("TagServices can NOT be null.");
+            this._tagServices = tagServices;
         }
         /// <summary>
         /// Get all Tags

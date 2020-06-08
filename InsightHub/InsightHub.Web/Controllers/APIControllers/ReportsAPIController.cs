@@ -22,9 +22,9 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         public ReportsAPIController(IReportServices reportServices, IBlobServices blobServices, IUserServices userServices)
         {
-            this._reportServices = reportServices ?? throw new ArgumentNullException("Report Services can NOT be null.");
-            this._blobServices = blobServices ?? throw new ArgumentNullException("Blob Services can NOT be null.");
-            this._userServices = userServices ?? throw new ArgumentNullException("User Services can NOT be null.");
+            this._reportServices = reportServices;
+            this._blobServices = blobServices;
+            this._userServices = userServices;
         }
 
         /// <summary>

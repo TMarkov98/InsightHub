@@ -10,6 +10,9 @@ namespace InsightHub.Services
 {
     public class EmailSenderServices : IEmailSenderServices
     {
+        private static string mailBody = $"Dear User,\nNew report just came in. Be the first to download it. *HyperLink to insighthub url*";
+        private static string mailSubject = "New Report Just Got Uploaded!";
+        private static string ownerMail = "insighthub.official@gmail.com";
         /// <summary>
         /// Sends an automated message to an address.
         /// </summary>
@@ -17,8 +20,6 @@ namespace InsightHub.Services
         public void AutoSendMail(string to)
         {
             var mailMessage = MailMessageMapper(to);
-            mailMessage.To.Clear();
-            mailMessage.To.Add("teodor.atan.markov@gmail.com");
             var smtpClient = SmtpClientMapper();
 
             smtpClient.Send(mailMessage);
@@ -38,9 +39,9 @@ namespace InsightHub.Services
             {
                 mailM.To.Add(email);
             }
-            mailM.Body = $"Dear User,\nNew report just came in. Be the first to download it. *HyperLink to insighthub url*";
-            mailM.Subject = "New Report Just Got Uploaded!";
-            mailM.From = new MailAddress("insighthub.official@gmail.com");
+            mailM.Body = mailBody;
+            mailM.Subject = mailSubject;
+            mailM.From = new MailAddress(ownerMail);
             mailM.IsBodyHtml = false;
             return (mailM);
         }
@@ -55,7 +56,7 @@ namespace InsightHub.Services
                 Port = 587,
                 UseDefaultCredentials = true,
                 EnableSsl = true,
-                Credentials = new NetworkCredential("insighthub.official@gmail.com", "InsightHub")
+                Credentials = new NetworkCredential(ownerMail, "InsightHub")
             };
             return smtpClient;
         }
