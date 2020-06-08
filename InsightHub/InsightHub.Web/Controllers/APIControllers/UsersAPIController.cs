@@ -20,7 +20,7 @@ namespace InsightHub.Web.Controllers.APIControllers
 
         public UsersAPIController(IUserServices userServices)
         {
-            this._userServices = userServices ?? throw new ArgumentNullException("UserServices can NOT be null.");
+            this._userServices = userServices;
         }
         /// <summary>
         /// Get all Users
