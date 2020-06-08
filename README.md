@@ -1,3 +1,7 @@
+## Project status
+
+The project is ready to use, but is still undergoing daily active development. 
+
 # Insight Hub
 
 Insight Hub is a Reports Portal Web application that gives instant access to reports which lists insights into major business and technology trends in order to help them stay aheadand make smarter decisions for their organizations.It focuses around downloading and uploading reports. Clients are able to subscribe to a favorite industry, so they get the full positive of being first to know any news.
@@ -6,31 +10,21 @@ Insight Hub is a Reports Portal Web application that gives instant access to rep
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Usage
 
-What things you need to install the software and how to install them
-
+Upload and Download reports in a centralized business hub.
+For example if You are author:
 ```
-Give examples
+Give examples (author upload reports/client download reports)
 ```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+or if You are Client:
 ```
-Give the example
+Give examples (author upload reports/client download reports)
 ```
+### Support
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+You can contact us on:
+Gmail - insighthub.official@gmail.com
 
 ## Running the tests
 
@@ -44,37 +38,24 @@ Explain what these tests test and why
 Give an example
 ```
 
-### And coding style tests
+## Roadmap
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+- Newsfeed on Front Page
+- Send auto emails to admins about new users/reports
+- Online project hosting
 
 ## Built With
 
 * [ASP.NET Core](https://docs.microsoft.com/aspnet/core/) - The web framework used
 * [SQL SERVER](https://www.microsoft.com/sql-server/) - Dependency Management
-* [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework) - Object-Relational Mapper
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* [Entity Framework](https://docs.microsoft.com/aspnet/entity-framework) - Object-Relational Mapper
+* [Bootstrap](https://getbootstrap.com/) - HTML, CSS, and JS library
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Krasimir Mladenov** - *Initial work* - [GitLab](https://gitlab.com/kmladenov)
+* **Teodor Markov** - *Initial work* - [GitLab](https://gitlab.com/tmarkov98)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
@@ -82,7 +63,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Krasimir Mladenov
+* Teodor Markov
+* etc.
 
