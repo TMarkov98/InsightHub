@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Report Pending";
+}
+
+    <div class="row">
+        <a class="btn btn-outline-dark" asp-controller="Reports" asp-action="Index">Back to Reports</a>
+    </div>
+    <div class="row">
+        <h2>Your Report is now Pending. Please allow a few hours for an Admin to approve it. You can review or make changes to your new Report under the "My Uploaded Reports" section.</h2>
+    </div>
+    <div class="row">
+        <a class="btn btn-outline-dark" asp-area="Author" asp-controller="UploadedReports" asp-action="Index">My Uploaded Reports</a>
+    </div>

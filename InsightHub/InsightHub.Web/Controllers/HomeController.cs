@@ -78,5 +78,9 @@ namespace InsightHub.Web.Controllers
         {
             return Redirect("/swagger");
         }
+        public IActionResult ReportPending()
+        {
+            return View();
+        }
     }
 }

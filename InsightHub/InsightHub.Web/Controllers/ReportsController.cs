@@ -180,7 +180,7 @@ namespace InsightHub.Web.Controllers
                 {
                     await _blobServices.UploadFileBlobAsync(stream, $"{reportId}.pdf");
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("ReportPending", "Home");
             }
 
             return RedirectToAction(nameof(Index));
@@ -255,11 +255,17 @@ namespace InsightHub.Web.Controllers
                     using var stream = file.OpenReadStream();
                     await _blobServices.UploadFileBlobAsync(stream, $"{report.Id}.pdf");
                 }
-                
-                return RedirectToAction(nameof(Details), new { report.Id });
+
+                return RedirectToAction("ReportPending", "Home");
             }
             return RedirectToAction(nameof(Index));
         }
+
+        /// <summary>
+        /// Changes the state of the IsFeatured Bool in the target Report
+        /// </summary>
+        /// <param name="id">The ID of the target Report</param>
+        /// <returns></returns>
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ToggleFeatured(int? id)
         {
