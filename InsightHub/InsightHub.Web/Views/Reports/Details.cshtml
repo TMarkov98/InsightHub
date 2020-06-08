@@ -31,7 +31,13 @@
                     </h6>
                     <a class="d-inline-block float-left btn-lg btn-dark" asp-action="Download" asp-route-id="@Model.Id">Download</a>
                 </p>
-                <p class="row d-inline-block text-left">@Model.Description</p>
+                <div class="row d-inline-block">
+                    <p class="col-lg-12 text-left">
+                        <text style="word-wrap:break-word">
+                            @Model.Description
+                        </text>
+                    </p>
+                </div>
                 <h6 class="text-left" style="color:#808080">
                     Tags:
                 </h6>
