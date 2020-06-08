@@ -89,7 +89,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([FromBody] string name, string imgUrl)
+        public async Task<IActionResult> Create(string name, string imgUrl)
         {
             await _industriesServices.CreateIndustry(name, imgUrl);
             return Created("POST", name);

@@ -13,10 +13,6 @@ namespace InsightHub.Data.Entities
         {
             this.Reports = new List<Report>();
             this.SubscribedUsers = new List<IndustrySubscription>();
-            if(this.ImgUrl == null || this.ImgUrl == string.Empty)
-            {
-                this.ImgUrl = "https://i.imgur.com/AoW6Iqh.png";
-            }
         }
 
         public int Id { get; set; }
