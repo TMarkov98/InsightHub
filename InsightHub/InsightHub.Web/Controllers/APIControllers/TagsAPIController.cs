@@ -108,7 +108,7 @@ namespace InsightHub.Web.Controllers.APIControllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Post([FromBody] string name)
+        public async Task<IActionResult> Post(string name)
         {
             var model = await _tagServices.CreateTag(name);
             return Ok(model);

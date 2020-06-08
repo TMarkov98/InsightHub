@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InsightHub.Common\InsightHub.Common.csproj" />
     <ProjectReference Include="..\InsightHub.Data\InsightHub.Data.csproj" />
     <ProjectReference Include="..\InsightHub.Models\InsightHub.Models.csproj" />
     <ProjectReference Include="..\InsightHub.Services\InsightHub.Services.csproj" />
