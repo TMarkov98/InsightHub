@@ -82,5 +82,10 @@ namespace InsightHub.Web.Controllers
         {
             return View();
         }
+        public IActionResult Exception(string message)
+        {
+            ViewData["Message"] = message;
+            return View();
+        }
     }
 }

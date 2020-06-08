@@ -12,7 +12,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-7">
-                <img class="rounded mb-4 mb-lg-0 w-100" src="@Model.ImgUrl" height="250" alt="">
+                <img class="rounded mb-4 mb-lg-0 w-100" src="@Model.ImgUrl" height="500" alt="">
             </div>
             <div class="col-lg-5">
                 <h6 style="font-size: 20px">
@@ -20,7 +20,9 @@
                     <text class="d-inline float-right" style="color:#808080">@Model.CreatedOn.ToShortDateString()</text>
                 </h6>
                 <p>
-                    <h1 class="row d-inline-block text-left font-weight-bold">@Model.Title</h1>
+                    <div class="row d-inline-block">
+                        <h1 class="col-12 text-left font-weight-bold">@Model.Title</h1>
+                    </div>
                     <h6 class="d-inline-flex float-right" style="font-size: 20px">
                         <text style="color:#808080">
                             By&nbsp;
@@ -33,7 +35,7 @@
                 </p>
                 <div class="row d-inline-block">
                     <p class="col-lg-12 text-left">
-                        <text style="word-wrap:break-word">
+                        <text style="overflow-wrap: break-word">
                             @Model.Description
                         </text>
                     </p>

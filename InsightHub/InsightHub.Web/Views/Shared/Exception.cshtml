@@ -1,0 +1,29 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Oops!";
+}
+<div class="row">
+    <a class="btn btn-outline-dark" asp-controller="Home" asp-action="Index">Home</a>
+</div>
+<div class="row" style="font-family:Cambria">
+    <h1 class="text-dark">
+        <b>
+            Oops!
+        </b>
+    </h1>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row" style="font-family:Cambria">
+    <h2 class=text-dark>@ViewData["Message"]</h2>
+    <p />
+    <h3 class="text-dark">An Exception has occurred. To request the assistance of a talented monkey, please reach out to us at insighthub.official@gmail.com<br /></h3>
+    <img src="~/img/LaptopMonkey.jpg" />
+</div>
+<div class="row">
+    <p/>
+</div>
+<div class="row">
+    <a class="btn btn-outline-dark" asp-controller="ContactWithUs" asp-action="ContactWithUs">Contact Us</a>
+</div>
