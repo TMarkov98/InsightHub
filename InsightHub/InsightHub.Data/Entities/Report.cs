@@ -11,10 +11,6 @@ namespace InsightHub.Data.Entities
         {
             this.ReportTags = new List<ReportTag>();
             this.Downloads = new List<DownloadedReport>();
-            if(ImgUrl == null || ImgUrl == string.Empty)
-            {
-                this.ImgUrl = "https://cdn.lynda.com/course/157341/157341-637199579151169448-16x9.jpg";
-            }
         }
         public int Id { get; set; }
         public string Title { get; set; }

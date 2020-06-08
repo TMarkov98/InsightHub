@@ -23,7 +23,7 @@ namespace InsightHub.Services.Mappers
             return new IndustryModel
             {
                 Name = name,
-                ImgUrl = url,
+                ImgUrl = url ?? "https://i.imgur.com/AoW6Iqh.png",
                 CreatedOn = DateTime.UtcNow
             };
         }
