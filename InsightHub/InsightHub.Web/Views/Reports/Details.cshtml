@@ -44,7 +44,7 @@
                 <p>
                     @foreach (var tag in ViewData["Tags"] as IEnumerable<string>)
                     {
-                        <a style="font-family: Cambria; font-size: 20px; color:#04202C" asp-action="Index" asp-route-tag=@tag>@tag</a><br />
+                        <a class="d-inline" style="font-family: Cambria; font-size: 20px; color:#04202C" asp-action="Index" asp-route-tag=@tag>@tag</a><br />
                     }
                 </p>
             </div>

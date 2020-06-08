@@ -94,7 +94,7 @@
                             <p class="row text-left" style="color:#C9D1C8">
                                 Downloaded @Html.DisplayFor(modelItem => item.DownloadsCount) times
                             </p>
-                            <a class="btn btn-outline-info" asp-action="Approve" asp-route-id="@item.Id">Approve</a>
+                            <a class="btn btn-outline-success" asp-action="Approve" asp-route-id="@item.Id">Approve</a>
                             <a class="btn btn-outline-light" asp-area="" asp-controller="Reports" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                             <a class="btn btn-outline-danger" asp-area="" asp-controller="Reports" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         </div>
