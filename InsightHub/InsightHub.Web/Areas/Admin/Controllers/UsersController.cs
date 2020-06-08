@@ -13,6 +13,8 @@ using X.PagedList;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
+using System.Linq.Expressions;
+using Microsoft.Data.SqlClient;
 
 namespace InsightHub.Web.Areas.Admin.Controllers
 {
@@ -157,6 +159,7 @@ namespace InsightHub.Web.Areas.Admin.Controllers
 
             return View(user);
         }
+
         /// <summary>
         /// Delete an existing user
         /// </summary>
@@ -170,8 +173,15 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _userServices.DeleteUser(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _userServices.DeleteUser(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch(DbUpdateException)
+            {
+                throw new ArgumentException("Unable to Delete Author while they still have Active Reports.");
+            }
         }
 
         /// <summary>

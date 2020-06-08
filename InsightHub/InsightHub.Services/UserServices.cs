@@ -32,10 +32,10 @@ namespace InsightHub.Services
         public async Task<UserModel> GetUser(int id)
         {
             var user = await _context.Users
-                .Include(u => u.Reports)
+                .Include(u => u.DownloadedReports)
                 .Include(u => u.Role)
                 .Include(u => u.IndustrySubscriptions)
-                .Include(u => u.Reports)
+                .Include(u => u.DownloadedReports)
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             ValidateUserExists(user);
@@ -53,7 +53,7 @@ namespace InsightHub.Services
         {
             var users = await _context.Users
                 .Where(u => !u.IsBanned && !u.IsPending)
-                .Include(u => u.Reports)
+                .Include(u => u.DownloadedReports)
                 .Include(u => u.Role)
                 .Include(u => u.IndustrySubscriptions)
                 .Select(u => UserMapper.MapModelFromEntity(u))
@@ -74,7 +74,7 @@ namespace InsightHub.Services
             var users = await _context.Users
                 .Where(u => u.IsBanned)
                 .Include(u => u.Role)
-                .Include(u => u.Reports)
+                .Include(u => u.DownloadedReports)
                 .Include(u => u.IndustrySubscriptions)
                 .Select(u => UserMapper.MapModelFromEntity(u))
                 .ToListAsync();
@@ -94,7 +94,7 @@ namespace InsightHub.Services
             var users = await _context.Users
                 .Where(u => u.IsPending)
                 .Include(u => u.Role)
-                .Include(u => u.Reports)
+                .Include(u => u.DownloadedReports)
                 .Include(u => u.IndustrySubscriptions)
                 .OrderBy(u => u.CreatedOn)
                 .Select(u => UserMapper.MapModelFromEntity(u))
@@ -137,7 +137,7 @@ namespace InsightHub.Services
         public async Task<UserModel> UpdateUser(int id, string firstName, string lastName, bool isBanned, string banReason)
         {
             var user = await _context.Users
-                .Include(u => u.Reports)
+                .Include(u => u.DownloadedReports)
                 .Include(u => u.IndustrySubscriptions)
                 .FirstOrDefaultAsync(u => u.Id == id && !u.IsBanned);
 
