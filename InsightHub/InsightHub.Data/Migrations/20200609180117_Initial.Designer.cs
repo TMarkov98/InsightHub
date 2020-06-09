@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InsightHub.Data.Migrations
 {
     [DbContext(typeof(InsightHubContext))]
-    [Migration("20200609175308_Initial")]
+    [Migration("20200609180117_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,7 +173,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(7168),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(4145),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/8Rkh6JW.png",
                             IsDeleted = false,
@@ -183,7 +183,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8254),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5545),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/dX9t5lS.png",
                             IsDeleted = false,
@@ -193,7 +193,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8300),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5606),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/TC7qZPP.png",
                             IsDeleted = false,
@@ -203,7 +203,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8325),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5638),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/AO7gOGs.png",
                             IsDeleted = false,
@@ -213,7 +213,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8404),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5667),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/MWr58IA.png",
                             IsDeleted = false,
@@ -223,7 +223,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8433),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5701),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/evwFFDj.png",
                             IsDeleted = false,
@@ -233,7 +233,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8457),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5728),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/io9aGef.jpg",
                             IsDeleted = false,
@@ -243,7 +243,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8480),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5755),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/0aD3uZj.jpg",
                             IsDeleted = false,
@@ -253,7 +253,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8505),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5785),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/MIkU108.jpg",
                             IsDeleted = false,
@@ -263,7 +263,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8531),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5814),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/TFcnTmD.png",
                             IsDeleted = false,
@@ -273,7 +273,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8554),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5841),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/ArAIUQ0.png",
                             IsDeleted = false,
@@ -283,7 +283,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 12,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8577),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5868),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/WeTQtUK.png",
                             IsDeleted = false,
@@ -293,7 +293,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 13,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8600),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5894),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/ApJqXTX.png",
                             IsDeleted = false,
@@ -303,7 +303,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8623),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5920),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/5pZJcpA.png",
                             IsDeleted = false,
@@ -313,7 +313,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 15,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8646),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5948),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/oWIukyA.png",
                             IsDeleted = false,
@@ -323,7 +323,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 16,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8670),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(5974),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/GMNHXMs.png",
                             IsDeleted = false,
@@ -333,7 +333,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 17,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8694),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 831, DateTimeKind.Utc).AddTicks(6001),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/fJ5s33U.png",
                             IsDeleted = false,
@@ -806,7 +806,7 @@ namespace InsightHub.Data.Migrations
                             CreatedOn = new DateTime(2020, 6, 7, 12, 40, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "WASHINGTON — A study that found that every small satellite launched commercially in the last five years suffered delays is evidence of the need of greater standardization in payload accommodations so that smallsats can easily switch vehicles, one company argues.",
-                            ImgUrl = "https://spacenews.com/wp-content/uploads/2019/04/f9-ssoa.jpg",
+                            ImgUrl = "https://i.imgur.com/028Yd8V.png",
                             IndustryId = 6,
                             IsDeleted = false,
                             IsFeatured = false,
@@ -1028,21 +1028,21 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "d0e0951a-b514-4b5f-9aa9-a43612e7dcd8",
+                            ConcurrencyStamp = "9928f279-01aa-42ac-b055-b375e095e178",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "de1f0b86-80fc-40e8-8c50-50051e422872",
+                            ConcurrencyStamp = "a68ee892-6a9f-4a9e-85a4-2f663f77d61f",
                             Name = "Author",
                             NormalizedName = "AUTHOR"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "0976fbfe-b76f-436f-824b-61e536f1c35f",
+                            ConcurrencyStamp = "0aff81c1-d8b4-4cba-9791-77b42c849e16",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });
@@ -1078,7 +1078,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(2201),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 832, DateTimeKind.Utc).AddTicks(657),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1087,7 +1087,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3729),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 832, DateTimeKind.Utc).AddTicks(2824),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1096,7 +1096,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3782),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 832, DateTimeKind.Utc).AddTicks(2919),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1105,7 +1105,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3811),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 832, DateTimeKind.Utc).AddTicks(2961),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1114,7 +1114,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3838),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 832, DateTimeKind.Utc).AddTicks(3002),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1123,7 +1123,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3869),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 832, DateTimeKind.Utc).AddTicks(3049),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1132,7 +1132,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3953),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 832, DateTimeKind.Utc).AddTicks(3089),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1141,7 +1141,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3983),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 832, DateTimeKind.Utc).AddTicks(3131),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1150,7 +1150,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(4009),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 832, DateTimeKind.Utc).AddTicks(3174),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1159,7 +1159,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(4038),
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 832, DateTimeKind.Utc).AddTicks(3326),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1267,8 +1267,8 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "31146c52-040b-43c8-852c-f666740463f5",
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 849, DateTimeKind.Utc).AddTicks(8492),
+                            ConcurrencyStamp = "7d8ef5de-86dc-44be-bdf1-894bc8f06a9a",
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 707, DateTimeKind.Utc).AddTicks(9009),
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admincho",
@@ -1279,7 +1279,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMe6VxjV/jtqxyvhjE5atjHDldt7kBeMciBEswZmyVVidrYzvy+5y8/e/xtSmQdPWQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELoQEuMttjluq5FAOlkGIEnz1pN2M7iyQwVhvRXT9f38J1BUPw0u8x2TiS6mA6uZdA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -1289,8 +1289,8 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 11,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e4b8dc19-7c08-4e88-9dda-945d018a1f8c",
-                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 850, DateTimeKind.Utc).AddTicks(1407),
+                            ConcurrencyStamp = "3a773acc-a1da-4819-a588-82033187df32",
+                            CreatedOn = new DateTime(2020, 6, 9, 18, 1, 16, 708, DateTimeKind.Utc).AddTicks(1746),
                             Email = "admin2@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -1310,7 +1310,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "106733bb-c0c9-4cf9-824e-679858cdfb74",
+                            ConcurrencyStamp = "684d731f-e2eb-470b-82aa-cbe2dda00494",
                             CreatedOn = new DateTime(2020, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "georgi.petrov@gmail.com",
                             EmailConfirmed = false,
@@ -1322,7 +1322,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "GEORGIPETROV@GMAIL.COM",
                             NormalizedUserName = "GEORGI.PETROV@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOFs75zC2BGhxLaac+3801iLqk41p+L7L1w7NpvDY/2HHv8p3pLGxl/UsXijfo4czg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDR3eTBDIfpiDbXgs4Nd9mAnbwdu7D0hr3XK0iLp4d0G6yCC1AsE5WydGm7JelCMfw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHMHG",
                             TwoFactorEnabled = false,
@@ -1332,7 +1332,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d6491025-263d-4c8e-8610-9ed2a3765ab6",
+                            ConcurrencyStamp = "43c8380e-31cd-4c9b-92d6-9d117289a7d0",
                             CreatedOn = new DateTime(2020, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "miroslav.peev@gmail.com",
                             EmailConfirmed = false,
@@ -1344,7 +1344,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "MIROSLAV.PEEV@GMAIL.COM",
                             NormalizedUserName = "MIROSLAV.PEEV@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENVfCmW1fj5oSjL9i8Enfn9yrE/dv+QcPXWWL1CNODehEGOtl72ctsF1vnILOMRKZQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIXTnl7tYvmd3SNzsGienlxce/qXfzpJFCBzglB136rhP7h13xwdXfWwevdJ+MFOAA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHPPT",
                             TwoFactorEnabled = false,
@@ -1354,7 +1354,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bd391e7f-7ccf-4057-b32b-2e7703577463",
+                            ConcurrencyStamp = "abd323bc-b637-4e46-8b61-4d0b639068c2",
                             CreatedOn = new DateTime(2020, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "atanas.velev@gmail.com",
                             EmailConfirmed = false,
@@ -1366,7 +1366,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "ATANAS.VELEV@GMAIL.COM",
                             NormalizedUserName = "ATANAS.VELEV@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ/ma18o2aPpsP/qoXssJMzhA1f3euQbygER/ZFsC3FTKWoZuGRdgWpDBB6KgTH1rw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMIylr0tl2wqDQNuesDa0psdVIJhHAwMePiSXHjnjOj7ezldM4NFVxe7pCwnQRzmBg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGMN",
                             TwoFactorEnabled = false,
@@ -1376,7 +1376,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 5,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1c51b7ed-477d-406f-be83-46f787bc2863",
+                            ConcurrencyStamp = "5a7e5e09-7bae-47b4-af4f-5efff2a27cf6",
                             CreatedOn = new DateTime(2020, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "petyr.petrov@gmail.com",
                             EmailConfirmed = false,
@@ -1388,7 +1388,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "PETYR.PETROV@GMAIL.COM",
                             NormalizedUserName = "PETYR.PETROV@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMCClGf2+rdPbJUMLJAsw66FOyc+jte7n174r/8tJjJYspcnoLnodhAUixpTO4hCmw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAgD5Fdm4dxP7IV+15FEm9G+WEznrbfkQVwneT+qO5g9tKNrorbO6ZlMfaPn+7rpiw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHPPG",
                             TwoFactorEnabled = false,
@@ -1398,7 +1398,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 6,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "370c1d7b-68fe-4d17-aa40-8807eed01b8d",
+                            ConcurrencyStamp = "945dad77-b5a5-4103-ade8-1f18a59da184",
                             CreatedOn = new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "valentina.dimitrova@gmail.com",
                             EmailConfirmed = false,
@@ -1410,7 +1410,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "VALENTINA.DIMITROVA@GMAIL.COM",
                             NormalizedUserName = "VALENTINA.DIMITROVA@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMBiKP5ILJuO+N/ABINOpzDkItkIX61bBsNrkbSIBLB/5yEEQXMyTAXirZmGbBO9hQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELJYYVxa/kEcC+lOml6DbYQYUEVB4e3ns9JV+dD33lWDriT9Z65MwTXFjJnZtMJqCg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVVBHGXF",
                             TwoFactorEnabled = false,
@@ -1420,7 +1420,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 7,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cb557f32-a451-4fc4-8c8d-d6318ebf4929",
+                            ConcurrencyStamp = "3f4e74a3-ea8a-4b9a-a535-0347368b4404",
                             CreatedOn = new DateTime(2020, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kaloyan.jekov@gmail.com",
                             EmailConfirmed = false,
@@ -1432,7 +1432,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "KALOYAN.JEKOV@GMAIL.COM",
                             NormalizedUserName = "KALOYAN.JEKOV@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJGVAuSD/mI3zv5ZYCveHPpzfP1hiao3/3q/VcbQyRW/Art4fZpthFL73vUIY4HBZw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEItqmdGakrKquOnqyLsE0I1FaK2o4SqR5G7qQQwi/wO4D+ok7NUVWotNAH0ig62UXQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PPGBHGXF",
                             TwoFactorEnabled = false,
@@ -1442,7 +1442,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 8,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d53fe2ce-c2cb-4043-b70f-0db8674e5bb7",
+                            ConcurrencyStamp = "337a9d04-e575-497f-b815-34c875294f8f",
                             CreatedOn = new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "preslav.mitev@gmail.com",
                             EmailConfirmed = false,
@@ -1454,7 +1454,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "PRESLAV.MITEV@GMAIL.COM",
                             NormalizedUserName = "PRESLAV.MITEV@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKWqqI/hdd2Y2BoIgp6bvB8y2Sr/Siq9pTcpq7fupKbLuW1yEvcnH7xA0Khtt6720Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMUQs+FHRBTYQUVam3HInOmhm1YHotqV3/099tbFVPw97VvNXgThi/pcD8amX9xTNg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUK3PVYBHGXF",
                             TwoFactorEnabled = false,
@@ -1464,7 +1464,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 9,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "92ab557a-db60-44e5-a72b-d43373b7c78e",
+                            ConcurrencyStamp = "d0657afb-887a-4639-b9f2-d8babd55ad24",
                             CreatedOn = new DateTime(2020, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kristian.ivanov@gmail.com",
                             EmailConfirmed = false,
@@ -1476,7 +1476,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "KRISTIAN.IVANOV@GMAIL.COM",
                             NormalizedUserName = "KRISTIAN.IVANOV@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHYCP0v8QNX73xjBxxpGQFBZpynssVS1XuwZewBVeSFpm6x/neadvHLMqmYL8UhwRQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJFXPAieAJxsYucwpMojKYd8QQllRDZ9cKW+dnMWE/AFJxo7biMQrjYTJSzt8oyOdw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNKSV5PVYBHGXF",
                             TwoFactorEnabled = false,
@@ -1486,7 +1486,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 10,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ee8d69d3-48de-48b5-94bf-f5b07203af51",
+                            ConcurrencyStamp = "1aedf577-c40a-45e9-bb3b-fbb5bc9e1b86",
                             CreatedOn = new DateTime(2020, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kiro.kirov@gmail.com",
                             EmailConfirmed = false,
@@ -1498,7 +1498,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "KIRO.KIROV@GMAIL.COM",
                             NormalizedUserName = "KIRO.KIROV@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDxA+A5LVulbLdkfEA8G+oKxnK2GP4AAg1x7pychpT7KUP+PzvvCdKKcquYAq0Hjyw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECo91wUOI0Gp3rSf9MqYAK9vGWdboZgsMPEzqdPCuHC6TOAsmOwQLgn3BOabSF+Quw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV3LSYBHGXF",
                             TwoFactorEnabled = false,
