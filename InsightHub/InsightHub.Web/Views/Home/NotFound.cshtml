@@ -3,11 +3,12 @@
     ViewData["Title"] = "NotFound404";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<body>
-    <h2 style="text-align: center">
-        Page Not Found.
-    </h2>
 
-</body>
+<div class="row">
+    <a class="btn btn-outline-dark" asp-controller="Home" asp-action="Index">Home</a>
+</div>
+<a asp-controller="Home" asp-action="Index">
+    <img src="~/img/404NotFound.png" />
+</a>
 
 
