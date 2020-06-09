@@ -36,28 +36,103 @@ namespace InsightHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = 1,
-                            ReportId = 1
+                            UserId = 6,
+                            ReportId = 5
                         },
                         new
                         {
-                            UserId = 2,
-                            ReportId = 1
+                            UserId = 6,
+                            ReportId = 7
                         },
                         new
                         {
-                            UserId = 3,
-                            ReportId = 1
+                            UserId = 6,
+                            ReportId = 18
                         },
                         new
                         {
-                            UserId = 1,
-                            ReportId = 2
+                            UserId = 6,
+                            ReportId = 9
                         },
                         new
                         {
-                            UserId = 2,
-                            ReportId = 2
+                            UserId = 7,
+                            ReportId = 13
+                        },
+                        new
+                        {
+                            UserId = 7,
+                            ReportId = 23
+                        },
+                        new
+                        {
+                            UserId = 7,
+                            ReportId = 5
+                        },
+                        new
+                        {
+                            UserId = 7,
+                            ReportId = 18
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            ReportId = 14
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            ReportId = 3
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            ReportId = 18
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            ReportId = 4
+                        },
+                        new
+                        {
+                            UserId = 9,
+                            ReportId = 13
+                        },
+                        new
+                        {
+                            UserId = 9,
+                            ReportId = 18
+                        },
+                        new
+                        {
+                            UserId = 9,
+                            ReportId = 6
+                        },
+                        new
+                        {
+                            UserId = 9,
+                            ReportId = 8
+                        },
+                        new
+                        {
+                            UserId = 10,
+                            ReportId = 5
+                        },
+                        new
+                        {
+                            UserId = 10,
+                            ReportId = 19
+                        },
+                        new
+                        {
+                            UserId = 10,
+                            ReportId = 9
+                        },
+                        new
+                        {
+                            UserId = 10,
+                            ReportId = 18
                         });
                 });
 
@@ -96,7 +171,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(1559),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(7168),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/8Rkh6JW.png",
                             IsDeleted = false,
@@ -106,7 +181,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2162),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8254),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/dX9t5lS.png",
                             IsDeleted = false,
@@ -116,7 +191,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2193),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8300),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/TC7qZPP.png",
                             IsDeleted = false,
@@ -126,7 +201,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2209),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8325),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/AO7gOGs.png",
                             IsDeleted = false,
@@ -136,7 +211,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2223),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8404),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/MWr58IA.png",
                             IsDeleted = false,
@@ -146,7 +221,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2279),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8433),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/evwFFDj.png",
                             IsDeleted = false,
@@ -156,7 +231,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2297),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8457),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/io9aGef.jpg",
                             IsDeleted = false,
@@ -166,7 +241,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2311),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8480),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/0aD3uZj.jpg",
                             IsDeleted = false,
@@ -176,7 +251,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2324),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8505),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/MIkU108.jpg",
                             IsDeleted = false,
@@ -186,7 +261,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2338),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8531),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/TFcnTmD.png",
                             IsDeleted = false,
@@ -196,7 +271,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2352),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8554),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/ArAIUQ0.png",
                             IsDeleted = false,
@@ -206,7 +281,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 12,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2365),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8577),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/WeTQtUK.png",
                             IsDeleted = false,
@@ -216,7 +291,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 13,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2378),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8600),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/ApJqXTX.png",
                             IsDeleted = false,
@@ -226,7 +301,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2391),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8623),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/5pZJcpA.png",
                             IsDeleted = false,
@@ -236,7 +311,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 15,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2404),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8646),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/oWIukyA.png",
                             IsDeleted = false,
@@ -246,7 +321,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 16,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2417),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8670),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/GMNHXMs.png",
                             IsDeleted = false,
@@ -256,7 +331,7 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 17,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(2430),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 964, DateTimeKind.Utc).AddTicks(8694),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImgUrl = "https://i.imgur.com/fJ5s33U.png",
                             IsDeleted = false,
@@ -282,18 +357,113 @@ namespace InsightHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = 1,
-                            IndustryId = 1
+                            UserId = 6,
+                            IndustryId = 3
                         },
                         new
                         {
-                            UserId = 1,
+                            UserId = 6,
                             IndustryId = 2
                         },
                         new
                         {
-                            UserId = 2,
+                            UserId = 6,
+                            IndustryId = 5
+                        },
+                        new
+                        {
+                            UserId = 6,
+                            IndustryId = 9
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            IndustryId = 8
+                        },
+                        new
+                        {
+                            UserId = 10,
+                            IndustryId = 11
+                        },
+                        new
+                        {
+                            UserId = 10,
+                            IndustryId = 10
+                        },
+                        new
+                        {
+                            UserId = 10,
                             IndustryId = 1
+                        },
+                        new
+                        {
+                            UserId = 10,
+                            IndustryId = 4
+                        },
+                        new
+                        {
+                            UserId = 10,
+                            IndustryId = 2
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            IndustryId = 2
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            IndustryId = 4
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            IndustryId = 9
+                        },
+                        new
+                        {
+                            UserId = 7,
+                            IndustryId = 1
+                        },
+                        new
+                        {
+                            UserId = 7,
+                            IndustryId = 5
+                        },
+                        new
+                        {
+                            UserId = 7,
+                            IndustryId = 7
+                        },
+                        new
+                        {
+                            UserId = 7,
+                            IndustryId = 9
+                        },
+                        new
+                        {
+                            UserId = 9,
+                            IndustryId = 1
+                        },
+                        new
+                        {
+                            UserId = 9,
+                            IndustryId = 3
+                        },
+                        new
+                        {
+                            UserId = 9,
+                            IndustryId = 7
+                        },
+                        new
+                        {
+                            UserId = 9,
+                            IndustryId = 6
+                        },
+                        new
+                        {
+                            UserId = 9,
+                            IndustryId = 14
                         });
                 });
 
@@ -358,8 +528,8 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 1,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(6609),
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(2020, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Real GDP contracted 4.8 percent at an annualized rate in the first quarter according to the advance estimate from the Bureau of Economic Analysis, worse than the consensus expectation for a 4.0 percent decline. The coronavirus pandemic and restrictions on movement led to big declines in consumer spending and business investment (down 7.6 percent and 8.6 percent annualized, respectively).",
                             ImgUrl = "https://www.agenda-bg.com/wp-content/uploads/2016/09/What-To-Expect-In-2015-An-Economic-Outlook-For-Small-And-Medium-Businesses-Making-It-TV.jpg",
@@ -374,8 +544,8 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 2,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(7569),
+                            AuthorId = 4,
+                            CreatedOn = new DateTime(2020, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "PNC's Market Expectation Survey lists the current consensus forecast for key economic data releases for the upcoming week, as well as PNC's own forecast for each item. A comprehensive calendar listing recent data for key economic indicators is provided on the second page.",
                             ImgUrl = "https://www.questionpro.com/blog/wp-content/uploads/2018/05/Market-Survey_Final-800x478.jpg",
@@ -391,7 +561,7 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 3,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(7614),
+                            CreatedOn = new DateTime(2020, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Despite pricing pressures and tariff concerns, measures of optimism are approaching the record-setting highs measured in spring 2018, according to the latest PNC semi-annual survey of small and mid-size business owners and executives.",
                             ImgUrl = "https://images.financialexpress.com/2019/06/ECONOMIC_SURVEY_660.jpg",
@@ -406,24 +576,24 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 4,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8058),
+                            AuthorId = 5,
+                            CreatedOn = new DateTime(2019, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "The Aerospace Industries Association (AIA) is the most authoritative and influential trade association representing the aerospace and defense industry. We are the leading voice for the industry on Capitol Hill, within the administration, and internationally.",
-                            ImgUrl = "https://cdn.canadianmetalworking.com/a/aerospace-sector-report-a-jetstream-of-trends-1489163413.jpg?size=1000x1000",
-                            IndustryId = 2,
+                            Description = "IN MEMORIAM - \"The future is not free: the story of all human progress is one of a struggle against all odds.We learned again that this America, which Abraham Lincoln called the last,best hope of man on Earth, was built on heroism and noble sacrifice.It was built by men and women like our seven star voyagers, who answered a call beyond duty, who gave more than was expected or required and who gave it little thought of worldly reward.\"- President Ronald Reagan January 31, 1986",
+                            ImgUrl = "https://i.imgur.com/jEPMztX.png",
+                            IndustryId = 6,
                             IsDeleted = false,
                             IsFeatured = true,
                             IsPending = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Summary = "Aerospace Industry Report 3rd Edition by The Aerospace Industries Association (AIA)",
-                            Title = "Aerospace Industry 2012 Report"
+                            Summary = "Report to the President By the presidential commission - on the Space Shuttle Challenger Accident",
+                            Title = "Report to the President by the presidential commission"
                         },
                         new
                         {
                             Id = 5,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8093),
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(2020, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Foreword Airline fare setting is a complex and dynamic process, varying by carrier, route and time. It lies at the heart of an airline’s commercial strategy as it aims to maximise the return on its assets employed, namely its aircraft and its people. In the following report, we have sought to describe clearly and comprehensively how the numerous factors an airline has to juggle play into the fare that passengers ultimately face. As a team who has an airline background, and advises both airlines and airports on matters of strategy, ICF has been uniquely well placed to do this.",
                             ImgUrl = "https://www.aljazeera.com/mritems/Images/2019/12/4/b604dd8d57c942a892cdc71f21d09973_18.jpg",
@@ -438,11 +608,11 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 6,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8113),
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(2020, 6, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Since the introduction of the smartphone, it has become clear that customers are quick to adopt even highly complex and expensive technology if it makes their lives easier. In other words, users value convenience and ease. These core values turned the automobile into the defining technical cultural item of the 20th century. Now it is time to translate these properties into the context of today's – and tomorrow's –  technology and society. ",
-                            ImgUrl = "https://eenews.cdnartwhere.eu/sites/default/files/styles/inner_article/public/sites/default/files/images/2019-10-17_automotive_cybersecurity_hacking_software_dark_web_intsights.jpg?itok=x-9upxnf",
+                            ImgUrl = "https://www.car-brand-names.com/wp-content/uploads/2016/04/Cars.jpg",
                             IndustryId = 4,
                             IsDeleted = false,
                             IsFeatured = true,
@@ -454,11 +624,11 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 7,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8129),
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(2020, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This Report contains the conclusions from the comprehensive review of the Slovenian banking sector undertaken by the Bank of Sloveniain cooperation with the Slovenian Ministry of Finance over the period June to December 2013. This Asset Quality Review and Stress Test is a cornerstone in the broader initiative to restore the health in the Slovenian banking sector.",
-                            ImgUrl = "https://www.assignmentpoint.com/wp-content/uploads/2013/04/E-Banking-in-Bangladesh.jpg",
+                            ImgUrl = "https://www.mindtree.com/sites/default/files/2018-08/Digital%20Banking%20Solution-Mindtree-H.jpg",
                             IndustryId = 5,
                             IsDeleted = false,
                             IsFeatured = false,
@@ -470,27 +640,27 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 8,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8185),
+                            AuthorId = 4,
+                            CreatedOn = new DateTime(2020, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "The report is divided into three sections. The first part reviews the supply side of the pub market, revealing numbers, trends and the contrasting fortunes of different sectors, and identifying some of the areas in which pubs are succeeding. The second section analyses the customer base: their demographics, habits and motivations. The final part takes a look at reasons for optimism, with insights into increasing appeal and sales and the emerging new breeds of pub in Britain. At a time of great challenges for both the out of home eating and drinking market and the UK economy as a whole, this report highlights the many positive trends and developments in the British pub market. We hope you enjoy reading it.",
-                            ImgUrl = "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2019%2F12%2Fuk-pubs-growth-FT-BLOG1219.jpg&q=85",
-                            IndustryId = 17,
+                            Description = "Distributed Ledger Technology (DLT) (also known as blockchain technology or distributed database technology) has attracted significant interest and funding in the financial services industry in recent years. Several large financial institutions have established dedicated teams to explore the technology, and some market participants have formed consortia to create industry standards.2 According to a 2016 report by the World Economic Forum,3 over the past three years more than $1.4 billion has been invested in this technology to explore and implement uses in the financial services industry.",
+                            ImgUrl = "https://www.jagranjosh.com/imported/images/E/Articles/What-is-Blockchain-Technology.png",
+                            IndustryId = 11,
                             IsDeleted = false,
                             IsFeatured = true,
                             IsPending = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Summary = "This report draws on CGA’s unrivalled suite of research services to provide a comprehensive picture of Great Britain’s pubs and their opportunities for growth",
-                            Title = "The British Pub Market 2019"
+                            Summary = "Implicationsof Blockchain for the Securities Industry",
+                            Title = "Distributed Ledger Technology"
                         },
                         new
                         {
                             Id = 9,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8204),
+                            AuthorId = 5,
+                            CreatedOn = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This report is intended to be of practical use in reducing the environmental impacts of construction. Nicole Lazarus will be glad to hear from any readers with feedback and examples of its application.",
-                            ImgUrl = "https://lh3.googleusercontent.com/proxy/yv-Fqqhl26oZXf_TqO-irARoppooPkNe6DcoAoldvOSdkXl42fpaATpfcnqeuCs7qyZ_lv40MmzP2DikBzqshhJAhaXb9fi0gaDOCAEE0W6rtkbyUMYPDlYu8ixTEfPHorTtC8PB",
+                            ImgUrl = "https://5chat.com/wp-content/uploads/building-materials.jpg",
                             IndustryId = 7,
                             IsDeleted = false,
                             IsFeatured = false,
@@ -502,11 +672,11 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 10,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8221),
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(2020, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This report covers Audit and accounting; Business services; Professional services; and Legal services.",
-                            ImgUrl = "https://www.antal.com/uploads/library/files/Business-Services.jpg",
+                            ImgUrl = "https://magneticonemobile.com/wp-content/uploads/2018/01/slide1-business.jpg",
                             IndustryId = 1,
                             IsDeleted = false,
                             IsFeatured = false,
@@ -518,8 +688,8 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 11,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8237),
+                            AuthorId = 5,
+                            CreatedOn = new DateTime(2020, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Casino Gambling has become a majorindustry in the United States over the past twodecades.  Nationwide, annual casino revenue tops $40billion. This report provides an analysis of casino gam-bling in the United States and discusses the economicissues surrounding casino gambling. The informationcontained in this report should prove useful to localofficials and policy-makers who may be considering theadoption of casino gambling or who already have casi-no gambling in their jurisdictions.",
                             ImgUrl = "https://royalepalmscasino-sofia.com/wp-content/uploads/2019/04/IMG_1710-1024x683.jpg",
@@ -534,8 +704,8 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 12,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8251),
+                            AuthorId = 5,
+                            CreatedOn = new DateTime(2020, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Particularly in Central and South America, expansion of pastures for livestock production has been one of the driving forces behind this wholesale destruction.Deforestation causes incalculable environmental damage, releasing billions of tonnes of carbon dioxide into the atmosphere and driving thousands of species of life to extinction each year. Effective policies are urgently needed to discourage expansion of livestock production in forest areas and promote sustainable grazing systems that will halt the cycle of degradation and abandonment on cleared forest lands.",
                             ImgUrl = "https://fayranches.com/wp-content/uploads/2016/01/savvy-investors-cattle-ranches.jpg",
@@ -550,24 +720,24 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 13,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8267),
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(2020, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "The way we make, use and throwaway our clothes is unsustainable. Textile production contributes more to climate change than international aviation and shipping combined, consumes lake-sized volumes of fresh water and creates chemical and plastic pollution. Synthetic fibres are being found in the deep sea, in Arctic sea ice, in fish and shellfish. Our biggest retailers have ‘chased the cheap needle around the planet’, commissioning production  in  countries  with  low  pay,  little  trade  union  representation  and  weak  environmental protection. In many countries, poverty pay and conditions are standard for garment workers, most of whom are women. We are also concerned about the use of  child  labour,  prison  labour,  forced  labour  and  bonded  labour  in  factories  and  the  garment supply chain. Fast fashions’ overproduction and overconsumption of clothing is based on the globalisation of indifference towards these manual workers.",
-                            ImgUrl = "https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F190912152727-uglyleaddd.jpg",
-                            IndustryId = 10,
+                            Description = "The Start-Up Space series examines space investment in the 21st century and analyzes investment trends, focusing on companies that began as angel- and venture capital-backed startups. The report tracks publicly-reported seed, venture, and private equity investment in start-up space ventures as they grow and mature, from 2000 through the end of 2019. The report includes debt financing for these companies where applicable to provide a complete picture of the capital available to them, and also highlights merger and acquisition (M&A) and initial public offering (IPO) activity.",
+                            ImgUrl = "https://i.imgur.com/9ir2Qak.png",
+                            IndustryId = 6,
                             IsDeleted = false,
                             IsFeatured = false,
                             IsPending = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Summary = "Fixing Fashion: Clothing Consumption and Sustainability",
-                            Title = "Sustainability of the Fashion Industry"
+                            Summary = "Update on Investment in Commercial Space Ventures",
+                            Title = "Start-Up Space Report 2020"
                         },
                         new
                         {
                             Id = 14,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8282),
+                            AuthorId = 4,
+                            CreatedOn = new DateTime(2020, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This report discusses the changes that have occurred in the Australian workforce since the end of World War II (1945-2000). A review of some of the available literature provides insights into the changing role of women and migrants in the workforce, and the influence of new technologies and changing levels of unemployment have also been considered.",
                             ImgUrl = "https://upload.wikimedia.org/wikipedia/commons/1/1a/Chapin_Hall%2C_Williams_College_-_Williamstown%2C_Massachusetts.jpg",
@@ -583,10 +753,10 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 15,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8297),
+                            CreatedOn = new DateTime(2020, 6, 7, 4, 22, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "In this paper we quantify the usage of main resources (CPU, main memory, disk space and network bandwidth) of Windows 2000 machines from classroom laboratories. For that purpose, 169 machines of 11 classroom laboratories of an academic institution were monitored over 77 consecutive days. Samples were collected from all machines every 15 minutes for a total of 583653 samples. Besides evaluating availability of machines (uptime and downtime) and usage habits of users, the paper assesses usage of main resources, focusing on the impact of interactive login sessions over resource consumptions. Also, recurring to Self Monitoring Analysis and Reporting Technology (SMART) parameters of hard disks, the study estimates the average uptime per hard drive power cycle for the whole life of monitored computers. The paper also analyzes the potential of non-dedicated classroom Windows machines for distributed and parallel computing, evaluating the mean stability of group of machines. Our results show that resources idleness in classroom computers is very high, with an average CPU idleness of 97.93%, unused memory averaging 42.06% and unused disk space of the order of gigabytes per machine. Moreover, this study confirms the 2:1 equivalence rule found out by similar works, with N non-dedicated resources delivering an average CPU computing power roughly similar to N/2 dedicated machines. These results confirm the potentiality of these systems for resource harvesting, especially for grid desktop computing schemes. However, the efficient exploitation of the computational power of these environments requires adaptive fault-tolerance schemes to overcome the high volatility of resources.",
-                            ImgUrl = "https://lh3.googleusercontent.com/proxy/ii7FxKnpaVHEW-pQ2JB5BikxCX8RvaXGzDlT41yX3mN9eDfvQjJoJhaCe0lc9kVmLFwkIAoqFF0y58zYnnYiSQwQBB_SVD9G_yn8KJNGls_2vL4bKA",
+                            ImgUrl = "https://i.imgur.com/CxJ0348.png",
                             IndustryId = 13,
                             IsDeleted = false,
                             IsFeatured = false,
@@ -598,24 +768,24 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 16,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8314),
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(2020, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Currently, Construction is 99.9% complete. Commissioning Pre-functional test was completed by ARUP and draft report has been received. MEOR is scheduled to review and evaluate draft report from ARUP. Once MEOR reviews draft report, ARUP will issue final  Commissioning  report.  Substantial  Completion  is  estimated  to  be  issued  in  August,  after  the  issuance  of the final Commissioning report and Punch list items are issued to the Contractor.",
-                            ImgUrl = "https://specials-images.forbesimg.com/imageserve/5c0077cc31358e5b43383ffc/960x0.jpg?fit=scale",
-                            IndustryId = 7,
+                            Description = "A graphic that provides foundational data on China’s orbital launch sites and launch vehicles, as well as on the general structure of China’s state-managed space industry. Includes operational vehicles and vehicles with a high probably of entering operations during the next 2 years. Partial failures counted as failures in reliability calculation.",
+                            ImgUrl = "https://i.ytimg.com/vi/4wPSyl2Yb1M/maxresdefault.jpg",
+                            IndustryId = 6,
                             IsDeleted = false,
                             IsFeatured = false,
                             IsPending = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Summary = "Los Angeles Mission College Gateway Science and Engineering Construction Management Monthly Progress Report",
-                            Title = "Los Angeles College Monthly Construction Report"
+                            Summary = "A graphic that provides foundational data on China’s orbital launch sites and launch vehicles, as well as on the general structure of China’s state-managed space industry.",
+                            Title = "China’s Orbital Launch Activity"
                         },
                         new
                         {
                             Id = 17,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8333),
+                            CreatedOn = new DateTime(2020, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This page intentionally left blank.",
                             ImgUrl = "https://media.nationalgeographic.org/assets/photos/120/983/091a0e2f-b93d-481b-9a60-db520c87ec33.jpg",
@@ -630,8 +800,72 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 18,
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(2020, 6, 7, 12, 40, 0, 0, DateTimeKind.Unspecified),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "WASHINGTON — A study that found that every small satellite launched commercially in the last five years suffered delays is evidence of the need of greater standardization in payload accommodations so that smallsats can easily switch vehicles, one company argues.",
+                            ImgUrl = "https://spacenews.com/wp-content/uploads/2019/04/f9-ssoa.jpg",
+                            IndustryId = 6,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            IsPending = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Summary = "Smallsat launch delays prompt push for greater standardization",
+                            Title = "Smallsat Launch Delays"
+                        },
+                        new
+                        {
+                            Id = 19,
                             AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8349),
+                            CreatedOn = new DateTime(2019, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "This article is based on the IFCN Dairy Report 2019. This annual report summarises the work of IFCN Research Partners from over 100 countries. IFCN is a global network for dairy economic research and consultancy. In 2019, researchers from over 100 countries and more than 140 agribusiness companies are members of the network. IFCN has created a better understanding of the dairy world for 20 years. Key insights 2019 will be the year of lowest milk production growth since 2013. As this did not translate into milk price increases, IFCN identifies a structural drop in demand growth as one of the reasons. Milk production trends by regions are highly diverse and dynamic. The 3-5% rule indicates that strong regions grow and weak ones decline by this rate every year. Dairy farm structure dynamics drive milk supply and the speed of change is under-estimated. IFCN recommends using the annual growth of milk production per farm as an indicator. In the EU and the USA farms grew by 8% per year. The key driver for farm structure developments lies in dairy farm economics and the current structure of economies of scale. The Dairy Report analyses this in over 50 countries. The IFCN Dairy Report has been published annually since 2000 and has become a guideline publication for researchers and companies involved in the dairy chain. It enables to gain a global holistic view of the industry and serves as a solid fact base for discussions and strategic decisions.",
+                            ImgUrl = "https://i0.wp.com/edairynews.com/en/wp-content/uploads/2020/06/Global-Dairy-Commodity-Update-June-2020.jpg?fit=1024%2C683&ssl=1",
+                            IndustryId = 15,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            IsPending = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Summary = "This annual report summarises the work of IFCN Research Partners from over 100 countries.",
+                            Title = "Global Dairy Trends and Drivers 2019"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            AuthorId = 5,
+                            CreatedOn = new DateTime(2020, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The Aerospace Industries Association (AIA) is the most authoritative and influential trade association representing the aerospace and defense industry. We are the leading voice for the industry on Capitol Hill, within the administration, and internationally.",
+                            ImgUrl = "https://i.imgur.com/jXUg87d.png",
+                            IndustryId = 2,
+                            IsDeleted = false,
+                            IsFeatured = true,
+                            IsPending = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Summary = "Aerospace Industry Report 3rd Edition by The Aerospace Industries Association (AIA)",
+                            Title = "Aerospace Industry 2012 Report"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            AuthorId = 2,
+                            CreatedOn = new DateTime(2020, 6, 1, 11, 15, 0, 0, DateTimeKind.Unspecified),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The way we make, use and throwaway our clothes is unsustainable. Textile production contributes more to climate change than international aviation and shipping combined, consumes lake-sized volumes of fresh water and creates chemical and plastic pollution. Synthetic fibres are being found in the deep sea, in Arctic sea ice, in fish and shellfish. Our biggest retailers have ‘chased the cheap needle around the planet’, commissioning production  in  countries  with  low  pay,  little  trade  union  representation  and  weak  environmental protection. In many countries, poverty pay and conditions are standard for garment workers, most of whom are women. We are also concerned about the use of  child  labour,  prison  labour,  forced  labour  and  bonded  labour  in  factories  and  the  garment supply chain. Fast fashions’ overproduction and overconsumption of clothing is based on the globalisation of indifference towards these manual workers.",
+                            ImgUrl = "http://intrigue.ie/media/2014/04/fashion-industry-1.jpg",
+                            IndustryId = 10,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            IsPending = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Summary = "Fixing Fashion: Clothing Consumption and Sustainability",
+                            Title = "Sustainability of the Fashion Industry"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            AuthorId = 2,
+                            CreatedOn = new DateTime(2020, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Cruise Lines International Association (CLIA), the world’s largest cruise industry trade association, has released the 2019 Cruise Trends and State of the Cruise Industry Outlook. The report offers a look at the trends impacting cruise travel in the coming year and beyond as well as the overall global economic impact. Cruise Lines International Association (CLIA) is the unified global organizationhelping members succeed by advocating, educating and promoting for the common interests of the cruise community.",
                             ImgUrl = "https://www.gannett-cdn.com/presto/2018/12/20/USAT/b3fa36d4-b0ed-48c5-a991-924c48685469-Costa_LNG__Side_Perspective.jpg?crop=2999,1687,x0,y299&width=2999&height=1687&format=pjpg&auto=webp",
@@ -645,19 +879,51 @@ namespace InsightHub.Data.Migrations
                         },
                         new
                         {
-                            Id = 19,
-                            AuthorId = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 263, DateTimeKind.Utc).AddTicks(8364),
+                            Id = 23,
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(2020, 6, 4, 10, 30, 0, 0, DateTimeKind.Unspecified),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "This article is based on the IFCN Dairy Report 2019. This annual report summarises the work of IFCN Research Partners from over 100 countries. IFCN is a global network for dairy economic research and consultancy. In 2019, researchers from over 100 countries and more than 140 agribusiness companies are members of the network. IFCN has created a better understanding of the dairy world for 20 years. Key insights 2019 will be the year of lowest milk production growth since 2013. As this did not translate into milk price increases, IFCN identifies a structural drop in demand growth as one of the reasons. Milk production trends by regions are highly diverse and dynamic. The 3-5% rule indicates that strong regions grow and weak ones decline by this rate every year. Dairy farm structure dynamics drive milk supply and the speed of change is under-estimated. IFCN recommends using the annual growth of milk production per farm as an indicator. In the EU and the USA farms grew by 8% per year. The key driver for farm structure developments lies in dairy farm economics and the current structure of economies of scale. The Dairy Report analyses this in over 50 countries. The IFCN Dairy Report has been published annually since 2000 and has become a guideline publication for researchers and companies involved in the dairy chain. It enables to gain a global holistic view of the industry and serves as a solid fact base for discussions and strategic decisions.",
-                            ImgUrl = "https://lh3.googleusercontent.com/proxy/B2Ha-PwtOsxqi3MXwm2SCOWM6CxKChDn4KM5xQ3G58LEULJkzZAS68_6Dz5k00fyK3WIca58WzfewwtRH5khlEgdF69EPlFKQ3QtiJF4KQGXKxv1v76dGKsixlpP",
-                            IndustryId = 15,
+                            Description = "Currently, Construction is 99.9% complete. Commissioning Pre-functional test was completed by ARUP and draft report has been received. MEOR is scheduled to review and evaluate draft report from ARUP. Once MEOR reviews draft report, ARUP will issue final  Commissioning  report.  Substantial  Completion  is  estimated  to  be  issued  in  August,  after  the  issuance  of the final Commissioning report and Punch list items are issued to the Contractor.",
+                            ImgUrl = "https://specials-images.forbesimg.com/imageserve/5c0077cc31358e5b43383ffc/960x0.jpg?fit=scale",
+                            IndustryId = 7,
                             IsDeleted = false,
                             IsFeatured = false,
                             IsPending = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Summary = "This annual report summarises the work of IFCN Research Partners from over 100 countries.",
-                            Title = "Global Dairy Trends and Drivers 2019"
+                            Summary = "Los Angeles Mission College Gateway Science and Engineering Construction Management Monthly Progress Report",
+                            Title = "Los Angeles College Monthly Construction Report"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(2020, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "A wide range of new and existing commercial technologies depend on reliable communications with spacecraft.  The cost, integrity, and reliability of these communications can be negatively affected by orbital debris, which presents an ever-increasing threat to operational spacecraft.  The environment in space continues to change and evolve in the New Space Age as increasing numbers of satellites are launched and new satellite technology is developed.  The regulations we adopt today are designed to ensure that the Commission’s actions concerning radio communications, including licensing U.S. spacecraft and granting access to the U.S. market for non-U.S. spacecraft, mitigate the growth of orbital debris, while at the same time not creating undue regulatory obstacles to new satellite ventures.  This action will help to ensure that Commission decisions are consistent with the public interest in space remaining viable for future satellites and systems and the many services that those systems provide to the public.",
+                            ImgUrl = "https://aerospacedefenseforum.org/wp-content/uploads/2019/02/shutterstock_557310703_space_technology.jpg",
+                            IndustryId = 6,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            IsPending = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Summary = "Report and Order and Further Notice of Proposed Rulemaking, IB Docket No. 18-313 ",
+                            Title = "Mitigation of Orbital Debris in the New Space Age"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            AuthorId = 4,
+                            CreatedOn = new DateTime(2020, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The report is divided into three sections. The first part reviews the supply side of the pub market, revealing numbers, trends and the contrasting fortunes of different sectors, and identifying some of the areas in which pubs are succeeding. The second section analyses the customer base: their demographics, habits and motivations. The final part takes a look at reasons for optimism, with insights into increasing appeal and sales and the emerging new breeds of pub in Britain. At a time of great challenges for both the out of home eating and drinking market and the UK economy as a whole, this report highlights the many positive trends and developments in the British pub market. We hope you enjoy reading it.",
+                            ImgUrl = "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2019%2F12%2Fuk-pubs-growth-FT-BLOG1219.jpg&q=85",
+                            IndustryId = 17,
+                            IsDeleted = false,
+                            IsFeatured = true,
+                            IsPending = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Summary = "This report draws on CGA’s unrivalled suite of research services to provide a comprehensive picture of Great Britain’s pubs and their opportunities for growth",
+                            Title = "The British Pub Market 2019"
                         });
                 });
 
@@ -678,18 +944,53 @@ namespace InsightHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            ReportId = 1,
+                            ReportId = 18,
                             TagId = 1
                         },
                         new
                         {
                             ReportId = 1,
-                            TagId = 2
+                            TagId = 8
+                        },
+                        new
+                        {
+                            ReportId = 1,
+                            TagId = 3
                         },
                         new
                         {
                             ReportId = 2,
-                            TagId = 1
+                            TagId = 3
+                        },
+                        new
+                        {
+                            ReportId = 18,
+                            TagId = 9
+                        },
+                        new
+                        {
+                            ReportId = 18,
+                            TagId = 10
+                        },
+                        new
+                        {
+                            ReportId = 20,
+                            TagId = 9
+                        },
+                        new
+                        {
+                            ReportId = 9,
+                            TagId = 7
+                        },
+                        new
+                        {
+                            ReportId = 21,
+                            TagId = 2
+                        },
+                        new
+                        {
+                            ReportId = 23,
+                            TagId = 7
                         });
                 });
 
@@ -725,21 +1026,21 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "4db493f5-605d-48bf-bd87-da2ed25d2869",
+                            ConcurrencyStamp = "d0e0951a-b514-4b5f-9aa9-a43612e7dcd8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "28993bab-306f-4000-b449-6d28ac769d1e",
+                            ConcurrencyStamp = "de1f0b86-80fc-40e8-8c50-50051e422872",
                             Name = "Author",
                             NormalizedName = "AUTHOR"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "d4dd2bef-4a67-4364-ae8a-8e9e524eb00b",
+                            ConcurrencyStamp = "0976fbfe-b76f-436f-824b-61e536f1c35f",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });
@@ -775,29 +1076,92 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(4145),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(2201),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Space"
+                            Name = "space"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(4698),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3729),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Water"
+                            Name = "beauty"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 264, DateTimeKind.Utc).AddTicks(4739),
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3782),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Money"
+                            Name = "money"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3811),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "future"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3838),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "ship"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3869),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "food"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3953),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "building"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(3983),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "bank"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(4009),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "sky"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 965, DateTimeKind.Utc).AddTicks(4038),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "tech"
                         });
                 });
 
@@ -901,8 +1265,8 @@ namespace InsightHub.Data.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "00d0950e-7fa9-470e-b2f0-c7a6ee494593",
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 241, DateTimeKind.Utc).AddTicks(497),
+                            ConcurrencyStamp = "31146c52-040b-43c8-852c-f666740463f5",
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 849, DateTimeKind.Utc).AddTicks(8492),
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admincho",
@@ -913,7 +1277,7 @@ namespace InsightHub.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH53ioUWdbG4G5Pwncza2AKGgpIURo5pE/w5tz9A33e/uaiG4CbSvW7zaFNuYn/vaA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMe6VxjV/jtqxyvhjE5atjHDldt7kBeMciBEswZmyVVidrYzvy+5y8/e/xtSmQdPWQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -921,47 +1285,222 @@ namespace InsightHub.Data.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 11,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3ea25f1d-5a65-433d-ad76-ea7dc53ed544",
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 241, DateTimeKind.Utc).AddTicks(1756),
-                            Email = "author@gmail.com",
+                            ConcurrencyStamp = "e4b8dc19-7c08-4e88-9dda-945d018a1f8c",
+                            CreatedOn = new DateTime(2020, 6, 9, 17, 53, 7, 850, DateTimeKind.Utc).AddTicks(1407),
+                            Email = "admin2@gmail.com",
                             EmailConfirmed = false,
-                            FirstName = "Authorcho",
+                            FirstName = "Admin",
                             IsBanned = false,
                             IsPending = false,
-                            LastName = "Authorchevski",
+                            LastName = "Second",
                             LockoutEnabled = true,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NormalizedEmail = "AUTHOR@GMAIL.COM",
-                            NormalizedUserName = "AUTHOR@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELKbdDg1U4l9mgd0gO7DCZF0jlCe6uUV99v1FwY5hU9AlJRsaZd5N8mSJ5m5x+Kd1Q==",
+                            NormalizedEmail = "ADMIN2@GMAIL.COM",
+                            NormalizedUserName = "ADMIN2@GMAIL.COM",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXV",
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXB",
                             TwoFactorEnabled = false,
-                            UserName = "author@gmail.com"
+                            UserName = "admin2@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "106733bb-c0c9-4cf9-824e-679858cdfb74",
+                            CreatedOn = new DateTime(2020, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "georgi.petrov@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Georgi",
+                            IsBanned = false,
+                            IsPending = false,
+                            LastName = "Petrov",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "GEORGIPETROV@GMAIL.COM",
+                            NormalizedUserName = "GEORGI.PETROV@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOFs75zC2BGhxLaac+3801iLqk41p+L7L1w7NpvDY/2HHv8p3pLGxl/UsXijfo4czg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHMHG",
+                            TwoFactorEnabled = false,
+                            UserName = "georgi.petrov@gmail.com"
                         },
                         new
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "da129eeb-ff78-4eef-9085-8732e3f38a15",
-                            CreatedOn = new DateTime(2020, 6, 7, 20, 3, 43, 241, DateTimeKind.Utc).AddTicks(1771),
-                            Email = "client@gmail.com",
+                            ConcurrencyStamp = "d6491025-263d-4c8e-8610-9ed2a3765ab6",
+                            CreatedOn = new DateTime(2020, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "miroslav.peev@gmail.com",
                             EmailConfirmed = false,
-                            FirstName = "Clientcho",
+                            FirstName = "Miroslav",
                             IsBanned = false,
                             IsPending = false,
-                            LastName = "Clientev",
+                            LastName = "Peev",
                             LockoutEnabled = true,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NormalizedEmail = "CLIENT@GMAIL.COM",
-                            NormalizedUserName = "CLIENT@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAb2Jmzwi+9kgud3n9jV9ofAa/7UEEHosfjQej5kCiAWaYR0liwgwQAYK8czxQ3m4g==",
+                            NormalizedEmail = "MIROSLAV.PEEV@GMAIL.COM",
+                            NormalizedUserName = "MIROSLAV.PEEV@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAENVfCmW1fj5oSjL9i8Enfn9yrE/dv+QcPXWWL1CNODehEGOtl72ctsF1vnILOMRKZQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXF",
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHPPT",
                             TwoFactorEnabled = false,
-                            UserName = "client@gmail.com"
+                            UserName = "miroslav.peev@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bd391e7f-7ccf-4057-b32b-2e7703577463",
+                            CreatedOn = new DateTime(2020, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "atanas.velev@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Atanas",
+                            IsBanned = false,
+                            IsPending = false,
+                            LastName = "Velev",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "ATANAS.VELEV@GMAIL.COM",
+                            NormalizedUserName = "ATANAS.VELEV@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ/ma18o2aPpsP/qoXssJMzhA1f3euQbygER/ZFsC3FTKWoZuGRdgWpDBB6KgTH1rw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGMN",
+                            TwoFactorEnabled = false,
+                            UserName = "atanas.velev@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "1c51b7ed-477d-406f-be83-46f787bc2863",
+                            CreatedOn = new DateTime(2020, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "petyr.petrov@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Petyr",
+                            IsBanned = false,
+                            IsPending = false,
+                            LastName = "Petrov",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "PETYR.PETROV@GMAIL.COM",
+                            NormalizedUserName = "PETYR.PETROV@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMCClGf2+rdPbJUMLJAsw66FOyc+jte7n174r/8tJjJYspcnoLnodhAUixpTO4hCmw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHPPG",
+                            TwoFactorEnabled = false,
+                            UserName = "petyr.petrov@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "370c1d7b-68fe-4d17-aa40-8807eed01b8d",
+                            CreatedOn = new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "valentina.dimitrova@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Valentina",
+                            IsBanned = false,
+                            IsPending = false,
+                            LastName = "Dimitrova",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "VALENTINA.DIMITROVA@GMAIL.COM",
+                            NormalizedUserName = "VALENTINA.DIMITROVA@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMBiKP5ILJuO+N/ABINOpzDkItkIX61bBsNrkbSIBLB/5yEEQXMyTAXirZmGbBO9hQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVVBHGXF",
+                            TwoFactorEnabled = false,
+                            UserName = "valentina.dimitrova@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "cb557f32-a451-4fc4-8c8d-d6318ebf4929",
+                            CreatedOn = new DateTime(2020, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "kaloyan.jekov@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Kaloyan",
+                            IsBanned = false,
+                            IsPending = false,
+                            LastName = "Jekov",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "KALOYAN.JEKOV@GMAIL.COM",
+                            NormalizedUserName = "KALOYAN.JEKOV@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJGVAuSD/mI3zv5ZYCveHPpzfP1hiao3/3q/VcbQyRW/Art4fZpthFL73vUIY4HBZw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PPGBHGXF",
+                            TwoFactorEnabled = false,
+                            UserName = "kaloyan.jekov@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d53fe2ce-c2cb-4043-b70f-0db8674e5bb7",
+                            CreatedOn = new DateTime(2020, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "preslav.mitev@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Preslav",
+                            IsBanned = false,
+                            IsPending = false,
+                            LastName = "Mitev",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "PRESLAV.MITEV@GMAIL.COM",
+                            NormalizedUserName = "PRESLAV.MITEV@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKWqqI/hdd2Y2BoIgp6bvB8y2Sr/Siq9pTcpq7fupKbLuW1yEvcnH7xA0Khtt6720Q==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUK3PVYBHGXF",
+                            TwoFactorEnabled = false,
+                            UserName = "preslav.mitev@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "92ab557a-db60-44e5-a72b-d43373b7c78e",
+                            CreatedOn = new DateTime(2020, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "kristian.ivanov@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Kristian",
+                            IsBanned = false,
+                            IsPending = false,
+                            LastName = "Ivanov",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "KRISTIAN.IVANOV@GMAIL.COM",
+                            NormalizedUserName = "KRISTIAN.IVANOV@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHYCP0v8QNX73xjBxxpGQFBZpynssVS1XuwZewBVeSFpm6x/neadvHLMqmYL8UhwRQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNKSV5PVYBHGXF",
+                            TwoFactorEnabled = false,
+                            UserName = "kristian.ivanov@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ee8d69d3-48de-48b5-94bf-f5b07203af51",
+                            CreatedOn = new DateTime(2020, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "kiro.kirov@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Kiro",
+                            IsBanned = false,
+                            IsPending = false,
+                            LastName = "Kirov",
+                            LockoutEnabled = true,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NormalizedEmail = "KIRO.KIROV@GMAIL.COM",
+                            NormalizedUserName = "KIRO.KIROV@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDxA+A5LVulbLdkfEA8G+oKxnK2GP4AAg1x7pychpT7KUP+PzvvCdKKcquYAq0Hjyw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV3LSYBHGXF",
+                            TwoFactorEnabled = false,
+                            UserName = "kiro.kirov@gmail.com"
                         });
                 });
 
@@ -1062,7 +1601,47 @@ namespace InsightHub.Data.Migrations
                         new
                         {
                             UserId = 3,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 5,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 6,
                             RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 7,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 9,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 10,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 11,
+                            RoleId = 1
                         });
                 });
 
