@@ -11,17 +11,17 @@
 
     <form asp-action="Index" method="get">
         <div class="form-actions">
-            <p style="color:#4D648D">
-                Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />
-                <input type="submit" value="Search" class="btn btn-outline-dark" />
-            </p>
+
+            Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />
+            <input type="submit" value="Search" class="btn btn-outline-dark" />
+            @ViewData["ResultsCount"] result(s)
+
             <p class="d-inline-block">
-                @ViewData["ResultsCount"] result(s)
                 <div class="dropdown float-right">
                     <button class="d-inline-flex btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown">
                         Sort By
                     </button>
-                    <ul class="dropdown-menu text-white" style="background-color: #4D648D">
+                    <ul class="dropdown-menu text-white" style="background-color: #304040">
                         <li class="nav-item btn-outline-dark" style="padding-left:10px">
                             <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByTitle"]"
                                asp-route-search="@ViewData["Search"]">Title</a>
