@@ -11,7 +11,7 @@
 <div class="table" style="background-color: #304040; border-radius:0.25rem">
         @foreach (var item in Model)
         {
-            <div class="row">
+            <div class="row" style="border-bottom:solid 1px white">
                 <div class="col-2">
                     <img src="@Html.DisplayFor(modelItem => item.ImgUrl)" height="60" width="60" alt="">
                 </div>
@@ -31,6 +31,5 @@
                     @item.CreatedOn.ToShortDateString()
                 </div>
             </div>
-            <hr style="background-color: white" />
         }
 </div>
