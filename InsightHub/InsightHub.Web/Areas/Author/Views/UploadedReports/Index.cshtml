@@ -69,8 +69,8 @@
                             </p>
                             @if (User.Identity.IsAuthenticated && User.Identity.Name == item.Author.Split(' ').Last() || User.IsInRole("Admin"))
                             {
-                                <a class="btn btn-outline-light" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                <a class="btn btn-outline-light" asp-area="" asp-controller="Reports" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-outline-danger" asp-area="" asp-controller="Reports" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                             }
                         </div>
                     </div>
