@@ -41,6 +41,11 @@ namespace InsightHub.Web.Areas.Client.Controllers
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var industries = await _userServices.GetSubscriptions(userId);
 
+            if(search != null)
+            {
+                industries = industries.Where(i => i.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
+
             ViewData["ResultsCount"] = industries.Count;
 
             int pageSize = 8;
