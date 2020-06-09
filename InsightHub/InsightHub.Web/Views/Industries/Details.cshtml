@@ -4,7 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<div style="padding-bottom:10px">
+    <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
+</div>
 <dl class="row">
     <dt class="col-sm-2">
     </dt>
@@ -15,15 +17,15 @@
 <div>
     <h1 style="font-family:Cambria">
         @Html.DisplayFor(model => model.Name)
+        @if (Model.SubscribedUsers.Contains(User.Identity.Name) && User.IsInRole("Client"))
+        {
+            <a class="float-right btn btn-danger" asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe from Email notifications</a>
+        }
+        else if (User.IsInRole("Client"))
+        {
+            <a class="float-right btn btn-dark" asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe for Email notifications</a>
+        }
     </h1>
-    @if (Model.SubscribedUsers.Contains(User.Identity.Name) && User.IsInRole("Client"))
-    {
-        <a class="float-right btn btn-danger" asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe from Email notifications</a>
-    }
-    else if (User.IsInRole("Client"))
-    {
-        <a class="float-right btn btn-dark" asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe for Email notifications</a>
-    }
 </div>
 <p>
     <div class="text-left" style="color:#04202C">
@@ -66,7 +68,6 @@
     }
 </div>
 <div style="padding-bottom:30px">
-    <a class="btn btn-outline-dark" asp-action="Index">Back to List</a>
     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
     {
         <a class="btn btn-outline-dark" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>

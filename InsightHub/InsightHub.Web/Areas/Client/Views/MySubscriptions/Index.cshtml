@@ -3,9 +3,9 @@
 
 
 <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
-<h2 class="display-4" style="color:#04202C; font-family: Cambria">
+<h1 class="display-4" style="color:#04202C; font-family: Cambria">
     My Subscriptions <br />
-</h2>
+</h1>
 <h3>
     (You will get an email every time a new report from one of these industries is published.)
 </h3>
@@ -16,8 +16,8 @@
             <p>
                 Search Industries: <input type="text" name="search" value="@ViewData["Search"]" />
                 <input type="submit" value="Search" class="btn btn-outline-dark" />
-                <br />
                 @ViewData["ResultsCount"] result(s)
+                <br />
             </p>
         </div>
     </form>
@@ -51,7 +51,9 @@
                             </b>
                             @Html.DisplayFor(modelItem => item.ReportsCount)
                         </div>
-                        <a class="btn btn-danger" asp-area="" asp-controller="Industries" asp-action="RemoveSubscription" asp-route-id="@item.Id">Unsubscribe</a>
+                        <div class="row">
+                            <a class="btn btn-danger" asp-area="" asp-controller="Industries" asp-action="RemoveSubscription" asp-route-id="@item.Id">Unsubscribe</a>
+                        </div>
                     </div>
                 </div>
             </div>

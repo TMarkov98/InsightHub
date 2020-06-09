@@ -5,21 +5,24 @@
 }
 
 <div class="container">
-    <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
-
-    <h1 style="color:#04202C; font-family: Cambria">My Uploaded Reports</h1>
+    <div>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Author") || User.IsInRole("Admin"))
+        {
+            <a class="d-inline-flex btn-lg btn-dark float-right" style="padding-bottom:10px" asp-area="" asp-controller="Reports" asp-action="Create">New Report</a>
+        }
+        <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
+    </div>
+    <h1 class="display-4" style="color:#04202C; font-family: Cambria">
+        <b>
+            My Uploaded Reports
+        </b>
+    </h1>
 
     <form asp-action="Index" method="get">
         <div class="form-actions">
-            @if (User.Identity.IsAuthenticated && User.IsInRole("Author") || User.IsInRole("Admin"))
-            {
-                <a class="d-inline-flex btn-lg btn-dark float-right" style="padding-bottom:10px" asp-area="" asp-controller="Reports" asp-action="Create">New Report</a>
-            }
             <p style="color:#4D648D">
                 Search Reports: <input type="text" name="search" value="@ViewData["Search"]" />
                 <input type="submit" value="Search" class="btn btn-outline-dark" />
-            </p>
-            <p>
                 @ViewData["ResultsCount"] result(s)
             </p>
         </div>
@@ -32,7 +35,7 @@
             @foreach (var item in Model)
             {
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card h-100 mw-100" style="background-color: #0a4863">
+                    <div class="card h-100 mw-100" style="background-color: #304040">
                         <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.ImgUrl)" width="500" height="200" alt="">
                         <div class="card-body text-white">
                             <div class="row">
