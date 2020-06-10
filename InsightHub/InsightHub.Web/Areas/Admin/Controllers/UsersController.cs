@@ -180,7 +180,7 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             }
             catch(DbUpdateException)
             {
-                throw new ArgumentException("Unable to Delete Author while they still have Active Reports.");
+                throw new ArgumentException("Unable to Delete Author while they still have Reports in the Database.");
             }
         }
 

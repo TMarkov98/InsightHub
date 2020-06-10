@@ -13,7 +13,7 @@
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Search Industries: <input type="text" name="search" value="@ViewData["Search"]" />
+            Search Users: <input type="text" name="search" value="@ViewData["Search"]" />
             <input type="submit" value="Search" class="btn btn-outline-dark" />
             <br />
             @ViewData["ResultsCount"] result(s)
@@ -83,6 +83,26 @@
             }
         </tbody>
     </table>
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+    <p class="text-dark">
+        <a asp-action="Index"
+           asp-route-sort="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageNumber - 1)"
+           asp-route-search="@ViewData["Search"]"
+           class="btn btn-outline-dark @prevDisabled">
+            Previous
+        </a>
+        &nbsp;@(ViewData["PageNumber"] ?? 1)&nbsp;
+        <a asp-action="Index"
+           asp-route-sort="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageNumber + 1)"
+           asp-route-search="@ViewData["Search"]"
+           class="btn btn-outline-dark @nextDisabled">
+            Next
+        </a>
+    </p>
 }
 else
 {
