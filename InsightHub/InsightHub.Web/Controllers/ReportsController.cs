@@ -114,7 +114,7 @@ namespace InsightHub.Web.Controllers
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             await _reportServices.AddToDownloadsCount(userId, id.Value);
             var data = await _blobServices.GetBlobAsync($"{report.Id}.pdf");
-            return File(data.Content, "application/pdf", report.Title);
+            return File(data.Content, "application/pdf", $"{report.Title}.pdf");
         }
 
         /// <summary>
