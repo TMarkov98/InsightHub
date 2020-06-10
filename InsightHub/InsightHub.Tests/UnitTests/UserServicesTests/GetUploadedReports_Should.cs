@@ -18,6 +18,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task ReturnAllUploadedReports()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnAllUploadedReports));
             var user1 = TestModelsSeeder.SeedUser();
             var report1 = TestModelsSeeder.SeedReport();
@@ -34,7 +35,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
             user1.IsPending = false;
             report1.IsPending = false;
             report2.IsPending = false;
-
+            //Act & Assert
             using (var arrangeContext = new InsightHubContext(options))
             {
                 arrangeContext.Users.Add(user1);
@@ -49,22 +50,21 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
 
             }
 
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new UserServices(assertContext);
-                var result = await sut.GetUploadedReports(user1.Id);
-                Assert.AreEqual(2, result.Count);
-            }
+            using var assertContext = new InsightHubContext(options);
+            var sut = new UserServices(assertContext);
+            var result = await sut.GetUploadedReports(user1.Id, null);
+            Assert.AreEqual(2, result.Count);
         }
 
         [TestMethod]
         public async Task Throw_WhenUserDoesntExist()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenUserDoesntExist));
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
-            await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.GetUploadedReports(5));
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.GetUploadedReports(5, null));
         }
     }
 }

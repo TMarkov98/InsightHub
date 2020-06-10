@@ -18,6 +18,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task ReturnAllUserSubscriptions()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnAllUserSubscriptions));
             var user1 = TestModelsSeeder.SeedUser();
 
@@ -47,20 +48,19 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 await arrangeContext.SaveChangesAsync();
 
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new UserServices(assertContext);
-                var result = await sut.GetSubscriptions(user1.Id);
-                Assert.AreEqual(2, result.Count);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new UserServices(assertContext);
+            var result = await sut.GetSubscriptions(user1.Id);
+            Assert.AreEqual(2, result.Count);
         }
 
         [TestMethod]
         public async Task Throw_WhenUserDoesntExist()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenUserDoesntExist));
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.GetSubscriptions(5));

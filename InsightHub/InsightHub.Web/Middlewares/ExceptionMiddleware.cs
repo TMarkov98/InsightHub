@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Http;
 namespace InsightHub.Web.Middlewares
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
-    public class ArgumentExceptionMiddleware
+    public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
 
-        public ArgumentExceptionMiddleware(RequestDelegate next)
+        public ExceptionMiddleware(RequestDelegate next)
         {
             this._next = next;
         }
@@ -23,19 +23,11 @@ namespace InsightHub.Web.Middlewares
             {
                 await _next.Invoke(context);
             }
-            catch (ArgumentException)
+            catch (ArgumentException ex)
             {
-                context.Response.Redirect("/Home/ArgumentException");
+                context.Response.Redirect($"/Home/Exception?message={ex.Message}");
             }
         }
     }
 
-    // Extension method used to add the middleware to the HTTP request pipeline.
-    public static class SecondMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseMiddleware(this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<ArgumentExceptionMiddleware>();
-        }
-    }
 }

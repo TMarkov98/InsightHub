@@ -20,28 +20,27 @@ namespace InsightHub.Web.Areas.Client.Controllers
         {
             _userServices = userServices;
         }
-        [Authorize]
+
+        /// <summary>
+        /// Get All Downloaded Reports Of Certain User
+        /// </summary>
+        /// <param name="search">The string to search for</param>
+        /// <param name="pageNumber">The int for a page number</param>
+        ///<returns>On success - View with reports(in a paged list). </returns>
+        /// <response code="200">Returns All Downloaded Reports Of Certain User(in a paged list).</response>
         // GET: MyReports 
-        public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
+        [Authorize]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> Index(string search, int? pageNumber)
         {
-
-            ViewData["CurrentSort"] = sort;
-            ViewData["SortByTitle"] = sort == "title" ? "title_desc" : "title";
-            ViewData["SortByAuthor"] = sort == "author" ? "author_desc" : "author";
-            ViewData["SortByIndustry"] = sort == "industry" ? "industry_desc" : "industry";
-            ViewData["SortByDate"] = sort == "newest" ? "oldest" : "newest";
-            ViewData["SortByDownloads"] = sort == "downloads" ? "downloads_asc" : "downloads";
-
-            if (search != null)
-            {
-                pageNumber = 1;
-            }
-
             ViewData["Search"] = search;
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var reports = await _userServices.GetDownloadedReports(userId);
-            var pageSize = 10;
+            var reports = await _userServices.GetDownloadedReports(userId, search);
+
+            ViewData["ResultsCount"] = reports.Count;
+            var pageSize = 8;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
 

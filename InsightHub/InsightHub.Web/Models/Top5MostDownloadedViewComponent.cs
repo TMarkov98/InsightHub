@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace InsightHub.Web.Models
 {
-    [ViewComponent(Name = "Top5MostDownloadedViewComponent")]
-    public class Top5MostDownloadedViewComponent : ViewComponent
+    [ViewComponent(Name = "MostDownloadedViewComponent")]
+    public class MostDownloadedViewComponent : ViewComponent
     {
 
         private readonly IReportServices _reportServices;
 
-        public Top5MostDownloadedViewComponent(IReportServices reportServices)
+        public MostDownloadedViewComponent(IReportServices reportServices)
         {
             this._reportServices = reportServices;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var reports = await _reportServices.GetTop5MostDownloads();
+            var reports = await _reportServices.GetMostDownloadedReports();
             return View(reports);
         }
     }

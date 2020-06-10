@@ -3,6 +3,7 @@ using InsightHub.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task ReturnActiveUsers()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnActiveUsers));
             var user1 = TestModelsSeeder.SeedUser();
             var user2 = TestModelsSeeder.SeedUser2();
@@ -33,10 +35,10 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Users.Add(user3);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
-            var result = await sut.GetUsers(null);
+            var result = (await sut.GetUsers(null)).ToList();
             Assert.AreEqual(1, result.Count);
             Assert.AreEqual(user1.Email, result[0].Email);
         }
@@ -44,6 +46,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task ReturnUsers_WhenSearching()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnUsers_WhenSearching));
             var user1 = TestModelsSeeder.SeedUser();
             var user2 = TestModelsSeeder.SeedUser2();
@@ -59,10 +62,10 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Users.Add(user2);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
-            var result = await sut.GetUsers("first");
+            var result = (await sut.GetUsers("first")).ToList();
             Assert.AreEqual(1, result.Count);
             Assert.AreEqual(user1.Email, result[0].Email);
         }
@@ -70,6 +73,7 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
         [TestMethod]
         public async Task ReturnOnlyActiveUsers_WhenSearching()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnOnlyActiveUsers_WhenSearching));
             var user1 = TestModelsSeeder.SeedUser();
             var user2 = TestModelsSeeder.SeedUser();
@@ -86,10 +90,10 @@ namespace InsightHub.Tests.UnitTests.UserServicesTests
                 arrangeContext.Users.Add(user2);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new UserServices(assertContext);
-            var result = await sut.GetUsers("first");
+            var result = (await sut.GetUsers("first")).ToList();
             Assert.AreEqual(1, result.Count);
             Assert.AreEqual(user1.Email, result[0].Email);
         }

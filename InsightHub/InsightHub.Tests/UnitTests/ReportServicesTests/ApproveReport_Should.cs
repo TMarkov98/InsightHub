@@ -15,6 +15,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
         [TestMethod]
         public async Task ApproveReport_When_ParamsValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ApproveReport_When_ParamsValid));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
@@ -30,18 +31,18 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTag = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTag);
-                await sut.ApproveReport(1);
-                Assert.IsFalse(assertContext.Reports.First(u => u.Id == 1).IsPending);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTag = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTag);
+            await sut.ApproveReport(1);
+            Assert.IsFalse(assertContext.Reports.First(u => u.Id == 1).IsPending);
         }
 
         [TestMethod]
         public async Task ThrowArgumentException_WhenReportNotExists()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ThrowArgumentException_WhenReportNotExists));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
@@ -56,12 +57,11 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTag = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTag);
-                await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => sut.ApproveReport(5));
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTag = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTag);
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => sut.ApproveReport(5));
         }
     }
 }

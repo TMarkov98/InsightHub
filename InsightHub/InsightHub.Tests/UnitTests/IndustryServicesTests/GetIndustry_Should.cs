@@ -14,6 +14,7 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
         [TestMethod]
         public async Task ReturnCorrectIndustry_WhenParamsAreValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnCorrectIndustry_WhenParamsAreValid));
             var industry = TestModelsSeeder.SeedIndustry();
 
@@ -22,26 +23,22 @@ namespace InsightHub.Tests.UnitTests.IndustryServicesTests
                 await arrangeContext.AddAsync(industry);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using(var assertContext = new InsightHubContext(options))
-            {
-                var sut = new IndustryServices(assertContext);
-                var result = await sut.GetIndustry(1);
-                Assert.AreEqual(industry.Id, result.Id);
-                Assert.AreEqual(industry.Name, result.Name);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new IndustryServices(assertContext);
+            var result = await sut.GetIndustry(1);
+            Assert.AreEqual(industry.Id, result.Id);
+            Assert.AreEqual(industry.Name, result.Name);
         }
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public async Task Throw_WhenIdIsInvalid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(Throw_WhenIdIsInvalid));
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new IndustryServices(assertContext);
-                await sut.GetIndustry(5);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new IndustryServices(assertContext);
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.GetIndustry(5));
         }
     }
 }

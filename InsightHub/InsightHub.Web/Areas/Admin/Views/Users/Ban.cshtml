@@ -5,9 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Ban @Html.DisplayFor(model => model.Email)</h2>
+<h2 class="display-4" style="color:#04202C; font-family: Cambria">
+    Ban @Html.DisplayFor(model => model.Email)
+</h2>
 
-<h4>Are you sure you want to ban this user?</h4>
+<h4 class="font-italic">Are you sure you want to ban this user?</h4>
 <div>
     <form asp-action="Ban">
         <div class="form-group">
@@ -18,7 +20,7 @@
         </div>
         <input type="hidden" asp-for="Id" />
         <div class="form-group">
-            <input type="submit" value="Ban" class="btn btn-primary" />
+            <input type="submit" value="Ban" class="btn btn-outline-danger" />
         </div>
     </form>
 </div>

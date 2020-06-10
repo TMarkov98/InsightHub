@@ -11,6 +11,10 @@ using InsightHub.Services.Contracts;
 using InsightHub.Models;
 using X.PagedList;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+using System.Linq.Expressions;
+using Microsoft.Data.SqlClient;
 
 namespace InsightHub.Web.Areas.Admin.Controllers
 {
@@ -24,11 +28,20 @@ namespace InsightHub.Web.Areas.Admin.Controllers
         {
             _userServices = userServices;
         }
-
+        /// <summary>
+        /// Get All Users
+        /// </summary>
+        /// <param name="search">The string to search for</param>
+        /// <param name="pageNumber">The int for a page number</param>
+        ///<returns>On success - View with users(in a paged list). </returns>
+        /// <response code="200">Returns All Users(in a paged list).</response>
         // GET: Admin/Users
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Index(string search, int? pageNumber)
         {
             var users = await _userServices.GetUsers(search);
+            ViewData["ResultsCount"] = users.Count();
             if(search != null)
             {
                 pageNumber = 1;
@@ -37,7 +50,17 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             return View(await users.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
 
+        /// <summary>
+        /// Gets Details View of certain User
+        /// </summary>
+        /// <param name="id">The id of the certain user</param>
+        /// <returns>On success - View of certain user's Details</returns>
+        /// <response code="200">Returns View of certain user's Details.</response>
+        /// <response code="404">If id or the user is null - NotFound.</response>
         // GET: Admin/Users/Details/5
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -53,7 +76,18 @@ namespace InsightHub.Web.Areas.Admin.Controllers
 
             return View(user);
         }
+
+        /// <summary>
+        /// Edit an existring user(load form view) 
+        /// </summary>
+        /// <param name="id">The id of the edited user</param>
+        /// <returns>On success - load Edit form view.</returns>
+        /// <response code="200">Load Edit form view.</response>
+        /// <response code="404">If id or user is null - NotFound</response>
         // GET: Admin/Users/Edit/5
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -69,10 +103,19 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             return View(user);
         }
 
-        // POST: Admin/Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edit an existing User
+        /// </summary>
+        /// <param name="industry">User to Bind</param>
+        /// <returns>On success - Redirect to IndexView
+        /// If ModelState is not true, load same page.
+        /// If id is not the same - NotFound()</returns>
+        /// <response code="308">Edited - redirected to IndexView.</response>
+        /// <response code="404">Not edited - NotFound.</response>
+        // POST: Users/Edit/2
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status308PermanentRedirect)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,IsPending,CreatedOn,ModifiedOn,IsBanned,BanReason,Id")] UserModel userModel)
         {
@@ -89,7 +132,18 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             return View(userModel);
         }
 
+
+        /// <summary>
+        /// Delete an existring user (load form view)
+        /// </summary>
+        /// <param name="id">The id of the edited user</param>
+        /// <returns>On success - load Edit form view.</returns>
+        /// <response code="200">Load Delete form view.</response>
+        /// <response code="404">If id or user is null - NotFound</response>
         // GET: Admin/Users/Delete/5
+        [Authorize(Roles = "Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -106,16 +160,41 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             return View(user);
         }
 
+        /// <summary>
+        /// Delete an existing user
+        /// </summary>
+        /// <param name="id">The id of the deleted user.</param>
+        /// <returns>On success - Redirect to Index view</returns>
+        /// <response code="308">Redirect to Index view</response>
         // POST: Admin/Users/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _userServices.DeleteUser(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _userServices.DeleteUser(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch(DbUpdateException)
+            {
+                throw new ArgumentException("Unable to Delete Author while they still have Reports in the Database.");
+            }
         }
 
+        /// <summary>
+        /// Ban an existring user (load form view)
+        /// </summary>
+        /// <param name="id">The id of the banned user</param>
+        /// <returns>On success - load Edit form view.</returns>
+        /// <response code="200">Load Delete form view.</response>
+        /// <response code="404">If id or user is null - NotFound</response>
         // GET: Admin/Users/Ban/5
+        [Authorize(Roles = "Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Ban(int? id)
         {
             if (id == null)
@@ -129,9 +208,16 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             }
             return View(user);
         }
-
+        /// <summary>
+        /// Ban an existing user
+        /// </summary>
+        /// <param name="id">The id of the banned user.</param>
+        /// <returns>On success - Redirect to Index view</returns>
+        /// <response code="308">Redirect to Index view</response>
         // POST: Admin/Users/Ban/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Ban")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> BanConfirmed(int id, string banReason)
         {

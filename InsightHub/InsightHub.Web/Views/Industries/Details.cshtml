@@ -4,83 +4,125 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Html.DisplayFor(model => model.Name)</h2>
-
+<div style="padding-bottom:10px">
+    <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
+</div>
+<dl class="row">
+    <dt class="col-sm-2">
+    </dt>
+    <dd class="text-center">
+        <img src=@Html.DisplayFor(model => model.ImgUrl) height="290" width="1125">
+    </dd>
+</dl>
 <div>
-    <h4>Details</h4>
-    @if ((bool)ViewData["SubscriptionExists"] && User.IsInRole("Client"))
-    {
-        <a asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe from Email notifications</a>
-    }
-    else if (User.IsInRole("Client"))
-    {
-        <a asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe for Email notifications</a>
-    }
-    <br />
+    <h1 style="font-family:Cambria">
+        @Html.DisplayFor(model => model.Name)
+        @if (Model.SubscribedUsers.Contains(User.Identity.Name) && User.IsInRole("Client"))
+        {
+            <a class="float-right btn btn-danger" asp-action="RemoveSubscription" asp-route-id="@Model.Id">Unsubscribe from Email notifications</a>
+        }
+        else if (User.IsInRole("Client"))
+        {
+            <a class="float-right btn btn-dark" asp-action="Subscribe" asp-route-id="@Model.Id">Subscribe for Email notifications</a>
+        }
+    </h1>
+</div>
+<p>
+    <div class="text-left" style="color:#04202C">
+        <b>
+            Subscribed Users:&nbsp;
+        </b>
+        @Html.DisplayFor(model => model.SubscriptionsCount)
+    </div>
+    <div class="text-left" style="color:#04202C">
+        <b>
+            Total Reports:&nbsp;
+        </b>
+        @Html.DisplayFor(model => model.ReportsCount)
+    </div>
+</p>
+<div>
     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
     {
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <div>
+            <b>
+                Created On:&nbsp;
+            </b>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </div>
+        <br />
+        <div>
+            <b>
+                Modified On:&nbsp;
+            </b>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </div>
+        <br />
+        @if (Model.IsDeleted)
+        {
+            <b>
+                Deleted On:&nbsp;
+            </b>
+            @Html.DisplayFor(model => model.DeletedOn)
+        }
     }
-    <br />
-    <a asp-action="Index">Back to List</a>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-        </dt>
-        <dd class="col-sm-10">
-            <img src=@Html.DisplayFor(model => model.ImgUrl) width="200" height="200">
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SubscriptionsCount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SubscriptionsCount)
-        </dd>
-        @*<dd class="col-sm-2">
-            Reports
-        </dd>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Reports.Where(r => r.Industry == model.Name).Count())
-        </dd>*@
-    </dl>
-    <h5>
-        Newest 10 Reports
-        <a class="btn btn-primary" asp-controller="Reports" asp-action="Index" asp-route-industry="@Model.Name">Show All</a>
-    </h5>
-    <table class="table">
-        <thead>
-            <tr>
-                <th />
-                <th>
-                    Title
-                </th>
-                <th>
-                    Description
-                </th>
-                <th>
-                    CreatedOn
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Reports.OrderByDescending(r => r.CreatedOn).Take(10))
-            {
-                <tr>
-                    <td>
-                        <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
-                    </td>
-                    <td>
-                        <a asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Summary)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedOn)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+</div>
+<div style="padding-bottom:30px">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a class="btn btn-outline-dark" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    }
+
+</div>
+<div>
+    <h4 class="font-italic">
+        Latest Reports
+    </h4>
+    <div style="padding-bottom:15px">
+        <a class="btn btn-outline-dark" asp-controller="Reports" asp-action="Index" asp-route-industry="@Model.Name">Show All Reports</a>
+    </div>
+    <div class="row">
+        @foreach (var item in Model.Reports.OrderByDescending(r => r.CreatedOn).Take(4))
+        {
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card h-100 mw-100" style="background-color: #0a4863">
+                    <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.ImgUrl)" width="500" height="200" alt="">
+                    <div class="card-body text-white">
+                        <div class="row">
+                            <div class="col-6 float-left">
+                                <a class="text-white" asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>
+                                    @item.Industry
+                                </a>
+                            </div>
+                            <div class="col-6 float-right" style="color:#C9D1C8">
+                                @item.CreatedOn.ToShortDateString()
+                            </div>
+                        </div>
+                        <row class="d-inline-block text-center">
+                            <h5>
+                                <b>
+                                    <a class="text-white font-weight-bold" style="font-family: Cambria" asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                                </b>
+                            </h5>
+                        </row>
+                        <div class="row text-left" style="color:#C9D1C8">
+                            @Html.DisplayFor(modelItem => item.Summary)
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="row text-left" style="color:#C9D1C8">
+                            By:&nbsp;
+                            <a class="text-white" asp-controller="Reports" asp-action="Index" asp-route-author=@item.Author.Split(' ').Last()>
+                                @item.Author.Substring(0, item.Author.Substring(0, item.Author.Length - 1).LastIndexOf("- "))
+                            </a>
+                        </p>
+                        <p class="row text-left" style="color:#C9D1C8">
+                            Downloaded @Html.DisplayFor(modelItem => item.DownloadsCount) times
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

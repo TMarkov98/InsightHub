@@ -8,6 +8,11 @@ namespace InsightHub.Services.Mappers
 {
     public class UserMapper
     {
+        /// <summary>
+        /// Maps a User Model from an existing Entity
+        /// </summary>
+        /// <param name="user">The target User Entity</param>
+        /// <returns>User Model</returns>
         public static UserModel MapModelFromEntity(User user)
         {
             return new UserModel
@@ -18,7 +23,7 @@ namespace InsightHub.Services.Mappers
                 Email = user.Email,
                 CreatedOn = user.CreatedOn,
                 ModifiedOn = user.ModifiedOn,
-                DownloadedReportsCount = user.Reports.Count,
+                DownloadedReportsCount = user.DownloadedReports.Count,
                 IndustrySubscriptionsCount = user.IndustrySubscriptions.Count,
                 IsPending = user.IsPending,
                 IsBanned = user.IsBanned,

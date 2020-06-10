@@ -4,109 +4,110 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>@Html.DisplayFor(model => model.Title)</h2>
-<h4>Details</h4>
-
 <div>
-    <h4>Report</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-        </dt>
-        <dd class="col-sm-10">
-            <img src=@Html.DisplayFor(model => model.ImgUrl) width="200" height="200">
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class="col-sm-10">
-            <a asp-action="Index" asp-route-author=@Model.Author.Split(' ').Last()>@Html.DisplayFor(model => model.Author)</a>
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Industry)
-        </dt>
-        <dd class="col-sm-10">
-            <a asp-action="Index" asp-route-industry=@Model.Industry>@Html.DisplayFor(model => model.Industry)</a>
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tags)
-        </dt>
-        <dd class="col-sm-10">
-            @foreach (var tag in ViewData["Tags"] as IEnumerable<string>)
-            {
-                <a asp-action="Index" asp-route-tag=@tag>@tag</a><br />
-            }
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
-        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-        {
+    <div class="container">
+        <div style="padding-bottom:10px">
+            <a class="btn btn-outline-dark" asp-action="Index">Back to All Reports</a>
+        </div>
 
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ModifiedOn)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ModifiedOn)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.IsDeleted)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.IsDeleted)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DeletedOn)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DeletedOn)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.IsFeatured)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.IsFeatured)
-            </dd>
-        }
-    </dl>
-</div>
-<div>
-    <a asp-action="Download" asp-route-id="@Model.Id">Download</a> <br />
-    @if (User.Identity.IsAuthenticated && User.Identity.Name == Model.Author.Split(' ').Last() || User.IsInRole("Admin"))
-    {
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <br />
-        <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> <br />
-    }
-    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-    {
-        @if (Model.IsPending)
-        {
-            <a asp-area="Admin" asp-controller="PendingReports" asp-action="Approve" asp-route-id="@Model.Id">Approve</a> <br />
-        }
-        @if (Model.IsFeatured)
-        {
-            <a asp-action="ToggleFeatured" asp-route-id="@Model.Id">Remove from Featured</a> <br />
-        }
-        else
-        {
-            <a asp-action="ToggleFeatured" asp-route-id="@Model.Id">Feature</a> <br />
-        }
-    }
-    <a asp-action="Index">All Reports</a>
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <img class="rounded mb-4 mb-lg-0 w-100" src="@Model.ImgUrl" height="500" alt="">
+            </div>
+            <div class="col-lg-5">
+                <h6 style="font-size: 20px">
+                    <a class="d-inline float-left text-dark" asp-action="Index" asp-route-industry=@Model.Industry>@Html.DisplayFor(model => model.Industry)</a>
+                    <text class="d-inline float-right" style="color:#808080">@Model.CreatedOn.ToShortDateString()</text>
+                </h6>
+                <p>
+                    <div class="row d-inline-block">
+                        <h1 class="col-12 text-left font-weight-bold">@Model.Title</h1>
+                    </div>
+                    <h6 class="d-inline-flex float-right" style="font-size: 20px">
+                        <text style="color:#808080">
+                            By&nbsp;
+                        </text>
+                        <a class="text-dark" asp-action="Index" asp-route-author=@Model.Author.Split(' ').Last()>
+                            @Model.Author.Substring(0, Model.Author.Substring(0, Model.Author.Length - 1).LastIndexOf("- "))
+                        </a>
+                    </h6>
+                    <a class="d-inline-block float-left btn-lg btn-dark" asp-action="Download" asp-route-id="@Model.Id">Download</a>
+                </p>
+                <div class="row d-inline-block">
+                    <p class="col-lg-12 text-left">
+                        <text style="overflow-wrap: break-word">
+                            @Model.Description
+                        </text>
+                    </p>
+                </div>
+                <h6 class="text-left" style="color:#808080">
+                    Tags:
+                </h6>
+                <p>
+                    @foreach (var tag in ViewData["Tags"] as IEnumerable<string>)
+                    {
+                        <a class="d-inline" style="font-family: Cambria; font-size: 20px; color:#04202C" asp-action="Index" asp-route-tag=@tag>@tag</a><br />
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="row align-items-center" style="margin-bottom:0px;margin-top:0px">
+            <div class="col-lg-7">
+
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    @if (Model.IsPending)
+                    {
+                        <a class="btn btn-outline-success" asp-area="Admin" asp-controller="PendingReports" asp-action="Approve" asp-route-id="@Model.Id">Approve</a>
+                    }
+                    else
+                    {
+                        @if (Model.IsFeatured)
+                        {
+                            <a class="btn btn-outline-warning" asp-action="ToggleFeatured" asp-route-id="@Model.Id">Remove from Featured</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-warning" asp-action="ToggleFeatured" asp-route-id="@Model.Id">Feature</a>
+                        }
+                    }
+                }
+                @if (User.Identity.IsAuthenticated && User.Identity.Name == Model.Author.Split(' ').Last() || User.IsInRole("Admin"))
+                {
+                    <a class="btn btn-outline-dark" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                }
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.ModifiedOn)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.IsDeleted)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.IsDeleted)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.DeletedOn)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.DeletedOn)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.IsFeatured)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.IsFeatured)
+                        </dd>
+                    </dl>
+                }
+            </div>
+        </div>
+    </div>
 </div>

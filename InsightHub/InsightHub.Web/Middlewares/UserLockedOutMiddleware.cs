@@ -40,11 +40,4 @@ namespace InsightHub.Web.Middlewares
             await _next(httpContext);
         }
     }
-    public static class UserDestroyerMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseMiddleware(this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<UserLockedOutMiddleware>();
-        }
-    }
 }

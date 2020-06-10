@@ -15,6 +15,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
         [TestMethod]
         public async Task UpdateReport_WhenParamsAreValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(UpdateReport_WhenParamsAreValid));
             var newTitle = "New Report Title";
             var newSummary = "New Report Summary";
@@ -38,25 +39,24 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Reports.AddAsync(report1);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTags = new TagServices(assertContext);
-                var sutReports = new ReportServices(assertContext, sutTags);
-                var act = await sutReports.UpdateReport(1, newTitle, newSummary, newDescription, newImgURL, newIndustry.Name, newTag.Name);
-                var result = assertContext.Reports.FirstOrDefault(t => t.Title == newTitle);
-                Assert.AreEqual(newTitle, result.Title);
-                Assert.AreEqual(newSummary, result.Summary);
-                Assert.AreEqual(newDescription, result.Description);
-                Assert.AreEqual(newIndustry.Name, result.Industry.Name);
-                Assert.AreEqual(newImgURL, result.ImgUrl);
-                Assert.AreEqual(newTag.Name, result.Tags.First().Tag.Name);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTags = new TagServices(assertContext);
+            var sutReports = new ReportServices(assertContext, sutTags);
+            var act = await sutReports.UpdateReport(1, newTitle, newSummary, newDescription, newImgURL, newIndustry.Name, newTag.Name);
+            var result = assertContext.Reports.FirstOrDefault(t => t.Title == newTitle);
+            Assert.AreEqual(newTitle, result.Title);
+            Assert.AreEqual(newSummary, result.Summary);
+            Assert.AreEqual(newDescription, result.Description);
+            Assert.AreEqual(newIndustry.Name, result.Industry.Name);
+            Assert.AreEqual(newImgURL, result.ImgUrl);
+            Assert.AreEqual(newTag.Name, result.ReportTags.First().Tag.Name);
         }
 
         [TestMethod]
         public async Task ThrowArgumentException_WhenTitleAlreadyExists()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ThrowArgumentException_WhenTitleAlreadyExists));
             var newSummary = "New Report Summary";
             var newDescription = "New Report Description";
@@ -86,13 +86,11 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Reports.AddAsync(report2);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTags = new TagServices(assertContext);
-                var sutReports = new ReportServices(assertContext, sutTags);
-                await Assert.ThrowsExceptionAsync<ArgumentException>(() => sutReports.UpdateReport(1, report2.Title, newSummary, newDescription, newImgURL, newIndustry.Name, newTag.Name));
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTags = new TagServices(assertContext);
+            var sutReports = new ReportServices(assertContext, sutTags);
+            await Assert.ThrowsExceptionAsync<ArgumentException>(() => sutReports.UpdateReport(1, report2.Title, newSummary, newDescription, newImgURL, newIndustry.Name, newTag.Name));
 
         }
     }
