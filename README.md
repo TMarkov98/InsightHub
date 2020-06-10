@@ -13,14 +13,33 @@ These instructions will get you a copy of the project up and running on your loc
 ### Usage
 
 Upload and Download reports in a centralized business hub.
-For example if You are author:
+For example if You are an author:
 ```
-Give examples (author upload reports/client download reports)
+1. Sign In
+![SignIn](/Instructions/Login.png)
+2. Go to the Reports or My Reports section
+![MyReports](/Instructions/My Reports.png)
+3. Press the "New Report" button
+![NewReport](/Instructions/New Report.png)
+4. Fill in the form to Create your Report
+![ReportForm](/Instructions/Create Report.png)
+5. Wait for Admin approval
+![ReportForm](/Instructions/Admin Approval.png)
 ```
-or if You are Client:
-```
-Give examples (author upload reports/client download reports)
-```
+or if You are a client:
+1. Sign In
+![SignIn](/Instructions/Login.png)
+2. Go to the Reports Section
+![Reports](/Instructions/Reports Section.png)
+3. Select a Report or Search our Database
+![SearchReport](/Instructions/Find Report.png)
+4. Click on the "Download Report" button
+![DownloadReport](/Instructions/Report Download.png)
+5. Use the provided report in your business
+![DownloadedReport](/Instructions/Downloaded Report.png)
+6. (Optional) Subscribe for Email Notifications when a new Report is added
+![Subscribe](/Instructions/Subscribe to Industry.png)
+
 ### Support
 
 You can contact us on:
