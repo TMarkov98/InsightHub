@@ -16,6 +16,7 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
         [TestMethod]
         public async Task CreateReport_WhenParamsAreValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(CreateReport_WhenParamsAreValid));
             var title = "Report Title";
             var summary = "Report Summary";
@@ -32,22 +33,21 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Tags.AddAsync(tag);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTags = new TagServices(assertContext);
-                var sutReports = new ReportServices(assertContext, sutTags);
-                var act = await sutReports.CreateReport(title, summary, description, author.Email, imgURL, industry.Name, tag.Name);
-                var result = assertContext.Reports.FirstOrDefault(t => t.Title == title);
-                Assert.AreEqual(title, result.Title);
-                Assert.AreEqual(description, result.Description);
-                Assert.AreEqual(tag.Name, result.Tags.First().Tag.Name);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTags = new TagServices(assertContext);
+            var sutReports = new ReportServices(assertContext, sutTags);
+            var act = await sutReports.CreateReport(title, summary, description, author.Email, imgURL, industry.Name, tag.Name);
+            var result = assertContext.Reports.FirstOrDefault(t => t.Title == title);
+            Assert.AreEqual(title, result.Title);
+            Assert.AreEqual(description, result.Description);
+            Assert.AreEqual(tag.Name, result.ReportTags.First().Tag.Name);
         }
 
         [TestMethod]
         public async Task ThrowArgumentException_When_TitleAlreadyExists()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ThrowArgumentException_When_TitleAlreadyExists));
 
             var summary = "Report Summary";
@@ -66,13 +66,11 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Reports.AddAsync(report);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTags = new TagServices(assertContext);
-                var sutReports = new ReportServices(assertContext, sutTags);
-                await Assert.ThrowsExceptionAsync<ArgumentException>(() => sutReports.CreateReport(report.Title, summary, description, author.Email, imgURL, industry.Name, tag.Name));
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTags = new TagServices(assertContext);
+            var sutReports = new ReportServices(assertContext, sutTags);
+            await Assert.ThrowsExceptionAsync<ArgumentException>(() => sutReports.CreateReport(report.Title, summary, description, author.Email, imgURL, industry.Name, tag.Name));
 
         }
     }

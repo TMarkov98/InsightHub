@@ -5,10 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<a class="btn btn-outline-dark" asp-action="Index">Back to List</a>
+<h1 class="display-4" style="color:#04202C; font-family: Cambria">
+    Details
+</h1>
 
 <div>
-    <h4>User</h4>
+    <h3>
+        User:&nbsp;@Html.DisplayFor(model => model.Email)
+    </h3>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -24,13 +29,19 @@
             @Html.DisplayFor(model => model.LastName)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IsPending)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IsPending)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedOn)
+            Registered On
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CreatedOn)
@@ -47,33 +58,42 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IsBanned)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BanReason)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.BanReason)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+        @if (Model.IsBanned)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.BanReason)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.BanReason)
+            </dd>
+        }
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <br />
+    <a class="btn btn-outline-dark" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <text>
+        &nbsp;
+    </text>
     @if (Model.IsPending)
     {
-        <a asp-area="Admin" asp-controller="PendingUsers" asp-action="Approve" asp-route-id="@Model.Id">Approve</a> <br />
+        <a class="btn btn-outline-success" asp-area="Admin" asp-controller="PendingUsers" asp-action="Approve" asp-route-id="@Model.Id">Approve</a>
+        <text>
+            &nbsp;
+        </text>
     }
     @if (Model.IsBanned)
     {
-        <a asp-area="Admin" asp-controller="BannedUsers" asp-action="Unban" asp-route-id="@Model.Id">Unban</a> <br />
+        <a class="btn btn-outline-success" asp-area="Admin" asp-controller="BannedUsers" asp-action="Unban" asp-route-id="@Model.Id">Unban</a>
+        <text>
+            &nbsp;
+        </text>
     }
     @if (!Model.IsBanned)
     {
-        <a asp-area="Admin" asp-controller="Users" asp-action="Ban" asp-route-id="@Model.Id">Ban</a> <br />
+        <a class="btn btn-outline-warning" asp-area="Admin" asp-controller="Users" asp-action="Ban" asp-route-id="@Model.Id">Ban</a>
+        <text>
+            &nbsp;
+        </text>
     }
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
 </div>

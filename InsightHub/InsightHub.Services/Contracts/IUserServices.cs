@@ -7,17 +7,17 @@ namespace InsightHub.Services.Contracts
     public interface IUserServices
     {
         Task BanUser(int id, string reason);
-        Task<List<UserModel>> GetBannedUsers(string search);
-        Task<List<UserModel>> GetPendingUsers(string search);
+        Task<ICollection<UserModel>> GetBannedUsers(string search);
+        Task<ICollection<UserModel>> GetPendingUsers(string search);
         Task<UserModel> GetUser(int id);
-        Task<List<UserModel>> GetUsers(string search);
+        Task<ICollection<UserModel>> GetUsers(string search);
         Task UnbanUser(int id);
         Task<UserModel> UpdateUser(int id, string firstName, string lastName, bool isBanned, string banReason);
         Task DeleteUser(int id);
         Task ApproveUser(int id);
-        Task<List<ReportModel>> GetDownloadedReports(int userId);
-        Task<List<ReportModel>> GetUploadedReports(int userId);
-        Task<List<IndustryModel>> GetSubscriptions(int userId);
+        Task<ICollection<ReportModel>> GetDownloadedReports(int userId, string search);
+        Task<ICollection<ReportModel>> GetUploadedReports(int userId, string search);
+        Task<ICollection<IndustryModel>> GetSubscriptions(int userId);
         Task<string> GetSubscribedUsers(string industry);
     }
 }

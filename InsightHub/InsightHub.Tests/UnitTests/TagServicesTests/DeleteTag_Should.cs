@@ -3,6 +3,7 @@ using InsightHub.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,9 +13,10 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
     public class DeleteTag_Should
     {
         [TestMethod]
-        public async Task ReturnTrue_When_ParamsValid()
+        public async Task DeleteTag_When_ParamsValid()
         {
-            var options = Utils.GetOptions(nameof(ReturnTrue_When_ParamsValid));
+            //Arrange
+            var options = Utils.GetOptions(nameof(DeleteTag_When_ParamsValid));
             var tag = TestModelsSeeder.SeedTag();
 
             using (var arrangeContext = new InsightHubContext(options))
@@ -22,21 +24,40 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
                 arrangeContext.Tags.Add(tag);
                 await arrangeContext.SaveChangesAsync();
             }
-            
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
-            var result = await sut.DeleteTag(1);
-            Assert.AreEqual(true, result);
+            await sut.DeleteTag(1);
+            Assert.IsTrue(assertContext.Tags.FirstOrDefault().IsDeleted);
         }
         [TestMethod]
-        public async Task ReturnFalse_When_ParamsNotValid()
+        public async Task Throw_When_ParamsNotValid()
         {
-            var options = Utils.GetOptions(nameof(ReturnFalse_When_ParamsNotValid));
-            
+            //Arrange
+            var options = Utils.GetOptions(nameof(Throw_When_ParamsNotValid));
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
-            var result = await sut.DeleteTag(1);
-            Assert.AreEqual(false, result);
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await sut.DeleteTag(5));
+        }
+
+        [TestMethod]
+        public async Task Throw_WhenTagAlreadyDeleted()
+        {
+            //Arrange
+            var options = Utils.GetOptions(nameof(Throw_WhenTagAlreadyDeleted));
+            var tag = TestModelsSeeder.SeedTag();
+            tag.IsDeleted = true;
+
+            using (var arrangeContext = new InsightHubContext(options))
+            {
+                arrangeContext.Tags.Add(tag);
+                await arrangeContext.SaveChangesAsync();
+            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new TagServices(assertContext);
+            await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.DeleteTag(tag.Id));
         }
     }
 }

@@ -3,14 +3,22 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to Insight Hub</h1>
+    <h1 class="display-4" style="color:#04202C; font-family: Cambria">
+        <b>
+            Insight Hub
+        </b>
+    </h1>
+    <h3 style="color:#04202C; font-family: Cambria">That the Future may learn from the Past</h3>
 </div>
 <div>
     @await Component.InvokeAsync("FeaturedViewComponent")
 </div>
-<div>
-    @await Component.InvokeAsync("Top5NewestViewComponent")
-</div>
-<div>
-    @await Component.InvokeAsync("Top5MostDownloadedViewComponent")
+<div class="row align-items-center">
+    <div class="col-lg-7">
+        @await Component.InvokeAsync("MostDownloadedViewComponent")
+    </div>
+    <div class="col-lg-5">
+        @await Component.InvokeAsync("NewestViewComponent")
+    </div>
+
 </div>

@@ -5,30 +5,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Tags</h2>
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-}
+<div>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a class="d-inline-flex btn btn-dark float-right" style="padding-bottom:10px" asp-action="Create">New Tag</a>
+    }
+    <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
+</div>
+<h1 class="display-4" style="color:#04202C; font-family: Cambria">
+    <b>
+        Tags
+    </b>
+</h1>
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
             Search tags: <input type="text" name="search" value="@ViewData["Search"]" />
-            <input type="submit" value="Search" class="btn btn-default" /> <br />
-            <a asp-action="Index">Back to Full List</a>
+            <input type="submit" value="Search" class="btn btn-outline-dark" /> <br />
         </p>
     </div>
 </form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]">Name</a>
+                <a style="color:#04202C" asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">Name</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-search="@ViewData["Search"]">CreatedOn</a>
+                <a style="color:#04202C" asp-action="Index" asp-route-sort="@ViewData["SortByReportsCount"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">Reports Tagged</a>
+            </th>
+            <th>
+                <a style="color:#04202C" asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-search="@ViewData["Search"]" asp-route-pageNumber="@ViewData["PageNumber"]">CreatedOn</a>
             </th>
             <th></th>
         </tr>
@@ -38,18 +46,18 @@
         {
             <tr>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                    <a style="font-family: Cambria; font-size: 20px; color:#04202C" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReportsCount)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreatedOn)
                 </td>
-                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                {
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                }
+                <td>
+                    <a class="btn btn-outline-dark" asp-action="Edit" asp-route-id="@item.Id">Edit</a>&nbsp;
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
             </tr>
         }
     </tbody>
@@ -64,13 +72,14 @@
    asp-route-sort="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageNumber - 1)"
    asp-route-search="@ViewData["Search"]"
-   class="btn btn-default @prevDisabled">
+   class="btn btn-outline-dark @prevDisabled">
     Previous
 </a>
+        &nbsp;@(ViewData["PageNumber"] ?? 1)&nbsp;
 <a asp-action="Index"
    asp-route-sort="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageNumber + 1)"
    asp-route-search="@ViewData["Search"]"
-   class="btn btn-default @nextDisabled">
+   class="btn btn-outline-dark @nextDisabled">
     Next
 </a>

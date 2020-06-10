@@ -1,6 +1,7 @@
 ﻿using InsightHub.Models.Contracts;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace InsightHub.Data.Entities
@@ -12,13 +13,11 @@ namespace InsightHub.Data.Entities
         {
             this.Reports = new List<Report>();
             this.SubscribedUsers = new List<IndustrySubscription>();
-            if(this.ImgUrl == null || this.ImgUrl == string.Empty)
-            {
-                this.ImgUrl = "https://www.axiz.com/wp-content/uploads/2019/04/industry40petro-1024x679.png";
-            }
         }
 
         public int Id { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 5)]
         public string Name { get; set; }
         public List<Report> Reports { get; set; }
         public string ImgUrl { get; set; }

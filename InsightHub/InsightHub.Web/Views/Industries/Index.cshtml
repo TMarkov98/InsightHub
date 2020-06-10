@@ -5,77 +5,131 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Industries</h2>
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{
-    <p>
-        <a asp-controller="Industries" asp-action="Create">Create New</a>
-    </p>
-}
-<form asp-action="Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Search Industries: <input type="text" name="search" value="@ViewData["Search"]" />
-            <input type="submit" value="Search" class="btn btn-default" />
-            <br />
-            <a asp-action="Index">Back to Full List</a>
-        </p>
+<div class="container">
+    <div>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <a class="d-inline-flex btn-lg btn-dark float-right" style="padding-bottom:10px" asp-controller="Industries" asp-action="Create">New Industry</a>
+        }
+        <a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
     </div>
-</form>
-<table class="table">
-    <thead>
-        <tr>
-            <th />
-            <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByName"]" asp-route-search="@ViewData["Search"]">Name</a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sort="@ViewData["SortByDate"]" asp-route-search="@ViewData["Search"]">Created On</a>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+
+    <h1 class="display-4" style="color:#04202C; font-family: Cambria">
+        <b>
+            Industries
+        </b>
+    </h1>
+
+    <form asp-action="Index" method="get">
+        <div class="form-actions" style="padding-bottom:0px">
+
+            Search Industries: <input type="text" name="search" value="@ViewData["Search"]" />
+            <input type="submit" value="Search" class="btn btn-outline-dark" />
+            @ViewData["ResultsCount"] result(s)
+
+            <p class="d-inline-block">
+                <div class="dropdown float-right">
+                    <button class="d-inline-flex btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown">
+                        Sort By
+                    </button>
+                    <ul class="dropdown-menu text-white" style="background-color: #304040">
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByName"]"
+                               asp-route-search="@ViewData["Search"]">Name</a>
+                        </li>
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortBySubscribers"]"
+                               asp-route-search="@ViewData["Search"]">Subscribers Count</a>
+                        </li>
+                        <li class="nav-item btn-outline-dark" style="padding-left:10px">
+                            <a class="text-white" asp-action="Index" asp-route-sort="@ViewData["SortByReports"]"
+                               asp-route-search="@ViewData["Search"]">Reports Count</a>
+                        </li>
+                    </ul>
+                </div>
+            </p>
+        </div>
+    </form>
+    <hr />
+    @if (Model.Count() > 0)
+    {
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    }
-                </td>
-            </tr>
+            <div style="padding-bottom:20px">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <a class="row" asp-action="Details" asp-route-id="@item.Id">
+                            <img class="d-inline text-left" src=@Html.DisplayFor(modelItem => item.ImgUrl) width="805" height="217">
+                        </a>
+                    </div>
+                    <div class="col-lg-3">
+                        <h2 class="d-inline" style="font-family: Cambria">
+                            <a class="row" style="vertical-align:top; color: #04202C" asp-action="Details" asp-route-id="@item.Id">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </a>
+                        </h2>
+                        <div class="row" style="color:#04202C">
+                            <b>
+                                Subscribed Users:&nbsp;&nbsp;
+                            </b>
+                            @Html.DisplayFor(modelItem => item.SubscriptionsCount)
+                        </div>
+                        <div class="row">
+                            <b>
+                                Total Reports:&nbsp;&nbsp;
+                            </b>
+                            @Html.DisplayFor(modelItem => item.ReportsCount)
+                        </div>
+
+                        <div class="row">
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                <a class="btn btn-outline-dark" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <text>
+                                    &nbsp;
+                                </text>
+                                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            }
+                        </div>
+                        <div class="row">
+                            @if (item.SubscribedUsers.Contains(User.Identity.Name) && User.IsInRole("Client"))
+                            {
+                                <a class="btn btn-danger" asp-action="RemoveSubscription" asp-route-id="@item.Id">Unsubscribe</a>
+                            }
+                            else if (User.IsInRole("Client"))
+                            {
+                                <a class="btn btn-dark" asp-action="Subscribe" asp-route-id="@item.Id">Subscribe</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    }
+    else
+    {
+        <h4 class="font-italic">No industries found.</h4>
+    }
+    <hr />
 
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
 
-<a asp-action="Index"
-   asp-route-sort="@ViewData["CurrentSort"]"
-   asp-route-pageNumber="@(Model.PageNumber - 1)"
-   asp-route-search="@ViewData["Search"]"
-   class="btn btn-default @prevDisabled">
-    Previous
-</a>
-<a asp-action="Index"
-   asp-route-sort="@ViewData["CurrentSort"]"
-   asp-route-pageNumber="@(Model.PageNumber + 1)"
-   asp-route-search="@ViewData["Search"]"
-   class="btn btn-default @nextDisabled">
-    Next
-</a>
+    <a asp-action="Index"
+       asp-route-sort="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageNumber - 1)"
+       asp-route-search="@ViewData["Search"]"
+       class="btn btn-outline-dark @prevDisabled">
+        Previous
+    </a>
+    &nbsp;@(ViewData["PageNumber"] ?? 1)&nbsp;
+    <a asp-action="Index"
+       asp-route-sort="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageNumber + 1)"
+       asp-route-search="@ViewData["Search"]"
+       class="btn btn-outline-dark @nextDisabled">
+        Next
+    </a>
+</div>

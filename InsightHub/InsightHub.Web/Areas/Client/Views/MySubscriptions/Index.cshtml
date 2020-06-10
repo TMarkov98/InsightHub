@@ -1,39 +1,84 @@
-﻿@model IEnumerable<InsightHub.Models.IndustryModel>
+﻿@model X.PagedList.StaticPagedList<InsightHub.Models.IndustryModel>
 
-<h1 class="text-left">My Subscriptions</h1>
-<h5 class="text-left">Industries that you are subscribed to:</h5>
-<h6 class="text-left">You are will get an email every time a new report from one of these industries is published.</h6>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Created On
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+
+<a class="btn btn-outline-dark" asp-action="Index">Back to Full List</a>
+<h1 class="display-4" style="color:#04202C; font-family: Cambria">
+    My Subscriptions <br />
+</h1>
+<h3>
+    (You will get an email every time a new report from one of these industries is published.)
+</h3>
+@if (Model.Count() > 0)
+{
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Search Industries: <input type="text" name="search" value="@ViewData["Search"]" />
+                <input type="submit" value="Search" class="btn btn-outline-dark" />
+                @ViewData["ResultsCount"] result(s)
+                <br />
+            </p>
+        </div>
+    </form>
+    <hr />
+    <div class="container">
+
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <img src=@Html.DisplayFor(modelItem => item.ImgUrl) width="75" height="75">
-                </td>
-                <td>
-                    <a asp-area="" asp-controller="Industries" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    <a asp-area="" asp-controller="Industries" asp-action="RemoveSubscription" asp-route-id="@item.Id">Remove Subscription</a>
-                </td>
-            </tr>
-
+            <div style="padding-bottom:20px">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <a class="row" asp-area="" asp-controller="Industries" asp-action="Details" asp-route-id="@item.Id">
+                            <img class="d-inline text-left" src=@Html.DisplayFor(modelItem => item.ImgUrl) width="805" height="217">
+                        </a>
+                    </div>
+                    <div class="col-lg-3">
+                        <h2 class="d-inline" style="font-family: Cambria">
+                            <a class="row" style="vertical-align:top; color: #04202C" asp-area="" asp-controller="Industries" asp-action="Details" asp-route-id="@item.Id">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </a>
+                        </h2>
+                        <div class="row" style="color:#04202C">
+                            <b>
+                                Subscribed Users:&nbsp;&nbsp;
+                            </b>
+                            @Html.DisplayFor(modelItem => item.SubscriptionsCount)
+                        </div>
+                        <div class="row">
+                            <b>
+                                Total Reports:&nbsp;&nbsp;
+                            </b>
+                            @Html.DisplayFor(modelItem => item.ReportsCount)
+                        </div>
+                        <div class="row">
+                            <a class="btn btn-danger" asp-area="" asp-controller="Industries" asp-action="RemoveSubscription" asp-route-id="@item.Id">Unsubscribe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
+
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageNumber - 1)"
+       asp-route-search="@ViewData["Search"]"
+       class="btn btn-outline-dark @prevDisabled">
+        Previous
+    </a>
+    <text>&nbsp;@(ViewData["PageNumber"] ?? 1)&nbsp;</text>
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageNumber + 1)"
+       asp-route-search="@ViewData["Search"]"
+       class="btn btn-outline-dark @nextDisabled">
+        Next
+    </a>
+}
+else
+{
+    <hr />
+    <h5 class="font-italic">No subscriptions found.</h5>
+}

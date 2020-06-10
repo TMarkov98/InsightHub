@@ -14,6 +14,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
         [TestMethod]
         public async Task ReturnCorrectTag_When_ParamValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnCorrectTag_When_ParamValid));
             var tag = TestModelsSeeder.SeedTag();
 
@@ -22,20 +23,19 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
                 arrangeContext.Tags.Add(tag);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sut = new TagServices(assertContext);
-                var act = await sut.GetTag(1);
-                var result = act.Name;
-                Assert.AreEqual(tag.Name, result);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sut = new TagServices(assertContext);
+            var act = await sut.GetTag(1);
+            var result = act.Name;
+            Assert.AreEqual(tag.Name, result);
         }
         [TestMethod]
         public async Task ThrowArgumentNullException_When_NotExists()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ThrowArgumentNullException_When_NotExists));
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => sut.GetTag(1));

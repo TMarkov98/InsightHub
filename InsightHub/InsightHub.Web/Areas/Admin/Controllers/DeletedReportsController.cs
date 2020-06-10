@@ -11,6 +11,7 @@ using System.Security.Claims;
 using InsightHub.Services.Contracts;
 using X.PagedList;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace InsightHub.Web.Areas.Admin.Controllers
 {
@@ -25,7 +26,16 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             _reportServices = reportServices;
         }
 
-        // GET: Admin/PendingReports
+        /// <summary>
+        /// Get All Deleted Users
+        /// </summary>
+        /// <param name="search">The string to search for</param>
+        /// <param name="pageNumber">The int for a page number</param>
+        ///<returns>On success - View with users(in a paged list). </returns>
+        /// <response code="200">Returns All Deleted Users(in a paged list).</response>
+        // GET: Admin/BannedUsers
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Index(string sort, string search, int? pageNumber)
         {
 
@@ -43,12 +53,24 @@ namespace InsightHub.Web.Areas.Admin.Controllers
 
             ViewData["Search"] = search;
 
-            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var reports = await _reportServices.GetReportsDeleted(sort, search);
-            var pageSize = 10;
+            var reports = await _reportServices.GetDeletedReports(sort, search);
+
+            ViewData["ResultsCount"] = reports.Count;
+
+            var pageSize = 8;
             return View(await reports.ToPagedListAsync(pageNumber ?? 1, pageSize));
         }
-
+        /// <summary>
+        /// Permanently delete a report(load form view)
+        /// </summary>
+        /// <param name="id">The id of the report</param>
+        ///<returns>On success - load Remove form view.</returns>
+        /// <response code="200">Load Remove form view.</response>
+        /// <response code="404">If id or user is null - NotFound</response>
+        // GET: Admin/DeletedUsers/Remove/5
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Remove(int? id)
         {
             if (id == null)
@@ -65,12 +87,42 @@ namespace InsightHub.Web.Areas.Admin.Controllers
             return View(report);
         }
 
-        // POST: Admin/Users/Delete/5
+        /// <summary>
+        /// Permanently delete a report
+        /// </summary>
+        /// <param name="id">The id of the report.</param>
+        /// <returns>On success - Redirect to Index View</returns>
+        /// <response code="308">Deleted - Redirect To Index View.</response>
+        // POST: Admin/DeletedUsers/Remove/5
         [HttpPost, ActionName("Remove")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveConfirmed(int id)
         {
             await _reportServices.PermanentlyDeleteReport(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        /// <summary>
+        /// Restore report
+        /// </summary>
+        /// <param name="id">The id of the report.</param>
+        /// <returns>On success - Redirect to Index View</returns>
+        /// <response code="308">Deleted - Redirect To Index View.</response>
+        /// <response code="404">If id is null - NotFound</response>
+        // POST: Admin/DeletedUsers/Remove/5
+        [HttpGet, ActionName("Restore")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Restore(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            await _reportServices.RestoreReport(id.Value);
+
             return RedirectToAction(nameof(Index));
         }
     }

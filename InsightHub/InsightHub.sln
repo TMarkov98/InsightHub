@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightHub.Models", "Insigh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightHub.Services", "InsightHub.Services\InsightHub.Services.csproj", "{5CE37919-EE88-4FEE-AF6F-1C83DDB1A495}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightHub.Common", "InsightHub.Common\InsightHub.Common.csproj", "{326B64EA-856D-461F-88A0-F4D1C34B8B7D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightHub.Tests", "InsightHub.Tests\InsightHub.Tests.csproj", "{CE90026A-E9F5-4A4C-9027-DD4CB362E0E4}"
 EndProject
 Global
@@ -37,10 +35,6 @@ Global
 		{5CE37919-EE88-4FEE-AF6F-1C83DDB1A495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CE37919-EE88-4FEE-AF6F-1C83DDB1A495}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CE37919-EE88-4FEE-AF6F-1C83DDB1A495}.Release|Any CPU.Build.0 = Release|Any CPU
-		{326B64EA-856D-461F-88A0-F4D1C34B8B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{326B64EA-856D-461F-88A0-F4D1C34B8B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{326B64EA-856D-461F-88A0-F4D1C34B8B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{326B64EA-856D-461F-88A0-F4D1C34B8B7D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE90026A-E9F5-4A4C-9027-DD4CB362E0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE90026A-E9F5-4A4C-9027-DD4CB362E0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE90026A-E9F5-4A4C-9027-DD4CB362E0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU

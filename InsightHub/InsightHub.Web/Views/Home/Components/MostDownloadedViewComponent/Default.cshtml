@@ -1,0 +1,33 @@
+﻿@model IEnumerable<InsightHub.Models.ReportModel>
+
+@{
+    ViewData["Title"] = "Top5MostDownloadedReports";
+}
+
+
+
+<h3 style="color:#04202C; font-family: Cambria">Most Popular Reports</h3>
+
+<div class="table" style="background-color: #304040; border-radius:0.25rem">
+        @foreach (var item in Model)
+        {
+            <div class="row" style="border-bottom:solid 1px white">
+                <div class="col-2">
+                    <img src="@Html.DisplayFor(modelItem => item.ImgUrl)" height="60" width="60" alt="">
+                </div>
+                <div class="col-5 text-white" >
+                    <b>
+                        <a style="font-family: Cambria; vertical-align: central; font-size: 20px; color:white" asp-area="" asp-controller="Reports" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                    </b>
+                </div>
+                <div class="col-2 text-white">
+                    <a class="text-white" asp-area="" asp-controller="Reports" asp-action="Index" asp-route-industry=@item.Industry>@item.Industry</a>
+                </div>
+                <div class="col-3" style="color:#C9D1C8">
+                    @item.DownloadsCount downloads
+                    <br />
+                    @item.CreatedOn.ToShortDateString()
+                </div>
+            </div>
+        }
+</div>

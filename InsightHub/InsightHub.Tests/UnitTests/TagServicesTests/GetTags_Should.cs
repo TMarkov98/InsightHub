@@ -16,6 +16,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
         [TestMethod]
         public async Task ReturnCorrectTags_When_ParamValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnCorrectTags_When_ParamValid));
             var firstTag = TestModelsSeeder.SeedTag();
             var secondTag = TestModelsSeeder.SeedTag2();
@@ -28,7 +29,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
                 arrangeContext.Tags.Add(thirdTag);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
             var act = await sut.GetTags(null, null);
@@ -38,6 +39,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
         [TestMethod]
         public async Task ReturnCorrectTags_WithSort_When_ParamValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnCorrectTags_WithSort_When_ParamValid));
             var firstTag = TestModelsSeeder.SeedTag();
             var secondTag = TestModelsSeeder.SeedTag2();
@@ -50,7 +52,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
                 arrangeContext.Tags.Add(thirdTag);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
             var act = await sut.GetTags("name_desc", null);
@@ -62,6 +64,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
         [TestMethod]
         public async Task ReturnCorrectTags_WithSearch_When_ParamValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnCorrectTags_WithSearch_When_ParamValid));
             var firstTag = TestModelsSeeder.SeedTag();
             var secondTag = TestModelsSeeder.SeedTag2();
@@ -74,7 +77,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
                 arrangeContext.Tags.Add(thirdTag);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
             var act = await sut.GetTags(null, "3");
@@ -85,6 +88,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
         [TestMethod]
         public async Task ReturnCorrectTags_WithSortAndSearch_When_ParamValid()
         {
+            //Arrange
             var options = Utils.GetOptions(nameof(ReturnCorrectTags_WithSortAndSearch_When_ParamValid));
             var firstTag = TestModelsSeeder.SeedTag();
             var secondTag = TestModelsSeeder.SeedTag2();
@@ -97,7 +101,7 @@ namespace InsightHub.Tests.UnitTests.TagServicesTests
                 arrangeContext.Tags.Add(thirdTag);
                 await arrangeContext.SaveChangesAsync();
             }
-
+            //Act & Assert
             using var assertContext = new InsightHubContext(options);
             var sut = new TagServices(assertContext);
             var act = await sut.GetTags("name_desc", "Test");

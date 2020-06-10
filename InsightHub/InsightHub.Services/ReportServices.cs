@@ -27,53 +27,89 @@ namespace InsightHub.Services
             this._context = context ?? throw new ArgumentNullException("Context can NOT be null.");
             this._tagServices = tagServices ?? throw new ArgumentNullException("Tag Services can NOT be null.");
         }
+
+        /// <summary>
+        /// Creates a new Report from given Strings and places it in Pending.
+        /// </summary>
+        /// <param name="title">The title of the new Report. Between 5 and 100 characters.</param>
+        /// <param name="summary">The summary of the new Report. Between 5 and 300 characters.</param>
+        /// <param name="description">The description of the new Report. Between 5 and 5000 characters.</param>
+        /// <param name="author">The author of the new Report. Automatically generated from Identity and the logged in User.</param>
+        /// <param name="imgUrl">The URL for the report's image, which appears on the report's card.</param>
+        /// <param name="industry">The Industry under which the new Report will be classified. Has to match an existing Industry in the context.</param>
+        /// <param name="tags">The Tags to be added to the new Report. If a tag does not exist, it will be created automatically.</param>
+        /// <returns>On success - A Report Model, mapped from the new Report. If the Report already exists - Throws Argument Exception</returns>
         public async Task<ReportModel> CreateReport(string title, string summary, string description, string author, string imgUrl, string industry, string tags)
         {
-            var reportDTO = ReportMapper.MapModelFromInput(title, summary, description, imgUrl, author, industry, tags);
-            if (!await _context.Reports
+            var reportModel = ReportMapper.MapModelFromInput(title, summary, description, imgUrl, author, industry, tags);
+
+            // Throw if Report with this title exists.
+            if (await _context.Reports
                 .Include(r => r.Author)
                 .Include(r => r.Industry)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .AnyAsync(r => r.Title == title))
             {
-                var report = new Report()
-                {
-                    Title = reportDTO.Title,
-                    Description = reportDTO.Description,
-                    Summary = reportDTO.Summary,
-                    CreatedOn = DateTime.UtcNow
-                };
-                await _context.Reports.AddAsync(report);
-                report.AuthorId = _context.Users.FirstOrDefault(u => u.NormalizedEmail == reportDTO.Author.ToUpper()).Id;
-                report.IndustryId = _context.Industries.FirstOrDefault(i => i.Name.ToUpper() == reportDTO.Industry.ToUpper()).Id;
-                report.IsPending = true;
-                await _context.SaveChangesAsync();
-                await AddTagsToReport(report, reportDTO.Tags);
 
-                await _context.SaveChangesAsync();
-                reportDTO = ReportMapper.MapModelFromEntity(report);
-                return reportDTO;
+                throw new ArgumentException($"Report with title {title} already exists.");
             }
-            throw new ArgumentException($"Report with title {title} already exists.");
+
+            //Create Report
+            var report = new Report()
+            {
+                Title = reportModel.Title,
+                Description = reportModel.Description,
+                Summary = reportModel.Summary,
+                ImgUrl = reportModel.ImgUrl,
+                CreatedOn = DateTime.UtcNow
+            };
+            await _context.Reports.AddAsync(report);
+
+            //Map Author, Industry, set Pending
+            report.AuthorId = _context.Users.FirstOrDefault(u => u.NormalizedEmail == reportModel.Author.ToUpper()).Id;
+            report.IndustryId = _context.Industries.FirstOrDefault(i => i.Name.ToUpper() == reportModel.Industry.ToUpper()).Id;
+            report.IsPending = true;
+            await _context.SaveChangesAsync();
+
+            //Map Tags, Create new Tags if any do not exist.
+            await AddTagsToReport(report, reportModel.Tags);
+            await _context.SaveChangesAsync();
+
+            //Return Report Model
+            reportModel = ReportMapper.MapModelFromEntity(report);
+            return reportModel;
         }
 
+        /// <summary>
+        /// Lists Active Reports from context. Each Report must not be Pending or Deleted. Each Report's Industry must not be Deleted.
+        /// /// </summary>
+        /// <param name="sort">The property to sort the Reports by. Can be left null for default sorting by ID.</param>
+        /// <param name="search">Searches the Report List by Name and Summary. Can be left null to display all Reports.</param>
+        /// <param name="author">Filters the Report List by matching the author's Email address.</param>
+        /// <param name="industry">Filters the Report List by Industry.</param>
+        /// <param name="tag">Filters the Report List by Tag.</param>
+        /// <returns>ICollection of Report Models</returns>
         public async Task<ICollection<ReportModel>> GetReports(string sort, string search, string author, string industry, string tag)
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
                 .Where(r => !r.IsPending)
                 .Include(r => r.Industry)
+                .Where(r => !r.Industry.IsDeleted)
                 .Include(r => r.Author)
                 .Include(r => r.Downloads)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
 
+            //Sort Reports
             reports = SortReports(sort, reports).ToList();
 
+            //Search Reports
             reports = SearchReports(search, reports).ToList();
 
+            //Filter Reports
             if (author != null)
             {
                 reports = reports.Where(r => r.Author.ToLower().Contains(author.ToLower())).ToList();
@@ -88,29 +124,44 @@ namespace InsightHub.Services
             }
             return reports;
         }
-        public async Task<ICollection<ReportModel>> GetReportsFeatured()
+
+        /// <summary>
+        /// Lists all Featured Reports. Reports must not be Pending or Deleted. Reports' Industry must not be Deleted.
+        /// </summary>
+        /// <returns>ICollection of Report Models</returns>
+        public async Task<ICollection<ReportModel>> GetFeaturedReports()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
                 .Where(r => !r.IsPending)
                 .Where(r => r.IsFeatured)
                 .Include(r => r.Industry)
+                .Where(r => !r.Industry.IsDeleted)
                 .Include(r => r.Downloads)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
+                .OrderByDescending(r => r.ModifiedOn)
+                .Take(4)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
 
             return reports;
         }
-        public async Task<ICollection<ReportModel>> GetReportsDeleted(string sort, string search)
+
+        /// <summary>
+        /// Lists all Deleted Reports.
+        /// </summary>
+        /// <param name="sort">The property to sort the Reports by. Can be left null for default sorting by ID.</param>
+        /// <param name="search">Searches the Report List by Name and Summary. Can be left null to display all Reports.</param>
+        /// <returns>ICollection of Report Models</returns>
+        public async Task<ICollection<ReportModel>> GetDeletedReports(string sort, string search)
         {
             var reports = await _context.Reports
                 .Where(r => r.IsDeleted)
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
@@ -122,13 +173,19 @@ namespace InsightHub.Services
             return reports;
         }
 
-        public async Task<ICollection<ReportModel>> GetReportsPending(string sort, string search)
+        /// <summary>
+        /// Lists all Pending Reports
+        /// </summary>
+        /// <param name="sort">The property to sort the Reports by. Can be left null for default sorting by ID.</param>
+        /// <param name="search">Searches the Report List by Name and Summary. Can be left null to display all Reports.</param>
+        /// <returns>ICollection of Report Models</returns>
+        public async Task<ICollection<ReportModel>> GetPendingReports(string sort, string search)
         {
             var reports = await _context.Reports
                 .Where(r => r.IsPending)
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
@@ -140,7 +197,11 @@ namespace InsightHub.Services
             return reports;
         }
 
-        public async Task<ICollection<ReportModel>> GetTop5NewReports()
+        /// <summary>
+        /// Lists the 4 Newest Reports in the context.
+        /// </summary>
+        /// <returns>ICollection of Report Models</returns>
+        public async Task<ICollection<ReportModel>> GetNewestReports()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
@@ -148,15 +209,20 @@ namespace InsightHub.Services
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
                 .Include(r => r.Downloads)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .OrderByDescending(r => r.CreatedOn)
-                .Take(5)
+                .Take(4)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
         }
-        public async Task<ICollection<ReportModel>> GetTop5MostDownloads()
+
+        /// <summary>
+        /// Lists the 4 Most Downloaded Reports in the context.
+        /// </summary>
+        /// <returns>ICollection of Report Models</returns>
+        public async Task<ICollection<ReportModel>> GetMostDownloadedReports()
         {
             var reports = await _context.Reports
                 .Where(r => !r.IsDeleted)
@@ -164,22 +230,26 @@ namespace InsightHub.Services
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
                 .Include(r => r.Downloads)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .OrderByDescending(r => r.Downloads.Count)
-                .Take(5)
+                .Take(4)
                 .Select(r => ReportMapper.MapModelFromEntity(r))
                 .ToListAsync();
             return reports;
         }
-        
 
+        /// <summary>
+        /// Gets a report from the context by its ID.
+        /// </summary>
+        /// <param name="id">The ID for the target Report.</param>
+        /// <returns>On success - a Report Model. Throws ArgumentNullException if ID is invalid.</returns>
         public async Task<ReportModel> GetReport(int id)
         {
             var report = await _context.Reports
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
@@ -187,8 +257,20 @@ namespace InsightHub.Services
             return reportDTO;
         }
 
+        /// <summary>
+        /// Updates the properties of an existing Report, then moves it to the Pending list.
+        /// </summary>
+        /// <param name="id">The ID for the target Report.</param>
+        /// <param name="title">The new Title of the Report.</param>
+        /// <param name="summary">The new Summary of the Report.</param>
+        /// <param name="description">The new Description of the Report.</param>
+        /// <param name="imgUrl">The path to the new Image to be displayed for the Report.</param>
+        /// <param name="industry">The new Industry of the Report.</param>
+        /// <param name="tags">The new list of Tags for the Report. New Tags will be created if any do not exist.</param>
+        /// <returns>A Report Model on success. </returns>
         public async Task<ReportModel> UpdateReport(int id, string title, string summary, string description, string imgUrl, string industry, string tags)
         {
+            //Throw if report with new Title already exists.
             if (await _context.Reports.AnyAsync(r => r.Title == title && r.Id != id))
             {
                 throw new ArgumentException($"Report with title {title} already exists.");
@@ -196,62 +278,109 @@ namespace InsightHub.Services
             var report = await _context.Reports
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(rt => rt.Tag)
                 .FirstOrDefaultAsync(r => r.Id == id);
+
+            //Throw if ID is invalid.
             ValidateReportExists(report);
-            var reportDTO = ReportMapper.MapModelFromInput(title, summary, description, imgUrl, null, industry, tags);
-            report.Title = reportDTO.Title;
-            report.Summary = reportDTO.Summary;
-            report.Description = reportDTO.Description;
-            report.ImgUrl = reportDTO.ImgUrl;
-            report.Industry = await _context.Industries.FirstOrDefaultAsync(i => i.Name == reportDTO.Industry);
+
+
+            var reportModel = ReportMapper.MapModelFromInput(title, summary, description, imgUrl, null, industry, tags);
+            //Map Title
+            if(title != null && title != string.Empty)
+                report.Title = reportModel.Title;
+            //Map Summary
+            if (summary != null && summary != string.Empty)
+                report.Summary = reportModel.Summary;
+            //Map Description
+            if(description != null && description != string.Empty)
+                report.Description = reportModel.Description;
+            //Map Image
+            if (imgUrl != null && imgUrl != string.Empty)
+                report.ImgUrl = reportModel.ImgUrl;
+            //Map Industry
+            report.Industry = await _context.Industries.FirstOrDefaultAsync(i => i.Name == reportModel.Industry);
+            //Set ModifiedOn
             report.ModifiedOn = DateTime.UtcNow;
-            report.Tags.Clear();
+            report.ReportTags.Clear();
+            //Set Pending
             report.IsPending = true;
             await _context.SaveChangesAsync();
-            await AddTagsToReport(report, reportDTO.Tags);
+            //Map Tags, Add new Tags to Context if tags are not found.
+            await AddTagsToReport(report, reportModel.Tags);
             await _context.SaveChangesAsync();
-            reportDTO = ReportMapper.MapModelFromEntity(report);
-            return reportDTO;
+            //Return Report Model
+            reportModel = ReportMapper.MapModelFromEntity(report);
+            return reportModel;
         }
 
+
+        /// <summary>
+        /// Soft-deletes a Report by setting the IsDeleted property to True.
+        /// </summary>
+        /// <param name="id">The ID of the target Report.</param>
+        /// <returns>Throws ArgumentNullException if Report does not exist or ArgumentException if it is already soft-deleted.</returns>
         public async Task DeleteReport(int id)
         {
             var report = await _context.Reports
                 .FirstOrDefaultAsync(r => r.Id == id);
-            if (report.IsDeleted == true || report == null)
+            ValidateReportExists(report);
+            if (report.IsDeleted)
+            {
                 throw new ArgumentException("Unable to delete report.");
+            }
             report.IsDeleted = true;
             report.DeletedOn = DateTime.UtcNow;
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Removes the IsDeleted property of a Report.
+        /// </summary>
+        /// <param name="id">The ID of the target Report.</param>
+        /// <returns>Throws ArgumentNullException if Report does not exist or ArgumentException if it is not soft-deleted.</returns>
         public async Task RestoreReport(int id)
         {
             var report = await _context.Reports.FirstOrDefaultAsync(r => r.Id == id);
-            if (report.IsDeleted == false || report == null)
+            ValidateReportExists(report);
+            if (!report.IsDeleted)
+            {
                 throw new ArgumentException("Unable to restore report.");
+            }
             report.IsDeleted = false;
             report.DeletedOn = DateTime.MinValue;
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Permanently deletes a soft-deleted Report from the context.
+        /// </summary>
+        /// <param name="id">The ID of the target Report.</param>
+        /// <returns>Throws ArgumentNullException if Report does not exist or ArgumentException if it is not soft-deleted.</returns>
         public async Task PermanentlyDeleteReport(int id)
         {
             var report = await _context.Reports.FirstOrDefaultAsync(r => r.Id == id);
-            if (report.IsDeleted == false || report == null)
+            ValidateReportExists(report);
+            if (!report.IsDeleted)
+            {
                 throw new ArgumentException("Unable to delete report.");
+            }
             _context.Reports.Remove(report);
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Approves a Pending Report.
+        /// </summary>
+        /// <param name="id">The ID of the target Report.</param>
+        /// <returns>Throws ArgumentNullException if the Report does not exist.</returns>
         public async Task ApproveReport(int id)
         {
             var report = await _context.Reports
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .ThenInclude(ur => ur.Tag)
                 .FirstOrDefaultAsync(r => r.Id == id);
             ValidateReportExists(report);
@@ -262,12 +391,17 @@ namespace InsightHub.Services
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Handles the Featured property of a Report.
+        /// </summary>
+        /// <param name="id">The ID of the target Report.</param>
+        /// <returns>Throws ArgumentNullException if the Report does not exist.</returns>
         public async Task ToggleFeatured(int id)
         {
             var report = await _context.Reports
                 .Include(r => r.Industry)
                 .Include(r => r.Author)
-                .Include(r => r.Tags)
+                .Include(r => r.ReportTags)
                 .FirstOrDefaultAsync(r => r.Id == id);
 
             ValidateReportExists(report);
@@ -276,13 +410,18 @@ namespace InsightHub.Services
                 report.IsFeatured = false;
             else
                 report.IsFeatured = true;
-
+            report.ModifiedOn = DateTime.UtcNow;
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Creates a new DownloadedReport in the context.
+        /// </summary>
+        /// <param name="userId">The ID of the User who downloads the Report.</param>
+        /// <param name="reportId">The ID of the target Report.</param>
         public async Task AddToDownloadsCount(int userId, int reportId)
         {
-            if(!await _context.DownloadedReports.AnyAsync(ur => ur.UserId == userId && ur.ReportId == reportId))
+            if (!await _context.DownloadedReports.AnyAsync(ur => ur.UserId == userId && ur.ReportId == reportId))
             {
                 await _context.DownloadedReports.AddAsync(new DownloadedReport
                 {
@@ -292,7 +431,21 @@ namespace InsightHub.Services
                 await _context.SaveChangesAsync();
             }
         }
+        /// <summary>
+        /// Returns the Count of all Reports in the context.
+        /// </summary>
+        /// <returns>int</returns>
+        public async Task<int> GetReportsCount()
+        {
+            var count = await _context.Reports.CountAsync();
+            return count;
+        }
 
+        /// <summary>
+        /// Adds Tags to a target Report. Creates Tags if they don't exist.
+        /// </summary>
+        /// <param name="report">The target Report.</param>
+        /// <param name="tags">String containing all the tags.</param>
         private async Task AddTagsToReport(Report report, string tags)
         {
             var tagsList = tags.Split(',', ';', '.');
@@ -306,6 +459,11 @@ namespace InsightHub.Services
             }
         }
 
+        /// <summary>
+        /// Checks if a tag exists in the context. Creates a new Tag if it does not.
+        /// </summary>
+        /// <param name="name">The Name of the new Tag.</param>
+        /// <returns>Tag</returns>
         private async Task<Tag> CreateTagIfDoesntExist(string name)
         {
             name = name.ToLower().Trim();
@@ -317,13 +475,23 @@ namespace InsightHub.Services
             return tag;
         }
 
+        /// <summary>
+        /// Validates if a Report exists. Throws ArgumentNullException if the Report is Null.
+        /// </summary>
+        /// <param name="report">The target Report.</param>
         private void ValidateReportExists(Report report)
         {
             if (report == null)
                 throw new ArgumentNullException("No Report found.");
         }
 
-        private ICollection<ReportModel> SortReports(string sort, List<ReportModel> reports)
+        /// <summary>
+        /// Sorts a collection of Reports by a given property.
+        /// </summary>
+        /// <param name="sort">The property to sort the Reports by.</param>
+        /// <param name="reports">The target collection of Reports.</param>
+        /// <returns>ICollection of Report Models.</returns>
+        private ICollection<ReportModel> SortReports(string sort, ICollection<ReportModel> reports)
         {
             if (sort != null)
             {
@@ -369,6 +537,12 @@ namespace InsightHub.Services
             return reports;
         }
 
+        /// <summary>
+        /// Searches a collection of Reports by its Title and Summary.
+        /// </summary>
+        /// <param name="search">The search query string.</param>
+        /// <param name="reports">The target collection of Reports.</param>
+        /// <returns>ICollection of Report Models.</returns>
         private ICollection<ReportModel> SearchReports(string search, ICollection<ReportModel> reports)
         {
             if (search != null)

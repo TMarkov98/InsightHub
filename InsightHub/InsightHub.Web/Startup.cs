@@ -17,6 +17,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace InsightHub.Web
 {
@@ -69,6 +71,27 @@ namespace InsightHub.Web
             services.AddScoped<IReportServices, ReportServices>();
             services.AddScoped<ITagServices, TagServices>();
             services.AddScoped<IEmailSenderServices, EmailSenderServices>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "InsightHub API",
+                    Description = "A simple ASP.NET Core Web API, written by\nTelerik Academy Alpha 18\n Team 17\nKrasimir Mladenov\nTeodor Markov",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Insight Hub Official",
+                        Email = "insighthub.official@gmail.com",
+                        Url = new Uri("https://twitter.com/elonmusk"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Back to InsightHub",
+                        Url = new Uri("http://localhost:5000"),
+                    }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -127,8 +150,15 @@ namespace InsightHub.Web
             app.UseAuthorization();
 
             app.UseMiddleware<NotFoundMiddleware>();
-            app.UseMiddleware<ArgumentExceptionMiddleware>();
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseMiddleware<UserLockedOutMiddleware>();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "InsightHub API V1");
+            });
 
             app.UseEndpoints(endpoints =>
             {

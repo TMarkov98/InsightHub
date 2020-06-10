@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 namespace InsightHub.Tests.UnitTests.ReportServicesTests
 {
     [TestClass]
-    public class GetTop5NewReports_Should
+    public class GetMostDownloadedReports_Should
     {
         [TestMethod]
-        public async Task GetsTop5NewReports_When_ParamsValid()
+        public async Task GetMostDownloadedReports_When_ParamsValid()
         {
-            var options = Utils.GetOptions(nameof(GetsTop5NewReports_When_ParamsValid));
+            //Arrange
+            var options = Utils.GetOptions(nameof(GetMostDownloadedReports_When_ParamsValid));
             var report1 = TestModelsSeeder.SeedReport();
             var industry1 = TestModelsSeeder.SeedIndustry();
             var user = TestModelsSeeder.SeedUser();
@@ -41,23 +42,21 @@ namespace InsightHub.Tests.UnitTests.ReportServicesTests
                 await arrangeContext.Users.AddAsync(user);
                 await arrangeContext.SaveChangesAsync();
             }
-
-            using (var assertContext = new InsightHubContext(options))
-            {
-                var sutTags = new TagServices(assertContext);
-                var sut = new ReportServices(assertContext, sutTags);
-                var act = await sut.GetTop5NewReports();
-                var result = act.ToArray();
-                Assert.AreEqual(3, result.Length);
-                Assert.AreEqual(report3.Title, result[0].Title);
-                Assert.AreEqual(report3.Summary, result[0].Summary);
-                Assert.IsTrue(result[0].CreatedOn > result[1].CreatedOn);
-                Assert.AreEqual(report2.Title, result[1].Title);
-                Assert.AreEqual(report2.Summary, result[1].Summary);
-                Assert.IsTrue(result[1].CreatedOn > result[2].CreatedOn);
-                Assert.AreEqual(report1.Title, result[2].Title);
-                Assert.AreEqual(report1.Summary, result[2].Summary);
-            }
+            //Act & Assert
+            using var assertContext = new InsightHubContext(options);
+            var sutTags = new TagServices(assertContext);
+            var sut = new ReportServices(assertContext, sutTags);
+            var act = await sut.GetMostDownloadedReports();
+            var result = act.ToArray();
+            Assert.AreEqual(3, result.Length);
+            Assert.AreEqual(report2.Title, result[0].Title);
+            Assert.AreEqual(report2.Summary, result[0].Summary);
+            Assert.IsTrue(result[0].DownloadsCount > result[1].DownloadsCount);
+            Assert.AreEqual(report1.Title, result[1].Title);
+            Assert.AreEqual(report1.Summary, result[1].Summary);
+            Assert.IsTrue(result[1].DownloadsCount > result[2].DownloadsCount);
+            Assert.AreEqual(report3.Title, result[2].Title);
+            Assert.AreEqual(report3.Summary, result[2].Summary);
         }
     }
 }
