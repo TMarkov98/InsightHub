@@ -13,8 +13,10 @@ These instructions will get you a copy of the project up and running on your loc
 ### Usage
 
 Upload and Download reports in a centralized business hub.
+
+
 For example if You are an author:
-```
+
 1. Sign In
 ![SignIn](/Instructions/Login.png)
 2. Go to the Reports or My Reports section
@@ -25,8 +27,11 @@ For example if You are an author:
 ![ReportForm](/Instructions/Create Report.png)
 5. Wait for Admin approval
 ![ReportForm](/Instructions/Admin Approval.png)
-```
+
+====
+
 or if You are a client:
+
 1. Sign In
 ![SignIn](/Instructions/Login.png)
 2. Go to the Reports Section
