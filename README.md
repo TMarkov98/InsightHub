@@ -50,23 +50,16 @@ or if You are a client:
 You can contact us on:
 Gmail - insighthub.official@gmail.com
 
-## Running the tests
+### Unit Tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+Every Service is Unit Tested, in order to make sure that each individual component of the Project works as intended.
 
 ## Roadmap
 
 - Newsfeed on Front Page
 - Send auto emails to admins about new users/reports
 - Online project hosting
+- Continuous Intergration
 
 ## Built With
 
